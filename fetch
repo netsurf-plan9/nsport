@@ -1,0 +1,57 @@
+#!/bin/rc
+
+portcode=git+ssh://git@github.com/netsurf-plan9
+upstream=git://git.netsurf-browser.org
+modules=( \
+	libcss \
+	libdom \
+	libhubbub \
+	libnsbmp \
+	libnsfb \
+	libnsgif \
+	libparserutils \
+	libpencil \
+	librosprite \
+	librufl \
+	libsvgtiny \
+	libwapcaplet \
+	libnsutils \
+	libutf8proc \
+	libnspsl \
+	libnslog \
+	netsurf \
+	nsgenbind \
+)
+
+fn do {
+	cmd=$1
+	shift
+	for(m in $modules)@{
+		echo '==> '$m: git/$cmd $*
+		cd $m
+		git/$cmd $*
+	}
+}
+
+base=$portcode
+switch($1){
+	case 'clone'
+		for(m in $modules)@{
+			echo '==> '$m
+			git/clone $portcode/$m.git
+			cd $m
+			echo '[remote "upstream"]' >> .git/config
+			echo '	url='$upstream/$m.git >> .git/config
+			git/branch -b origin/plan9 plan9
+		}
+	case 'sync-upstream'
+		do pull -u $upstream
+	case 'pull'
+		do pull
+	case 'push'
+		do push
+	case 'do'
+		shift
+		do $*
+}
+
