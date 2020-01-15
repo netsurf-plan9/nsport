@@ -45,7 +45,7 @@ switch($1){
 			git/branch -b origin/plan9 plan9
 		}
 	case 'sync-upstream'
-		do pull -u $upstream
+		do pull -f -b upstream/master -u upstream
 	case 'pull'
 		do pull
 	case 'push'
