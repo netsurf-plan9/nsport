@@ -42,7 +42,7 @@ switch($1){
 			cd $m
 			echo '[remote "upstream"]' >> .git/config
 			echo '	url='$upstream/$m.git >> .git/config
-			git/branch -b origin/plan9 plan9
+			git/branch -c -b origin/plan9 plan9
 		}
 	case 'sync-upstream'
 		do pull -f -b upstream/master -u upstream
