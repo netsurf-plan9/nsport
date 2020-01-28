@@ -1,0 +1,22 @@
+#!/bin/rc
+#
+# Prepare the namespace for compiling AND running netsurf.
+# 
+# libraries inlcude directories are typically
+# bound in a new directory 'netsurf/libinclude' that
+# contain stubs (emtpy directories). The bind
+# is only needed for building the browser, not
+# the supporting libraries.
+#
+# NB! This script assumes that your current directory
+# is set to the directory where this file is.
+#
+
+bind libdom-0.4.0/bindings netsurf/libinclude/dom/bindings
+
+# The runtime is (later) expected to be installed
+# in /sys/lib/netsurf, but for testing we can bind the
+# runtime resource directory over that directory.
+
+aux/stub -d /sys/lib/netsurf
+bind netsurf/frontends/framebuffer/res /sys/lib/netsurf

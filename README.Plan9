@@ -1,0 +1,8 @@
+This is a port of the Netsurf Browser (http://netsurf-browser.org)
+to the Plan 9 operating system (http://9front.org, http://9p.io/plan)
+
+There are a number of README.Plan9 scattered in the source tree,
+and a BUILD.Plan9 in this directory, with compiling instructions.
+
+Jonas Amoson
+jonas@amoson.se

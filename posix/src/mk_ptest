@@ -1,0 +1,1 @@
+pcc -D_POSIX_SOURCE -I /sys/include/ape -I /386/include/ape main.c preadwrite.c

@@ -1,0 +1,16 @@
+</$objtype/mkfile
+
+CC=pcc
+OBJ=preadwrite.$O math9.$O iconv.$O
+
+HFILES=../include/preadwrite.h ../include/math9.h ../include/iconv.h
+
+CFLAGS=-D_POSIX_SOURCE -I ../include
+
+all:V:	$OBJ
+
+%.$O:	%.c $HFILES
+	$CC $CFLAGS -c -o $target $stem.c
+
+clean:V:
+	rm -f $OBJ

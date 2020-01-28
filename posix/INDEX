@@ -1,0 +1,18 @@
+This directory (together with ../include) contains
+a bit of extra functionality, mostly Posix functions
+not present in Ape. 
+
+math9.[ch]
+Implementation of fceil() as APE only defines
+ceil() (for doubles). Maybe fceil() could be
+instead added to APE.
+
+pwriteread.[ch]
+Reimplementation of pread() and pwrite() using
+read and write in APE.
+
+expat.h & expat_external.h - header files for
+'libexpat'. Not needed if the library is installed
+properly in /sys/include/ape and /$arch/lib/ape.
+
+
