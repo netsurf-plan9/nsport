@@ -2,19 +2,19 @@
 
 DIRS=\
 	posix/src \
-	libwapcaplet-0.4.1/src \
-	libparserutils-0.2.4/src \
-	libhubbub-0.3.5/src \
-	libnsbmp-0.1.5/src \
-	libnsgif-0.2.1/src \
-	libnspsl-0.1.5/src \
-	libcss-0.9.0/src \
-	libdom-0.4.0/src \
-	libnsutils-0.0.5/src \
-	libnslog-0.1.2/src \
-	libnsfb-0.2.1/src \
-	libnsfb-0.2.1/test \
-	libutf8proc-2.4.0-1/src
+	libwapcaplet/src \
+	libparserutils/src \
+	libhubbub/src \
+	libnsbmp/src \
+	libnsgif/src \
+	libnspsl/src \
+	libcss/src \
+	libdom/src \
+	libnsutils/src \
+	libnslog/src \
+	libnsfb/src \
+	libnsfb/test \
+	libutf8proc/src
 
 
 all:V:
