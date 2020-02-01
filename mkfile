@@ -27,6 +27,7 @@ all:V:
 		echo '***** Building: the netsurf browser *****'
 		cd netsurf
 		mk
+		mk 9res
 	}
 
 clean:V:
