@@ -12,8 +12,30 @@ int
 iconv(iconv_t cd, char **inbuf, size_t *inbytesleft,
 		char **outbuf, size_t *outbytesleft)
 {
-	fprintf(stderr,"DBG: iconv()\n");
-	return 0;	
+	int len = 0;		/* number bytes (excluding '\0') */
+	char *inp, *outp;	/* these pointers are updated */
+
+	if(inbuf == NULL || outbuf == NULL)
+		return 0;
+
+	fprintf(stderr, "[DBG] iconv [%s] in=%d out=%d\n",
+			*inbuf, *inbytesleft, *outbytesleft);
+
+	inp = *inbuf;
+	outp= *outbuf;
+
+	while(*inp) {
+		*outp = *inp;
+		inp++;
+		outp++;
+		len++;
+		*inbytesleft--;
+		*outbytesleft--;
+	}
+
+	*inbuf = inp;
+	*outbuf = outp;	
+	return len;	
 }
 
 int iconv_close(iconv_t cd)
