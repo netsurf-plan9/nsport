@@ -14,7 +14,8 @@ DIRS=\
 	libnslog/src \
 	libnsfb/src \
 	libnsfb/test \
-	libutf8proc/src
+	libutf8proc/src\
+	netsurf
 
 
 all:V:
@@ -23,21 +24,10 @@ all:V:
 		cd $i
 		mk
 	}
-	{
-		echo '***** Building: the netsurf browser *****'
-		cd netsurf
-		mk
-		mk 9res
-	}
 
 clean:V:
 	for(i in $DIRS) @{
 		echo '***** Cleaing: ' $i '*****'
 		cd $i
-		mk clean
-	}
-	{
-		echo '***** Cleaing: the netsurf browser *****'
-		cd netsurf
 		mk clean
 	}
