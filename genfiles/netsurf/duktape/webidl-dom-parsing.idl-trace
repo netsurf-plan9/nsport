@@ -1,0 +1,1504 @@
+Starting parse
+Entering state 0
+Reading a token: Next token is token TOK_ENUM (5.1-5.4: )
+Reducing stack by rule 1 (line 230):
+-> $$ = nterm Definitions (1.1-1.1: )
+Stack now 0
+Entering state 2
+Next token is token TOK_ENUM (5.1-5.4: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (1.1-1.1: )
+Stack now 0 2
+Entering state 5
+Next token is token TOK_ENUM (5.1-5.4: )
+Shifting token TOK_ENUM (5.1-5.4: )
+Entering state 73
+Reading a token: Next token is token TOK_IDENTIFIER (5.7-5.19: )
+Shifting token TOK_IDENTIFIER (5.7-5.19: )
+Entering state 108
+Reading a token: Next token is token '{' (5.22-5.22: )
+Shifting token '{' (5.22-5.22: )
+Entering state 134
+Reading a token: Next token is token TOK_STRING_LITERAL (6.5-6.15: )
+Shifting token TOK_STRING_LITERAL (6.5-6.15: )
+Entering state 186
+Reading a token: Next token is token ',' (6.16-6.16: )
+Shifting token ',' (6.16-6.16: )
+Entering state 226
+Reading a token: Next token is token TOK_STRING_LITERAL (7.5-7.14: )
+Shifting token TOK_STRING_LITERAL (7.5-7.14: )
+Entering state 254
+Reading a token: Next token is token ',' (7.15-7.15: )
+Shifting token ',' (7.15-7.15: )
+Entering state 226
+Reading a token: Next token is token TOK_STRING_LITERAL (8.5-8.21: )
+Shifting token TOK_STRING_LITERAL (8.5-8.21: )
+Entering state 254
+Reading a token: Next token is token ',' (8.22-8.22: )
+Shifting token ',' (8.22-8.22: )
+Entering state 226
+Reading a token: Next token is token TOK_STRING_LITERAL (9.5-9.27: )
+Shifting token TOK_STRING_LITERAL (9.5-9.27: )
+Entering state 254
+Reading a token: Next token is token ',' (9.28-9.28: )
+Shifting token ',' (9.28-9.28: )
+Entering state 226
+Reading a token: Next token is token TOK_STRING_LITERAL (10.5-10.19: )
+Shifting token TOK_STRING_LITERAL (10.5-10.19: )
+Entering state 254
+Reading a token: Next token is token '}' (11.1-11.1: )
+Reducing stack by rule 44 (line 652):
+-> $$ = nterm EnumValueListComma (10.19-10.19: )
+Stack now 0 2 5 73 108 134 186 226 254 226 254 226 254 226 254
+Entering state 280
+Reducing stack by rule 45 (line 658):
+   $1 = token TOK_STRING_LITERAL (10.5-10.19: )
+   $2 = nterm EnumValueListComma (10.19-10.19: )
+-> $$ = nterm EnumValueListString (10.5-10.19: )
+Stack now 0 2 5 73 108 134 186 226 254 226 254 226 254 226
+Entering state 255
+Reducing stack by rule 43 (line 651):
+   $1 = token ',' (9.28-9.28: )
+   $2 = nterm EnumValueListString (10.5-10.19: )
+-> $$ = nterm EnumValueListComma (9.28-10.19: )
+Stack now 0 2 5 73 108 134 186 226 254 226 254 226 254
+Entering state 280
+Reducing stack by rule 45 (line 658):
+   $1 = token TOK_STRING_LITERAL (9.5-9.27: )
+   $2 = nterm EnumValueListComma (9.28-10.19: )
+-> $$ = nterm EnumValueListString (9.5-10.19: )
+Stack now 0 2 5 73 108 134 186 226 254 226 254 226
+Entering state 255
+Reducing stack by rule 43 (line 651):
+   $1 = token ',' (8.22-8.22: )
+   $2 = nterm EnumValueListString (9.5-10.19: )
+-> $$ = nterm EnumValueListComma (8.22-10.19: )
+Stack now 0 2 5 73 108 134 186 226 254 226 254
+Entering state 280
+Reducing stack by rule 45 (line 658):
+   $1 = token TOK_STRING_LITERAL (8.5-8.21: )
+   $2 = nterm EnumValueListComma (8.22-10.19: )
+-> $$ = nterm EnumValueListString (8.5-10.19: )
+Stack now 0 2 5 73 108 134 186 226 254 226
+Entering state 255
+Reducing stack by rule 43 (line 651):
+   $1 = token ',' (7.15-7.15: )
+   $2 = nterm EnumValueListString (8.5-10.19: )
+-> $$ = nterm EnumValueListComma (7.15-10.19: )
+Stack now 0 2 5 73 108 134 186 226 254
+Entering state 280
+Reducing stack by rule 45 (line 658):
+   $1 = token TOK_STRING_LITERAL (7.5-7.14: )
+   $2 = nterm EnumValueListComma (7.15-10.19: )
+-> $$ = nterm EnumValueListString (7.5-10.19: )
+Stack now 0 2 5 73 108 134 186 226
+Entering state 255
+Reducing stack by rule 43 (line 651):
+   $1 = token ',' (6.16-6.16: )
+   $2 = nterm EnumValueListString (7.5-10.19: )
+-> $$ = nterm EnumValueListComma (6.16-10.19: )
+Stack now 0 2 5 73 108 134 186
+Entering state 227
+Reducing stack by rule 42 (line 646):
+   $1 = token TOK_STRING_LITERAL (6.5-6.15: )
+   $2 = nterm EnumValueListComma (6.16-10.19: )
+-> $$ = nterm EnumValueList (6.5-10.19: )
+Stack now 0 2 5 73 108 134
+Entering state 187
+Next token is token '}' (11.1-11.1: )
+Shifting token '}' (11.1-11.1: )
+Entering state 228
+Reading a token: Next token is token ';' (11.2-11.2: )
+Shifting token ';' (11.2-11.2: )
+Entering state 256
+Reducing stack by rule 41 (line 636):
+   $1 = token TOK_ENUM (5.1-5.4: )
+   $2 = token TOK_IDENTIFIER (5.7-5.19: )
+   $3 = token '{' (5.22-5.22: )
+   $4 = nterm EnumValueList (6.5-10.19: )
+   $5 = token '}' (11.1-11.1: )
+   $6 = token ';' (11.2-11.2: )
+-> $$ = nterm Enum (5.1-11.2: )
+Stack now 0 2 5
+Entering state 85
+Reducing stack by rule 8 (line 258):
+   $1 = nterm Enum (5.1-11.2: )
+-> $$ = nterm Definition (5.1-11.2: )
+Stack now 0 2 5
+Entering state 79
+Reducing stack by rule 2 (line 234):
+   $1 = nterm Definitions (1.1-1.1: )
+   $2 = nterm ExtendedAttributeList (1.1-1.1: )
+   $3 = nterm Definition (5.1-11.2: )
+-> $$ = nterm Definitions (1.1-11.2: )
+Stack now 0
+Entering state 2
+Reading a token: Next token is token '[' (13.1-13.1: )
+Shifting token '[' (13.1-13.1: )
+Entering state 4
+Reading a token: Next token is token TOK_CONSTRUCTOR (13.2-13.12: )
+Shifting token TOK_CONSTRUCTOR (13.2-13.12: )
+Entering state 12
+Reading a token: Next token is token ']' (13.13-13.13: )
+Reducing stack by rule 117 (line 1252):
+   $1 = token TOK_CONSTRUCTOR (13.2-13.12: )
+-> $$ = nterm ExtendedAttribute (13.2-13.12: )
+Stack now 0 2 4
+Entering state 68
+Next token is token ']' (13.13-13.13: )
+Reducing stack by rule 112 (line 1219):
+-> $$ = nterm ExtendedAttributes (13.12-13.12: )
+Stack now 0 2 4 68
+Entering state 100
+Next token is token ']' (13.13-13.13: )
+Shifting token ']' (13.13-13.13: )
+Entering state 130
+Reducing stack by rule 111 (line 1208):
+   $1 = token '[' (13.1-13.1: )
+   $2 = nterm ExtendedAttribute (13.2-13.12: )
+   $3 = nterm ExtendedAttributes (13.12-13.12: )
+   $4 = token ']' (13.13-13.13: )
+-> $$ = nterm ExtendedAttributeList (13.1-13.13: )
+Stack now 0 2
+Entering state 5
+Reading a token: Next token is token TOK_INTERFACE (14.1-14.9: )
+Shifting token TOK_INTERFACE (14.1-14.9: )
+Entering state 75
+Reading a token: Next token is token TOK_IDENTIFIER (14.12-14.20: )
+Shifting token TOK_IDENTIFIER (14.12-14.20: )
+Entering state 110
+Reading a token: Next token is token '{' (14.23-14.23: )
+Reducing stack by rule 39 (line 624):
+-> $$ = nterm Inheritance (14.20-14.20: )
+Stack now 0 2 5 75 110
+Entering state 136
+Next token is token '{' (14.23-14.23: )
+Shifting token '{' (14.23-14.23: )
+Entering state 189
+Reducing stack by rule 20 (line 372):
+-> $$ = nterm InterfaceMembers (14.23-14.23: )
+Stack now 0 2 5 75 110 136 189
+Entering state 231
+Reading a token: Next token is token '[' (15.5-15.5: )
+Shifting token '[' (15.5-15.5: )
+Entering state 4
+Reading a token: Next token is token TOK_IDENTIFIER (15.6-15.14: )
+Shifting token TOK_IDENTIFIER (15.6-15.14: )
+Entering state 52
+Reducing stack by rule 130 (line 1367):
+   $1 = token TOK_IDENTIFIER (15.6-15.14: )
+-> $$ = nterm Other (15.6-15.14: )
+Stack now 0 2 5 75 110 136 189 231 4
+Entering state 69
+Reading a token: Next token is token ']' (15.15-15.15: )
+Reducing stack by rule 121 (line 1298):
+-> $$ = nterm ExtendedAttributeRest (15.14-15.14: )
+Stack now 0 2 5 75 110 136 189 231 4 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (15.6-15.14: )
+   $2 = nterm ExtendedAttributeRest (15.14-15.14: )
+-> $$ = nterm ExtendedAttribute (15.6-15.14: )
+Stack now 0 2 5 75 110 136 189 231 4
+Entering state 68
+Next token is token ']' (15.15-15.15: )
+Reducing stack by rule 112 (line 1219):
+-> $$ = nterm ExtendedAttributes (15.14-15.14: )
+Stack now 0 2 5 75 110 136 189 231 4 68
+Entering state 100
+Next token is token ']' (15.15-15.15: )
+Shifting token ']' (15.15-15.15: )
+Entering state 130
+Reducing stack by rule 111 (line 1208):
+   $1 = token '[' (15.5-15.5: )
+   $2 = nterm ExtendedAttribute (15.6-15.14: )
+   $3 = nterm ExtendedAttributes (15.14-15.14: )
+   $4 = token ']' (15.15-15.15: )
+-> $$ = nterm ExtendedAttributeList (15.5-15.15: )
+Stack now 0 2 5 75 110 136 189 231
+Entering state 264
+Reading a token: Next token is token TOK_IDENTIFIER (16.9-16.16: )
+Shifting token TOK_IDENTIFIER (16.9-16.16: )
+Entering state 154
+Reading a token: Next token is token TOK_IDENTIFIER (16.19-16.33: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (16.16-16.16: )
+Stack now 0 2 5 75 110 136 189 231 264 154
+Entering state 205
+Reducing stack by rule 201 (line 1756):
+   $1 = token TOK_IDENTIFIER (16.9-16.16: )
+   $2 = nterm TypeSuffix (16.16-16.16: )
+-> $$ = nterm NonAnyType (16.9-16.16: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (16.9-16.16: )
+-> $$ = nterm SingleType (16.9-16.16: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (16.9-16.16: )
+-> $$ = nterm Type (16.9-16.16: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 182
+Reducing stack by rule 230 (line 1959):
+   $1 = nterm Type (16.9-16.16: )
+-> $$ = nterm ReturnType (16.9-16.16: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 308
+Next token is token TOK_IDENTIFIER (16.19-16.33: )
+Shifting token TOK_IDENTIFIER (16.19-16.33: )
+Entering state 342
+Reducing stack by rule 91 (line 1078):
+   $1 = token TOK_IDENTIFIER (16.19-16.33: )
+-> $$ = nterm OptionalIdentifier (16.19-16.33: )
+Stack now 0 2 5 75 110 136 189 231 264 308
+Entering state 347
+Reading a token: Next token is token '(' (16.36-16.36: )
+Shifting token '(' (16.36-16.36: )
+Entering state 363
+Reading a token: Next token is token TOK_STRING (16.37-16.45: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (16.36-16.36: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363
+Entering state 120
+Next token is token TOK_STRING (16.37-16.45: )
+Shifting token TOK_STRING (16.37-16.45: )
+Entering state 151
+Reading a token: Next token is token TOK_IDENTIFIER (16.48-16.50: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (16.45-16.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120 151
+Entering state 202
+Reducing stack by rule 200 (line 1749):
+   $1 = token TOK_STRING (16.37-16.45: )
+   $2 = nterm TypeSuffix (16.45-16.45: )
+-> $$ = nterm NonAnyType (16.37-16.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (16.37-16.45: )
+-> $$ = nterm SingleType (16.37-16.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (16.37-16.45: )
+-> $$ = nterm Type (16.37-16.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 172
+Next token is token TOK_IDENTIFIER (16.48-16.50: )
+Reducing stack by rule 101 (line 1153):
+-> $$ = nterm Ellipsis (16.45-16.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120 172
+Entering state 218
+Next token is token TOK_IDENTIFIER (16.48-16.50: )
+Shifting token TOK_IDENTIFIER (16.48-16.50: )
+Entering state 244
+Reducing stack by rule 100 (line 1147):
+   $1 = token TOK_IDENTIFIER (16.48-16.50: )
+-> $$ = nterm ArgumentName (16.48-16.50: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120 172 218
+Entering state 247
+Reducing stack by rule 98 (line 1133):
+   $1 = nterm Type (16.37-16.45: )
+   $2 = nterm Ellipsis (16.45-16.45: )
+   $3 = nterm ArgumentName (16.48-16.50: )
+-> $$ = nterm OptionalOrRequiredArgument (16.37-16.50: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 171
+Reducing stack by rule 96 (line 1116):
+   $1 = nterm ExtendedAttributeList (16.36-16.36: )
+   $2 = nterm OptionalOrRequiredArgument (16.37-16.50: )
+-> $$ = nterm Argument (16.36-16.50: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363
+Entering state 119
+Reading a token: Next token is token ',' (16.51-16.51: )
+Shifting token ',' (16.51-16.51: )
+Entering state 168
+Reading a token: Next token is token TOK_IDENTIFIER (16.54-16.66: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (16.51-16.51: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168
+Entering state 120
+Next token is token TOK_IDENTIFIER (16.54-16.66: )
+Shifting token TOK_IDENTIFIER (16.54-16.66: )
+Entering state 154
+Reading a token: Next token is token TOK_IDENTIFIER (16.69-16.72: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (16.66-16.66: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 120 154
+Entering state 205
+Reducing stack by rule 201 (line 1756):
+   $1 = token TOK_IDENTIFIER (16.54-16.66: )
+   $2 = nterm TypeSuffix (16.66-16.66: )
+-> $$ = nterm NonAnyType (16.54-16.66: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 120
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (16.54-16.66: )
+-> $$ = nterm SingleType (16.54-16.66: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 120
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (16.54-16.66: )
+-> $$ = nterm Type (16.54-16.66: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 120
+Entering state 172
+Next token is token TOK_IDENTIFIER (16.69-16.72: )
+Reducing stack by rule 101 (line 1153):
+-> $$ = nterm Ellipsis (16.66-16.66: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 120 172
+Entering state 218
+Next token is token TOK_IDENTIFIER (16.69-16.72: )
+Shifting token TOK_IDENTIFIER (16.69-16.72: )
+Entering state 244
+Reducing stack by rule 100 (line 1147):
+   $1 = token TOK_IDENTIFIER (16.69-16.72: )
+-> $$ = nterm ArgumentName (16.69-16.72: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 120 172 218
+Entering state 247
+Reducing stack by rule 98 (line 1133):
+   $1 = nterm Type (16.54-16.66: )
+   $2 = nterm Ellipsis (16.66-16.66: )
+   $3 = nterm ArgumentName (16.69-16.72: )
+-> $$ = nterm OptionalOrRequiredArgument (16.54-16.72: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 120
+Entering state 171
+Reducing stack by rule 96 (line 1116):
+   $1 = nterm ExtendedAttributeList (16.51-16.51: )
+   $2 = nterm OptionalOrRequiredArgument (16.54-16.72: )
+-> $$ = nterm Argument (16.51-16.72: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168
+Entering state 215
+Reading a token: Next token is token ')' (16.73-16.73: )
+Reducing stack by rule 94 (line 1103):
+-> $$ = nterm Arguments (16.72-16.72: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119 168 215
+Entering state 243
+Reducing stack by rule 95 (line 1107):
+   $1 = token ',' (16.51-16.51: )
+   $2 = nterm Argument (16.51-16.72: )
+   $3 = nterm Arguments (16.72-16.72: )
+-> $$ = nterm Arguments (16.51-16.72: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119
+Entering state 169
+Reducing stack by rule 93 (line 1094):
+   $1 = nterm Argument (16.36-16.50: )
+   $2 = nterm Arguments (16.51-16.72: )
+-> $$ = nterm ArgumentList (16.36-16.72: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363
+Entering state 373
+Next token is token ')' (16.73-16.73: )
+Shifting token ')' (16.73-16.73: )
+Entering state 383
+Reading a token: Next token is token ';' (16.74-16.74: )
+Shifting token ';' (16.74-16.74: )
+Entering state 386
+Reducing stack by rule 89 (line 1062):
+   $1 = nterm OptionalIdentifier (16.19-16.33: )
+   $2 = token '(' (16.36-16.36: )
+   $3 = nterm ArgumentList (16.36-16.72: )
+   $4 = token ')' (16.73-16.73: )
+   $5 = token ';' (16.74-16.74: )
+-> $$ = nterm OperationRest (16.19-16.74: )
+Stack now 0 2 5 75 110 136 189 231 264 308
+Entering state 351
+Reducing stack by rule 79 (line 977):
+   $1 = nterm ReturnType (16.9-16.16: )
+   $2 = nterm OperationRest (16.19-16.74: )
+-> $$ = nterm Operation (16.9-16.74: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 304
+Reducing stack by rule 63 (line 818):
+   $1 = nterm Operation (16.9-16.74: )
+-> $$ = nterm AttributeOrOperation (16.9-16.74: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 300
+Reducing stack by rule 23 (line 442):
+   $1 = nterm AttributeOrOperation (16.9-16.74: )
+-> $$ = nterm InterfaceMember (16.9-16.74: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 298
+Reducing stack by rule 21 (line 376):
+   $1 = nterm InterfaceMembers (14.23-14.23: )
+   $2 = nterm ExtendedAttributeList (15.5-15.15: )
+   $3 = nterm InterfaceMember (16.9-16.74: )
+-> $$ = nterm InterfaceMembers (14.23-16.74: )
+Stack now 0 2 5 75 110 136 189
+Entering state 231
+Reading a token: Next token is token '}' (17.1-17.1: )
+Shifting token '}' (17.1-17.1: )
+Entering state 263
+Reading a token: Next token is token ';' (17.2-17.2: )
+Shifting token ';' (17.2-17.2: )
+Entering state 287
+Reducing stack by rule 15 (line 285):
+   $1 = token TOK_INTERFACE (14.1-14.9: )
+   $2 = token TOK_IDENTIFIER (14.12-14.20: )
+   $3 = nterm Inheritance (14.20-14.20: )
+   $4 = token '{' (14.23-14.23: )
+   $5 = nterm InterfaceMembers (14.23-16.74: )
+   $6 = token '}' (17.1-17.1: )
+   $7 = token ';' (17.2-17.2: )
+-> $$ = nterm Interface (14.1-17.2: )
+Stack now 0 2 5
+Entering state 81
+Reducing stack by rule 12 (line 273):
+   $1 = nterm Interface (14.1-17.2: )
+-> $$ = nterm CallbackOrInterface (14.1-17.2: )
+Stack now 0 2 5
+Entering state 80
+Reducing stack by rule 4 (line 250):
+   $1 = nterm CallbackOrInterface (14.1-17.2: )
+-> $$ = nterm Definition (14.1-17.2: )
+Stack now 0 2 5
+Entering state 79
+Reducing stack by rule 2 (line 234):
+   $1 = nterm Definitions (1.1-11.2: )
+   $2 = nterm ExtendedAttributeList (13.1-13.13: )
+   $3 = nterm Definition (14.1-17.2: )
+-> $$ = nterm Definitions (1.1-17.2: )
+Stack now 0
+Entering state 2
+Reading a token: Next token is token '[' (19.1-19.1: )
+Shifting token '[' (19.1-19.1: )
+Entering state 4
+Reading a token: Next token is token TOK_CONSTRUCTOR (19.2-19.12: )
+Shifting token TOK_CONSTRUCTOR (19.2-19.12: )
+Entering state 12
+Reading a token: Next token is token ']' (19.13-19.13: )
+Reducing stack by rule 117 (line 1252):
+   $1 = token TOK_CONSTRUCTOR (19.2-19.12: )
+-> $$ = nterm ExtendedAttribute (19.2-19.12: )
+Stack now 0 2 4
+Entering state 68
+Next token is token ']' (19.13-19.13: )
+Reducing stack by rule 112 (line 1219):
+-> $$ = nterm ExtendedAttributes (19.12-19.12: )
+Stack now 0 2 4 68
+Entering state 100
+Next token is token ']' (19.13-19.13: )
+Shifting token ']' (19.13-19.13: )
+Entering state 130
+Reducing stack by rule 111 (line 1208):
+   $1 = token '[' (19.1-19.1: )
+   $2 = nterm ExtendedAttribute (19.2-19.12: )
+   $3 = nterm ExtendedAttributes (19.12-19.12: )
+   $4 = token ']' (19.13-19.13: )
+-> $$ = nterm ExtendedAttributeList (19.1-19.13: )
+Stack now 0 2
+Entering state 5
+Reading a token: Next token is token TOK_INTERFACE (20.1-20.9: )
+Shifting token TOK_INTERFACE (20.1-20.9: )
+Entering state 75
+Reading a token: Next token is token TOK_IDENTIFIER (20.12-20.24: )
+Shifting token TOK_IDENTIFIER (20.12-20.24: )
+Entering state 110
+Reading a token: Next token is token '{' (20.27-20.27: )
+Reducing stack by rule 39 (line 624):
+-> $$ = nterm Inheritance (20.24-20.24: )
+Stack now 0 2 5 75 110
+Entering state 136
+Next token is token '{' (20.27-20.27: )
+Shifting token '{' (20.27-20.27: )
+Entering state 189
+Reducing stack by rule 20 (line 372):
+-> $$ = nterm InterfaceMembers (20.27-20.27: )
+Stack now 0 2 5 75 110 136 189
+Entering state 231
+Reading a token: Next token is token TOK_STRING (21.5-21.13: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (20.27-20.27: )
+Stack now 0 2 5 75 110 136 189 231
+Entering state 264
+Next token is token TOK_STRING (21.5-21.13: )
+Shifting token TOK_STRING (21.5-21.13: )
+Entering state 151
+Reading a token: Next token is token TOK_IDENTIFIER (21.16-21.32: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (21.13-21.13: )
+Stack now 0 2 5 75 110 136 189 231 264 151
+Entering state 202
+Reducing stack by rule 200 (line 1749):
+   $1 = token TOK_STRING (21.5-21.13: )
+   $2 = nterm TypeSuffix (21.13-21.13: )
+-> $$ = nterm NonAnyType (21.5-21.13: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (21.5-21.13: )
+-> $$ = nterm SingleType (21.5-21.13: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (21.5-21.13: )
+-> $$ = nterm Type (21.5-21.13: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 182
+Reducing stack by rule 230 (line 1959):
+   $1 = nterm Type (21.5-21.13: )
+-> $$ = nterm ReturnType (21.5-21.13: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 308
+Next token is token TOK_IDENTIFIER (21.16-21.32: )
+Shifting token TOK_IDENTIFIER (21.16-21.32: )
+Entering state 342
+Reducing stack by rule 91 (line 1078):
+   $1 = token TOK_IDENTIFIER (21.16-21.32: )
+-> $$ = nterm OptionalIdentifier (21.16-21.32: )
+Stack now 0 2 5 75 110 136 189 231 264 308
+Entering state 347
+Reading a token: Next token is token '(' (21.35-21.35: )
+Shifting token '(' (21.35-21.35: )
+Entering state 363
+Reading a token: Next token is token TOK_IDENTIFIER (21.36-21.39: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (21.35-21.35: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363
+Entering state 120
+Next token is token TOK_IDENTIFIER (21.36-21.39: )
+Shifting token TOK_IDENTIFIER (21.36-21.39: )
+Entering state 154
+Reading a token: Next token is token TOK_IDENTIFIER (21.42-21.45: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (21.39-21.39: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120 154
+Entering state 205
+Reducing stack by rule 201 (line 1756):
+   $1 = token TOK_IDENTIFIER (21.36-21.39: )
+   $2 = nterm TypeSuffix (21.39-21.39: )
+-> $$ = nterm NonAnyType (21.36-21.39: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (21.36-21.39: )
+-> $$ = nterm SingleType (21.36-21.39: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (21.36-21.39: )
+-> $$ = nterm Type (21.36-21.39: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 172
+Next token is token TOK_IDENTIFIER (21.42-21.45: )
+Reducing stack by rule 101 (line 1153):
+-> $$ = nterm Ellipsis (21.39-21.39: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120 172
+Entering state 218
+Next token is token TOK_IDENTIFIER (21.42-21.45: )
+Shifting token TOK_IDENTIFIER (21.42-21.45: )
+Entering state 244
+Reducing stack by rule 100 (line 1147):
+   $1 = token TOK_IDENTIFIER (21.42-21.45: )
+-> $$ = nterm ArgumentName (21.42-21.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120 172 218
+Entering state 247
+Reducing stack by rule 98 (line 1133):
+   $1 = nterm Type (21.36-21.39: )
+   $2 = nterm Ellipsis (21.39-21.39: )
+   $3 = nterm ArgumentName (21.42-21.45: )
+-> $$ = nterm OptionalOrRequiredArgument (21.36-21.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 120
+Entering state 171
+Reducing stack by rule 96 (line 1116):
+   $1 = nterm ExtendedAttributeList (21.35-21.35: )
+   $2 = nterm OptionalOrRequiredArgument (21.36-21.45: )
+-> $$ = nterm Argument (21.35-21.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363
+Entering state 119
+Reading a token: Next token is token ')' (21.46-21.46: )
+Reducing stack by rule 94 (line 1103):
+-> $$ = nterm Arguments (21.45-21.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363 119
+Entering state 169
+Reducing stack by rule 93 (line 1094):
+   $1 = nterm Argument (21.35-21.45: )
+   $2 = nterm Arguments (21.45-21.45: )
+-> $$ = nterm ArgumentList (21.35-21.45: )
+Stack now 0 2 5 75 110 136 189 231 264 308 347 363
+Entering state 373
+Next token is token ')' (21.46-21.46: )
+Shifting token ')' (21.46-21.46: )
+Entering state 383
+Reading a token: Next token is token ';' (21.47-21.47: )
+Shifting token ';' (21.47-21.47: )
+Entering state 386
+Reducing stack by rule 89 (line 1062):
+   $1 = nterm OptionalIdentifier (21.16-21.32: )
+   $2 = token '(' (21.35-21.35: )
+   $3 = nterm ArgumentList (21.35-21.45: )
+   $4 = token ')' (21.46-21.46: )
+   $5 = token ';' (21.47-21.47: )
+-> $$ = nterm OperationRest (21.16-21.47: )
+Stack now 0 2 5 75 110 136 189 231 264 308
+Entering state 351
+Reducing stack by rule 79 (line 977):
+   $1 = nterm ReturnType (21.5-21.13: )
+   $2 = nterm OperationRest (21.16-21.47: )
+-> $$ = nterm Operation (21.5-21.47: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 304
+Reducing stack by rule 63 (line 818):
+   $1 = nterm Operation (21.5-21.47: )
+-> $$ = nterm AttributeOrOperation (21.5-21.47: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 300
+Reducing stack by rule 23 (line 442):
+   $1 = nterm AttributeOrOperation (21.5-21.47: )
+-> $$ = nterm InterfaceMember (21.5-21.47: )
+Stack now 0 2 5 75 110 136 189 231 264
+Entering state 298
+Reducing stack by rule 21 (line 376):
+   $1 = nterm InterfaceMembers (20.27-20.27: )
+   $2 = nterm ExtendedAttributeList (20.27-20.27: )
+   $3 = nterm InterfaceMember (21.5-21.47: )
+-> $$ = nterm InterfaceMembers (20.27-21.47: )
+Stack now 0 2 5 75 110 136 189
+Entering state 231
+Reading a token: Next token is token '}' (22.1-22.1: )
+Shifting token '}' (22.1-22.1: )
+Entering state 263
+Reading a token: Next token is token ';' (22.2-22.2: )
+Shifting token ';' (22.2-22.2: )
+Entering state 287
+Reducing stack by rule 15 (line 285):
+   $1 = token TOK_INTERFACE (20.1-20.9: )
+   $2 = token TOK_IDENTIFIER (20.12-20.24: )
+   $3 = nterm Inheritance (20.24-20.24: )
+   $4 = token '{' (20.27-20.27: )
+   $5 = nterm InterfaceMembers (20.27-21.47: )
+   $6 = token '}' (22.1-22.1: )
+   $7 = token ';' (22.2-22.2: )
+-> $$ = nterm Interface (20.1-22.2: )
+Stack now 0 2 5
+Entering state 81
+Reducing stack by rule 12 (line 273):
+   $1 = nterm Interface (20.1-22.2: )
+-> $$ = nterm CallbackOrInterface (20.1-22.2: )
+Stack now 0 2 5
+Entering state 80
+Reducing stack by rule 4 (line 250):
+   $1 = nterm CallbackOrInterface (20.1-22.2: )
+-> $$ = nterm Definition (20.1-22.2: )
+Stack now 0 2 5
+Entering state 79
+Reducing stack by rule 2 (line 234):
+   $1 = nterm Definitions (1.1-17.2: )
+   $2 = nterm ExtendedAttributeList (19.1-19.13: )
+   $3 = nterm Definition (20.1-22.2: )
+-> $$ = nterm Definitions (1.1-22.2: )
+Stack now 0
+Entering state 2
+Reading a token: Next token is token TOK_PARTIAL (24.1-24.7: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (22.2-22.2: )
+Stack now 0 2
+Entering state 5
+Next token is token TOK_PARTIAL (24.1-24.7: )
+Shifting token TOK_PARTIAL (24.1-24.7: )
+Entering state 76
+Reading a token: Next token is token TOK_INTERFACE (24.10-24.18: )
+Shifting token TOK_INTERFACE (24.10-24.18: )
+Entering state 112
+Reading a token: Next token is token TOK_IDENTIFIER (24.21-24.27: )
+Shifting token TOK_IDENTIFIER (24.21-24.27: )
+Entering state 138
+Reading a token: Next token is token '{' (24.30-24.30: )
+Shifting token '{' (24.30-24.30: )
+Entering state 191
+Reducing stack by rule 20 (line 372):
+-> $$ = nterm InterfaceMembers (24.30-24.30: )
+Stack now 0 2 5 76 112 138 191
+Entering state 233
+Reading a token: Next token is token '[' (25.5-25.5: )
+Shifting token '[' (25.5-25.5: )
+Entering state 4
+Reading a token: Next token is token TOK_IDENTIFIER (25.6-25.16: )
+Shifting token TOK_IDENTIFIER (25.6-25.16: )
+Entering state 52
+Reducing stack by rule 130 (line 1367):
+   $1 = token TOK_IDENTIFIER (25.6-25.16: )
+-> $$ = nterm Other (25.6-25.16: )
+Stack now 0 2 5 76 112 138 191 233 4
+Entering state 69
+Reading a token: Next token is token '=' (25.17-25.17: )
+Shifting token '=' (25.17-25.17: )
+Entering state 59
+Reducing stack by rule 139 (line 1412):
+   $1 = token '=' (25.17-25.17: )
+-> $$ = nterm Other (25.17-25.17: )
+Stack now 0 2 5 76 112 138 191 233 4 69
+Entering state 69
+Reading a token: Next token is token TOK_IDENTIFIER (25.18-25.28: )
+Shifting token TOK_IDENTIFIER (25.18-25.28: )
+Entering state 52
+Reducing stack by rule 130 (line 1367):
+   $1 = token TOK_IDENTIFIER (25.18-25.28: )
+-> $$ = nterm Other (25.18-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69
+Entering state 69
+Reading a token: Next token is token ']' (25.29-25.29: )
+Reducing stack by rule 121 (line 1298):
+-> $$ = nterm ExtendedAttributeRest (25.28-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (25.18-25.28: )
+   $2 = nterm ExtendedAttributeRest (25.28-25.28: )
+-> $$ = nterm ExtendedAttribute (25.18-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69
+Entering state 101
+Reducing stack by rule 122 (line 1302):
+   $1 = nterm ExtendedAttribute (25.18-25.28: )
+-> $$ = nterm ExtendedAttributeRest (25.18-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (25.17-25.17: )
+   $2 = nterm ExtendedAttributeRest (25.18-25.28: )
+-> $$ = nterm ExtendedAttribute (25.17-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69
+Entering state 101
+Reducing stack by rule 122 (line 1302):
+   $1 = nterm ExtendedAttribute (25.17-25.28: )
+-> $$ = nterm ExtendedAttributeRest (25.17-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (25.6-25.16: )
+   $2 = nterm ExtendedAttributeRest (25.17-25.28: )
+-> $$ = nterm ExtendedAttribute (25.6-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4
+Entering state 68
+Next token is token ']' (25.29-25.29: )
+Reducing stack by rule 112 (line 1219):
+-> $$ = nterm ExtendedAttributes (25.28-25.28: )
+Stack now 0 2 5 76 112 138 191 233 4 68
+Entering state 100
+Next token is token ']' (25.29-25.29: )
+Shifting token ']' (25.29-25.29: )
+Entering state 130
+Reducing stack by rule 111 (line 1208):
+   $1 = token '[' (25.5-25.5: )
+   $2 = nterm ExtendedAttribute (25.6-25.28: )
+   $3 = nterm ExtendedAttributes (25.28-25.28: )
+   $4 = token ']' (25.29-25.29: )
+-> $$ = nterm ExtendedAttributeList (25.5-25.29: )
+Stack now 0 2 5 76 112 138 191 233
+Entering state 264
+Reading a token: Next token is token TOK_ATTRIBUTE (26.9-26.17: )
+Reducing stack by rule 75 (line 948):
+-> $$ = nterm Inherit (25.29-25.29: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 303
+Next token is token TOK_ATTRIBUTE (26.9-26.17: )
+Reducing stack by rule 77 (line 964):
+-> $$ = nterm ReadOnly (25.29-25.29: )
+Stack now 0 2 5 76 112 138 191 233 264 303
+Entering state 348
+Next token is token TOK_ATTRIBUTE (26.9-26.17: )
+Shifting token TOK_ATTRIBUTE (26.9-26.17: )
+Entering state 360
+Reading a token: Next token is token TOK_STRING (26.20-26.28: )
+Shifting token TOK_STRING (26.20-26.28: )
+Entering state 151
+Reading a token: Next token is token TOK_IDENTIFIER (26.31-26.39: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (26.28-26.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360 151
+Entering state 202
+Reducing stack by rule 200 (line 1749):
+   $1 = token TOK_STRING (26.20-26.28: )
+   $2 = nterm TypeSuffix (26.28-26.28: )
+-> $$ = nterm NonAnyType (26.20-26.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (26.20-26.28: )
+-> $$ = nterm SingleType (26.20-26.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (26.20-26.28: )
+-> $$ = nterm Type (26.20-26.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360
+Entering state 372
+Next token is token TOK_IDENTIFIER (26.31-26.39: )
+Shifting token TOK_IDENTIFIER (26.31-26.39: )
+Entering state 380
+Reducing stack by rule 73 (line 933):
+   $1 = token TOK_IDENTIFIER (26.31-26.39: )
+-> $$ = nterm AttributeName (26.31-26.39: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360 372
+Entering state 381
+Reading a token: Next token is token ';' (26.40-26.40: )
+Shifting token ';' (26.40-26.40: )
+Entering state 385
+Reducing stack by rule 71 (line 923):
+   $1 = token TOK_ATTRIBUTE (26.9-26.17: )
+   $2 = nterm Type (26.20-26.28: )
+   $3 = nterm AttributeName (26.31-26.39: )
+   $4 = token ';' (26.40-26.40: )
+-> $$ = nterm AttributeRest (26.9-26.40: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348
+Entering state 364
+Reducing stack by rule 67 (line 841):
+   $1 = nterm Inherit (25.29-25.29: )
+   $2 = nterm ReadOnly (25.29-25.29: )
+   $3 = nterm AttributeRest (26.9-26.40: )
+-> $$ = nterm Attribute (25.29-26.40: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 301
+Reducing stack by rule 62 (line 816):
+   $1 = nterm Attribute (25.29-26.40: )
+-> $$ = nterm AttributeOrOperation (25.29-26.40: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 300
+Reducing stack by rule 23 (line 442):
+   $1 = nterm AttributeOrOperation (25.29-26.40: )
+-> $$ = nterm InterfaceMember (25.29-26.40: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 298
+Reducing stack by rule 21 (line 376):
+   $1 = nterm InterfaceMembers (24.30-24.30: )
+   $2 = nterm ExtendedAttributeList (25.5-25.29: )
+   $3 = nterm InterfaceMember (25.29-26.40: )
+-> $$ = nterm InterfaceMembers (24.30-26.40: )
+Stack now 0 2 5 76 112 138 191
+Entering state 233
+Reading a token: Next token is token '[' (27.5-27.5: )
+Shifting token '[' (27.5-27.5: )
+Entering state 4
+Reading a token: Next token is token TOK_IDENTIFIER (27.6-27.16: )
+Shifting token TOK_IDENTIFIER (27.6-27.16: )
+Entering state 52
+Reducing stack by rule 130 (line 1367):
+   $1 = token TOK_IDENTIFIER (27.6-27.16: )
+-> $$ = nterm Other (27.6-27.16: )
+Stack now 0 2 5 76 112 138 191 233 4
+Entering state 69
+Reading a token: Next token is token '=' (27.17-27.17: )
+Shifting token '=' (27.17-27.17: )
+Entering state 59
+Reducing stack by rule 139 (line 1412):
+   $1 = token '=' (27.17-27.17: )
+-> $$ = nterm Other (27.17-27.17: )
+Stack now 0 2 5 76 112 138 191 233 4 69
+Entering state 69
+Reading a token: Next token is token TOK_IDENTIFIER (27.18-27.28: )
+Shifting token TOK_IDENTIFIER (27.18-27.28: )
+Entering state 52
+Reducing stack by rule 130 (line 1367):
+   $1 = token TOK_IDENTIFIER (27.18-27.28: )
+-> $$ = nterm Other (27.18-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69
+Entering state 69
+Reading a token: Next token is token ']' (27.29-27.29: )
+Reducing stack by rule 121 (line 1298):
+-> $$ = nterm ExtendedAttributeRest (27.28-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (27.18-27.28: )
+   $2 = nterm ExtendedAttributeRest (27.28-27.28: )
+-> $$ = nterm ExtendedAttribute (27.18-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69
+Entering state 101
+Reducing stack by rule 122 (line 1302):
+   $1 = nterm ExtendedAttribute (27.18-27.28: )
+-> $$ = nterm ExtendedAttributeRest (27.18-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (27.17-27.17: )
+   $2 = nterm ExtendedAttributeRest (27.18-27.28: )
+-> $$ = nterm ExtendedAttribute (27.17-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69
+Entering state 101
+Reducing stack by rule 122 (line 1302):
+   $1 = nterm ExtendedAttribute (27.17-27.28: )
+-> $$ = nterm ExtendedAttributeRest (27.17-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (27.6-27.16: )
+   $2 = nterm ExtendedAttributeRest (27.17-27.28: )
+-> $$ = nterm ExtendedAttribute (27.6-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4
+Entering state 68
+Next token is token ']' (27.29-27.29: )
+Reducing stack by rule 112 (line 1219):
+-> $$ = nterm ExtendedAttributes (27.28-27.28: )
+Stack now 0 2 5 76 112 138 191 233 4 68
+Entering state 100
+Next token is token ']' (27.29-27.29: )
+Shifting token ']' (27.29-27.29: )
+Entering state 130
+Reducing stack by rule 111 (line 1208):
+   $1 = token '[' (27.5-27.5: )
+   $2 = nterm ExtendedAttribute (27.6-27.28: )
+   $3 = nterm ExtendedAttributes (27.28-27.28: )
+   $4 = token ']' (27.29-27.29: )
+-> $$ = nterm ExtendedAttributeList (27.5-27.29: )
+Stack now 0 2 5 76 112 138 191 233
+Entering state 264
+Reading a token: Next token is token TOK_ATTRIBUTE (28.9-28.17: )
+Reducing stack by rule 75 (line 948):
+-> $$ = nterm Inherit (27.29-27.29: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 303
+Next token is token TOK_ATTRIBUTE (28.9-28.17: )
+Reducing stack by rule 77 (line 964):
+-> $$ = nterm ReadOnly (27.29-27.29: )
+Stack now 0 2 5 76 112 138 191 233 264 303
+Entering state 348
+Next token is token TOK_ATTRIBUTE (28.9-28.17: )
+Shifting token TOK_ATTRIBUTE (28.9-28.17: )
+Entering state 360
+Reading a token: Next token is token TOK_STRING (28.20-28.28: )
+Shifting token TOK_STRING (28.20-28.28: )
+Entering state 151
+Reading a token: Next token is token TOK_IDENTIFIER (28.31-28.39: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (28.28-28.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360 151
+Entering state 202
+Reducing stack by rule 200 (line 1749):
+   $1 = token TOK_STRING (28.20-28.28: )
+   $2 = nterm TypeSuffix (28.28-28.28: )
+-> $$ = nterm NonAnyType (28.20-28.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (28.20-28.28: )
+-> $$ = nterm SingleType (28.20-28.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (28.20-28.28: )
+-> $$ = nterm Type (28.20-28.28: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360
+Entering state 372
+Next token is token TOK_IDENTIFIER (28.31-28.39: )
+Shifting token TOK_IDENTIFIER (28.31-28.39: )
+Entering state 380
+Reducing stack by rule 73 (line 933):
+   $1 = token TOK_IDENTIFIER (28.31-28.39: )
+-> $$ = nterm AttributeName (28.31-28.39: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348 360 372
+Entering state 381
+Reading a token: Next token is token ';' (28.40-28.40: )
+Shifting token ';' (28.40-28.40: )
+Entering state 385
+Reducing stack by rule 71 (line 923):
+   $1 = token TOK_ATTRIBUTE (28.9-28.17: )
+   $2 = nterm Type (28.20-28.28: )
+   $3 = nterm AttributeName (28.31-28.39: )
+   $4 = token ';' (28.40-28.40: )
+-> $$ = nterm AttributeRest (28.9-28.40: )
+Stack now 0 2 5 76 112 138 191 233 264 303 348
+Entering state 364
+Reducing stack by rule 67 (line 841):
+   $1 = nterm Inherit (27.29-27.29: )
+   $2 = nterm ReadOnly (27.29-27.29: )
+   $3 = nterm AttributeRest (28.9-28.40: )
+-> $$ = nterm Attribute (27.29-28.40: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 301
+Reducing stack by rule 62 (line 816):
+   $1 = nterm Attribute (27.29-28.40: )
+-> $$ = nterm AttributeOrOperation (27.29-28.40: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 300
+Reducing stack by rule 23 (line 442):
+   $1 = nterm AttributeOrOperation (27.29-28.40: )
+-> $$ = nterm InterfaceMember (27.29-28.40: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 298
+Reducing stack by rule 21 (line 376):
+   $1 = nterm InterfaceMembers (24.30-26.40: )
+   $2 = nterm ExtendedAttributeList (27.5-27.29: )
+   $3 = nterm InterfaceMember (27.29-28.40: )
+-> $$ = nterm InterfaceMembers (24.30-28.40: )
+Stack now 0 2 5 76 112 138 191
+Entering state 233
+Reading a token: Next token is token TOK_VOID (29.5-29.8: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (28.40-28.40: )
+Stack now 0 2 5 76 112 138 191 233
+Entering state 264
+Next token is token TOK_VOID (29.5-29.8: )
+Shifting token TOK_VOID (29.5-29.8: )
+Entering state 181
+Reducing stack by rule 231 (line 1961):
+   $1 = token TOK_VOID (29.5-29.8: )
+-> $$ = nterm ReturnType (29.5-29.8: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 308
+Reading a token: Next token is token TOK_IDENTIFIER (29.11-29.28: )
+Shifting token TOK_IDENTIFIER (29.11-29.28: )
+Entering state 342
+Reducing stack by rule 91 (line 1078):
+   $1 = token TOK_IDENTIFIER (29.11-29.28: )
+-> $$ = nterm OptionalIdentifier (29.11-29.28: )
+Stack now 0 2 5 76 112 138 191 233 264 308
+Entering state 347
+Reading a token: Next token is token '(' (29.31-29.31: )
+Shifting token '(' (29.31-29.31: )
+Entering state 363
+Reading a token: Next token is token TOK_STRING (29.32-29.40: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (29.31-29.31: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363
+Entering state 120
+Next token is token TOK_STRING (29.32-29.40: )
+Shifting token TOK_STRING (29.32-29.40: )
+Entering state 151
+Reading a token: Next token is token TOK_IDENTIFIER (29.43-29.50: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (29.40-29.40: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120 151
+Entering state 202
+Reducing stack by rule 200 (line 1749):
+   $1 = token TOK_STRING (29.32-29.40: )
+   $2 = nterm TypeSuffix (29.40-29.40: )
+-> $$ = nterm NonAnyType (29.32-29.40: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (29.32-29.40: )
+-> $$ = nterm SingleType (29.32-29.40: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (29.32-29.40: )
+-> $$ = nterm Type (29.32-29.40: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 172
+Next token is token TOK_IDENTIFIER (29.43-29.50: )
+Reducing stack by rule 101 (line 1153):
+-> $$ = nterm Ellipsis (29.40-29.40: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120 172
+Entering state 218
+Next token is token TOK_IDENTIFIER (29.43-29.50: )
+Shifting token TOK_IDENTIFIER (29.43-29.50: )
+Entering state 244
+Reducing stack by rule 100 (line 1147):
+   $1 = token TOK_IDENTIFIER (29.43-29.50: )
+-> $$ = nterm ArgumentName (29.43-29.50: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120 172 218
+Entering state 247
+Reducing stack by rule 98 (line 1133):
+   $1 = nterm Type (29.32-29.40: )
+   $2 = nterm Ellipsis (29.40-29.40: )
+   $3 = nterm ArgumentName (29.43-29.50: )
+-> $$ = nterm OptionalOrRequiredArgument (29.32-29.50: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 171
+Reducing stack by rule 96 (line 1116):
+   $1 = nterm ExtendedAttributeList (29.31-29.31: )
+   $2 = nterm OptionalOrRequiredArgument (29.32-29.50: )
+-> $$ = nterm Argument (29.31-29.50: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363
+Entering state 119
+Reading a token: Next token is token ',' (29.51-29.51: )
+Shifting token ',' (29.51-29.51: )
+Entering state 168
+Reading a token: Next token is token TOK_STRING (29.54-29.62: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (29.51-29.51: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168
+Entering state 120
+Next token is token TOK_STRING (29.54-29.62: )
+Shifting token TOK_STRING (29.54-29.62: )
+Entering state 151
+Reading a token: Next token is token TOK_IDENTIFIER (29.65-29.68: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (29.62-29.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 120 151
+Entering state 202
+Reducing stack by rule 200 (line 1749):
+   $1 = token TOK_STRING (29.54-29.62: )
+   $2 = nterm TypeSuffix (29.62-29.62: )
+-> $$ = nterm NonAnyType (29.54-29.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 120
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (29.54-29.62: )
+-> $$ = nterm SingleType (29.54-29.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 120
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (29.54-29.62: )
+-> $$ = nterm Type (29.54-29.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 120
+Entering state 172
+Next token is token TOK_IDENTIFIER (29.65-29.68: )
+Reducing stack by rule 101 (line 1153):
+-> $$ = nterm Ellipsis (29.62-29.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 120 172
+Entering state 218
+Next token is token TOK_IDENTIFIER (29.65-29.68: )
+Shifting token TOK_IDENTIFIER (29.65-29.68: )
+Entering state 244
+Reducing stack by rule 100 (line 1147):
+   $1 = token TOK_IDENTIFIER (29.65-29.68: )
+-> $$ = nterm ArgumentName (29.65-29.68: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 120 172 218
+Entering state 247
+Reducing stack by rule 98 (line 1133):
+   $1 = nterm Type (29.54-29.62: )
+   $2 = nterm Ellipsis (29.62-29.62: )
+   $3 = nterm ArgumentName (29.65-29.68: )
+-> $$ = nterm OptionalOrRequiredArgument (29.54-29.68: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 120
+Entering state 171
+Reducing stack by rule 96 (line 1116):
+   $1 = nterm ExtendedAttributeList (29.51-29.51: )
+   $2 = nterm OptionalOrRequiredArgument (29.54-29.68: )
+-> $$ = nterm Argument (29.51-29.68: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168
+Entering state 215
+Reading a token: Next token is token ')' (29.69-29.69: )
+Reducing stack by rule 94 (line 1103):
+-> $$ = nterm Arguments (29.68-29.68: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119 168 215
+Entering state 243
+Reducing stack by rule 95 (line 1107):
+   $1 = token ',' (29.51-29.51: )
+   $2 = nterm Argument (29.51-29.68: )
+   $3 = nterm Arguments (29.68-29.68: )
+-> $$ = nterm Arguments (29.51-29.68: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119
+Entering state 169
+Reducing stack by rule 93 (line 1094):
+   $1 = nterm Argument (29.31-29.50: )
+   $2 = nterm Arguments (29.51-29.68: )
+-> $$ = nterm ArgumentList (29.31-29.68: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363
+Entering state 373
+Next token is token ')' (29.69-29.69: )
+Shifting token ')' (29.69-29.69: )
+Entering state 383
+Reading a token: Next token is token ';' (29.70-29.70: )
+Shifting token ';' (29.70-29.70: )
+Entering state 386
+Reducing stack by rule 89 (line 1062):
+   $1 = nterm OptionalIdentifier (29.11-29.28: )
+   $2 = token '(' (29.31-29.31: )
+   $3 = nterm ArgumentList (29.31-29.68: )
+   $4 = token ')' (29.69-29.69: )
+   $5 = token ';' (29.70-29.70: )
+-> $$ = nterm OperationRest (29.11-29.70: )
+Stack now 0 2 5 76 112 138 191 233 264 308
+Entering state 351
+Reducing stack by rule 79 (line 977):
+   $1 = nterm ReturnType (29.5-29.8: )
+   $2 = nterm OperationRest (29.11-29.70: )
+-> $$ = nterm Operation (29.5-29.70: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 304
+Reducing stack by rule 63 (line 818):
+   $1 = nterm Operation (29.5-29.70: )
+-> $$ = nterm AttributeOrOperation (29.5-29.70: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 300
+Reducing stack by rule 23 (line 442):
+   $1 = nterm AttributeOrOperation (29.5-29.70: )
+-> $$ = nterm InterfaceMember (29.5-29.70: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 298
+Reducing stack by rule 21 (line 376):
+   $1 = nterm InterfaceMembers (24.30-28.40: )
+   $2 = nterm ExtendedAttributeList (28.40-28.40: )
+   $3 = nterm InterfaceMember (29.5-29.70: )
+-> $$ = nterm InterfaceMembers (24.30-29.70: )
+Stack now 0 2 5 76 112 138 191
+Entering state 233
+Reading a token: Next token is token '}' (30.1-30.1: )
+Shifting token '}' (30.1-30.1: )
+Entering state 266
+Reading a token: Next token is token ';' (30.2-30.2: )
+Shifting token ';' (30.2-30.2: )
+Entering state 310
+Reducing stack by rule 19 (line 341):
+   $1 = token TOK_INTERFACE (24.10-24.18: )
+   $2 = token TOK_IDENTIFIER (24.21-24.27: )
+   $3 = token '{' (24.30-24.30: )
+   $4 = nterm InterfaceMembers (24.30-29.70: )
+   $5 = token '}' (30.1-30.1: )
+   $6 = token ';' (30.2-30.2: )
+-> $$ = nterm PartialInterface (24.10-30.2: )
+Stack now 0 2 5 76
+Entering state 114
+Reducing stack by rule 17 (line 334):
+   $1 = nterm PartialInterface (24.10-30.2: )
+-> $$ = nterm PartialDefinition (24.10-30.2: )
+Stack now 0 2 5 76
+Entering state 113
+Reducing stack by rule 16 (line 326):
+   $1 = token TOK_PARTIAL (24.1-24.7: )
+   $2 = nterm PartialDefinition (24.10-30.2: )
+-> $$ = nterm Partial (24.1-30.2: )
+Stack now 0 2 5
+Entering state 82
+Reducing stack by rule 5 (line 252):
+   $1 = nterm Partial (24.1-30.2: )
+-> $$ = nterm Definition (24.1-30.2: )
+Stack now 0 2 5
+Entering state 79
+Reducing stack by rule 2 (line 234):
+   $1 = nterm Definitions (1.1-22.2: )
+   $2 = nterm ExtendedAttributeList (22.2-22.2: )
+   $3 = nterm Definition (24.1-30.2: )
+-> $$ = nterm Definitions (1.1-30.2: )
+Stack now 0
+Entering state 2
+Reading a token: Next token is token TOK_PARTIAL (32.1-32.7: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (30.2-30.2: )
+Stack now 0 2
+Entering state 5
+Next token is token TOK_PARTIAL (32.1-32.7: )
+Shifting token TOK_PARTIAL (32.1-32.7: )
+Entering state 76
+Reading a token: Next token is token TOK_INTERFACE (32.10-32.18: )
+Shifting token TOK_INTERFACE (32.10-32.18: )
+Entering state 112
+Reading a token: Next token is token TOK_IDENTIFIER (32.21-32.25: )
+Shifting token TOK_IDENTIFIER (32.21-32.25: )
+Entering state 138
+Reading a token: Next token is token '{' (32.28-32.28: )
+Shifting token '{' (32.28-32.28: )
+Entering state 191
+Reducing stack by rule 20 (line 372):
+-> $$ = nterm InterfaceMembers (32.28-32.28: )
+Stack now 0 2 5 76 112 138 191
+Entering state 233
+Reading a token: Next token is token '[' (33.5-33.5: )
+Shifting token '[' (33.5-33.5: )
+Entering state 4
+Reading a token: Next token is token TOK_IDENTIFIER (33.6-33.14: )
+Shifting token TOK_IDENTIFIER (33.6-33.14: )
+Entering state 52
+Reducing stack by rule 130 (line 1367):
+   $1 = token TOK_IDENTIFIER (33.6-33.14: )
+-> $$ = nterm Other (33.6-33.14: )
+Stack now 0 2 5 76 112 138 191 233 4
+Entering state 69
+Reading a token: Next token is token ']' (33.15-33.15: )
+Reducing stack by rule 121 (line 1298):
+-> $$ = nterm ExtendedAttributeRest (33.14-33.14: )
+Stack now 0 2 5 76 112 138 191 233 4 69
+Entering state 102
+Reducing stack by rule 120 (line 1286):
+   $1 = nterm Other (33.6-33.14: )
+   $2 = nterm ExtendedAttributeRest (33.14-33.14: )
+-> $$ = nterm ExtendedAttribute (33.6-33.14: )
+Stack now 0 2 5 76 112 138 191 233 4
+Entering state 68
+Next token is token ']' (33.15-33.15: )
+Reducing stack by rule 112 (line 1219):
+-> $$ = nterm ExtendedAttributes (33.14-33.14: )
+Stack now 0 2 5 76 112 138 191 233 4 68
+Entering state 100
+Next token is token ']' (33.15-33.15: )
+Shifting token ']' (33.15-33.15: )
+Entering state 130
+Reducing stack by rule 111 (line 1208):
+   $1 = token '[' (33.5-33.5: )
+   $2 = nterm ExtendedAttribute (33.6-33.14: )
+   $3 = nterm ExtendedAttributes (33.14-33.14: )
+   $4 = token ']' (33.15-33.15: )
+-> $$ = nterm ExtendedAttributeList (33.5-33.15: )
+Stack now 0 2 5 76 112 138 191 233
+Entering state 264
+Reading a token: Next token is token TOK_IDENTIFIER (34.9-34.24: )
+Shifting token TOK_IDENTIFIER (34.9-34.24: )
+Entering state 154
+Reading a token: Next token is token TOK_IDENTIFIER (34.27-34.50: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (34.24-34.24: )
+Stack now 0 2 5 76 112 138 191 233 264 154
+Entering state 205
+Reducing stack by rule 201 (line 1756):
+   $1 = token TOK_IDENTIFIER (34.9-34.24: )
+   $2 = nterm TypeSuffix (34.24-34.24: )
+-> $$ = nterm NonAnyType (34.9-34.24: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (34.9-34.24: )
+-> $$ = nterm SingleType (34.9-34.24: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (34.9-34.24: )
+-> $$ = nterm Type (34.9-34.24: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 182
+Reducing stack by rule 230 (line 1959):
+   $1 = nterm Type (34.9-34.24: )
+-> $$ = nterm ReturnType (34.9-34.24: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 308
+Next token is token TOK_IDENTIFIER (34.27-34.50: )
+Shifting token TOK_IDENTIFIER (34.27-34.50: )
+Entering state 342
+Reducing stack by rule 91 (line 1078):
+   $1 = token TOK_IDENTIFIER (34.27-34.50: )
+-> $$ = nterm OptionalIdentifier (34.27-34.50: )
+Stack now 0 2 5 76 112 138 191 233 264 308
+Entering state 347
+Reading a token: Next token is token '(' (34.53-34.53: )
+Shifting token '(' (34.53-34.53: )
+Entering state 363
+Reading a token: Next token is token TOK_STRING (34.54-34.62: )
+Reducing stack by rule 110 (line 1204):
+-> $$ = nterm ExtendedAttributeList (34.53-34.53: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363
+Entering state 120
+Next token is token TOK_STRING (34.54-34.62: )
+Shifting token TOK_STRING (34.54-34.62: )
+Entering state 151
+Reading a token: Next token is token TOK_IDENTIFIER (34.65-34.72: )
+Reducing stack by rule 223 (line 1922):
+-> $$ = nterm TypeSuffix (34.62-34.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120 151
+Entering state 202
+Reducing stack by rule 200 (line 1749):
+   $1 = token TOK_STRING (34.54-34.62: )
+   $2 = nterm TypeSuffix (34.62-34.62: )
+-> $$ = nterm NonAnyType (34.54-34.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 159
+Reducing stack by rule 190 (line 1682):
+   $1 = nterm NonAnyType (34.54-34.62: )
+-> $$ = nterm SingleType (34.54-34.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 157
+Reducing stack by rule 188 (line 1668):
+   $1 = nterm SingleType (34.54-34.62: )
+-> $$ = nterm Type (34.54-34.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 172
+Next token is token TOK_IDENTIFIER (34.65-34.72: )
+Reducing stack by rule 101 (line 1153):
+-> $$ = nterm Ellipsis (34.62-34.62: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120 172
+Entering state 218
+Next token is token TOK_IDENTIFIER (34.65-34.72: )
+Shifting token TOK_IDENTIFIER (34.65-34.72: )
+Entering state 244
+Reducing stack by rule 100 (line 1147):
+   $1 = token TOK_IDENTIFIER (34.65-34.72: )
+-> $$ = nterm ArgumentName (34.65-34.72: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120 172 218
+Entering state 247
+Reducing stack by rule 98 (line 1133):
+   $1 = nterm Type (34.54-34.62: )
+   $2 = nterm Ellipsis (34.62-34.62: )
+   $3 = nterm ArgumentName (34.65-34.72: )
+-> $$ = nterm OptionalOrRequiredArgument (34.54-34.72: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 120
+Entering state 171
+Reducing stack by rule 96 (line 1116):
+   $1 = nterm ExtendedAttributeList (34.53-34.53: )
+   $2 = nterm OptionalOrRequiredArgument (34.54-34.72: )
+-> $$ = nterm Argument (34.53-34.72: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363
+Entering state 119
+Reading a token: Next token is token ')' (34.73-34.73: )
+Reducing stack by rule 94 (line 1103):
+-> $$ = nterm Arguments (34.72-34.72: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363 119
+Entering state 169
+Reducing stack by rule 93 (line 1094):
+   $1 = nterm Argument (34.53-34.72: )
+   $2 = nterm Arguments (34.72-34.72: )
+-> $$ = nterm ArgumentList (34.53-34.72: )
+Stack now 0 2 5 76 112 138 191 233 264 308 347 363
+Entering state 373
+Next token is token ')' (34.73-34.73: )
+Shifting token ')' (34.73-34.73: )
+Entering state 383
+Reading a token: Next token is token ';' (34.74-34.74: )
+Shifting token ';' (34.74-34.74: )
+Entering state 386
+Reducing stack by rule 89 (line 1062):
+   $1 = nterm OptionalIdentifier (34.27-34.50: )
+   $2 = token '(' (34.53-34.53: )
+   $3 = nterm ArgumentList (34.53-34.72: )
+   $4 = token ')' (34.73-34.73: )
+   $5 = token ';' (34.74-34.74: )
+-> $$ = nterm OperationRest (34.27-34.74: )
+Stack now 0 2 5 76 112 138 191 233 264 308
+Entering state 351
+Reducing stack by rule 79 (line 977):
+   $1 = nterm ReturnType (34.9-34.24: )
+   $2 = nterm OperationRest (34.27-34.74: )
+-> $$ = nterm Operation (34.9-34.74: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 304
+Reducing stack by rule 63 (line 818):
+   $1 = nterm Operation (34.9-34.74: )
+-> $$ = nterm AttributeOrOperation (34.9-34.74: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 300
+Reducing stack by rule 23 (line 442):
+   $1 = nterm AttributeOrOperation (34.9-34.74: )
+-> $$ = nterm InterfaceMember (34.9-34.74: )
+Stack now 0 2 5 76 112 138 191 233 264
+Entering state 298
+Reducing stack by rule 21 (line 376):
+   $1 = nterm InterfaceMembers (32.28-32.28: )
+   $2 = nterm ExtendedAttributeList (33.5-33.15: )
+   $3 = nterm InterfaceMember (34.9-34.74: )
+-> $$ = nterm InterfaceMembers (32.28-34.74: )
+Stack now 0 2 5 76 112 138 191
+Entering state 233
+Reading a token: Next token is token '}' (35.1-35.1: )
+Shifting token '}' (35.1-35.1: )
+Entering state 266
+Reading a token: Next token is token ';' (35.2-35.2: )
+Shifting token ';' (35.2-35.2: )
+Entering state 310
+Reducing stack by rule 19 (line 341):
+   $1 = token TOK_INTERFACE (32.10-32.18: )
+   $2 = token TOK_IDENTIFIER (32.21-32.25: )
+   $3 = token '{' (32.28-32.28: )
+   $4 = nterm InterfaceMembers (32.28-34.74: )
+   $5 = token '}' (35.1-35.1: )
+   $6 = token ';' (35.2-35.2: )
+-> $$ = nterm PartialInterface (32.10-35.2: )
+Stack now 0 2 5 76
+Entering state 114
+Reducing stack by rule 17 (line 334):
+   $1 = nterm PartialInterface (32.10-35.2: )
+-> $$ = nterm PartialDefinition (32.10-35.2: )
+Stack now 0 2 5 76
+Entering state 113
+Reducing stack by rule 16 (line 326):
+   $1 = token TOK_PARTIAL (32.1-32.7: )
+   $2 = nterm PartialDefinition (32.10-35.2: )
+-> $$ = nterm Partial (32.1-35.2: )
+Stack now 0 2 5
+Entering state 82
+Reducing stack by rule 5 (line 252):
+   $1 = nterm Partial (32.1-35.2: )
+-> $$ = nterm Definition (32.1-35.2: )
+Stack now 0 2 5
+Entering state 79
+Reducing stack by rule 2 (line 234):
+   $1 = nterm Definitions (1.1-30.2: )
+   $2 = nterm ExtendedAttributeList (30.2-30.2: )
+   $3 = nterm Definition (32.1-35.2: )
+-> $$ = nterm Definitions (1.1-35.2: )
+Stack now 0
+Entering state 2
+Reading a token: Now at end of input.
+Shifting token $end (35.3-36.0: )
+Entering state 3
+Stack now 0 2 3
+Cleanup: popping token $end (35.3-36.0: )
+Cleanup: popping nterm Definitions (1.1-35.2: )

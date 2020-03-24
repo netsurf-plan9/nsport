@@ -1,5 +1,8 @@
 CC=pcc
 CFLAGS=\
-	-DWITHOUT_ICONV_FILTER -D_SUSV2_SOURCE -D_PLAN9\
+	-DWITHOUT_ICONV_FILTER -D_SUSV2_SOURCE -D_PLAN9 -D_SUSV2_SOURCE\
 	-D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_POSIX_SOURCE \
-	-I. -I../include -I../../posix/include $CFLAGS
+	-I. -I../include -I../../posix/include
+
+%.$O: %.c $HFILES
+	$CC -c $CFLAGS -o $target $stem.c

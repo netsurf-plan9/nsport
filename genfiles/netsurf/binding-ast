@@ -1,0 +1,9679 @@
+Binding
+  TypeName: "duk_libdom"
+  Method
+    Type: 7
+    CBlock: "
+#include "javascript/duktape/dukky.h"
+"
+  Method
+    Type: 6
+    CBlock: "
+/* DukTape JavaScript bindings for NetSurf browser
+ *
+ * Copyright 201"
+  webidl: "console.idl"
+  webidl: "urlutils.idl"
+  webidl: "uievents.idl"
+  webidl: "cssom.idl"
+  webidl: "html.idl"
+  webidl: "dom-parsing.idl"
+  webidl: "dom.idl"
+Class
+  Method
+    Type: 2
+    Filename: "EventTarget.bnd"
+    Linenumber: 235
+    CBlock: "
+	dom_exception exc;
+	if (!dukky_instanceof(ctx, 0, PROTO_NAME(EVENT)))"
+    Class
+      Ident: "EventTarget"
+    Ident: "dispatchEvent"
+  Method
+    Type: 2
+    Filename: "EventTarget.bnd"
+    Linenumber: 194
+    CBlock: "
+	event_listener_flags flags = ELF_NONE;
+	/* Incoming stack is: type ca"
+    Class
+      Ident: "EventTarget"
+    Ident: "removeEventListener"
+  Method
+    Type: 2
+    Filename: "EventTarget.bnd"
+    Linenumber: 141
+    CBlock: "
+	dom_exception exc;
+	event_listener_flags flags = ELF_NONE;
+	/* Incomi"
+    Class
+      Ident: "EventTarget"
+    Ident: "addEventListener"
+  Method
+    Type: 0
+    Filename: "EventTarget.bnd"
+    Linenumber: 134
+    CBlock: "
+	priv->is_node = false;
+	priv->capture_registered = false;
+	priv->bubb"
+    Class
+      Ident: "EventTarget"
+  Method
+    Type: 7
+    Filename: "EventTarget.bnd"
+    Linenumber: 17
+    CBlock: "
+
+static event_listener_flags event_listener_pop_options(duk_context *c"
+    Class
+      Ident: "EventTarget"
+  Ident: "EventTarget"
+  Private
+    Ident: "is_node"
+    TypeName: "bool"
+  Private
+    Ident: "capture_registered"
+    TypeName: "bool"
+  Private
+    Ident: "bubbling_registered"
+    TypeName: "bool"
+Class
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 190
+    CBlock: "
+	duk_idx_t i = duk_push_error_object(ctx, DUK_ERR_ERROR, "Dummy Error""
+    Class
+      Ident: "Console"
+    Ident: "trace"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 152
+    CBlock: "
+	uint64_t time_ms = 0;
+	uint64_t old_time_ms = 0;
+
+	if (nsu_getmonoton"
+    Class
+      Ident: "Console"
+    Ident: "timeEnd"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 127
+    CBlock: "
+	uint64_t time_ms = 0;
+
+	if (nsu_getmonotonic_ms(&time_ms) != NSUERROR"
+    Class
+      Ident: "Console"
+    Ident: "time"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 121
+    CBlock: "
+	write_log_entry(ctx, priv->group, BW_CS_FLAG_LEVEL_INFO);
+	return 0;
+"
+    Class
+      Ident: "Console"
+    Ident: "dir"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 115
+    CBlock: "
+	write_log_entry(ctx, priv->group, BW_CS_FLAG_LEVEL_WARN);
+	return 0;
+"
+    Class
+      Ident: "Console"
+    Ident: "warn"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 109
+    CBlock: "
+	write_log_entry(ctx, priv->group, BW_CS_FLAG_LEVEL_LOG);
+	return 0;
+"
+    Class
+      Ident: "Console"
+    Ident: "log"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 103
+    CBlock: "
+	write_log_entry(ctx, priv->group, BW_CS_FLAG_LEVEL_ERROR);
+	return 0;"
+    Class
+      Ident: "Console"
+    Ident: "error"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 97
+    CBlock: "
+	write_log_entry(ctx, priv->group, BW_CS_FLAG_LEVEL_DEBUG);
+	return 0;"
+    Class
+      Ident: "Console"
+    Ident: "debug"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 91
+    CBlock: "
+	write_log_entry(ctx, priv->group, BW_CS_FLAG_LEVEL_INFO);
+	return 0;
+"
+    Class
+      Ident: "Console"
+    Ident: "info"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 84
+    CBlock: "
+	if (priv->group)
+		priv->group --;
+	return 0;
+"
+    Class
+      Ident: "Console"
+    Ident: "groupEnd"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 78
+    CBlock: "
+	priv->group ++;
+	return 0;
+"
+    Class
+      Ident: "Console"
+    Ident: "groupCollapsed"
+  Method
+    Type: 2
+    Filename: "Console.bnd"
+    Linenumber: 72
+    CBlock: "
+	priv->group ++;
+	return 0;
+"
+    Class
+      Ident: "Console"
+    Ident: "group"
+  Method
+    Type: 0
+    Filename: "Console.bnd"
+    Linenumber: 65
+    CBlock: "
+	priv->group = 0;
+	duk_push_object(ctx);
+	duk_put_prop_string(ctx, 0, "
+    Class
+      Ident: "Console"
+  Ident: "Console"
+  Private
+    Ident: "group"
+    TypeName: "int"
+    TypeName: "unsigned"
+  Method
+    Type: 7
+    CBlock: "
+#include <nsutils/time.h>
+#include "netsurf/browser_window.h"
+
+#define"
+Class
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 691
+    Class
+      Ident: "Window"
+    Ident: "onwheel"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 690
+    Class
+      Ident: "Window"
+    Ident: "onwheel"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 689
+    Class
+      Ident: "Window"
+    Ident: "onwaiting"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 688
+    Class
+      Ident: "Window"
+    Ident: "onwaiting"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 687
+    Class
+      Ident: "Window"
+    Ident: "onvolumechange"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 686
+    Class
+      Ident: "Window"
+    Ident: "onvolumechange"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 685
+    Class
+      Ident: "Window"
+    Ident: "onunload"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 684
+    Class
+      Ident: "Window"
+    Ident: "onunload"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 683
+    Class
+      Ident: "Window"
+    Ident: "ontoggle"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 682
+    Class
+      Ident: "Window"
+    Ident: "ontoggle"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 681
+    Class
+      Ident: "Window"
+    Ident: "ontimeupdate"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 680
+    Class
+      Ident: "Window"
+    Ident: "ontimeupdate"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 679
+    Class
+      Ident: "Window"
+    Ident: "onsuspend"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 678
+    Class
+      Ident: "Window"
+    Ident: "onsuspend"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 677
+    Class
+      Ident: "Window"
+    Ident: "onsubmit"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 676
+    Class
+      Ident: "Window"
+    Ident: "onsubmit"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 675
+    Class
+      Ident: "Window"
+    Ident: "onstorage"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 674
+    Class
+      Ident: "Window"
+    Ident: "onstorage"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 673
+    Class
+      Ident: "Window"
+    Ident: "onstalled"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 672
+    Class
+      Ident: "Window"
+    Ident: "onstalled"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 671
+    Class
+      Ident: "Window"
+    Ident: "onsort"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 670
+    Class
+      Ident: "Window"
+    Ident: "onsort"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 669
+    Class
+      Ident: "Window"
+    Ident: "onshow"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 668
+    Class
+      Ident: "Window"
+    Ident: "onshow"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 667
+    Class
+      Ident: "Window"
+    Ident: "onselect"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 666
+    Class
+      Ident: "Window"
+    Ident: "onselect"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 665
+    Class
+      Ident: "Window"
+    Ident: "onseeking"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 664
+    Class
+      Ident: "Window"
+    Ident: "onseeking"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 663
+    Class
+      Ident: "Window"
+    Ident: "onseeked"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 662
+    Class
+      Ident: "Window"
+    Ident: "onseeked"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 661
+    Class
+      Ident: "Window"
+    Ident: "onscroll"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 660
+    Class
+      Ident: "Window"
+    Ident: "onscroll"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 659
+    Class
+      Ident: "Window"
+    Ident: "onresize"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 658
+    Class
+      Ident: "Window"
+    Ident: "onresize"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 657
+    Class
+      Ident: "Window"
+    Ident: "onreset"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 656
+    Class
+      Ident: "Window"
+    Ident: "onreset"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 655
+    Class
+      Ident: "Window"
+    Ident: "onratechange"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 654
+    Class
+      Ident: "Window"
+    Ident: "onratechange"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 653
+    Class
+      Ident: "Window"
+    Ident: "onprogress"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 652
+    Class
+      Ident: "Window"
+    Ident: "onprogress"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 651
+    Class
+      Ident: "Window"
+    Ident: "onpopstate"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 650
+    Class
+      Ident: "Window"
+    Ident: "onpopstate"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 649
+    Class
+      Ident: "Window"
+    Ident: "onplay"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 648
+    Class
+      Ident: "Window"
+    Ident: "onplay"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 647
+    Class
+      Ident: "Window"
+    Ident: "onplaying"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 646
+    Class
+      Ident: "Window"
+    Ident: "onplaying"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 645
+    Class
+      Ident: "Window"
+    Ident: "onpause"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 644
+    Class
+      Ident: "Window"
+    Ident: "onpause"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 643
+    Class
+      Ident: "Window"
+    Ident: "onpageshow"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 642
+    Class
+      Ident: "Window"
+    Ident: "onpageshow"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 641
+    Class
+      Ident: "Window"
+    Ident: "onpagehide"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 640
+    Class
+      Ident: "Window"
+    Ident: "onpagehide"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 639
+    Class
+      Ident: "Window"
+    Ident: "ononline"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 638
+    Class
+      Ident: "Window"
+    Ident: "ononline"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 637
+    Class
+      Ident: "Window"
+    Ident: "onoffline"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 636
+    Class
+      Ident: "Window"
+    Ident: "onoffline"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 635
+    Class
+      Ident: "Window"
+    Ident: "onmouseup"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 634
+    Class
+      Ident: "Window"
+    Ident: "onmouseup"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 633
+    Class
+      Ident: "Window"
+    Ident: "onmouseover"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 632
+    Class
+      Ident: "Window"
+    Ident: "onmouseover"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 631
+    Class
+      Ident: "Window"
+    Ident: "onmouseout"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 630
+    Class
+      Ident: "Window"
+    Ident: "onmouseout"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 629
+    Class
+      Ident: "Window"
+    Ident: "onmousemove"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 628
+    Class
+      Ident: "Window"
+    Ident: "onmousemove"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 627
+    Class
+      Ident: "Window"
+    Ident: "onmouseleave"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 626
+    Class
+      Ident: "Window"
+    Ident: "onmouseleave"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 625
+    Class
+      Ident: "Window"
+    Ident: "onmouseenter"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 624
+    Class
+      Ident: "Window"
+    Ident: "onmouseenter"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 623
+    Class
+      Ident: "Window"
+    Ident: "onmousedown"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 622
+    Class
+      Ident: "Window"
+    Ident: "onmousedown"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 621
+    Class
+      Ident: "Window"
+    Ident: "onmessage"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 620
+    Class
+      Ident: "Window"
+    Ident: "onmessage"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 619
+    Class
+      Ident: "Window"
+    Ident: "onload"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 618
+    Class
+      Ident: "Window"
+    Ident: "onload"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 617
+    Class
+      Ident: "Window"
+    Ident: "onloadstart"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 616
+    Class
+      Ident: "Window"
+    Ident: "onloadstart"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 615
+    Class
+      Ident: "Window"
+    Ident: "onloadedmetadata"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 614
+    Class
+      Ident: "Window"
+    Ident: "onloadedmetadata"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 613
+    Class
+      Ident: "Window"
+    Ident: "onloadeddata"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 612
+    Class
+      Ident: "Window"
+    Ident: "onloadeddata"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 611
+    Class
+      Ident: "Window"
+    Ident: "onlanguagechange"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 610
+    Class
+      Ident: "Window"
+    Ident: "onlanguagechange"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 609
+    Class
+      Ident: "Window"
+    Ident: "onkeyup"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 608
+    Class
+      Ident: "Window"
+    Ident: "onkeyup"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 607
+    Class
+      Ident: "Window"
+    Ident: "onkeypress"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 606
+    Class
+      Ident: "Window"
+    Ident: "onkeypress"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 605
+    Class
+      Ident: "Window"
+    Ident: "onkeydown"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 604
+    Class
+      Ident: "Window"
+    Ident: "onkeydown"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 603
+    Class
+      Ident: "Window"
+    Ident: "oninvalid"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 602
+    Class
+      Ident: "Window"
+    Ident: "oninvalid"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 601
+    Class
+      Ident: "Window"
+    Ident: "oninput"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 600
+    Class
+      Ident: "Window"
+    Ident: "oninput"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 599
+    Class
+      Ident: "Window"
+    Ident: "onhashchange"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 598
+    Class
+      Ident: "Window"
+    Ident: "onhashchange"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 597
+    Class
+      Ident: "Window"
+    Ident: "onfocus"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 596
+    Class
+      Ident: "Window"
+    Ident: "onfocus"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 595
+    Class
+      Ident: "Window"
+    Ident: "onerror"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 594
+    Class
+      Ident: "Window"
+    Ident: "onerror"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 593
+    Class
+      Ident: "Window"
+    Ident: "onended"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 592
+    Class
+      Ident: "Window"
+    Ident: "onended"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 591
+    Class
+      Ident: "Window"
+    Ident: "onemptied"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 590
+    Class
+      Ident: "Window"
+    Ident: "onemptied"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 589
+    Class
+      Ident: "Window"
+    Ident: "ondurationchange"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 588
+    Class
+      Ident: "Window"
+    Ident: "ondurationchange"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 587
+    Class
+      Ident: "Window"
+    Ident: "ondrop"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 586
+    Class
+      Ident: "Window"
+    Ident: "ondrop"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 585
+    Class
+      Ident: "Window"
+    Ident: "ondrag"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 584
+    Class
+      Ident: "Window"
+    Ident: "ondrag"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 583
+    Class
+      Ident: "Window"
+    Ident: "ondragstart"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 582
+    Class
+      Ident: "Window"
+    Ident: "ondragstart"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 581
+    Class
+      Ident: "Window"
+    Ident: "ondragover"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 580
+    Class
+      Ident: "Window"
+    Ident: "ondragover"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 579
+    Class
+      Ident: "Window"
+    Ident: "ondragleave"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 578
+    Class
+      Ident: "Window"
+    Ident: "ondragleave"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 577
+    Class
+      Ident: "Window"
+    Ident: "ondragexit"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 576
+    Class
+      Ident: "Window"
+    Ident: "ondragexit"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 575
+    Class
+      Ident: "Window"
+    Ident: "ondragenter"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 574
+    Class
+      Ident: "Window"
+    Ident: "ondragenter"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 573
+    Class
+      Ident: "Window"
+    Ident: "ondragend"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 572
+    Class
+      Ident: "Window"
+    Ident: "ondragend"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 571
+    Class
+      Ident: "Window"
+    Ident: "ondblclick"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 570
+    Class
+      Ident: "Window"
+    Ident: "ondblclick"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 569
+    Class
+      Ident: "Window"
+    Ident: "oncuechange"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 568
+    Class
+      Ident: "Window"
+    Ident: "oncuechange"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 567
+    Class
+      Ident: "Window"
+    Ident: "oncontextmenu"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 566
+    Class
+      Ident: "Window"
+    Ident: "oncontextmenu"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 565
+    Class
+      Ident: "Window"
+    Ident: "onclose"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 564
+    Class
+      Ident: "Window"
+    Ident: "onclose"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 563
+    Class
+      Ident: "Window"
+    Ident: "onclick"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 562
+    Class
+      Ident: "Window"
+    Ident: "onclick"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 561
+    Class
+      Ident: "Window"
+    Ident: "onchange"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 560
+    Class
+      Ident: "Window"
+    Ident: "onchange"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 559
+    Class
+      Ident: "Window"
+    Ident: "oncanplay"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 558
+    Class
+      Ident: "Window"
+    Ident: "oncanplay"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 557
+    Class
+      Ident: "Window"
+    Ident: "oncanplaythrough"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 556
+    Class
+      Ident: "Window"
+    Ident: "oncanplaythrough"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 555
+    Class
+      Ident: "Window"
+    Ident: "oncancel"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 554
+    Class
+      Ident: "Window"
+    Ident: "oncancel"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 553
+    Class
+      Ident: "Window"
+    Ident: "onblur"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 552
+    Class
+      Ident: "Window"
+    Ident: "onblur"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 551
+    Class
+      Ident: "Window"
+    Ident: "onbeforeunload"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 550
+    Class
+      Ident: "Window"
+    Ident: "onbeforeunload"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 549
+    Class
+      Ident: "Window"
+    Ident: "onbeforeprint"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 548
+    Class
+      Ident: "Window"
+    Ident: "onbeforeprint"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 547
+    Class
+      Ident: "Window"
+    Ident: "onautocomplete"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 546
+    Class
+      Ident: "Window"
+    Ident: "onautocomplete"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 545
+    Class
+      Ident: "Window"
+    Ident: "onautocompleteerror"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 544
+    Class
+      Ident: "Window"
+    Ident: "onautocompleteerror"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 543
+    Class
+      Ident: "Window"
+    Ident: "onafterprint"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 542
+    Class
+      Ident: "Window"
+    Ident: "onafterprint"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 541
+    Class
+      Ident: "Window"
+    Ident: "onabort"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 540
+    Class
+      Ident: "Window"
+    Ident: "onabort"
+  Method
+    Type: 2
+    Filename: "Window.bnd"
+    Linenumber: 532
+    CBlock: "
+	duk_int_t handle = duk_get_int(ctx, 0);
+	window_remove_callback_by_ha"
+    Class
+      Ident: "Window"
+    Ident: "clearInterval"
+  Method
+    Type: 2
+    Filename: "Window.bnd"
+    Linenumber: 524
+    CBlock: "
+	duk_int_t handle = duk_get_int(ctx, 0);
+	window_remove_callback_by_ha"
+    Class
+      Ident: "Window"
+    Ident: "clearTimeout"
+  Method
+    Type: 2
+    Filename: "Window.bnd"
+    Linenumber: 504
+    CBlock: "
+	duk_idx_t argc = duk_get_top(ctx);
+	duk_int_t timeout = 10;
+
+	if (pri"
+    Class
+      Ident: "Window"
+    Ident: "setInterval"
+  Method
+    Type: 2
+    Filename: "Window.bnd"
+    Linenumber: 484
+    CBlock: "
+	duk_idx_t argc = duk_get_top(ctx);
+	duk_int_t timeout = 10;
+
+	if (pri"
+    Class
+      Ident: "Window"
+    Ident: "setTimeout"
+  Method
+    Type: 2
+    Filename: "Window.bnd"
+    Linenumber: 466
+    CBlock: "
+	duk_idx_t dukky_argc = duk_get_top(ctx);
+	if (dukky_argc == 0) {
+		NS"
+    Class
+      Ident: "Window"
+    Ident: "alert"
+  Method
+    Type: 4
+    Filename: "Window.bnd"
+    Linenumber: 458
+    CBlock: "
+	const char *name;
+	name = duk_to_string(ctx, -1);
+	browser_window_set"
+    Class
+      Ident: "Window"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 450
+    CBlock: "
+	const char *name;
+	browser_window_get_name(priv->win, &name);
+	duk_pu"
+    Class
+      Ident: "Window"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 430
+    CBlock: "
+	duk_push_this(ctx);
+	duk_get_prop_string(ctx, -1, MAGIC(Navigator));
+"
+    Class
+      Ident: "Window"
+    Ident: "navigator"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 410
+    CBlock: "
+	/* obtain location object for this window (if it exists) */
+	duk_push"
+    Class
+      Ident: "Window"
+    Ident: "location"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 395
+    CBlock: "
+	duk_push_this(ctx);
+	duk_get_prop_string(ctx, -1, MAGIC(Console));
+	i"
+    Class
+      Ident: "Window"
+    Ident: "console"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 389
+    CBlock: "
+	duk_push_this(ctx);
+	return 1;
+"
+    Class
+      Ident: "Window"
+    Ident: "window"
+  Method
+    Type: 3
+    Filename: "Window.bnd"
+    Linenumber: 381
+    CBlock: "
+	NSLOG(netsurf, DEBUG, "priv=%p", priv);
+	dom_document *doc = priv->ht"
+    Class
+      Ident: "Window"
+    Ident: "document"
+  Method
+    Type: 5
+    Filename: "Window.bnd"
+    Linenumber: 273
+    CBlock: "
+#define EXPOSE(v) \
+	duk_get_global_string(ctx, #v); \
+	duk_put_prop_s"
+    Class
+      Ident: "Window"
+  Method
+    Type: 1
+    Filename: "Window.bnd"
+    Linenumber: 264
+    CBlock: "
+	NSLOG(dukky, DEEPDEBUG, "Shutting down Window %p", priv->win);
+	/* Ch"
+    Class
+      Ident: "Window"
+  Method
+    Type: 0
+    Filename: "Window.bnd"
+    Linenumber: 249
+    CBlock: "
+	/* element window */
+	priv->win = win;
+	priv->htmlc = htmlc;
+	priv->s"
+    Class
+      Ident: "Window"
+    Parameter
+      Ident: "htmlc"
+      TypeName: "*"
+      TypeName: "html_content"
+      TypeName: "struct"
+    Parameter
+      Ident: "win"
+      TypeName: "*"
+      TypeName: "browser_window"
+      TypeName: "struct"
+  Ident: "Window"
+  Private
+    Ident: "win"
+    TypeName: "*"
+    TypeName: "browser_window"
+    TypeName: "struct"
+  Private
+    Ident: "htmlc"
+    TypeName: "*"
+    TypeName: "html_content"
+    TypeName: "struct"
+  Private
+    Ident: "schedule_ring"
+    TypeName: "*"
+    TypeName: "window_schedule_s"
+    TypeName: "struct"
+  Private
+    Ident: "closed_down"
+    TypeName: "bool"
+  Method
+    Type: 7
+    CBlock: "
+#include "utils/corestrings.h"
+#include "utils/nsurl.h"
+#include "nets"
+Class
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 582
+    Class
+      Ident: "Document"
+    Ident: "onwheel"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 581
+    Class
+      Ident: "Document"
+    Ident: "onwheel"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 580
+    Class
+      Ident: "Document"
+    Ident: "onwaiting"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 579
+    Class
+      Ident: "Document"
+    Ident: "onwaiting"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 578
+    Class
+      Ident: "Document"
+    Ident: "onvolumechange"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 577
+    Class
+      Ident: "Document"
+    Ident: "onvolumechange"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 576
+    Class
+      Ident: "Document"
+    Ident: "ontoggle"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 575
+    Class
+      Ident: "Document"
+    Ident: "ontoggle"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 574
+    Class
+      Ident: "Document"
+    Ident: "ontimeupdate"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 573
+    Class
+      Ident: "Document"
+    Ident: "ontimeupdate"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 572
+    Class
+      Ident: "Document"
+    Ident: "onsuspend"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 571
+    Class
+      Ident: "Document"
+    Ident: "onsuspend"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 570
+    Class
+      Ident: "Document"
+    Ident: "onsubmit"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 569
+    Class
+      Ident: "Document"
+    Ident: "onsubmit"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 568
+    Class
+      Ident: "Document"
+    Ident: "onstalled"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 567
+    Class
+      Ident: "Document"
+    Ident: "onstalled"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 566
+    Class
+      Ident: "Document"
+    Ident: "onsort"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 565
+    Class
+      Ident: "Document"
+    Ident: "onsort"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 564
+    Class
+      Ident: "Document"
+    Ident: "onshow"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 563
+    Class
+      Ident: "Document"
+    Ident: "onshow"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 562
+    Class
+      Ident: "Document"
+    Ident: "onselect"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 561
+    Class
+      Ident: "Document"
+    Ident: "onselect"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 560
+    Class
+      Ident: "Document"
+    Ident: "onseeking"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 559
+    Class
+      Ident: "Document"
+    Ident: "onseeking"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 558
+    Class
+      Ident: "Document"
+    Ident: "onseeked"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 557
+    Class
+      Ident: "Document"
+    Ident: "onseeked"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 556
+    Class
+      Ident: "Document"
+    Ident: "onscroll"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 555
+    Class
+      Ident: "Document"
+    Ident: "onscroll"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 554
+    Class
+      Ident: "Document"
+    Ident: "onresize"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 553
+    Class
+      Ident: "Document"
+    Ident: "onresize"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 552
+    Class
+      Ident: "Document"
+    Ident: "onreset"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 551
+    Class
+      Ident: "Document"
+    Ident: "onreset"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 550
+    Class
+      Ident: "Document"
+    Ident: "onreadystatechange"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 549
+    Class
+      Ident: "Document"
+    Ident: "onreadystatechange"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 548
+    Class
+      Ident: "Document"
+    Ident: "onratechange"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 547
+    Class
+      Ident: "Document"
+    Ident: "onratechange"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 546
+    Class
+      Ident: "Document"
+    Ident: "onprogress"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 545
+    Class
+      Ident: "Document"
+    Ident: "onprogress"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 544
+    Class
+      Ident: "Document"
+    Ident: "onplay"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 543
+    Class
+      Ident: "Document"
+    Ident: "onplay"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 542
+    Class
+      Ident: "Document"
+    Ident: "onplaying"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 541
+    Class
+      Ident: "Document"
+    Ident: "onplaying"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 540
+    Class
+      Ident: "Document"
+    Ident: "onpause"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 539
+    Class
+      Ident: "Document"
+    Ident: "onpause"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 538
+    Class
+      Ident: "Document"
+    Ident: "onmouseup"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 537
+    Class
+      Ident: "Document"
+    Ident: "onmouseup"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 536
+    Class
+      Ident: "Document"
+    Ident: "onmouseover"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 535
+    Class
+      Ident: "Document"
+    Ident: "onmouseover"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 534
+    Class
+      Ident: "Document"
+    Ident: "onmouseout"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 533
+    Class
+      Ident: "Document"
+    Ident: "onmouseout"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 532
+    Class
+      Ident: "Document"
+    Ident: "onmousemove"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 531
+    Class
+      Ident: "Document"
+    Ident: "onmousemove"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 530
+    Class
+      Ident: "Document"
+    Ident: "onmouseleave"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 529
+    Class
+      Ident: "Document"
+    Ident: "onmouseleave"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 528
+    Class
+      Ident: "Document"
+    Ident: "onmouseenter"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 527
+    Class
+      Ident: "Document"
+    Ident: "onmouseenter"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 526
+    Class
+      Ident: "Document"
+    Ident: "onmousedown"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 525
+    Class
+      Ident: "Document"
+    Ident: "onmousedown"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 524
+    Class
+      Ident: "Document"
+    Ident: "onload"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 523
+    Class
+      Ident: "Document"
+    Ident: "onload"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 522
+    Class
+      Ident: "Document"
+    Ident: "onloadstart"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 521
+    Class
+      Ident: "Document"
+    Ident: "onloadstart"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 520
+    Class
+      Ident: "Document"
+    Ident: "onloadedmetadata"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 519
+    Class
+      Ident: "Document"
+    Ident: "onloadedmetadata"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 518
+    Class
+      Ident: "Document"
+    Ident: "onloadeddata"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 517
+    Class
+      Ident: "Document"
+    Ident: "onloadeddata"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 516
+    Class
+      Ident: "Document"
+    Ident: "onkeyup"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 515
+    Class
+      Ident: "Document"
+    Ident: "onkeyup"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 514
+    Class
+      Ident: "Document"
+    Ident: "onkeypress"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 513
+    Class
+      Ident: "Document"
+    Ident: "onkeypress"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 512
+    Class
+      Ident: "Document"
+    Ident: "onkeydown"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 511
+    Class
+      Ident: "Document"
+    Ident: "onkeydown"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 510
+    Class
+      Ident: "Document"
+    Ident: "oninvalid"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 509
+    Class
+      Ident: "Document"
+    Ident: "oninvalid"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 508
+    Class
+      Ident: "Document"
+    Ident: "oninput"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 507
+    Class
+      Ident: "Document"
+    Ident: "oninput"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 506
+    Class
+      Ident: "Document"
+    Ident: "onfocus"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 505
+    Class
+      Ident: "Document"
+    Ident: "onfocus"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 504
+    Class
+      Ident: "Document"
+    Ident: "onended"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 503
+    Class
+      Ident: "Document"
+    Ident: "onended"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 502
+    Class
+      Ident: "Document"
+    Ident: "onemptied"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 501
+    Class
+      Ident: "Document"
+    Ident: "onemptied"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 500
+    Class
+      Ident: "Document"
+    Ident: "ondurationchange"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 499
+    Class
+      Ident: "Document"
+    Ident: "ondurationchange"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 498
+    Class
+      Ident: "Document"
+    Ident: "ondrop"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 497
+    Class
+      Ident: "Document"
+    Ident: "ondrop"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 496
+    Class
+      Ident: "Document"
+    Ident: "ondrag"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 495
+    Class
+      Ident: "Document"
+    Ident: "ondrag"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 494
+    Class
+      Ident: "Document"
+    Ident: "ondragstart"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 493
+    Class
+      Ident: "Document"
+    Ident: "ondragstart"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 492
+    Class
+      Ident: "Document"
+    Ident: "ondragover"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 491
+    Class
+      Ident: "Document"
+    Ident: "ondragover"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 490
+    Class
+      Ident: "Document"
+    Ident: "ondragleave"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 489
+    Class
+      Ident: "Document"
+    Ident: "ondragleave"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 488
+    Class
+      Ident: "Document"
+    Ident: "ondragexit"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 487
+    Class
+      Ident: "Document"
+    Ident: "ondragexit"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 486
+    Class
+      Ident: "Document"
+    Ident: "ondragenter"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 485
+    Class
+      Ident: "Document"
+    Ident: "ondragenter"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 484
+    Class
+      Ident: "Document"
+    Ident: "ondragend"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 483
+    Class
+      Ident: "Document"
+    Ident: "ondragend"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 482
+    Class
+      Ident: "Document"
+    Ident: "ondblclick"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 481
+    Class
+      Ident: "Document"
+    Ident: "ondblclick"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 480
+    Class
+      Ident: "Document"
+    Ident: "oncuechange"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 479
+    Class
+      Ident: "Document"
+    Ident: "oncuechange"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 478
+    Class
+      Ident: "Document"
+    Ident: "oncontextmenu"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 477
+    Class
+      Ident: "Document"
+    Ident: "oncontextmenu"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 476
+    Class
+      Ident: "Document"
+    Ident: "onclose"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 475
+    Class
+      Ident: "Document"
+    Ident: "onclose"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 474
+    Class
+      Ident: "Document"
+    Ident: "onclick"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 473
+    Class
+      Ident: "Document"
+    Ident: "onclick"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 472
+    Class
+      Ident: "Document"
+    Ident: "onchange"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 471
+    Class
+      Ident: "Document"
+    Ident: "onchange"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 470
+    Class
+      Ident: "Document"
+    Ident: "oncanplay"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 469
+    Class
+      Ident: "Document"
+    Ident: "oncanplay"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 468
+    Class
+      Ident: "Document"
+    Ident: "oncanplaythrough"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 467
+    Class
+      Ident: "Document"
+    Ident: "oncanplaythrough"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 466
+    Class
+      Ident: "Document"
+    Ident: "oncancel"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 465
+    Class
+      Ident: "Document"
+    Ident: "oncancel"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 464
+    Class
+      Ident: "Document"
+    Ident: "onblur"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 463
+    Class
+      Ident: "Document"
+    Ident: "onblur"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 462
+    Class
+      Ident: "Document"
+    Ident: "onautocomplete"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 461
+    Class
+      Ident: "Document"
+    Ident: "onautocomplete"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 460
+    Class
+      Ident: "Document"
+    Ident: "onautocompleteerror"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 459
+    Class
+      Ident: "Document"
+    Ident: "onautocompleteerror"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 458
+    Class
+      Ident: "Document"
+    Ident: "onabort"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 457
+    Class
+      Ident: "Document"
+    Ident: "onabort"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 436
+    CBlock: "
+	/* Create a new DOMImplementation instance */
+	duk_push_this(ctx);
+	d"
+    Class
+      Ident: "Document"
+    Ident: "implementation"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 419
+    CBlock: "
+	/* Create a new event, mark it untrusted since it's new from JS */
+	d"
+    Class
+      Ident: "Document"
+    Ident: "createEvent"
+  Method
+    Type: 4
+    Filename: "Document.bnd"
+    Linenumber: 389
+    CBlock: "
+	struct html_content *htmlc;
+	dom_exception err;
+
+	const char * cookie"
+    Class
+      Ident: "Document"
+    Ident: "cookie"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 363
+    CBlock: "
+	char *cookie_str;
+	struct html_content *htmlc;
+	dom_exception err;
+
+	"
+    Class
+      Ident: "Document"
+    Ident: "cookie"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 330
+    CBlock: "
+	dom_nodelist *nodes;
+	dom_exception err;
+	duk_size_t text_len;
+	const"
+    Class
+      Ident: "Document"
+    Ident: "getElementsByTagName"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 308
+    CBlock: "
+	dom_exception exc;
+	dom_element *element;
+
+	exc = dom_document_get_do"
+    Class
+      Ident: "Document"
+    Ident: "documentElement"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 279
+    CBlock: "
+	dom_string *elementId_dom;
+	dom_element *element;
+	dom_exception exc;"
+    Class
+      Ident: "Document"
+    Ident: "getElementById"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 266
+    CBlock: "
+	/* retrieve the location object from the root object (window) */
+	duk"
+    Class
+      Ident: "Document"
+    Ident: "location"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 234
+    CBlock: "
+	struct dom_nodelist *nodes;
+	struct dom_node *retnode;
+	dom_exception"
+    Class
+      Ident: "Document"
+    Ident: "body"
+  Method
+    Type: 3
+    Filename: "Document.bnd"
+    Linenumber: 206
+    CBlock: "
+	struct dom_nodelist *nodes;
+	struct dom_node *retnode;
+	dom_exception"
+    Class
+      Ident: "Document"
+    Ident: "head"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 190
+    CBlock: "
+	struct dom_document_fragment *frag = NULL;
+	dom_exception err;
+
+	err "
+    Class
+      Ident: "Document"
+    Ident: "createDocumentFragment"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 150
+    CBlock: "
+	dom_node *newnode;
+	dom_exception err;
+	duk_size_t text_len;
+	duk_siz"
+    Class
+      Ident: "Document"
+    Ident: "createElementNS"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 121
+    CBlock: "
+	dom_node *newnode;
+	dom_exception err;
+	duk_size_t text_len;
+	const c"
+    Class
+      Ident: "Document"
+    Ident: "createElement"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 93
+    CBlock: "
+	dom_node *newnode;
+	dom_exception err;
+	duk_size_t text_len;
+	const c"
+    Class
+      Ident: "Document"
+    Ident: "createTextNode"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 59
+    CBlock: "
+	const char nl[] = "\n";
+	struct html_content *htmlc;
+	duk_size_t text"
+    Class
+      Ident: "Document"
+    Ident: "writeln"
+  Method
+    Type: 2
+    Filename: "Document.bnd"
+    Linenumber: 26
+    CBlock: "
+	struct html_content *htmlc;
+	duk_size_t text_len;
+	dom_exception err;"
+    Class
+      Ident: "Document"
+    Ident: "write"
+  Method
+    Type: 0
+    Filename: "Document.bnd"
+    Linenumber: 24
+    Class
+      Ident: "Document"
+    Parameter
+      Ident: "node"
+      Ident: "document"
+      TypeName: "*"
+      TypeName: "dom_document"
+      TypeName: "struct"
+  Ident: "Document"
+  Method
+    Type: 7
+    Filename: "Document.bnd"
+    Linenumber: 11
+    CBlock: "
+#include "utils/corestrings.h"
+#include "utils/libdom.h"
+#include "uti"
+    Class
+      Ident: "Document"
+Class
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 473
+    CBlock: "
+	if (!dukky_instanceof(ctx, 0, PROTO_NAME(NODE))) return 0;
+
+	duk_get_"
+    Class
+      Ident: "Node"
+    Ident: "removeChild"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 448
+    CBlock: "
+	if (!dukky_instanceof(ctx, 0, PROTO_NAME(NODE))) return 0;
+
+	duk_get_"
+    Class
+      Ident: "Node"
+    Ident: "replaceChild"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 428
+    CBlock: "
+	if (!dukky_instanceof(ctx, 0, PROTO_NAME(NODE))) return 0;
+
+	duk_get_"
+    Class
+      Ident: "Node"
+    Ident: "appendChild"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 399
+    CBlock: "
+	if (!dukky_instanceof(ctx, 0, PROTO_NAME(NODE))) return 0;
+
+	duk_get_"
+    Class
+      Ident: "Node"
+    Ident: "insertBefore"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 383
+    CBlock: "
+	dom_exception exc;
+	dom_string *ns;
+	duk_size_t size;
+	const char *s "
+    Class
+      Ident: "Node"
+    Ident: "isDefaultNamespace"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 365
+    CBlock: "
+	dom_exception exc;
+	dom_string *ns, *pfx;
+	duk_size_t size;
+	const ch"
+    Class
+      Ident: "Node"
+    Ident: "lookupNamespaceURI"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 348
+    CBlock: "
+	dom_exception exc;
+	dom_string *ns, *pfx;
+	duk_size_t size;
+	const ch"
+    Class
+      Ident: "Node"
+    Ident: "lookupPrefix"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 321
+    CBlock: "
+	dom_exception exc;
+	uint16_t ret;
+
+	if (!dukky_instanceof(ctx, 0, PRO"
+    Class
+      Ident: "Node"
+    Ident: "contains"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 300
+    CBlock: "
+	dom_exception exc;
+	uint16_t ret;
+
+	if (!dukky_instanceof(ctx, 0, PRO"
+    Class
+      Ident: "Node"
+    Ident: "compareDocumentPosition"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 283
+    CBlock: "
+	dom_exception exc;
+	bool result;
+
+	if (!dukky_instanceof(ctx, 0, PROT"
+    Class
+      Ident: "Node"
+    Ident: "isEqualNode"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 267
+    CBlock: "
+	dom_exception exc;
+	bool deep;
+	dom_node *clone;
+
+	deep = duk_to_bool"
+    Class
+      Ident: "Node"
+    Ident: "cloneNode"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 259
+    CBlock: "
+	dom_exception exc;
+	exc = dom_node_normalize(priv->node);
+	if (exc !="
+    Class
+      Ident: "Node"
+    Ident: "normalize"
+  Method
+    Type: 4
+    Filename: "Node.bnd"
+    Linenumber: 246
+    CBlock: "
+	dom_exception exc;
+	dom_string *content;
+	duk_size_t slen;
+	const cha"
+    Class
+      Ident: "Node"
+    Ident: "textContent"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 228
+    CBlock: "
+	dom_exception exc;
+	dom_string *content;
+
+	exc = dom_node_get_text_co"
+    Class
+      Ident: "Node"
+    Ident: "textContent"
+  Method
+    Type: 4
+    Filename: "Node.bnd"
+    Linenumber: 214
+    CBlock: "
+	dom_exception exc;
+	dom_string *content;
+	duk_size_t slen;
+	const cha"
+    Class
+      Ident: "Node"
+    Ident: "nodeValue"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 196
+    CBlock: "
+	dom_exception exc;
+	dom_string *content;
+
+	exc = dom_node_get_node_va"
+    Class
+      Ident: "Node"
+    Ident: "nodeValue"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 182
+    CBlock: "
+	dom_exception exc;
+	dom_node *n;
+	exc = dom_node_get_next_sibling(pri"
+    Class
+      Ident: "Node"
+    Ident: "nextSibling"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 168
+    CBlock: "
+	dom_exception exc;
+	dom_node *n;
+	exc = dom_node_get_previous_sibling"
+    Class
+      Ident: "Node"
+    Ident: "previousSibling"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 154
+    CBlock: "
+	dom_exception exc;
+	dom_node *n;
+	exc = dom_node_get_last_child(priv-"
+    Class
+      Ident: "Node"
+    Ident: "lastChild"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 140
+    CBlock: "
+	dom_exception exc;
+	dom_node *n;
+	exc = dom_node_get_first_child(priv"
+    Class
+      Ident: "Node"
+    Ident: "firstChild"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 112
+    CBlock: "
+	dom_exception exc;
+	dom_nodelist *nlist = NULL;
+	duk_set_top(ctx, 0);"
+    Class
+      Ident: "Node"
+    Ident: "childNodes"
+  Method
+    Type: 2
+    Filename: "Node.bnd"
+    Linenumber: 102
+    CBlock: "
+	dom_exception exc;
+	bool res;
+	exc = dom_node_has_child_nodes(priv->n"
+    Class
+      Ident: "Node"
+    Ident: "hasChildNodes"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 86
+    CBlock: "
+	dom_exception exc;
+	dom_node *pnode = NULL;
+	dom_node_type ntype = DO"
+    Class
+      Ident: "Node"
+    Ident: "parentElement"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 75
+    CBlock: "
+	dom_exception exc;
+	dom_node *pnode = NULL;
+	exc = dom_node_get_paren"
+    Class
+      Ident: "Node"
+    Ident: "parentNode"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 63
+    CBlock: "
+	dom_exception exc;
+	dom_node *doc;
+	exc = dom_node_get_owner_document"
+    Class
+      Ident: "Node"
+    Ident: "ownerDocument"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 51
+    CBlock: "
+	dom_exception exc;
+	dom_string *base = NULL;
+	exc = dom_node_get_base"
+    Class
+      Ident: "Node"
+    Ident: "baseURI"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 40
+    CBlock: "
+	dom_exception exc;
+	dom_string *str = NULL;
+	exc = dom_node_get_node_"
+    Class
+      Ident: "Node"
+    Ident: "nodeName"
+  Method
+    Type: 3
+    Filename: "Node.bnd"
+    Linenumber: 30
+    CBlock: "
+	dom_exception exc;
+	dom_node_type ntype;
+	exc = dom_node_get_node_typ"
+    Class
+      Ident: "Node"
+    Ident: "nodeType"
+  Method
+    Type: 1
+    Filename: "Node.bnd"
+    Linenumber: 25
+    CBlock: "
+	dom_node_unref(priv->node);
+"
+    Class
+      Ident: "Node"
+  Method
+    Type: 0
+    Filename: "Node.bnd"
+    Linenumber: 18
+    CBlock: "
+	priv->node = node;
+	dom_node_ref(node);
+	priv->parent.is_node = true;"
+    Class
+      Ident: "Node"
+    Parameter
+      Ident: "node"
+      TypeName: "*"
+      TypeName: "dom_node"
+      TypeName: "struct"
+  Ident: "Node"
+  Private
+    Ident: "node"
+    TypeName: "*"
+    TypeName: "dom_node"
+  Method
+    Type: 7
+    CBlock: "
+
+"
+Class
+  Method
+    Type: 2
+    Filename: "NodeList.bnd"
+    Linenumber: 40
+    CBlock: "
+	unsigned long i = duk_to_uint(ctx, 0);
+	dom_exception err;
+	dom_node "
+    Class
+      Ident: "NodeList"
+    Ident: "item"
+  Method
+    Type: 3
+    Filename: "NodeList.bnd"
+    Linenumber: 26
+    CBlock: "
+	dom_exception err;
+	uint32_t len;
+
+	err = dom_nodelist_get_length(pri"
+    Class
+      Ident: "NodeList"
+    Ident: "length"
+  Method
+    Type: 1
+    Filename: "NodeList.bnd"
+    Linenumber: 21
+    CBlock: "
+	dom_nodelist_unref(priv->nodes);
+"
+    Class
+      Ident: "NodeList"
+  Method
+    Type: 0
+    Filename: "NodeList.bnd"
+    Linenumber: 15
+    CBlock: "
+	priv->nodes = nodes;
+	dom_nodelist_ref(nodes);
+"
+    Class
+      Ident: "NodeList"
+    Parameter
+      Ident: "nodes"
+      TypeName: "*"
+      TypeName: "dom_nodelist"
+      TypeName: "struct"
+  Ident: "NodeList"
+  Private
+    Ident: "nodes"
+    TypeName: "*"
+    TypeName: "dom_nodelist"
+    TypeName: "struct"
+Class
+  Method
+    Type: 2
+    Filename: "NamedNodeMap.bnd"
+    Linenumber: 56
+    CBlock: "
+	duk_size_t size;
+	const char *s = duk_safe_to_lstring(ctx, 0, &size);"
+    Class
+      Ident: "NamedNodeMap"
+    Ident: "getNamedItem"
+  Method
+    Type: 2
+    Filename: "NamedNodeMap.bnd"
+    Linenumber: 40
+    CBlock: "
+	unsigned long i = duk_to_uint(ctx, 0);
+	dom_exception err;
+	dom_node "
+    Class
+      Ident: "NamedNodeMap"
+    Ident: "item"
+  Method
+    Type: 3
+    Filename: "NamedNodeMap.bnd"
+    Linenumber: 26
+    CBlock: "
+	dom_exception err;
+	uint32_t len;
+
+	err = dom_namednodemap_get_length"
+    Class
+      Ident: "NamedNodeMap"
+    Ident: "length"
+  Method
+    Type: 1
+    Filename: "NamedNodeMap.bnd"
+    Linenumber: 21
+    CBlock: "
+	dom_namednodemap_unref(priv->map);
+"
+    Class
+      Ident: "NamedNodeMap"
+  Method
+    Type: 0
+    Filename: "NamedNodeMap.bnd"
+    Linenumber: 15
+    CBlock: "
+	priv->map = map;
+	dom_namednodemap_ref(map);
+"
+    Class
+      Ident: "NamedNodeMap"
+    Parameter
+      Ident: "map"
+      TypeName: "*"
+      TypeName: "dom_namednodemap"
+      TypeName: "struct"
+  Ident: "NamedNodeMap"
+  Private
+    Ident: "map"
+    TypeName: "*"
+    TypeName: "dom_namednodemap"
+    TypeName: "struct"
+Class
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 518
+    CBlock: "
+	dom_exception exc;
+	dom_namednodemap *nmap = NULL;
+	duk_set_top(ctx, "
+    Class
+      Ident: "Element"
+    Ident: "attributes"
+  Method
+    Type: 4
+    Filename: "Element.bnd"
+    Linenumber: 401
+    CBlock: "
+	duk_size_t size;
+	const char *s = duk_safe_to_lstring(ctx, 0, &size);"
+    Class
+      Ident: "Element"
+    Ident: "innerHTML"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 395
+    CBlock: "
+	duk_push_lstring(ctx, "", 0);
+	return 1;
+"
+    Class
+      Ident: "Element"
+    Ident: "innerHTML"
+  Method
+    Type: 4
+    Filename: "Element.bnd"
+    Linenumber: 377
+    CBlock: "
+	dom_string *classstr = NULL;
+	dom_exception exc;
+	duk_size_t slen;
+	c"
+    Class
+      Ident: "Element"
+    Ident: "className"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 358
+    CBlock: "
+	dom_string *classstr = NULL;
+	dom_exception exc;
+
+	exc = dom_element_"
+    Class
+      Ident: "Element"
+    Ident: "className"
+  Method
+    Type: 2
+    Filename: "Element.bnd"
+    Linenumber: 333
+    CBlock: "
+	dom_string *attr_name = NULL;
+	dom_exception exc;
+	duk_size_t slen;
+	"
+    Class
+      Ident: "Element"
+    Ident: "hasAttribute"
+  Method
+    Type: 2
+    Filename: "Element.bnd"
+    Linenumber: 308
+    CBlock: "
+	dom_exception exc;
+	dom_string *attr_str, *value_str;
+	duk_size_t att"
+    Class
+      Ident: "Element"
+    Ident: "setAttribute"
+  Method
+    Type: 2
+    Filename: "Element.bnd"
+    Linenumber: 277
+    CBlock: "
+	dom_string *attr_name = NULL;
+	dom_string *attr_value = NULL;
+	dom_ex"
+    Class
+      Ident: "Element"
+    Ident: "getAttribute"
+  Method
+    Type: 2
+    Filename: "Element.bnd"
+    Linenumber: 261
+    CBlock: "
+	dom_string *attr = NULL;
+	dom_exception exc;
+	duk_size_t slen;
+	const"
+    Class
+      Ident: "Element"
+    Ident: "removeAttribute"
+  Method
+    Type: 4
+    Filename: "Element.bnd"
+    Linenumber: 242
+    CBlock: "
+	dom_string *idstr = NULL;
+	dom_exception exc;
+	duk_size_t slen;
+	cons"
+    Class
+      Ident: "Element"
+    Ident: "id"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 223
+    CBlock: "
+	dom_string *idstr = NULL;
+	dom_exception exc;
+
+	exc = dom_element_get"
+    Class
+      Ident: "Element"
+    Ident: "id"
+  Method
+    Type: 2
+    Filename: "Element.bnd"
+    Linenumber: 192
+    CBlock: "
+	dom_nodelist *nlist = NULL;
+	dom_exception exc;
+	dom_string *tagname;"
+    Class
+      Ident: "Element"
+    Ident: "getElementsByTagName"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 160
+    CBlock: "
+	dom_node *element;
+	dom_exception exc;
+	dom_node_type node_type;
+	dom"
+    Class
+      Ident: "Element"
+    Ident: "childElementCount"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 125
+    CBlock: "
+	dom_node *element;
+	dom_exception exc;
+	dom_node_type node_type;
+	dom"
+    Class
+      Ident: "Element"
+    Ident: "nextElementSibling"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 90
+    CBlock: "
+	dom_node *element;
+	dom_exception exc;
+	dom_node_type node_type;
+	dom"
+    Class
+      Ident: "Element"
+    Ident: "previousElementSibling"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 55
+    CBlock: "
+	dom_node *element;
+	dom_exception exc;
+	dom_node_type node_type;
+	dom"
+    Class
+      Ident: "Element"
+    Ident: "lastElementChild"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 20
+    CBlock: "
+	dom_node *element;
+	dom_exception exc;
+	dom_node_type node_type;
+	dom"
+    Class
+      Ident: "Element"
+    Ident: "firstElementChild"
+  Method
+    Type: 0
+    Filename: "Element.bnd"
+    Linenumber: 18
+    Class
+      Ident: "Element"
+    Parameter
+      Ident: "node"
+      Ident: "element"
+      TypeName: "*"
+      TypeName: "dom_element"
+      TypeName: "struct"
+  Ident: "Element"
+  Method
+    Type: 7
+    CBlock: "
+#include <utils/corestrings.h>
+#include <dom/bindings/hubbub/parser.h>"
+Class
+  Method
+    Type: 1
+    Filename: "HTMLCollection.bnd"
+    Linenumber: 21
+    CBlock: "
+	dom_html_collection_unref(priv->coll);
+"
+    Class
+      Ident: "HTMLCollection"
+  Method
+    Type: 0
+    Filename: "HTMLCollection.bnd"
+    Linenumber: 15
+    CBlock: "
+	priv->coll = coll;
+	dom_html_collection_ref(coll);
+"
+    Class
+      Ident: "HTMLCollection"
+    Parameter
+      Ident: "coll"
+      TypeName: "*"
+      TypeName: "dom_html_collection"
+      TypeName: "struct"
+  Ident: "HTMLCollection"
+  Private
+    Ident: "coll"
+    TypeName: "*"
+    TypeName: "dom_html_collection"
+    TypeName: "struct"
+Class
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 334
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_FRAGM"
+    Class
+      Ident: "Location"
+    Ident: "hash"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 314
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_QUERY"
+    Class
+      Ident: "Location"
+    Ident: "search"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 294
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_PATH,"
+    Class
+      Ident: "Location"
+    Ident: "pathname"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 274
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_PORT,"
+    Class
+      Ident: "Location"
+    Ident: "port"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 253
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_HOST,"
+    Class
+      Ident: "Location"
+    Ident: "hostname"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 233
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_HOST,"
+    Class
+      Ident: "Location"
+    Ident: "host"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 213
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_PASSW"
+    Class
+      Ident: "Location"
+    Ident: "password"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 193
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_USERN"
+    Class
+      Ident: "Location"
+    Ident: "username"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 173
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_SCHEM"
+    Class
+      Ident: "Location"
+    Ident: "protocol"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 154
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_SCHEM"
+    Class
+      Ident: "Location"
+    Ident: "origin"
+  Method
+    Type: 4
+    Filename: "Location.bnd"
+    Linenumber: 125
+    CBlock: "
+	/* retrieve the private data from the root object (window) */
+	duk_pu"
+    Class
+      Ident: "Location"
+    Ident: "href"
+  Method
+    Type: 3
+    Filename: "Location.bnd"
+    Linenumber: 106
+    CBlock: "
+	char *url_s = NULL;
+	size_t url_l;
+
+	nsurl_get(priv->url, NSURL_COMPL"
+    Class
+      Ident: "Location"
+    Ident: "href"
+  Method
+    Type: 2
+    Filename: "Location.bnd"
+    Linenumber: 77
+    CBlock: "
+	/* retrieve the private data from the root object (window) */
+	duk_pu"
+    Class
+      Ident: "Location"
+    Ident: "replace"
+  Method
+    Type: 2
+    Filename: "Location.bnd"
+    Linenumber: 48
+    CBlock: "
+	/* retrieve the private data from the root object (window) */
+	duk_pu"
+    Class
+      Ident: "Location"
+    Ident: "assign"
+  Method
+    Type: 2
+    Filename: "Location.bnd"
+    Linenumber: 32
+    CBlock: "
+	/* retrieve the private data from the root object (window) */
+	duk_pu"
+    Class
+      Ident: "Location"
+    Ident: "reload"
+  Method
+    Type: 1
+    Filename: "Location.bnd"
+    Linenumber: 27
+    CBlock: "
+	nsurl_unref(priv->url);
+"
+    Class
+      Ident: "Location"
+  Method
+    Type: 0
+    Filename: "Location.bnd"
+    Linenumber: 21
+    CBlock: "
+	priv->url = url;
+	nsurl_ref(url);
+"
+    Class
+      Ident: "Location"
+    Parameter
+      Ident: "url"
+      TypeName: "*"
+      TypeName: "nsurl"
+  Method
+    Type: 7
+    Filename: "Location.bnd"
+    Linenumber: 16
+    CBlock: "
+#include "netsurf/browser_window.h"
+"
+    Class
+      Ident: "Location"
+  Ident: "Location"
+  Private
+    Ident: "url"
+    TypeName: "*"
+    TypeName: "nsurl"
+Class
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 83
+    CBlock: "
+	duk_push_string(ctx, user_agent_string());
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "userAgent"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 77
+    CBlock: "
+	duk_push_boolean(ctx, false);
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "javaEnabled"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 70
+    CBlock: "
+	duk_push_boolean(ctx, false);
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "cookieEnabled"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 64
+    CBlock: "
+	duk_push_string(ctx, NULL);
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "vendorSub"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 58
+    CBlock: "
+	duk_push_string(ctx, NULL);
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "vendor"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 52
+    CBlock: "
+	duk_push_string(ctx, "20100101");
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "productSub"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 46
+    CBlock: "
+	duk_push_string(ctx, "Gecko");
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "product"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 40
+    CBlock: "
+	duk_push_string(ctx, NULL);
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "platform"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 34
+    CBlock: "
+	duk_push_string(ctx, "3.4");
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "appVersion"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 28
+    CBlock: "
+	duk_push_string(ctx, "Netscape");
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "appName"
+  Method
+    Type: 3
+    Filename: "Navigator.bnd"
+    Linenumber: 22
+    CBlock: "
+	duk_push_string(ctx, "Mozilla");
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "appCodeName"
+  Method
+    Type: 2
+    Filename: "Navigator.bnd"
+    Linenumber: 16
+    CBlock: "
+	duk_push_boolean(ctx, false);
+	return 1;
+"
+    Class
+      Ident: "Navigator"
+    Ident: "taintEnabled"
+  Ident: "Navigator"
+  Method
+    Type: 7
+    Filename: "Navigator.bnd"
+    Linenumber: 11
+    CBlock: "
+#include "utils/useragent.h"
+"
+    Class
+      Ident: "Navigator"
+Class
+  Method
+    Type: 2
+    Filename: "DOMImplementation.bnd"
+    Linenumber: 23
+    CBlock: "
+	duk_size_t text_len;
+	const char *text = duk_safe_to_lstring(ctx, 0, "
+    Class
+      Ident: "DOMImplementation"
+    Ident: "createHTMLDocument"
+  Ident: "DOMImplementation"
+  Method
+    Type: 7
+    Filename: "DOMImplementation.bnd"
+    Linenumber: 11
+    CBlock: "
+#include "utils/corestrings.h"
+"
+    Class
+      Ident: "DOMImplementation"
+Class
+  Ident: "DOMImplemention"
+  Method
+    Type: 2
+    Filename: "DOMImplementation.bnd"
+    Linenumber: 16
+    CBlock: "
+	/* Always return true */
+	duk_push_bool(ctx, true);
+	return 1;
+"
+    Class
+      Ident: "DOMImplemention"
+    Ident: "hasFeature"
+Class
+  Method
+    Type: 2
+    Filename: "Event.bnd"
+    Linenumber: 168
+    CBlock: "
+	dom_exception exc;
+	bool bubbles;
+	bool cancellable;
+
+	duk_size_t tex"
+    Class
+      Ident: "Event"
+    Ident: "initEvent"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 155
+    CBlock: "
+	dom_exception exc;
+	bool ret;
+
+	exc = dom_event_get_is_trusted(priv->"
+    Class
+      Ident: "Event"
+    Ident: "isTrusted"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 143
+    CBlock: "
+	dom_exception exc;
+	bool ret;
+
+	exc = dom_event_is_default_prevented("
+    Class
+      Ident: "Event"
+    Ident: "defaultPrevented"
+  Method
+    Type: 2
+    Filename: "Event.bnd"
+    Linenumber: 133
+    CBlock: "
+	dom_exception exc;
+
+	exc = dom_event_prevent_default(priv->evt);
+	if "
+    Class
+      Ident: "Event"
+    Ident: "preventDefault"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 121
+    CBlock: "
+	dom_exception exc;
+	bool ret;
+
+	exc = dom_event_get_cancelable(priv->"
+    Class
+      Ident: "Event"
+    Ident: "cancelable"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 109
+    CBlock: "
+	dom_exception exc;
+	bool ret;
+
+	exc = dom_event_get_bubbles(priv->evt"
+    Class
+      Ident: "Event"
+    Ident: "bubbles"
+  Method
+    Type: 2
+    Filename: "Event.bnd"
+    Linenumber: 99
+    CBlock: "
+	dom_exception exc;
+
+	exc = dom_event_stop_immediate_propagation(priv-"
+    Class
+      Ident: "Event"
+    Ident: "stopImmediatePropagation"
+  Method
+    Type: 2
+    Filename: "Event.bnd"
+    Linenumber: 89
+    CBlock: "
+	dom_exception exc;
+
+	exc = dom_event_stop_propagation(priv->evt);
+	if"
+    Class
+      Ident: "Event"
+    Ident: "stopPropagation"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 77
+    CBlock: "
+	dom_exception exc;
+	dom_event_flow_phase phase;
+
+	exc = dom_event_get"
+    Class
+      Ident: "Event"
+    Ident: "eventPhase"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 62
+    CBlock: "
+	/** @todo Decide HTF this works wrt. Window as an event target */
+	do"
+    Class
+      Ident: "Event"
+    Ident: "currentTarget"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 47
+    CBlock: "
+	/** @todo Decide HTF this works wrt. Window as an event target */
+	do"
+    Class
+      Ident: "Event"
+    Ident: "target"
+  Method
+    Type: 3
+    Filename: "Event.bnd"
+    Linenumber: 29
+    CBlock: "
+	dom_string *ret;
+	dom_exception exc;
+
+	exc = dom_event_get_type(priv-"
+    Class
+      Ident: "Event"
+    Ident: "type"
+  Method
+    Type: 1
+    Filename: "Event.bnd"
+    Linenumber: 22
+    CBlock: "
+	dom_event_unref(priv->evt);
+"
+    Class
+      Ident: "Event"
+  Method
+    Type: 0
+    Filename: "Event.bnd"
+    Linenumber: 16
+    CBlock: "
+	priv->evt = evt;
+	dom_event_ref(evt);
+"
+    Class
+      Ident: "Event"
+    Parameter
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+  Ident: "Event"
+  Private
+    Ident: "evt"
+    TypeName: "*"
+    TypeName: "dom_event"
+Class
+  Method
+    Type: 2
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 118
+    CBlock: "
+	dom_string *modifier;
+	dom_exception err;
+	duk_size_t slen;
+	const ch"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "getModifierState"
+  Method
+    Type: 3
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 103
+    CBlock: "
+	dom_exception err;
+	bool meta_key;
+
+	err = dom_keyboard_event_get_met"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "metaKey"
+  Method
+    Type: 3
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 88
+    CBlock: "
+	dom_exception err;
+	bool alt_key;
+
+	err = dom_keyboard_event_get_alt_"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "altKey"
+  Method
+    Type: 3
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 73
+    CBlock: "
+	dom_exception err;
+	bool shift_key;
+
+	err = dom_keyboard_event_get_sh"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "shiftKey"
+  Method
+    Type: 3
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 58
+    CBlock: "
+	dom_exception err;
+	bool ctrl_key;
+
+	err = dom_keyboard_event_get_ctr"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "ctrlKey"
+  Method
+    Type: 3
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 43
+    CBlock: "
+	dom_exception err;
+	dom_key_location location;
+
+	err = dom_keyboard_e"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "location"
+  Method
+    Type: 3
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 28
+    CBlock: "
+	dom_exception err;
+	dom_string *code;
+
+	err = dom_keyboard_event_get_"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "code"
+  Method
+    Type: 3
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 13
+    CBlock: "
+	dom_exception err;
+	dom_string *key;
+
+	err = dom_keyboard_event_get_k"
+    Class
+      Ident: "KeyboardEvent"
+    Ident: "key"
+  Ident: "KeyboardEvent"
+  Method
+    Type: 0
+    Filename: "KeyboardEvent.bnd"
+    Linenumber: 11
+    Class
+      Ident: "KeyboardEvent"
+    Parameter
+      Ident: "ui_event"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_keyboard_event"
+      TypeName: "struct"
+Class
+  Ident: "MutationEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 75
+    Class
+      Ident: "MutationEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_mutation_event"
+      TypeName: "struct"
+Class
+  Ident: "UIEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 76
+    Class
+      Ident: "UIEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_ui_event"
+      TypeName: "struct"
+Class
+  Ident: "TextEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 77
+    Class
+      Ident: "TextEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_text_event"
+      TypeName: "struct"
+Class
+  Ident: "MutationNameEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 78
+    Class
+      Ident: "MutationNameEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_mutation_name_event"
+      TypeName: "struct"
+Class
+  Ident: "MouseWheelEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 79
+    Class
+      Ident: "MouseWheelEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_mouse_wheel_event"
+      TypeName: "struct"
+Class
+  Ident: "MouseMultiWheelEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 80
+    Class
+      Ident: "MouseMultiWheelEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_mouse_multi_wheel_event"
+      TypeName: "struct"
+Class
+  Ident: "MouseEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 81
+    Class
+      Ident: "MouseEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_mouse_event"
+      TypeName: "struct"
+Class
+  Ident: "DocumentEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 82
+    Class
+      Ident: "DocumentEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_document_event"
+      TypeName: "struct"
+Class
+  Ident: "CustomEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 83
+    Class
+      Ident: "CustomEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_custom_event"
+      TypeName: "struct"
+Class
+  Ident: "CompositionEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 84
+    Class
+      Ident: "CompositionEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_ui_event"
+      TypeName: "struct"
+Class
+  Ident: "WheelEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 85
+    Class
+      Ident: "WheelEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_mouse_event"
+      TypeName: "struct"
+Class
+  Ident: "FocusEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 86
+    Class
+      Ident: "FocusEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_ui_event"
+      TypeName: "struct"
+Class
+  Ident: "StorageEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 87
+    Class
+      Ident: "StorageEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "CloseEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 88
+    Class
+      Ident: "CloseEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "MessageEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 89
+    Class
+      Ident: "MessageEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "ErrorEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 90
+    Class
+      Ident: "ErrorEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "BeforeUnloadEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 91
+    Class
+      Ident: "BeforeUnloadEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "PageTransitionEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 92
+    Class
+      Ident: "PageTransitionEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "HashChangeEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 93
+    Class
+      Ident: "HashChangeEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "PopStateEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 94
+    Class
+      Ident: "PopStateEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "DragEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 95
+    Class
+      Ident: "DragEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_mouse_event"
+      TypeName: "struct"
+Class
+  Ident: "RelatedEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 96
+    Class
+      Ident: "RelatedEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "AutocompleteErrorEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 97
+    Class
+      Ident: "AutocompleteErrorEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Ident: "TrackEvent"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 98
+    Class
+      Ident: "TrackEvent"
+    Parameter
+      Ident: "evt"
+      Ident: "evt"
+      TypeName: "*"
+      TypeName: "dom_event"
+      TypeName: "struct"
+Class
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 155
+    CBlock: "
+	/* Minimal implementation to avoid infinite-loop in Modernizr (c.f. #"
+    Class
+      Ident: "HTMLElement"
+    Ident: "style"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 153
+    Class
+      Ident: "HTMLElement"
+    Ident: "onwheel"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 152
+    Class
+      Ident: "HTMLElement"
+    Ident: "onwheel"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 151
+    Class
+      Ident: "HTMLElement"
+    Ident: "onwaiting"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 150
+    Class
+      Ident: "HTMLElement"
+    Ident: "onwaiting"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 149
+    Class
+      Ident: "HTMLElement"
+    Ident: "onvolumechange"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 148
+    Class
+      Ident: "HTMLElement"
+    Ident: "onvolumechange"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 147
+    Class
+      Ident: "HTMLElement"
+    Ident: "ontoggle"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 146
+    Class
+      Ident: "HTMLElement"
+    Ident: "ontoggle"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 145
+    Class
+      Ident: "HTMLElement"
+    Ident: "ontimeupdate"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 144
+    Class
+      Ident: "HTMLElement"
+    Ident: "ontimeupdate"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 143
+    Class
+      Ident: "HTMLElement"
+    Ident: "onsuspend"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 142
+    Class
+      Ident: "HTMLElement"
+    Ident: "onsuspend"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 141
+    Class
+      Ident: "HTMLElement"
+    Ident: "onsubmit"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 140
+    Class
+      Ident: "HTMLElement"
+    Ident: "onsubmit"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 139
+    Class
+      Ident: "HTMLElement"
+    Ident: "onstalled"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 138
+    Class
+      Ident: "HTMLElement"
+    Ident: "onstalled"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 137
+    Class
+      Ident: "HTMLElement"
+    Ident: "onsort"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 136
+    Class
+      Ident: "HTMLElement"
+    Ident: "onsort"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 135
+    Class
+      Ident: "HTMLElement"
+    Ident: "onshow"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 134
+    Class
+      Ident: "HTMLElement"
+    Ident: "onshow"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 133
+    Class
+      Ident: "HTMLElement"
+    Ident: "onselect"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 132
+    Class
+      Ident: "HTMLElement"
+    Ident: "onselect"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 131
+    Class
+      Ident: "HTMLElement"
+    Ident: "onseeking"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 130
+    Class
+      Ident: "HTMLElement"
+    Ident: "onseeking"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 129
+    Class
+      Ident: "HTMLElement"
+    Ident: "onseeked"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 128
+    Class
+      Ident: "HTMLElement"
+    Ident: "onseeked"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 127
+    Class
+      Ident: "HTMLElement"
+    Ident: "onscroll"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 126
+    Class
+      Ident: "HTMLElement"
+    Ident: "onscroll"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 125
+    Class
+      Ident: "HTMLElement"
+    Ident: "onresize"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 124
+    Class
+      Ident: "HTMLElement"
+    Ident: "onresize"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 123
+    Class
+      Ident: "HTMLElement"
+    Ident: "onreset"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 122
+    Class
+      Ident: "HTMLElement"
+    Ident: "onreset"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 121
+    Class
+      Ident: "HTMLElement"
+    Ident: "onratechange"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 120
+    Class
+      Ident: "HTMLElement"
+    Ident: "onratechange"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 119
+    Class
+      Ident: "HTMLElement"
+    Ident: "onprogress"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 118
+    Class
+      Ident: "HTMLElement"
+    Ident: "onprogress"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 117
+    Class
+      Ident: "HTMLElement"
+    Ident: "onplay"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 116
+    Class
+      Ident: "HTMLElement"
+    Ident: "onplay"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 115
+    Class
+      Ident: "HTMLElement"
+    Ident: "onplaying"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 114
+    Class
+      Ident: "HTMLElement"
+    Ident: "onplaying"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 113
+    Class
+      Ident: "HTMLElement"
+    Ident: "onpause"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 112
+    Class
+      Ident: "HTMLElement"
+    Ident: "onpause"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 111
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseup"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 110
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseup"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 109
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseover"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 108
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseover"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 107
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseout"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 106
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseout"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 105
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmousemove"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 104
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmousemove"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 103
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseleave"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 102
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseleave"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 101
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseenter"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 100
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmouseenter"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 99
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmousedown"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 98
+    Class
+      Ident: "HTMLElement"
+    Ident: "onmousedown"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 97
+    Class
+      Ident: "HTMLElement"
+    Ident: "onload"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 96
+    Class
+      Ident: "HTMLElement"
+    Ident: "onload"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 95
+    Class
+      Ident: "HTMLElement"
+    Ident: "onloadstart"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 94
+    Class
+      Ident: "HTMLElement"
+    Ident: "onloadstart"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 93
+    Class
+      Ident: "HTMLElement"
+    Ident: "onloadedmetadata"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 92
+    Class
+      Ident: "HTMLElement"
+    Ident: "onloadedmetadata"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 91
+    Class
+      Ident: "HTMLElement"
+    Ident: "onloadeddata"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 90
+    Class
+      Ident: "HTMLElement"
+    Ident: "onloadeddata"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 89
+    Class
+      Ident: "HTMLElement"
+    Ident: "onkeyup"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 88
+    Class
+      Ident: "HTMLElement"
+    Ident: "onkeyup"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 87
+    Class
+      Ident: "HTMLElement"
+    Ident: "onkeypress"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 86
+    Class
+      Ident: "HTMLElement"
+    Ident: "onkeypress"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 85
+    Class
+      Ident: "HTMLElement"
+    Ident: "onkeydown"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 84
+    Class
+      Ident: "HTMLElement"
+    Ident: "onkeydown"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 83
+    Class
+      Ident: "HTMLElement"
+    Ident: "oninvalid"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 82
+    Class
+      Ident: "HTMLElement"
+    Ident: "oninvalid"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 81
+    Class
+      Ident: "HTMLElement"
+    Ident: "oninput"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 80
+    Class
+      Ident: "HTMLElement"
+    Ident: "oninput"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 79
+    Class
+      Ident: "HTMLElement"
+    Ident: "onfocus"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 78
+    Class
+      Ident: "HTMLElement"
+    Ident: "onfocus"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 77
+    Class
+      Ident: "HTMLElement"
+    Ident: "onended"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 76
+    Class
+      Ident: "HTMLElement"
+    Ident: "onended"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 75
+    Class
+      Ident: "HTMLElement"
+    Ident: "onemptied"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 74
+    Class
+      Ident: "HTMLElement"
+    Ident: "onemptied"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 73
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondurationchange"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 72
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondurationchange"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 71
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondrop"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 70
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondrop"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 69
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondrag"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 68
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondrag"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 67
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragstart"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 66
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragstart"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 65
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragover"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 64
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragover"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 63
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragleave"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 62
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragleave"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 61
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragexit"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 60
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragexit"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 59
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragenter"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 58
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragenter"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 57
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragend"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 56
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondragend"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 55
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondblclick"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 54
+    Class
+      Ident: "HTMLElement"
+    Ident: "ondblclick"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 53
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncuechange"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 52
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncuechange"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 51
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncontextmenu"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 50
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncontextmenu"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 49
+    Class
+      Ident: "HTMLElement"
+    Ident: "onclose"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 48
+    Class
+      Ident: "HTMLElement"
+    Ident: "onclose"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 47
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncanplay"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 46
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncanplay"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 45
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncanplaythrough"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 44
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncanplaythrough"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 43
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncancel"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 42
+    Class
+      Ident: "HTMLElement"
+    Ident: "oncancel"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 41
+    Class
+      Ident: "HTMLElement"
+    Ident: "onblur"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLElement"
+    Ident: "onblur"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 39
+    Class
+      Ident: "HTMLElement"
+    Ident: "onautocomplete"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLElement"
+    Ident: "onautocomplete"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLElement"
+    Ident: "onautocompleteerror"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 36
+    Class
+      Ident: "HTMLElement"
+    Ident: "onautocompleteerror"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLElement"
+    Ident: "onabort"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLElement"
+    Ident: "onabort"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLElement"
+    Ident: "onclick"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLElement"
+    Ident: "onclick"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLElement"
+    Ident: "onchange"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLElement"
+    Ident: "onchange"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLElement"
+    Ident: "title"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLElement"
+    Ident: "title"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLElement"
+    Ident: "lang"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLElement"
+    Ident: "lang"
+  Method
+    Type: 4
+    Filename: "HTMLElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLElement"
+    Ident: "dir"
+  Method
+    Type: 3
+    Filename: "HTMLElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLElement"
+    Ident: "dir"
+  Method
+    Type: 0
+    Filename: "HTMLElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLElement"
+    Parameter
+      Ident: "element"
+      Ident: "html_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+  Ident: "HTMLElement"
+  Method
+    Type: 7
+    Filename: "HTMLElement.bnd"
+    Linenumber: 11
+    CBlock: "
+#include <utils/corestrings.h>
+#define HANDLER_MAGIC MAGIC(HANDLER_MAP"
+    Class
+      Ident: "HTMLElement"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "target"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "target"
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "shape"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "shape"
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "rev"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "rev"
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "rel"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "rel"
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "hreflang"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "hreflang"
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "coords"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "coords"
+  Method
+    Type: 4
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "charset"
+  Method
+    Type: 3
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLAnchorElement"
+    Ident: "charset"
+  Ident: "HTMLAnchorElement"
+  Method
+    Type: 0
+    Filename: "HTMLAnchorElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLAnchorElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_anchor_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 30
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "object"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 27
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "object"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 24
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "height"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "height"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "code"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 21
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "code"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "codeBase"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "codeBase"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 18
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "archive"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "archive"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "alt"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 15
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "alt"
+  Method
+    Type: 4
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLAppletElement"
+    Ident: "align"
+  Ident: "HTMLAppletElement"
+  Method
+    Type: 0
+    Filename: "HTMLAppletElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLAppletElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_applet_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "target"
+  Method
+    Type: 3
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "target"
+  Method
+    Type: 4
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "shape"
+  Method
+    Type: 3
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "shape"
+  Method
+    Type: 4
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "noHref"
+  Method
+    Type: 3
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "noHref"
+  Method
+    Type: 4
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "coords"
+  Method
+    Type: 3
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "coords"
+  Method
+    Type: 4
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "alt"
+  Method
+    Type: 3
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLAreaElement"
+    Ident: "alt"
+  Ident: "HTMLAreaElement"
+  Method
+    Type: 0
+    Filename: "HTMLAreaElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLAreaElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_area_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLBaseElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLBaseElement"
+    Ident: "target"
+  Method
+    Type: 3
+    Filename: "HTMLBaseElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLBaseElement"
+    Ident: "target"
+  Method
+    Type: 4
+    Filename: "HTMLBaseElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLBaseElement"
+    Ident: "href"
+  Method
+    Type: 3
+    Filename: "HTMLBaseElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLBaseElement"
+    Ident: "href"
+  Ident: "HTMLBaseElement"
+  Method
+    Type: 0
+    Filename: "HTMLBaseElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLBaseElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_base_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 57
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onunload"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 56
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onunload"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 55
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onstorage"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 54
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onstorage"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 53
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onpopstate"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 52
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onpopstate"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 51
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onpageshow"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 50
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onpageshow"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 49
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onpagehide"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 48
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onpagehide"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 47
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "ononline"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 46
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "ononline"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 45
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onoffline"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 44
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onoffline"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 43
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onmessage"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 42
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onmessage"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 41
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onlanguagechange"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onlanguagechange"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 39
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onhashchange"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onhashchange"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onbeforeunload"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 36
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onbeforeunload"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onbeforeprint"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onbeforeprint"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 33
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onafterprint"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "onafterprint"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "vLink"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 30
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "vLink"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "text"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "text"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 27
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "link"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "link"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "bgColor"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 24
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "bgColor"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "background"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "background"
+  Method
+    Type: 4
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 21
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "aLink"
+  Method
+    Type: 3
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLBodyElement"
+    Ident: "aLink"
+  Method
+    Type: 0
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 18
+    Class
+      Ident: "HTMLBodyElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_body_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+  Ident: "HTMLBodyElement"
+  Method
+    Type: 7
+    Filename: "HTMLBodyElement.bnd"
+    Linenumber: 11
+    CBlock: "
+#include "utils/corestrings.h"
+
+#define HANDLER_MAGIC MAGIC(HANDLER_MA"
+    Class
+      Ident: "HTMLBodyElement"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLButtonElement.bnd"
+    Linenumber: 18
+    Class
+      Ident: "HTMLButtonElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLButtonElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLButtonElement"
+    Ident: "value"
+  Method
+    Type: 4
+    Filename: "HTMLButtonElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLButtonElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLButtonElement.bnd"
+    Linenumber: 15
+    Class
+      Ident: "HTMLButtonElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLButtonElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLButtonElement"
+    Ident: "disabled"
+  Method
+    Type: 3
+    Filename: "HTMLButtonElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLButtonElement"
+    Ident: "disabled"
+  Ident: "HTMLButtonElement"
+  Method
+    Type: 0
+    Filename: "HTMLButtonElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLButtonElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_button_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLBRElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLBRElement"
+    Ident: "clear"
+  Method
+    Type: 3
+    Filename: "HTMLBRElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLBRElement"
+    Ident: "clear"
+  Ident: "HTMLBRElement"
+  Method
+    Type: 0
+    Filename: "HTMLBRElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLBRElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_br_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLDivElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLDivElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLDivElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLDivElement"
+    Ident: "align"
+  Ident: "HTMLDivElement"
+  Method
+    Type: 0
+    Filename: "HTMLDivElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLDivElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_div_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLFontElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLFontElement"
+    Ident: "size"
+  Method
+    Type: 3
+    Filename: "HTMLFontElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLFontElement"
+    Ident: "size"
+  Method
+    Type: 4
+    Filename: "HTMLFontElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLFontElement"
+    Ident: "face"
+  Method
+    Type: 3
+    Filename: "HTMLFontElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLFontElement"
+    Ident: "face"
+  Method
+    Type: 4
+    Filename: "HTMLFontElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLFontElement"
+    Ident: "color"
+  Method
+    Type: 3
+    Filename: "HTMLFontElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLFontElement"
+    Ident: "color"
+  Ident: "HTMLFontElement"
+  Method
+    Type: 0
+    Filename: "HTMLFontElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLFontElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_font_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "target"
+  Method
+    Type: 3
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "target"
+  Method
+    Type: 4
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "method"
+  Method
+    Type: 3
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "method"
+  Method
+    Type: 4
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "enctype"
+  Method
+    Type: 3
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "enctype"
+  Method
+    Type: 4
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "action"
+  Method
+    Type: 3
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "action"
+  Method
+    Type: 4
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "acceptCharset"
+  Method
+    Type: 3
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLFormElement"
+    Ident: "acceptCharset"
+  Ident: "HTMLFormElement"
+  Method
+    Type: 0
+    Filename: "HTMLFormElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLFormElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_form_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "src"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "src"
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "scrolling"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "scrolling"
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "noResize"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "noResize"
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "marginWidth"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "marginWidth"
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "marginHeight"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "marginHeight"
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "longDesc"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "longDesc"
+  Method
+    Type: 4
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "frameBorder"
+  Method
+    Type: 3
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLFrameElement"
+    Ident: "frameBorder"
+  Ident: "HTMLFrameElement"
+  Method
+    Type: 0
+    Filename: "HTMLFrameElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLFrameElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_frame_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 51
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onunload"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 50
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onunload"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 49
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onstorage"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 48
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onstorage"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 47
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onpopstate"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 46
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onpopstate"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 45
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onpageshow"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 44
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onpageshow"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 43
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onpagehide"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 42
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onpagehide"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 41
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "ononline"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "ononline"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 39
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onoffline"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onoffline"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onmessage"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 36
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onmessage"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onlanguagechange"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onlanguagechange"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 33
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onhashchange"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onhashchange"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onbeforeunload"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 30
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onbeforeunload"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onbeforeprint"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onbeforeprint"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 27
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onafterprint"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "onafterprint"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 24
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "rows"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "rows"
+  Method
+    Type: 4
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 21
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "cols"
+  Method
+    Type: 3
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLFrameSetElement"
+    Ident: "cols"
+  Method
+    Type: 0
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 18
+    Class
+      Ident: "HTMLFrameSetElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_frame_set_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+  Ident: "HTMLFrameSetElement"
+  Method
+    Type: 7
+    Filename: "HTMLFrameSetElement.bnd"
+    Linenumber: 11
+    CBlock: "
+#include "utils/corestrings.h"
+
+#define HANDLER_MAGIC MAGIC(HANDLER_MA"
+    Class
+      Ident: "HTMLFrameSetElement"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLHeadingElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLHeadingElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLHeadingElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLHeadingElement"
+    Ident: "align"
+  Ident: "HTMLHeadingElement"
+  Method
+    Type: 0
+    Filename: "HTMLHeadingElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLHeadingElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_heading_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "size"
+  Method
+    Type: 3
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "size"
+  Method
+    Type: 4
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "align"
+  Method
+    Type: 4
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "noShade"
+  Method
+    Type: 3
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLHRElement"
+    Ident: "noShade"
+  Ident: "HTMLHRElement"
+  Method
+    Type: 0
+    Filename: "HTMLHRElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLHRElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_hr_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLHTMLElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLHtmlElement"
+    Ident: "version"
+  Method
+    Type: 3
+    Filename: "HTMLHTMLElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLHtmlElement"
+    Ident: "version"
+  Ident: "HTMLHtmlElement"
+  Method
+    Type: 0
+    Filename: "HTMLHTMLElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLHtmlElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_html_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 41
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "src"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "src"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "scrolling"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "scrolling"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "marginWidth"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "marginWidth"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "marginHeight"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "marginHeight"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "longDesc"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "longDesc"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "height"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "height"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "frameBorder"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "frameBorder"
+  Method
+    Type: 4
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLIFrameElement"
+    Ident: "align"
+  Ident: "HTMLIFrameElement"
+  Method
+    Type: 0
+    Filename: "HTMLIFrameElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLIFrameElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_iframe_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 47
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 46
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 44
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "vspace"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 43
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "vspace"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 41
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "hspace"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "hspace"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "height"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "height"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "useMap"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "useMap"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "src"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "src"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "longDesc"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "longDesc"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "isMap"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "isMap"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "border"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "border"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "alt"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "alt"
+  Method
+    Type: 4
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLImageElement"
+    Ident: "align"
+  Ident: "HTMLImageElement"
+  Method
+    Type: 0
+    Filename: "HTMLImageElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLImageElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_image_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 64
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 62
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "size"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 61
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "size"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 59
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "maxLength"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 58
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "maxLength"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 56
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 55
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "value"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 53
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "valueLow"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 52
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "valueLow"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 50
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "valueHigh"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 49
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "valueHigh"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 47
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "valueAsNumber"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 46
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "valueAsNumber"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 44
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "useMap"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 43
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "useMap"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 41
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "src"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "src"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "readOnly"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "readOnly"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "disabled"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "disabled"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "defaultValue"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "defaultValue"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "defaultChecked"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "defaultChecked"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "checked"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "checked"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "alt"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "alt"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "align"
+  Method
+    Type: 4
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "accept"
+  Method
+    Type: 3
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLInputElement"
+    Ident: "accept"
+  Ident: "HTMLInputElement"
+  Method
+    Type: 0
+    Filename: "HTMLInputElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLInputElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_input_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLLabelElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLLabelElement"
+    Ident: "htmlFor"
+  Method
+    Type: 3
+    Filename: "HTMLLabelElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLLabelElement"
+    Ident: "htmlFor"
+  Ident: "HTMLLabelElement"
+  Method
+    Type: 0
+    Filename: "HTMLLabelElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLLabelElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_label_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLLegendElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLLegendElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLLegendElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLLegendElement"
+    Ident: "align"
+  Ident: "HTMLLegendElement"
+  Method
+    Type: 0
+    Filename: "HTMLLegendElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLLegendElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_legend_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLLIElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLLIElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLLIElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLLIElement"
+    Ident: "value"
+  Method
+    Type: 4
+    Filename: "HTMLLIElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLLIElement"
+    Ident: "type"
+  Method
+    Type: 3
+    Filename: "HTMLLIElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLLIElement"
+    Ident: "type"
+  Ident: "HTMLLIElement"
+  Method
+    Type: 0
+    Filename: "HTMLLIElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLLIElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_li_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "type"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "target"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "target"
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "rev"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "rev"
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "rel"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "rel"
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "media"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "media"
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "href"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "href"
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "hreflang"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "hreflang"
+  Method
+    Type: 4
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "charset"
+  Method
+    Type: 3
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLLinkElement"
+    Ident: "charset"
+  Ident: "HTMLLinkElement"
+  Method
+    Type: 0
+    Filename: "HTMLLinkElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLLinkElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_link_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLMapElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLMapElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLMapElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLMapElement"
+    Ident: "name"
+  Ident: "HTMLMapElement"
+  Method
+    Type: 0
+    Filename: "HTMLMapElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLMapElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_map_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLMarqueeElement"
+  Method
+    Type: 0
+    Filename: "HTMLMarqueeElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLMarqueeElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_marquee_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLMenuElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLMenuElement"
+    Ident: "compact"
+  Method
+    Type: 3
+    Filename: "HTMLMenuElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLMenuElement"
+    Ident: "compact"
+  Ident: "HTMLMenuElement"
+  Method
+    Type: 0
+    Filename: "HTMLMenuElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLMenuElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_menu_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "scheme"
+  Method
+    Type: 3
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "scheme"
+  Method
+    Type: 4
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "httpEquiv"
+  Method
+    Type: 3
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "httpEquiv"
+  Method
+    Type: 4
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "content"
+  Method
+    Type: 3
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLMetaElement"
+    Ident: "content"
+  Ident: "HTMLMetaElement"
+  Method
+    Type: 0
+    Filename: "HTMLMetaElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLMetaElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_meta_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 53
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 52
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 50
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "useMap"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 49
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "useMap"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 47
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "type"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 46
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 44
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "standby"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 43
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "standby"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 41
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "height"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "height"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "declare"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "declare"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "data"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "data"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "codeType"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "codeType"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "code"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "code"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "codeBase"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "codeBase"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "border"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "border"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "archive"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "archive"
+  Method
+    Type: 4
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLObjectElement"
+    Ident: "align"
+  Ident: "HTMLObjectElement"
+  Method
+    Type: 0
+    Filename: "HTMLObjectElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLObjectElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_object_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 27
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "text"
+  Method
+    Type: 4
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "selected"
+  Method
+    Type: 3
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "selected"
+  Method
+    Type: 4
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "label"
+  Method
+    Type: 3
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "label"
+  Method
+    Type: 4
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "disabled"
+  Method
+    Type: 3
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "disabled"
+  Method
+    Type: 4
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "defaultSelected"
+  Method
+    Type: 3
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLOptionElement"
+    Ident: "defaultSelected"
+  Ident: "HTMLOptionElement"
+  Method
+    Type: 0
+    Filename: "HTMLOptionElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLOptionElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_option_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLOListElement.bnd"
+    Linenumber: 18
+    Class
+      Ident: "HTMLOListElement"
+    Ident: "type"
+  Method
+    Type: 3
+    Filename: "HTMLOListElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLOListElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLOListElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLOListElement"
+    Ident: "start"
+  Method
+    Type: 3
+    Filename: "HTMLOListElement.bnd"
+    Linenumber: 15
+    Class
+      Ident: "HTMLOListElement"
+    Ident: "start"
+  Method
+    Type: 4
+    Filename: "HTMLOListElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLOListElement"
+    Ident: "compact"
+  Method
+    Type: 3
+    Filename: "HTMLOListElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLOListElement"
+    Ident: "compact"
+  Ident: "HTMLOListElement"
+  Method
+    Type: 0
+    Filename: "HTMLOListElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLOListElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_o_list_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLParagraphElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLParagraphElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLParagraphElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLParagraphElement"
+    Ident: "align"
+  Ident: "HTMLParagraphElement"
+  Method
+    Type: 0
+    Filename: "HTMLParagraphElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLParagraphElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_paragraph_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "valueType"
+  Method
+    Type: 3
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "valueType"
+  Method
+    Type: 4
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "value"
+  Method
+    Type: 4
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "type"
+  Method
+    Type: 3
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLParamElement"
+    Ident: "name"
+  Ident: "HTMLParamElement"
+  Method
+    Type: 0
+    Filename: "HTMLParamElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLParamElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_param_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLPreElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLPreElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLPreElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLPreElement"
+    Ident: "width"
+  Ident: "HTMLPreElement"
+  Method
+    Type: 0
+    Filename: "HTMLPreElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLPreElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_pre_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLQuoteElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLQuoteElement"
+    Ident: "cite"
+  Method
+    Type: 3
+    Filename: "HTMLQuoteElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLQuoteElement"
+    Ident: "cite"
+  Ident: "HTMLQuoteElement"
+  Method
+    Type: 0
+    Filename: "HTMLQuoteElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLQuoteElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_quote_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "type"
+  Method
+    Type: 3
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "text"
+  Method
+    Type: 3
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "text"
+  Method
+    Type: 4
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "src"
+  Method
+    Type: 3
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "src"
+  Method
+    Type: 4
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "htmlFor"
+  Method
+    Type: 3
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "htmlFor"
+  Method
+    Type: 4
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "event"
+  Method
+    Type: 3
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "event"
+  Method
+    Type: 4
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "defer"
+  Method
+    Type: 3
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "defer"
+  Method
+    Type: 4
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "charset"
+  Method
+    Type: 3
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLScriptElement"
+    Ident: "charset"
+  Ident: "HTMLScriptElement"
+  Method
+    Type: 0
+    Filename: "HTMLScriptElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLScriptElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_script_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 24
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "multiple"
+  Method
+    Type: 3
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "multiple"
+  Method
+    Type: 4
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "disabled"
+  Method
+    Type: 3
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLSelectElement"
+    Ident: "disabled"
+  Ident: "HTMLSelectElement"
+  Method
+    Type: 0
+    Filename: "HTMLSelectElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLSelectElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_select_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLStyleElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLStyleElement"
+    Ident: "type"
+  Method
+    Type: 3
+    Filename: "HTMLStyleElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLStyleElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLStyleElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLStyleElement"
+    Ident: "media"
+  Method
+    Type: 3
+    Filename: "HTMLStyleElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLStyleElement"
+    Ident: "media"
+  Ident: "HTMLStyleElement"
+  Method
+    Type: 0
+    Filename: "HTMLStyleElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLStyleElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_style_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLTableCaptionElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTableCaptionElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLTableCaptionElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTableCaptionElement"
+    Ident: "align"
+  Ident: "HTMLTableCaptionElement"
+  Method
+    Type: 0
+    Filename: "HTMLTableCaptionElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTableCaptionElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_table_caption_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 46
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "rowSpan"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 45
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "rowSpan"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 43
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "colSpan"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 42
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "colSpan"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 40
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "cellIndex"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "vAlign"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "vAlign"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "noWrap"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "noWrap"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "height"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "height"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "ch"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "ch"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "chOff"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "chOff"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "bgColor"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "bgColor"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "axis"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "axis"
+  Method
+    Type: 4
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTableCellElement"
+    Ident: "align"
+  Ident: "HTMLTableCellElement"
+  Method
+    Type: 0
+    Filename: "HTMLTableCellElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTableCellElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_table_cell_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "vAlign"
+  Method
+    Type: 3
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "vAlign"
+  Method
+    Type: 4
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "ch"
+  Method
+    Type: 3
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "ch"
+  Method
+    Type: 4
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "chOff"
+  Method
+    Type: 3
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "chOff"
+  Method
+    Type: 4
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTableColElement"
+    Ident: "align"
+  Ident: "HTMLTableColElement"
+  Method
+    Type: 0
+    Filename: "HTMLTableColElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTableColElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_table_col_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 38
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "width"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 37
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "width"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 35
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "summary"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 34
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "summary"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 32
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "rules"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 31
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "rules"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 29
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "frame"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "frame"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "cellSpacing"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "cellSpacing"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "cellPadding"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "cellPadding"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "border"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "border"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "bgColor"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "bgColor"
+  Method
+    Type: 4
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTableElement"
+    Ident: "align"
+  Ident: "HTMLTableElement"
+  Method
+    Type: 0
+    Filename: "HTMLTableElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTableElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_table_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 3
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 30
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "sectionRowIndex"
+  Method
+    Type: 3
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "rowIndex"
+  Method
+    Type: 4
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 26
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "vAlign"
+  Method
+    Type: 3
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "vAlign"
+  Method
+    Type: 4
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "ch"
+  Method
+    Type: 3
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "ch"
+  Method
+    Type: 4
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "chOff"
+  Method
+    Type: 3
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "chOff"
+  Method
+    Type: 4
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "bgColor"
+  Method
+    Type: 3
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "bgColor"
+  Method
+    Type: 4
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTableRowElement"
+    Ident: "align"
+  Ident: "HTMLTableRowElement"
+  Method
+    Type: 0
+    Filename: "HTMLTableRowElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTableRowElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_table_row_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "vAlign"
+  Method
+    Type: 3
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "vAlign"
+  Method
+    Type: 4
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "ch"
+  Method
+    Type: 3
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "ch"
+  Method
+    Type: 4
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "chOff"
+  Method
+    Type: 3
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "chOff"
+  Method
+    Type: 4
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "align"
+  Method
+    Type: 3
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTableSectionElement"
+    Ident: "align"
+  Ident: "HTMLTableSectionElement"
+  Method
+    Type: 0
+    Filename: "HTMLTableSectionElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTableSectionElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_table_section_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 28
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 27
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 25
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "type"
+  Method
+    Type: 4
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 23
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "readOnly"
+  Method
+    Type: 3
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 22
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "readOnly"
+  Method
+    Type: 4
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 20
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "name"
+  Method
+    Type: 3
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 19
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "name"
+  Method
+    Type: 4
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 17
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "disabled"
+  Method
+    Type: 3
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 16
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "disabled"
+  Method
+    Type: 4
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "defaultValue"
+  Method
+    Type: 3
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTextAreaElement"
+    Ident: "defaultValue"
+  Ident: "HTMLTextAreaElement"
+  Method
+    Type: 0
+    Filename: "HTMLTextAreaElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTextAreaElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_text_area_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "HTMLTitleElement.bnd"
+    Linenumber: 14
+    Class
+      Ident: "HTMLTitleElement"
+    Ident: "text"
+  Method
+    Type: 3
+    Filename: "HTMLTitleElement.bnd"
+    Linenumber: 13
+    Class
+      Ident: "HTMLTitleElement"
+    Ident: "text"
+  Ident: "HTMLTitleElement"
+  Method
+    Type: 0
+    Filename: "HTMLTitleElement.bnd"
+    Linenumber: 11
+    Class
+      Ident: "HTMLTitleElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_title_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLUnknownElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 150
+    Class
+      Ident: "HTMLUnknownElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_unknown_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLDirectoryElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 151
+    Class
+      Ident: "HTMLDirectoryElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_directory_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLCanvasElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 152
+    Class
+      Ident: "HTMLCanvasElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_canvas_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLTemplateElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 153
+    Class
+      Ident: "HTMLTemplateElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_template_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLDialogElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 154
+    Class
+      Ident: "HTMLDialogElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_dialog_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLMenuItemElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 155
+    Class
+      Ident: "HTMLMenuItemElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_menu_item_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLDetailsElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 156
+    Class
+      Ident: "HTMLDetailsElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_details_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLFieldSetElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 157
+    Class
+      Ident: "HTMLFieldSetElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_field_set_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLMeterElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 158
+    Class
+      Ident: "HTMLMeterElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_meter_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLProgressElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 159
+    Class
+      Ident: "HTMLProgressElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_progress_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLOutputElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 160
+    Class
+      Ident: "HTMLOutputElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_output_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLKeygenElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 161
+    Class
+      Ident: "HTMLKeygenElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_keygen_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLOptGroupElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 162
+    Class
+      Ident: "HTMLOptGroupElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_opt_group_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLDataListElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 163
+    Class
+      Ident: "HTMLDataListElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_data_list_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLMediaElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 164
+    Class
+      Ident: "HTMLMediaElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_media_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLTrackElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 165
+    Class
+      Ident: "HTMLTrackElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_track_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLEmbedElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 166
+    Class
+      Ident: "HTMLEmbedElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_embed_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLSourceElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 167
+    Class
+      Ident: "HTMLSourceElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_source_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLPictureElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 168
+    Class
+      Ident: "HTMLPictureElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_picture_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLModElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 169
+    Class
+      Ident: "HTMLModElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_mod_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLSpanElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 170
+    Class
+      Ident: "HTMLSpanElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_span_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLTimeElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 171
+    Class
+      Ident: "HTMLTimeElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_time_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLDataElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 172
+    Class
+      Ident: "HTMLDataElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_data_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLDListElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 173
+    Class
+      Ident: "HTMLDListElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_d_list_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLUListElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 174
+    Class
+      Ident: "HTMLUListElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_u_list_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLHeadElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 175
+    Class
+      Ident: "HTMLHeadElement"
+    Parameter
+      Ident: "html_element"
+      Ident: "html_head_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLTableHeaderCellElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 178
+    Class
+      Ident: "HTMLTableHeaderCellElement"
+    Parameter
+      Ident: "html_table_cell_element"
+      Ident: "html_table_header_cell_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLTableDataCellElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 179
+    Class
+      Ident: "HTMLTableDataCellElement"
+    Parameter
+      Ident: "html_table_cell_element"
+      Ident: "html_table_data_cell_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLAudioElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 182
+    Class
+      Ident: "HTMLAudioElement"
+    Parameter
+      Ident: "html_media_element"
+      Ident: "html_audio_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "HTMLVideoElement"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 183
+    Class
+      Ident: "HTMLVideoElement"
+    Parameter
+      Ident: "html_media_element"
+      Ident: "html_video_element"
+      TypeName: "*"
+      TypeName: "dom_html_element"
+      TypeName: "struct"
+Class
+  Ident: "Text"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 185
+    Class
+      Ident: "Text"
+    Parameter
+      Ident: "character_data"
+      Ident: "text"
+      TypeName: "*"
+      TypeName: "dom_node_text"
+      TypeName: "struct"
+Class
+  Ident: "Comment"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 186
+    Class
+      Ident: "Comment"
+    Parameter
+      Ident: "character_data"
+      Ident: "comment"
+      TypeName: "*"
+      TypeName: "dom_node_comment"
+      TypeName: "struct"
+Class
+  Ident: "ProcessingInstruction"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 187
+    Class
+      Ident: "ProcessingInstruction"
+    Parameter
+      Ident: "character_data"
+      Ident: "text"
+      TypeName: "*"
+      TypeName: "dom_node_text"
+      TypeName: "struct"
+Class
+  Ident: "XMLDocument"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 189
+    Class
+      Ident: "XMLDocument"
+    Parameter
+      Ident: "document"
+      TypeName: "*"
+      TypeName: "dom_document"
+      TypeName: "struct"
+Class
+  Ident: "CharacterData"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 191
+    Class
+      Ident: "CharacterData"
+    Parameter
+      Ident: "node"
+      Ident: "character_data"
+      TypeName: "*"
+      TypeName: "dom_node_character_data"
+      TypeName: "struct"
+Class
+  Ident: "DocumentFragment"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 192
+    Class
+      Ident: "DocumentFragment"
+    Parameter
+      Ident: "node"
+      Ident: "document"
+      TypeName: "*"
+      TypeName: "dom_document"
+      TypeName: "struct"
+Class
+  Ident: "DocumentType"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 193
+    Class
+      Ident: "DocumentType"
+    Parameter
+      Ident: "node"
+      Ident: "document"
+      TypeName: "*"
+      TypeName: "dom_document"
+      TypeName: "struct"
+Class
+  Ident: "PropertyNodeList"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 195
+    Class
+      Ident: "PropertyNodeList"
+    Parameter
+      Ident: "nodes"
+      TypeName: "*"
+      TypeName: "dom_nodelist"
+      TypeName: "struct"
+Class
+  Ident: "RadioNodeList"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 196
+    Class
+      Ident: "RadioNodeList"
+    Parameter
+      Ident: "nodes"
+      TypeName: "*"
+      TypeName: "dom_nodelist"
+      TypeName: "struct"
+Class
+  Ident: "HTMLAllCollection"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 198
+    Class
+      Ident: "HTMLAllCollection"
+    Parameter
+      Ident: "coll"
+      TypeName: "*"
+      TypeName: "dom_html_collection"
+      TypeName: "struct"
+Class
+  Ident: "HTMLFormControlsCollection"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 199
+    Class
+      Ident: "HTMLFormControlsCollection"
+    Parameter
+      Ident: "coll"
+      TypeName: "*"
+      TypeName: "dom_html_collection"
+      TypeName: "struct"
+Class
+  Ident: "HTMLOptionsCollection"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 200
+    Class
+      Ident: "HTMLOptionsCollection"
+    Parameter
+      Ident: "coll"
+      TypeName: "*"
+      TypeName: "dom_html_collection"
+      TypeName: "struct"
+Class
+  Ident: "HTMLPropertiesCollection"
+  Method
+    Type: 0
+    Filename: "content/handlers/javascript/duktape/netsurf.bnd"
+    Linenumber: 201
+    Class
+      Ident: "HTMLPropertiesCollection"
+    Parameter
+      Ident: "coll"
+      TypeName: "*"
+      TypeName: "dom_html_collection"
+      TypeName: "struct"
