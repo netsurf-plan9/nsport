@@ -39,6 +39,7 @@ struct dom_html_br_element;
 
 /* Private data for EventInit dictionary */
 typedef struct {
+	char __dummy;
 } event_init_private_t;
 
 /* Private data for UIEventInit dictionary */
@@ -88,6 +89,7 @@ typedef struct {
 
 /* Private data for EventSourceInit dictionary */
 typedef struct {
+	char __dummy;
 } event_source_init_private_t;
 
 /* Private data for MessageEventInit dictionary */
@@ -122,10 +124,12 @@ typedef struct {
 
 /* Private data for HitRegionOptions dictionary */
 typedef struct {
+	char __dummy;
 } hit_region_options_private_t;
 
 /* Private data for CanvasRenderingContext2DSettings dictionary */
 typedef struct {
+	char __dummy;
 } canvas_rendering_context2d_settings_private_t;
 
 /* Private data for RelatedEventInit dictionary */
@@ -145,6 +149,7 @@ typedef struct {
 
 /* Private data for MutationObserverInit dictionary */
 typedef struct {
+	char __dummy;
 } mutation_observer_init_private_t;
 
 /* Private data for CustomEventInit dictionary */
@@ -159,10 +164,12 @@ typedef struct {
 
 /* Private data for URLSearchParams interface */
 typedef struct {
+	char __dummy;
 } url_search_params_private_t;
 
 /* Private data for URL interface */
 typedef struct {
+	char __dummy;
 } url_private_t;
 
 /* Private data for Event interface */
@@ -207,22 +214,27 @@ typedef struct {
 
 /* Private data for CSS interface */
 typedef struct {
+	char __dummy;
 } css_private_t;
 
 /* Private data for PseudoElement interface */
 typedef struct {
+	char __dummy;
 } pseudo_element_private_t;
 
 /* Private data for SVGElement interface */
 typedef struct {
+	char __dummy;
 } svg_element_private_t;
 
 /* Private data for CSSStyleDeclaration interface */
 typedef struct {
+	char __dummy;
 } css_style_declaration_private_t;
 
 /* Private data for CSSRule interface */
 typedef struct {
+	char __dummy;
 } css_rule_private_t;
 
 /* Private data for CSSNamespaceRule interface */
@@ -262,14 +274,17 @@ typedef struct {
 
 /* Private data for CSSRuleList interface */
 typedef struct {
+	char __dummy;
 } css_rule_list_private_t;
 
 /* Private data for StyleSheetList interface */
 typedef struct {
+	char __dummy;
 } style_sheet_list_private_t;
 
 /* Private data for StyleSheet interface */
 typedef struct {
+	char __dummy;
 } style_sheet_private_t;
 
 /* Private data for CSSStyleSheet interface */
@@ -279,6 +294,7 @@ typedef struct {
 
 /* Private data for MediaList interface */
 typedef struct {
+	char __dummy;
 } media_list_private_t;
 
 /* Private data for EventTarget interface */
@@ -341,14 +357,17 @@ typedef struct {
 
 /* Private data for Storage interface */
 typedef struct {
+	char __dummy;
 } storage_private_t;
 
 /* Private data for WorkerLocation interface */
 typedef struct {
+	char __dummy;
 } worker_location_private_t;
 
 /* Private data for WorkerNavigator interface */
 typedef struct {
+	char __dummy;
 } worker_navigator_private_t;
 
 /* Private data for SharedWorker interface */
@@ -388,6 +407,7 @@ typedef struct {
 
 /* Private data for MessageChannel interface */
 typedef struct {
+	char __dummy;
 } message_channel_private_t;
 
 /* Private data for CloseEvent interface */
@@ -412,30 +432,37 @@ typedef struct {
 
 /* Private data for ImageBitmap interface */
 typedef struct {
+	char __dummy;
 } image_bitmap_private_t;
 
 /* Private data for External interface */
 typedef struct {
+	char __dummy;
 } external_private_t;
 
 /* Private data for MimeType interface */
 typedef struct {
+	char __dummy;
 } mime_type_private_t;
 
 /* Private data for Plugin interface */
 typedef struct {
+	char __dummy;
 } plugin_private_t;
 
 /* Private data for MimeTypeArray interface */
 typedef struct {
+	char __dummy;
 } mime_type_array_private_t;
 
 /* Private data for PluginArray interface */
 typedef struct {
+	char __dummy;
 } plugin_array_private_t;
 
 /* Private data for Navigator interface */
 typedef struct {
+	char __dummy;
 } navigator_private_t;
 
 /* Private data for ErrorEvent interface */
@@ -475,10 +502,12 @@ typedef struct {
 
 /* Private data for History interface */
 typedef struct {
+	char __dummy;
 } history_private_t;
 
 /* Private data for BarProp interface */
 typedef struct {
+	char __dummy;
 } bar_prop_private_t;
 
 /* Private data for Window interface */
@@ -497,50 +526,62 @@ typedef struct {
 
 /* Private data for DataTransferItem interface */
 typedef struct {
+	char __dummy;
 } data_transfer_item_private_t;
 
 /* Private data for DataTransferItemList interface */
 typedef struct {
+	char __dummy;
 } data_transfer_item_list_private_t;
 
 /* Private data for DataTransfer interface */
 typedef struct {
+	char __dummy;
 } data_transfer_private_t;
 
 /* Private data for Touch interface */
 typedef struct {
+	char __dummy;
 } touch_private_t;
 
 /* Private data for Path2D interface */
 typedef struct {
+	char __dummy;
 } path2d_private_t;
 
 /* Private data for DrawingStyle interface */
 typedef struct {
+	char __dummy;
 } drawing_style_private_t;
 
 /* Private data for ImageData interface */
 typedef struct {
+	char __dummy;
 } image_data_private_t;
 
 /* Private data for TextMetrics interface */
 typedef struct {
+	char __dummy;
 } text_metrics_private_t;
 
 /* Private data for CanvasPattern interface */
 typedef struct {
+	char __dummy;
 } canvas_pattern_private_t;
 
 /* Private data for CanvasGradient interface */
 typedef struct {
+	char __dummy;
 } canvas_gradient_private_t;
 
 /* Private data for CanvasRenderingContext2D interface */
 typedef struct {
+	char __dummy;
 } canvas_rendering_context2d_private_t;
 
 /* Private data for CanvasProxy interface */
 typedef struct {
+	char __dummy;
 } canvas_proxy_private_t;
 
 /* Private data for HTMLCanvasElement interface */
@@ -585,6 +626,7 @@ typedef struct {
 
 /* Private data for ValidityState interface */
 typedef struct {
+	char __dummy;
 } validity_state_private_t;
 
 /* Private data for AutocompleteErrorEvent interface */
@@ -724,6 +766,7 @@ typedef struct {
 
 /* Private data for TimeRanges interface */
 typedef struct {
+	char __dummy;
 } time_ranges_private_t;
 
 /* Private data for TextTrackCue interface */
@@ -733,6 +776,7 @@ typedef struct {
 
 /* Private data for TextTrackCueList interface */
 typedef struct {
+	char __dummy;
 } text_track_cue_list_private_t;
 
 /* Private data for TextTrack interface */
@@ -752,6 +796,7 @@ typedef struct {
 
 /* Private data for VideoTrack interface */
 typedef struct {
+	char __dummy;
 } video_track_private_t;
 
 /* Private data for VideoTrackList interface */
@@ -761,6 +806,7 @@ typedef struct {
 
 /* Private data for AudioTrack interface */
 typedef struct {
+	char __dummy;
 } audio_track_private_t;
 
 /* Private data for AudioTrackList interface */
@@ -770,6 +816,7 @@ typedef struct {
 
 /* Private data for MediaError interface */
 typedef struct {
+	char __dummy;
 } media_error_private_t;
 
 /* Private data for HTMLMediaElement interface */
@@ -954,10 +1001,12 @@ typedef struct {
 
 /* Private data for DOMElementMap interface */
 typedef struct {
+	char __dummy;
 } dom_element_map_private_t;
 
 /* Private data for DOMStringMap interface */
 typedef struct {
+	char __dummy;
 } dom_string_map_private_t;
 
 /* Private data for HTMLCollection interface */
@@ -987,18 +1036,22 @@ typedef struct {
 
 /* Private data for HTMLAllCollection interface */
 typedef struct {
+	char __dummy;
 } html_all_collection_private_t;
 
 /* Private data for XMLSerializer interface */
 typedef struct {
+	char __dummy;
 } xml_serializer_private_t;
 
 /* Private data for DOMParser interface */
 typedef struct {
+	char __dummy;
 } dom_parser_private_t;
 
 /* Private data for DOMTokenList interface */
 typedef struct {
+	char __dummy;
 } dom_token_list_private_t;
 
 /* Private data for DOMSettableTokenList interface */
@@ -1008,18 +1061,22 @@ typedef struct {
 
 /* Private data for NodeFilter interface */
 typedef struct {
+	char __dummy;
 } node_filter_private_t;
 
 /* Private data for TreeWalker interface */
 typedef struct {
+	char __dummy;
 } tree_walker_private_t;
 
 /* Private data for NodeIterator interface */
 typedef struct {
+	char __dummy;
 } node_iterator_private_t;
 
 /* Private data for Range interface */
 typedef struct {
+	char __dummy;
 } range_private_t;
 
 /* Private data for CharacterData interface */
@@ -1044,6 +1101,7 @@ typedef struct {
 
 /* Private data for Attr interface */
 typedef struct {
+	char __dummy;
 } attr_private_t;
 
 /* Private data for NamedNodeMap interface */
@@ -1053,6 +1111,7 @@ typedef struct {
 
 /* Private data for DOMImplementation interface */
 typedef struct {
+	char __dummy;
 } dom_implementation_private_t;
 
 /* Private data for Document interface */
@@ -1067,10 +1126,12 @@ typedef struct {
 
 /* Private data for MutationRecord interface */
 typedef struct {
+	char __dummy;
 } mutation_record_private_t;
 
 /* Private data for MutationObserver interface */
 typedef struct {
+	char __dummy;
 } mutation_observer_private_t;
 
 /* Private data for DocumentType interface */
@@ -1085,6 +1146,7 @@ typedef struct {
 
 /* Private data for EventListener interface */
 typedef struct {
+	char __dummy;
 } event_listener_private_t;
 
 /* Private data for CustomEvent interface */
