@@ -47,6 +47,7 @@ switch($1){
 	case 'sync-upstream'
 		do pull -f -b upstream/master -u upstream
 	case 'pull'
+		git/pull
 		do pull
 	case 'push'
 		do push
