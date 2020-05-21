@@ -4,7 +4,7 @@
 iconv_t
 iconv_open(char *to, char *from)
 {
-	fprintf(stderr,"DBG: iconv_open(%s -> %s)\n", from, to);
+//	fprintf(stderr,"DBG: iconv_open(%s -> %s)\n", from, to);
 	return (void *) 0;
 }
 
@@ -18,8 +18,8 @@ iconv(iconv_t cd, char **inbuf, size_t *inbytesleft,
 	if(inbuf == NULL || outbuf == NULL)
 		return 0;
 
-	fprintf(stderr, "[DBG] iconv [%s] in=%d out=%d\n",
-			*inbuf, *inbytesleft, *outbytesleft);
+//	fprintf(stderr, "[DBG] iconv [%s] in=%d out=%d\n",
+//			*inbuf, *inbytesleft, *outbytesleft);
 
 	inp = *inbuf;
 	outp= *outbuf;
@@ -40,7 +40,7 @@ iconv(iconv_t cd, char **inbuf, size_t *inbytesleft,
 
 int iconv_close(iconv_t cd)
 {
-	fprintf(stderr,"DBG: iconv_close()\n");
+//	fprintf(stderr,"DBG: iconv_close()\n");
 	return 0;
 }
 
