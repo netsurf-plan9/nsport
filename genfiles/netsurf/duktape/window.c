@@ -34,9 +34,9 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
@@ -45,7 +45,7 @@ struct dom_html_br_element;
 #include "netsurf/browser_window.h"
 #include "content/hlcache.h"
 #include "html/html.h"
-#include "html/html_internal.h"
+#include "html/private.h"
 #include "desktop/gui_internal.h"
 #include "netsurf/misc.h"
 #include "utils/ring.h"
@@ -261,9 +261,38 @@ static duk_ret_t dukky_window_closedown_thread(duk_context *ctx)
 
 	NSLOG(dukky, DEEPDEBUG, "Closing down thread");
 	while (priv->schedule_ring != NULL) {
+		window_schedule_t *to_remove = NULL;
+		// Find a schedule item to remove
+		RING_ITERATE_START(window_schedule_t, priv->schedule_ring, sched) {
+			if (sched->running == false) {
+				// This one is not running, we can remove it
+				to_remove = sched;
+				RING_ITERATE_STOP(window->schedule_ring, sched);
+			} else if (sched->repeat_timeout != 0) {
+				// This one is running and has yet to be
+				// cancelled, so prevent it rescheduling itself
+				NSLOG(dukky, DEEPDEBUG,
+				      "Cancelling in-train callback %"PRIsizet,
+				      sched->handle);
+				sched->repeat_timeout = 0;
+			}
+		} RING_ITERATE_END(priv->schedule_ring, sched);
+
+		if (to_remove == NULL) {
+			// We didn't find any non-running callbacks
+			// so let's log that and break out of the closedown
+			// loop so we can continue and hopefully close down
+			NSLOG(dukky, DEEPDEBUG,
+			      "Leaving in-train callbacks to unwind");
+			break;
+		}
+		
+		// Remove the handle we found, this will reduce the callback
+		// scheduler ring by one and perhaps leave it empty so we can
+		// finish the closedown.
 		window_remove_callback_by_handle(ctx,
 						 priv,
-						 priv->schedule_ring->handle);
+						 to_remove->handle);
 	}
 
 	return 0;
@@ -273,8 +302,11 @@ static duk_ret_t dukky_window_closedown_thread(duk_context *ctx)
 static void dukky_window___init(duk_context *ctx, window_private_t *priv, struct browser_window *win, struct html_content *htmlc)
 {
 	dukky_event_target___init(ctx, &priv->parent);
-#line 250 "Window.bnd"
+#line 279 "Window.bnd"
 
+	/* It makes no sense if win or htmlc are NULL */
+	assert(win != NULL);
+	assert(htmlc != NULL);
 	/* element window */
 	priv->win = win;
 	priv->htmlc = htmlc;
@@ -286,7 +318,7 @@ static void dukky_window___init(duk_context *ctx, window_private_t *priv, struct
 	      "URL is %s", nsurl_access(browser_window_access_url(priv->win)));
 	duk_push_object(ctx);
 	duk_put_prop_string(ctx, 0, WINDOW_CALLBACKS);
-#line 290 "window.c"
+#line 322 "window.c"
 }
 
 static void dukky_window___fini(duk_context *ctx, window_private_t *priv)
@@ -491,6 +523,7 @@ static duk_ret_t dukky_window_alert(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
+#line 499 "Window.bnd"
 
 	duk_idx_t dukky_argc = duk_get_top(ctx);
 	if (dukky_argc == 0) {
@@ -506,6 +539,7 @@ static duk_ret_t dukky_window_alert(duk_context *ctx)
 		NSLOG(netsurf, INFO, "JS ALERT: %*s", (int)msg_len, msg);
 	}
 	return 0;
+#line 543 "window.c"
 }
 
 static duk_ret_t dukky_window_confirm(duk_context *ctx)
@@ -890,7 +924,7 @@ static duk_ret_t dukky_window_setTimeout(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 485 "Window.bnd"
+#line 517 "Window.bnd"
 
 	duk_idx_t argc = duk_get_top(ctx);
 	duk_int_t timeout = 10;
@@ -908,7 +942,7 @@ static duk_ret_t dukky_window_setTimeout(duk_context *ctx)
 
 	duk_push_int(ctx, (duk_int_t)handle);
 	return 1;
-#line 912 "window.c"
+#line 946 "window.c"
 }
 
 static duk_ret_t dukky_window_clearTimeout(duk_context *ctx)
@@ -939,13 +973,13 @@ static duk_ret_t dukky_window_clearTimeout(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 525 "Window.bnd"
+#line 557 "Window.bnd"
 
 	duk_int_t handle = duk_get_int(ctx, 0);
 	window_remove_callback_by_handle(ctx, priv, (size_t) handle);
 
 	return 0;
-#line 949 "window.c"
+#line 983 "window.c"
 }
 
 static duk_ret_t dukky_window_setInterval(duk_context *ctx)
@@ -960,7 +994,7 @@ static duk_ret_t dukky_window_setInterval(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 505 "Window.bnd"
+#line 537 "Window.bnd"
 
 	duk_idx_t argc = duk_get_top(ctx);
 	duk_int_t timeout = 10;
@@ -978,7 +1012,7 @@ static duk_ret_t dukky_window_setInterval(duk_context *ctx)
 
 	duk_push_int(ctx, (duk_int_t)handle);
 	return 1;
-#line 982 "window.c"
+#line 1016 "window.c"
 }
 
 static duk_ret_t dukky_window_clearInterval(duk_context *ctx)
@@ -1009,31 +1043,17 @@ static duk_ret_t dukky_window_clearInterval(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 533 "Window.bnd"
+#line 565 "Window.bnd"
 
 	duk_int_t handle = duk_get_int(ctx, 0);
 	window_remove_callback_by_handle(ctx, priv, (size_t) handle);
 
 	return 0;
-#line 1019 "window.c"
+#line 1053 "window.c"
 }
 
 static duk_ret_t dukky_window_createImageBitmap(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 1) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 1, dukky_argc);
-	} else if (dukky_argc > 1) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 1);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		/* unhandled type check */
-	}
 	/* Get private data for method */
 	window_private_t *priv = NULL;
 	duk_push_global_object(ctx);
@@ -1059,11 +1079,11 @@ static duk_ret_t dukky_window_window_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 390 "Window.bnd"
+#line 422 "Window.bnd"
 
 	duk_push_this(ctx);
 	return 1;
-#line 1067 "window.c"
+#line 1087 "window.c"
 }
 
 static duk_ret_t dukky_window_self_getter(duk_context *ctx)
@@ -1093,13 +1113,13 @@ static duk_ret_t dukky_window_document_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 382 "Window.bnd"
+#line 414 "Window.bnd"
 
 	NSLOG(netsurf, DEBUG, "priv=%p", priv);
 	dom_document *doc = priv->htmlc->document;
 	dukky_push_node(ctx, (struct dom_node *)doc);
 	return 1;
-#line 1103 "window.c"
+#line 1123 "window.c"
 }
 
 static duk_ret_t dukky_window_name_getter(duk_context *ctx)
@@ -1114,13 +1134,13 @@ static duk_ret_t dukky_window_name_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 451 "Window.bnd"
+#line 483 "Window.bnd"
 
 	const char *name;
 	browser_window_get_name(priv->win, &name);
 	duk_push_string(ctx, name);
 	return 1;
-#line 1124 "window.c"
+#line 1144 "window.c"
 }
 
 static duk_ret_t dukky_window_name_setter(duk_context *ctx)
@@ -1135,13 +1155,13 @@ static duk_ret_t dukky_window_name_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 459 "Window.bnd"
+#line 491 "Window.bnd"
 
 	const char *name;
 	name = duk_to_string(ctx, -1);
 	browser_window_set_name(priv->win, name);
 	return 0;
-#line 1145 "window.c"
+#line 1165 "window.c"
 }
 
 static duk_ret_t dukky_window_location_getter(duk_context *ctx)
@@ -1156,7 +1176,7 @@ static duk_ret_t dukky_window_location_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 411 "Window.bnd"
+#line 443 "Window.bnd"
 
 	/* obtain location object for this window (if it exists) */
 	duk_push_this(ctx);
@@ -1174,7 +1194,7 @@ static duk_ret_t dukky_window_location_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, -3, MAGIC(Location));
 	}
 	return 1;
-#line 1178 "window.c"
+#line 1198 "window.c"
 }
 
 static duk_ret_t dukky_window_location_setter(duk_context *ctx)
@@ -1474,7 +1494,7 @@ static duk_ret_t dukky_window_navigator_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 431 "Window.bnd"
+#line 463 "Window.bnd"
 
 	duk_push_this(ctx);
 	duk_get_prop_string(ctx, -1, MAGIC(Navigator));
@@ -1492,7 +1512,7 @@ static duk_ret_t dukky_window_navigator_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, -3, MAGIC(Navigator));
 	}
 	return 1;
-#line 1496 "window.c"
+#line 1516 "window.c"
 }
 
 static duk_ret_t dukky_window_external_getter(duk_context *ctx)
@@ -1537,7 +1557,7 @@ static duk_ret_t dukky_window_console_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 396 "Window.bnd"
+#line 428 "Window.bnd"
 
 	duk_push_this(ctx);
 	duk_get_prop_string(ctx, -1, MAGIC(Console));
@@ -1550,7 +1570,7 @@ static duk_ret_t dukky_window_console_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, -3, MAGIC(Console));
 	}
 	return 1;
-#line 1554 "window.c"
+#line 1574 "window.c"
 }
 
 static duk_ret_t dukky_window_onabort_getter(duk_context *ctx)
@@ -1565,8 +1585,8 @@ static duk_ret_t dukky_window_onabort_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 541 "Window.bnd"
-#line 1570 "window.c"
+#line 573 "Window.bnd"
+#line 1590 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1599,8 +1619,8 @@ static duk_ret_t dukky_window_onabort_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 542 "Window.bnd"
-#line 1604 "window.c"
+#line 574 "Window.bnd"
+#line 1624 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1630,8 +1650,8 @@ static duk_ret_t dukky_window_onautocomplete_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 547 "Window.bnd"
-#line 1635 "window.c"
+#line 579 "Window.bnd"
+#line 1655 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1664,8 +1684,8 @@ static duk_ret_t dukky_window_onautocomplete_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 548 "Window.bnd"
-#line 1669 "window.c"
+#line 580 "Window.bnd"
+#line 1689 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1695,8 +1715,8 @@ static duk_ret_t dukky_window_onautocompleteerror_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 545 "Window.bnd"
-#line 1700 "window.c"
+#line 577 "Window.bnd"
+#line 1720 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1729,8 +1749,8 @@ static duk_ret_t dukky_window_onautocompleteerror_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 546 "Window.bnd"
-#line 1734 "window.c"
+#line 578 "Window.bnd"
+#line 1754 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1760,8 +1780,8 @@ static duk_ret_t dukky_window_onblur_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 553 "Window.bnd"
-#line 1765 "window.c"
+#line 585 "Window.bnd"
+#line 1785 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1794,8 +1814,8 @@ static duk_ret_t dukky_window_onblur_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 554 "Window.bnd"
-#line 1799 "window.c"
+#line 586 "Window.bnd"
+#line 1819 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1825,8 +1845,8 @@ static duk_ret_t dukky_window_oncancel_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 555 "Window.bnd"
-#line 1830 "window.c"
+#line 587 "Window.bnd"
+#line 1850 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1859,8 +1879,8 @@ static duk_ret_t dukky_window_oncancel_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 556 "Window.bnd"
-#line 1864 "window.c"
+#line 588 "Window.bnd"
+#line 1884 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1890,8 +1910,8 @@ static duk_ret_t dukky_window_oncanplay_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 559 "Window.bnd"
-#line 1895 "window.c"
+#line 591 "Window.bnd"
+#line 1915 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1924,8 +1944,8 @@ static duk_ret_t dukky_window_oncanplay_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 560 "Window.bnd"
-#line 1929 "window.c"
+#line 592 "Window.bnd"
+#line 1949 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1955,8 +1975,8 @@ static duk_ret_t dukky_window_oncanplaythrough_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 557 "Window.bnd"
-#line 1960 "window.c"
+#line 589 "Window.bnd"
+#line 1980 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1989,8 +2009,8 @@ static duk_ret_t dukky_window_oncanplaythrough_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 558 "Window.bnd"
-#line 1994 "window.c"
+#line 590 "Window.bnd"
+#line 2014 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2020,8 +2040,8 @@ static duk_ret_t dukky_window_onchange_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 561 "Window.bnd"
-#line 2025 "window.c"
+#line 593 "Window.bnd"
+#line 2045 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2054,8 +2074,8 @@ static duk_ret_t dukky_window_onchange_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 562 "Window.bnd"
-#line 2059 "window.c"
+#line 594 "Window.bnd"
+#line 2079 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2085,8 +2105,8 @@ static duk_ret_t dukky_window_onclick_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 563 "Window.bnd"
-#line 2090 "window.c"
+#line 595 "Window.bnd"
+#line 2110 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2119,8 +2139,8 @@ static duk_ret_t dukky_window_onclick_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 564 "Window.bnd"
-#line 2124 "window.c"
+#line 596 "Window.bnd"
+#line 2144 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2150,8 +2170,8 @@ static duk_ret_t dukky_window_onclose_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 565 "Window.bnd"
-#line 2155 "window.c"
+#line 597 "Window.bnd"
+#line 2175 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2184,8 +2204,8 @@ static duk_ret_t dukky_window_onclose_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 566 "Window.bnd"
-#line 2189 "window.c"
+#line 598 "Window.bnd"
+#line 2209 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2215,8 +2235,8 @@ static duk_ret_t dukky_window_oncontextmenu_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 567 "Window.bnd"
-#line 2220 "window.c"
+#line 599 "Window.bnd"
+#line 2240 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2249,8 +2269,8 @@ static duk_ret_t dukky_window_oncontextmenu_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 568 "Window.bnd"
-#line 2254 "window.c"
+#line 600 "Window.bnd"
+#line 2274 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2280,8 +2300,8 @@ static duk_ret_t dukky_window_oncuechange_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 569 "Window.bnd"
-#line 2285 "window.c"
+#line 601 "Window.bnd"
+#line 2305 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2314,8 +2334,8 @@ static duk_ret_t dukky_window_oncuechange_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 570 "Window.bnd"
-#line 2319 "window.c"
+#line 602 "Window.bnd"
+#line 2339 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2345,8 +2365,8 @@ static duk_ret_t dukky_window_ondblclick_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 571 "Window.bnd"
-#line 2350 "window.c"
+#line 603 "Window.bnd"
+#line 2370 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2379,8 +2399,8 @@ static duk_ret_t dukky_window_ondblclick_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 572 "Window.bnd"
-#line 2384 "window.c"
+#line 604 "Window.bnd"
+#line 2404 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2410,8 +2430,8 @@ static duk_ret_t dukky_window_ondrag_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 585 "Window.bnd"
-#line 2415 "window.c"
+#line 617 "Window.bnd"
+#line 2435 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2444,8 +2464,8 @@ static duk_ret_t dukky_window_ondrag_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 586 "Window.bnd"
-#line 2449 "window.c"
+#line 618 "Window.bnd"
+#line 2469 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2475,8 +2495,8 @@ static duk_ret_t dukky_window_ondragend_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 573 "Window.bnd"
-#line 2480 "window.c"
+#line 605 "Window.bnd"
+#line 2500 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2509,8 +2529,8 @@ static duk_ret_t dukky_window_ondragend_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 574 "Window.bnd"
-#line 2514 "window.c"
+#line 606 "Window.bnd"
+#line 2534 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2540,8 +2560,8 @@ static duk_ret_t dukky_window_ondragenter_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 575 "Window.bnd"
-#line 2545 "window.c"
+#line 607 "Window.bnd"
+#line 2565 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2574,8 +2594,8 @@ static duk_ret_t dukky_window_ondragenter_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 576 "Window.bnd"
-#line 2579 "window.c"
+#line 608 "Window.bnd"
+#line 2599 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2605,8 +2625,8 @@ static duk_ret_t dukky_window_ondragexit_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 577 "Window.bnd"
-#line 2610 "window.c"
+#line 609 "Window.bnd"
+#line 2630 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2639,8 +2659,8 @@ static duk_ret_t dukky_window_ondragexit_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 578 "Window.bnd"
-#line 2644 "window.c"
+#line 610 "Window.bnd"
+#line 2664 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2670,8 +2690,8 @@ static duk_ret_t dukky_window_ondragleave_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 579 "Window.bnd"
-#line 2675 "window.c"
+#line 611 "Window.bnd"
+#line 2695 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2704,8 +2724,8 @@ static duk_ret_t dukky_window_ondragleave_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 580 "Window.bnd"
-#line 2709 "window.c"
+#line 612 "Window.bnd"
+#line 2729 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2735,8 +2755,8 @@ static duk_ret_t dukky_window_ondragover_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 581 "Window.bnd"
-#line 2740 "window.c"
+#line 613 "Window.bnd"
+#line 2760 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2769,8 +2789,8 @@ static duk_ret_t dukky_window_ondragover_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 582 "Window.bnd"
-#line 2774 "window.c"
+#line 614 "Window.bnd"
+#line 2794 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2800,8 +2820,8 @@ static duk_ret_t dukky_window_ondragstart_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 583 "Window.bnd"
-#line 2805 "window.c"
+#line 615 "Window.bnd"
+#line 2825 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2834,8 +2854,8 @@ static duk_ret_t dukky_window_ondragstart_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 584 "Window.bnd"
-#line 2839 "window.c"
+#line 616 "Window.bnd"
+#line 2859 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2865,8 +2885,8 @@ static duk_ret_t dukky_window_ondrop_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 587 "Window.bnd"
-#line 2870 "window.c"
+#line 619 "Window.bnd"
+#line 2890 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2899,8 +2919,8 @@ static duk_ret_t dukky_window_ondrop_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 588 "Window.bnd"
-#line 2904 "window.c"
+#line 620 "Window.bnd"
+#line 2924 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2930,8 +2950,8 @@ static duk_ret_t dukky_window_ondurationchange_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 589 "Window.bnd"
-#line 2935 "window.c"
+#line 621 "Window.bnd"
+#line 2955 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2964,8 +2984,8 @@ static duk_ret_t dukky_window_ondurationchange_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 590 "Window.bnd"
-#line 2969 "window.c"
+#line 622 "Window.bnd"
+#line 2989 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2995,8 +3015,8 @@ static duk_ret_t dukky_window_onemptied_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 591 "Window.bnd"
-#line 3000 "window.c"
+#line 623 "Window.bnd"
+#line 3020 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3029,8 +3049,8 @@ static duk_ret_t dukky_window_onemptied_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 592 "Window.bnd"
-#line 3034 "window.c"
+#line 624 "Window.bnd"
+#line 3054 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3060,8 +3080,8 @@ static duk_ret_t dukky_window_onended_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 593 "Window.bnd"
-#line 3065 "window.c"
+#line 625 "Window.bnd"
+#line 3085 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3094,8 +3114,8 @@ static duk_ret_t dukky_window_onended_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 594 "Window.bnd"
-#line 3099 "window.c"
+#line 626 "Window.bnd"
+#line 3119 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3125,8 +3145,8 @@ static duk_ret_t dukky_window_onerror_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 595 "Window.bnd"
-#line 3130 "window.c"
+#line 627 "Window.bnd"
+#line 3150 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3159,8 +3179,8 @@ static duk_ret_t dukky_window_onerror_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 596 "Window.bnd"
-#line 3164 "window.c"
+#line 628 "Window.bnd"
+#line 3184 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3190,8 +3210,8 @@ static duk_ret_t dukky_window_onfocus_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 597 "Window.bnd"
-#line 3195 "window.c"
+#line 629 "Window.bnd"
+#line 3215 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3224,8 +3244,8 @@ static duk_ret_t dukky_window_onfocus_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 598 "Window.bnd"
-#line 3229 "window.c"
+#line 630 "Window.bnd"
+#line 3249 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3255,8 +3275,8 @@ static duk_ret_t dukky_window_oninput_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 601 "Window.bnd"
-#line 3260 "window.c"
+#line 633 "Window.bnd"
+#line 3280 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3289,8 +3309,8 @@ static duk_ret_t dukky_window_oninput_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 602 "Window.bnd"
-#line 3294 "window.c"
+#line 634 "Window.bnd"
+#line 3314 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3320,8 +3340,8 @@ static duk_ret_t dukky_window_oninvalid_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 603 "Window.bnd"
-#line 3325 "window.c"
+#line 635 "Window.bnd"
+#line 3345 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3354,8 +3374,8 @@ static duk_ret_t dukky_window_oninvalid_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 604 "Window.bnd"
-#line 3359 "window.c"
+#line 636 "Window.bnd"
+#line 3379 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3385,8 +3405,8 @@ static duk_ret_t dukky_window_onkeydown_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 605 "Window.bnd"
-#line 3390 "window.c"
+#line 637 "Window.bnd"
+#line 3410 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3419,8 +3439,8 @@ static duk_ret_t dukky_window_onkeydown_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 606 "Window.bnd"
-#line 3424 "window.c"
+#line 638 "Window.bnd"
+#line 3444 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3450,8 +3470,8 @@ static duk_ret_t dukky_window_onkeypress_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 607 "Window.bnd"
-#line 3455 "window.c"
+#line 639 "Window.bnd"
+#line 3475 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3484,8 +3504,8 @@ static duk_ret_t dukky_window_onkeypress_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 608 "Window.bnd"
-#line 3489 "window.c"
+#line 640 "Window.bnd"
+#line 3509 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3515,8 +3535,8 @@ static duk_ret_t dukky_window_onkeyup_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 609 "Window.bnd"
-#line 3520 "window.c"
+#line 641 "Window.bnd"
+#line 3540 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3549,8 +3569,8 @@ static duk_ret_t dukky_window_onkeyup_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 610 "Window.bnd"
-#line 3554 "window.c"
+#line 642 "Window.bnd"
+#line 3574 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3580,8 +3600,8 @@ static duk_ret_t dukky_window_onload_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 619 "Window.bnd"
-#line 3585 "window.c"
+#line 651 "Window.bnd"
+#line 3605 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3614,8 +3634,8 @@ static duk_ret_t dukky_window_onload_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 620 "Window.bnd"
-#line 3619 "window.c"
+#line 652 "Window.bnd"
+#line 3639 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3645,8 +3665,8 @@ static duk_ret_t dukky_window_onloadeddata_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 613 "Window.bnd"
-#line 3650 "window.c"
+#line 645 "Window.bnd"
+#line 3670 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3679,8 +3699,8 @@ static duk_ret_t dukky_window_onloadeddata_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 614 "Window.bnd"
-#line 3684 "window.c"
+#line 646 "Window.bnd"
+#line 3704 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3710,8 +3730,8 @@ static duk_ret_t dukky_window_onloadedmetadata_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 615 "Window.bnd"
-#line 3715 "window.c"
+#line 647 "Window.bnd"
+#line 3735 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3744,8 +3764,8 @@ static duk_ret_t dukky_window_onloadedmetadata_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 616 "Window.bnd"
-#line 3749 "window.c"
+#line 648 "Window.bnd"
+#line 3769 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3775,8 +3795,8 @@ static duk_ret_t dukky_window_onloadstart_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 617 "Window.bnd"
-#line 3780 "window.c"
+#line 649 "Window.bnd"
+#line 3800 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3809,8 +3829,8 @@ static duk_ret_t dukky_window_onloadstart_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 618 "Window.bnd"
-#line 3814 "window.c"
+#line 650 "Window.bnd"
+#line 3834 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3840,8 +3860,8 @@ static duk_ret_t dukky_window_onmousedown_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 623 "Window.bnd"
-#line 3845 "window.c"
+#line 655 "Window.bnd"
+#line 3865 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3874,8 +3894,8 @@ static duk_ret_t dukky_window_onmousedown_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 624 "Window.bnd"
-#line 3879 "window.c"
+#line 656 "Window.bnd"
+#line 3899 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3905,8 +3925,8 @@ static duk_ret_t dukky_window_onmouseenter_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 625 "Window.bnd"
-#line 3910 "window.c"
+#line 657 "Window.bnd"
+#line 3930 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3939,8 +3959,8 @@ static duk_ret_t dukky_window_onmouseenter_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 626 "Window.bnd"
-#line 3944 "window.c"
+#line 658 "Window.bnd"
+#line 3964 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3970,8 +3990,8 @@ static duk_ret_t dukky_window_onmouseleave_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 627 "Window.bnd"
-#line 3975 "window.c"
+#line 659 "Window.bnd"
+#line 3995 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4004,8 +4024,8 @@ static duk_ret_t dukky_window_onmouseleave_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 628 "Window.bnd"
-#line 4009 "window.c"
+#line 660 "Window.bnd"
+#line 4029 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4035,8 +4055,8 @@ static duk_ret_t dukky_window_onmousemove_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 629 "Window.bnd"
-#line 4040 "window.c"
+#line 661 "Window.bnd"
+#line 4060 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4069,8 +4089,8 @@ static duk_ret_t dukky_window_onmousemove_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 630 "Window.bnd"
-#line 4074 "window.c"
+#line 662 "Window.bnd"
+#line 4094 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4100,8 +4120,8 @@ static duk_ret_t dukky_window_onmouseout_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 631 "Window.bnd"
-#line 4105 "window.c"
+#line 663 "Window.bnd"
+#line 4125 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4134,8 +4154,8 @@ static duk_ret_t dukky_window_onmouseout_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 632 "Window.bnd"
-#line 4139 "window.c"
+#line 664 "Window.bnd"
+#line 4159 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4165,8 +4185,8 @@ static duk_ret_t dukky_window_onmouseover_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 633 "Window.bnd"
-#line 4170 "window.c"
+#line 665 "Window.bnd"
+#line 4190 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4199,8 +4219,8 @@ static duk_ret_t dukky_window_onmouseover_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 634 "Window.bnd"
-#line 4204 "window.c"
+#line 666 "Window.bnd"
+#line 4224 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4230,8 +4250,8 @@ static duk_ret_t dukky_window_onmouseup_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 635 "Window.bnd"
-#line 4235 "window.c"
+#line 667 "Window.bnd"
+#line 4255 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4264,8 +4284,8 @@ static duk_ret_t dukky_window_onmouseup_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 636 "Window.bnd"
-#line 4269 "window.c"
+#line 668 "Window.bnd"
+#line 4289 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4295,8 +4315,8 @@ static duk_ret_t dukky_window_onwheel_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 691 "Window.bnd"
-#line 4300 "window.c"
+#line 723 "Window.bnd"
+#line 4320 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4329,8 +4349,8 @@ static duk_ret_t dukky_window_onwheel_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 692 "Window.bnd"
-#line 4334 "window.c"
+#line 724 "Window.bnd"
+#line 4354 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4360,8 +4380,8 @@ static duk_ret_t dukky_window_onpause_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 645 "Window.bnd"
-#line 4365 "window.c"
+#line 677 "Window.bnd"
+#line 4385 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4394,8 +4414,8 @@ static duk_ret_t dukky_window_onpause_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 646 "Window.bnd"
-#line 4399 "window.c"
+#line 678 "Window.bnd"
+#line 4419 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4425,8 +4445,8 @@ static duk_ret_t dukky_window_onplay_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 649 "Window.bnd"
-#line 4430 "window.c"
+#line 681 "Window.bnd"
+#line 4450 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4459,8 +4479,8 @@ static duk_ret_t dukky_window_onplay_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 650 "Window.bnd"
-#line 4464 "window.c"
+#line 682 "Window.bnd"
+#line 4484 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4490,8 +4510,8 @@ static duk_ret_t dukky_window_onplaying_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 647 "Window.bnd"
-#line 4495 "window.c"
+#line 679 "Window.bnd"
+#line 4515 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4524,8 +4544,8 @@ static duk_ret_t dukky_window_onplaying_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 648 "Window.bnd"
-#line 4529 "window.c"
+#line 680 "Window.bnd"
+#line 4549 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4555,8 +4575,8 @@ static duk_ret_t dukky_window_onprogress_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 653 "Window.bnd"
-#line 4560 "window.c"
+#line 685 "Window.bnd"
+#line 4580 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4589,8 +4609,8 @@ static duk_ret_t dukky_window_onprogress_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 654 "Window.bnd"
-#line 4594 "window.c"
+#line 686 "Window.bnd"
+#line 4614 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4620,8 +4640,8 @@ static duk_ret_t dukky_window_onratechange_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 655 "Window.bnd"
-#line 4625 "window.c"
+#line 687 "Window.bnd"
+#line 4645 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4654,8 +4674,8 @@ static duk_ret_t dukky_window_onratechange_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 656 "Window.bnd"
-#line 4659 "window.c"
+#line 688 "Window.bnd"
+#line 4679 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4685,8 +4705,8 @@ static duk_ret_t dukky_window_onreset_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 657 "Window.bnd"
-#line 4690 "window.c"
+#line 689 "Window.bnd"
+#line 4710 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4719,8 +4739,8 @@ static duk_ret_t dukky_window_onreset_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 658 "Window.bnd"
-#line 4724 "window.c"
+#line 690 "Window.bnd"
+#line 4744 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4750,8 +4770,8 @@ static duk_ret_t dukky_window_onresize_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 659 "Window.bnd"
-#line 4755 "window.c"
+#line 691 "Window.bnd"
+#line 4775 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4784,8 +4804,8 @@ static duk_ret_t dukky_window_onresize_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 660 "Window.bnd"
-#line 4789 "window.c"
+#line 692 "Window.bnd"
+#line 4809 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4815,8 +4835,8 @@ static duk_ret_t dukky_window_onscroll_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 661 "Window.bnd"
-#line 4820 "window.c"
+#line 693 "Window.bnd"
+#line 4840 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4849,8 +4869,8 @@ static duk_ret_t dukky_window_onscroll_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 662 "Window.bnd"
-#line 4854 "window.c"
+#line 694 "Window.bnd"
+#line 4874 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4880,8 +4900,8 @@ static duk_ret_t dukky_window_onseeked_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 663 "Window.bnd"
-#line 4885 "window.c"
+#line 695 "Window.bnd"
+#line 4905 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4914,8 +4934,8 @@ static duk_ret_t dukky_window_onseeked_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 664 "Window.bnd"
-#line 4919 "window.c"
+#line 696 "Window.bnd"
+#line 4939 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4945,8 +4965,8 @@ static duk_ret_t dukky_window_onseeking_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 665 "Window.bnd"
-#line 4950 "window.c"
+#line 697 "Window.bnd"
+#line 4970 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4979,8 +4999,8 @@ static duk_ret_t dukky_window_onseeking_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 666 "Window.bnd"
-#line 4984 "window.c"
+#line 698 "Window.bnd"
+#line 5004 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5010,8 +5030,8 @@ static duk_ret_t dukky_window_onselect_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 667 "Window.bnd"
-#line 5015 "window.c"
+#line 699 "Window.bnd"
+#line 5035 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5044,8 +5064,8 @@ static duk_ret_t dukky_window_onselect_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 668 "Window.bnd"
-#line 5049 "window.c"
+#line 700 "Window.bnd"
+#line 5069 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5075,8 +5095,8 @@ static duk_ret_t dukky_window_onshow_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 669 "Window.bnd"
-#line 5080 "window.c"
+#line 701 "Window.bnd"
+#line 5100 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5109,8 +5129,8 @@ static duk_ret_t dukky_window_onshow_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 670 "Window.bnd"
-#line 5114 "window.c"
+#line 702 "Window.bnd"
+#line 5134 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5140,8 +5160,8 @@ static duk_ret_t dukky_window_onsort_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 671 "Window.bnd"
-#line 5145 "window.c"
+#line 703 "Window.bnd"
+#line 5165 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5174,8 +5194,8 @@ static duk_ret_t dukky_window_onsort_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 672 "Window.bnd"
-#line 5179 "window.c"
+#line 704 "Window.bnd"
+#line 5199 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5205,8 +5225,8 @@ static duk_ret_t dukky_window_onstalled_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 673 "Window.bnd"
-#line 5210 "window.c"
+#line 705 "Window.bnd"
+#line 5230 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5239,8 +5259,8 @@ static duk_ret_t dukky_window_onstalled_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 674 "Window.bnd"
-#line 5244 "window.c"
+#line 706 "Window.bnd"
+#line 5264 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5270,8 +5290,8 @@ static duk_ret_t dukky_window_onsubmit_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 677 "Window.bnd"
-#line 5275 "window.c"
+#line 709 "Window.bnd"
+#line 5295 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5304,8 +5324,8 @@ static duk_ret_t dukky_window_onsubmit_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 678 "Window.bnd"
-#line 5309 "window.c"
+#line 710 "Window.bnd"
+#line 5329 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5335,8 +5355,8 @@ static duk_ret_t dukky_window_onsuspend_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 679 "Window.bnd"
-#line 5340 "window.c"
+#line 711 "Window.bnd"
+#line 5360 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5369,8 +5389,8 @@ static duk_ret_t dukky_window_onsuspend_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 680 "Window.bnd"
-#line 5374 "window.c"
+#line 712 "Window.bnd"
+#line 5394 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5400,8 +5420,8 @@ static duk_ret_t dukky_window_ontimeupdate_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 681 "Window.bnd"
-#line 5405 "window.c"
+#line 713 "Window.bnd"
+#line 5425 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5434,8 +5454,8 @@ static duk_ret_t dukky_window_ontimeupdate_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 682 "Window.bnd"
-#line 5439 "window.c"
+#line 714 "Window.bnd"
+#line 5459 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5465,8 +5485,8 @@ static duk_ret_t dukky_window_ontoggle_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 683 "Window.bnd"
-#line 5470 "window.c"
+#line 715 "Window.bnd"
+#line 5490 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5499,8 +5519,8 @@ static duk_ret_t dukky_window_ontoggle_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 684 "Window.bnd"
-#line 5504 "window.c"
+#line 716 "Window.bnd"
+#line 5524 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5530,8 +5550,8 @@ static duk_ret_t dukky_window_onvolumechange_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 687 "Window.bnd"
-#line 5535 "window.c"
+#line 719 "Window.bnd"
+#line 5555 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5564,8 +5584,8 @@ static duk_ret_t dukky_window_onvolumechange_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 688 "Window.bnd"
-#line 5569 "window.c"
+#line 720 "Window.bnd"
+#line 5589 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5595,8 +5615,8 @@ static duk_ret_t dukky_window_onwaiting_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 689 "Window.bnd"
-#line 5600 "window.c"
+#line 721 "Window.bnd"
+#line 5620 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5629,8 +5649,8 @@ static duk_ret_t dukky_window_onwaiting_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 690 "Window.bnd"
-#line 5634 "window.c"
+#line 722 "Window.bnd"
+#line 5654 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5660,8 +5680,8 @@ static duk_ret_t dukky_window_onafterprint_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 543 "Window.bnd"
-#line 5665 "window.c"
+#line 575 "Window.bnd"
+#line 5685 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5694,8 +5714,8 @@ static duk_ret_t dukky_window_onafterprint_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 544 "Window.bnd"
-#line 5699 "window.c"
+#line 576 "Window.bnd"
+#line 5719 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5725,8 +5745,8 @@ static duk_ret_t dukky_window_onbeforeprint_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 549 "Window.bnd"
-#line 5730 "window.c"
+#line 581 "Window.bnd"
+#line 5750 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5759,8 +5779,8 @@ static duk_ret_t dukky_window_onbeforeprint_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 550 "Window.bnd"
-#line 5764 "window.c"
+#line 582 "Window.bnd"
+#line 5784 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5790,8 +5810,8 @@ static duk_ret_t dukky_window_onbeforeunload_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 551 "Window.bnd"
-#line 5795 "window.c"
+#line 583 "Window.bnd"
+#line 5815 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5824,8 +5844,8 @@ static duk_ret_t dukky_window_onbeforeunload_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 552 "Window.bnd"
-#line 5829 "window.c"
+#line 584 "Window.bnd"
+#line 5849 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5855,8 +5875,8 @@ static duk_ret_t dukky_window_onhashchange_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 599 "Window.bnd"
-#line 5860 "window.c"
+#line 631 "Window.bnd"
+#line 5880 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5889,8 +5909,8 @@ static duk_ret_t dukky_window_onhashchange_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 600 "Window.bnd"
-#line 5894 "window.c"
+#line 632 "Window.bnd"
+#line 5914 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5920,8 +5940,8 @@ static duk_ret_t dukky_window_onlanguagechange_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 611 "Window.bnd"
-#line 5925 "window.c"
+#line 643 "Window.bnd"
+#line 5945 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5954,8 +5974,8 @@ static duk_ret_t dukky_window_onlanguagechange_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 612 "Window.bnd"
-#line 5959 "window.c"
+#line 644 "Window.bnd"
+#line 5979 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5985,8 +6005,8 @@ static duk_ret_t dukky_window_onmessage_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 621 "Window.bnd"
-#line 5990 "window.c"
+#line 653 "Window.bnd"
+#line 6010 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6019,8 +6039,8 @@ static duk_ret_t dukky_window_onmessage_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 622 "Window.bnd"
-#line 6024 "window.c"
+#line 654 "Window.bnd"
+#line 6044 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6050,8 +6070,8 @@ static duk_ret_t dukky_window_onoffline_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 637 "Window.bnd"
-#line 6055 "window.c"
+#line 669 "Window.bnd"
+#line 6075 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6084,8 +6104,8 @@ static duk_ret_t dukky_window_onoffline_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 638 "Window.bnd"
-#line 6089 "window.c"
+#line 670 "Window.bnd"
+#line 6109 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6115,8 +6135,8 @@ static duk_ret_t dukky_window_ononline_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 639 "Window.bnd"
-#line 6120 "window.c"
+#line 671 "Window.bnd"
+#line 6140 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6149,8 +6169,8 @@ static duk_ret_t dukky_window_ononline_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 640 "Window.bnd"
-#line 6154 "window.c"
+#line 672 "Window.bnd"
+#line 6174 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6180,8 +6200,8 @@ static duk_ret_t dukky_window_onpagehide_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 641 "Window.bnd"
-#line 6185 "window.c"
+#line 673 "Window.bnd"
+#line 6205 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6214,8 +6234,8 @@ static duk_ret_t dukky_window_onpagehide_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 642 "Window.bnd"
-#line 6219 "window.c"
+#line 674 "Window.bnd"
+#line 6239 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6245,8 +6265,8 @@ static duk_ret_t dukky_window_onpageshow_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 643 "Window.bnd"
-#line 6250 "window.c"
+#line 675 "Window.bnd"
+#line 6270 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6279,8 +6299,8 @@ static duk_ret_t dukky_window_onpageshow_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 644 "Window.bnd"
-#line 6284 "window.c"
+#line 676 "Window.bnd"
+#line 6304 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6310,8 +6330,8 @@ static duk_ret_t dukky_window_onpopstate_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 651 "Window.bnd"
-#line 6315 "window.c"
+#line 683 "Window.bnd"
+#line 6335 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6344,8 +6364,8 @@ static duk_ret_t dukky_window_onpopstate_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 652 "Window.bnd"
-#line 6349 "window.c"
+#line 684 "Window.bnd"
+#line 6369 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6375,8 +6395,8 @@ static duk_ret_t dukky_window_onstorage_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 675 "Window.bnd"
-#line 6380 "window.c"
+#line 707 "Window.bnd"
+#line 6400 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6409,8 +6429,8 @@ static duk_ret_t dukky_window_onstorage_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 676 "Window.bnd"
-#line 6414 "window.c"
+#line 708 "Window.bnd"
+#line 6434 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6440,8 +6460,8 @@ static duk_ret_t dukky_window_onunload_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 685 "Window.bnd"
-#line 6445 "window.c"
+#line 717 "Window.bnd"
+#line 6465 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6474,8 +6494,8 @@ static duk_ret_t dukky_window_onunload_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 686 "Window.bnd"
-#line 6479 "window.c"
+#line 718 "Window.bnd"
+#line 6499 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);

@@ -34,13 +34,15 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
+#line 12 "DOMImplementation.bnd"
 
 #include "utils/corestrings.h"
+#line 46 "dom_implementation.c"
 
 static void dukky_dom_implementation___init(duk_context *ctx, dom_implementation_private_t *priv)
 {
@@ -284,7 +286,7 @@ out:
 		return 1;
 	}
 	return 0; /* Coerced to undefined */
-#line 288 "dom_implementation.c"
+#line 290 "dom_implementation.c"
 }
 
 static duk_ret_t dukky_dom_implementation_hasFeature(duk_context *ctx)

@@ -34,11 +34,12 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
+#line 18 "EventTarget.bnd"
 
 
 static event_listener_flags event_listener_pop_options(duk_context *ctx)
@@ -153,6 +154,7 @@ static void event_target_unregister_listener(duk_context *ctx,
 }
 
 
+#line 158 "event_target.c"
 
 void dukky_event_target___init(duk_context *ctx, event_target_private_t *priv)
 {
@@ -161,7 +163,7 @@ void dukky_event_target___init(duk_context *ctx, event_target_private_t *priv)
 	priv->is_node = false;
 	priv->capture_registered = false;
 	priv->bubbling_registered = false;
-#line 165 "event_target.c"
+#line 167 "event_target.c"
 }
 
 void dukky_event_target___fini(duk_context *ctx, event_target_private_t *priv)
@@ -284,7 +286,7 @@ static duk_ret_t dukky_event_target_addEventListener(duk_context *ctx)
 	event_target_register_listener(ctx, flags);
 	/* type */
 	return 0;
-#line 288 "event_target.c"
+#line 290 "event_target.c"
 }
 
 static duk_ret_t dukky_event_target_removeEventListener(duk_context *ctx)
@@ -363,7 +365,7 @@ static duk_ret_t dukky_event_target_removeEventListener(duk_context *ctx)
 	event_target_unregister_listener(ctx, flags);
 	/* type */
 	return 0;
-#line 367 "event_target.c"
+#line 369 "event_target.c"
 }
 
 static duk_ret_t dukky_event_target_dispatchEvent(duk_context *ctx)
@@ -435,7 +437,7 @@ static duk_ret_t dukky_event_target_dispatchEvent(duk_context *ctx)
 
 	duk_push_boolean(ctx, success);
 	return 1;
-#line 439 "event_target.c"
+#line 441 "event_target.c"
 }
 
 duk_ret_t dukky_event_target___proto(duk_context *ctx, void *udata)

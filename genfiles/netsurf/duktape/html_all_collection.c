@@ -34,9 +34,9 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
@@ -78,22 +78,6 @@ static duk_ret_t dukky_html_all_collection___destructor(duk_context *ctx)
 
 static duk_ret_t dukky_html_all_collection_item(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 1) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 1, dukky_argc);
-	} else if (dukky_argc > 1) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 1);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_number(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 0, "index");
-		}
-	}
 	/* Get private data for method */
 	html_all_collection_private_t *priv = NULL;
 	duk_push_this(ctx);

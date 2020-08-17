@@ -34,16 +34,16 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
 static void dukky_html_unknown_element___init(duk_context *ctx, html_unknown_element_private_t *priv, struct dom_html_element *html_unknown_element)
 {
 	dukky_html_element___init(ctx, &priv->parent, html_unknown_element);
-#line 151 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 152 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_unknown_element.c"
 }
 

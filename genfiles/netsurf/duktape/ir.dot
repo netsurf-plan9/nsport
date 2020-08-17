@@ -124,13 +124,13 @@ node [shape=box]
 0121 [label="Touch"];
 0122 [label="Path2D"];
 0123 [label="DrawingStyle"];
-0124 [label="ImageData"];
+0124 [label="ImageData"fontcolor="blue"];
 0125 [label="TextMetrics"];
 0126 [label="CanvasPattern"];
 0127 [label="CanvasGradient"];
 0128 [label="CanvasPathMethods"];
 0129 [label="CanvasDrawingStyles"];
-0130 [label="CanvasRenderingContext2D"];
+0130 [label="CanvasRenderingContext2D"fontcolor="blue"];
 0131 [label="CanvasProxy"];
 0132 [label="HTMLCanvasElement"fontcolor="blue"];
 0133 [label="HTMLTemplateElement"fontcolor="blue"];

@@ -34,13 +34,15 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
+#line 12 "Navigator.bnd"
 
 #include "utils/useragent.h"
+#line 46 "navigator.c"
 
 static void dukky_navigator___init(duk_context *ctx, navigator_private_t *priv)
 {
@@ -100,7 +102,7 @@ static duk_ret_t dukky_navigator_taintEnabled(duk_context *ctx)
 
 	duk_push_boolean(ctx, false);
 	return 1;
-#line 104 "navigator.c"
+#line 106 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_registerProtocolHandler(duk_context *ctx)
@@ -368,7 +370,7 @@ static duk_ret_t dukky_navigator_appCodeName_getter(duk_context *ctx)
 
 	duk_push_string(ctx, "Mozilla");
 	return 1;
-#line 372 "navigator.c"
+#line 374 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_appName_getter(duk_context *ctx)
@@ -387,7 +389,7 @@ static duk_ret_t dukky_navigator_appName_getter(duk_context *ctx)
 
 	duk_push_string(ctx, "Netscape");
 	return 1;
-#line 391 "navigator.c"
+#line 393 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_appVersion_getter(duk_context *ctx)
@@ -406,7 +408,7 @@ static duk_ret_t dukky_navigator_appVersion_getter(duk_context *ctx)
 
 	duk_push_string(ctx, "3.4");
 	return 1;
-#line 410 "navigator.c"
+#line 412 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_platform_getter(duk_context *ctx)
@@ -425,7 +427,7 @@ static duk_ret_t dukky_navigator_platform_getter(duk_context *ctx)
 
 	duk_push_string(ctx, NULL);
 	return 1;
-#line 429 "navigator.c"
+#line 431 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_product_getter(duk_context *ctx)
@@ -444,7 +446,7 @@ static duk_ret_t dukky_navigator_product_getter(duk_context *ctx)
 
 	duk_push_string(ctx, "Gecko");
 	return 1;
-#line 448 "navigator.c"
+#line 450 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_productSub_getter(duk_context *ctx)
@@ -463,7 +465,7 @@ static duk_ret_t dukky_navigator_productSub_getter(duk_context *ctx)
 
 	duk_push_string(ctx, "20100101");
 	return 1;
-#line 467 "navigator.c"
+#line 469 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_userAgent_getter(duk_context *ctx)
@@ -482,7 +484,7 @@ static duk_ret_t dukky_navigator_userAgent_getter(duk_context *ctx)
 
 	duk_push_string(ctx, user_agent_string());
 	return 1;
-#line 486 "navigator.c"
+#line 488 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_vendor_getter(duk_context *ctx)
@@ -501,7 +503,7 @@ static duk_ret_t dukky_navigator_vendor_getter(duk_context *ctx)
 
 	duk_push_string(ctx, NULL);
 	return 1;
-#line 505 "navigator.c"
+#line 507 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_vendorSub_getter(duk_context *ctx)
@@ -520,7 +522,7 @@ static duk_ret_t dukky_navigator_vendorSub_getter(duk_context *ctx)
 
 	duk_push_string(ctx, NULL);
 	return 1;
-#line 524 "navigator.c"
+#line 526 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_language_getter(duk_context *ctx)
@@ -584,7 +586,7 @@ static duk_ret_t dukky_navigator_cookieEnabled_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, false);
 	return 1;
-#line 588 "navigator.c"
+#line 590 "navigator.c"
 }
 
 static duk_ret_t dukky_navigator_plugins_getter(duk_context *ctx)
@@ -633,7 +635,7 @@ static duk_ret_t dukky_navigator_javaEnabled_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, false);
 	return 1;
-#line 637 "navigator.c"
+#line 639 "navigator.c"
 }
 
 duk_ret_t dukky_navigator___proto(duk_context *ctx, void *udata)

@@ -34,14 +34,22 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
-static void dukky_image_data___init(duk_context *ctx, image_data_private_t *priv)
+static void dukky_image_data___init(duk_context *ctx, image_data_private_t *priv, int width, int height)
 {
+#line 18 "ImageData.bnd"
+
+	priv->width = width;
+	priv->height = height;
+	priv->data = duk_push_buffer(ctx, width * height * 4, false);
+	duk_put_prop_string(ctx, 0, MAGIC(DATA));
+	duk_pop(ctx);
+#line 53 "image_data.c"
 }
 
 static void dukky_image_data___fini(duk_context *ctx, image_data_private_t *priv)
@@ -56,7 +64,7 @@ static duk_ret_t dukky_image_data___constructor(duk_context *ctx)
 	duk_push_pointer(ctx, priv);
 	duk_put_prop_string(ctx, 0, dukky_magic_string_private);
 
-	dukky_image_data___init(ctx, priv);
+	dukky_image_data___init(ctx, priv, duk_get_int(ctx, 1), duk_get_int(ctx, 2));
 	duk_set_top(ctx, 1);
 	return 1;
 }
@@ -86,7 +94,11 @@ static duk_ret_t dukky_image_data_width_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 27 "ImageData.bnd"
+
+	duk_push_int(ctx, priv->width);
+	return 1;
+#line 102 "image_data.c"
 }
 
 static duk_ret_t dukky_image_data_height_getter(duk_context *ctx)
@@ -101,7 +113,11 @@ static duk_ret_t dukky_image_data_height_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 33 "ImageData.bnd"
+
+	duk_push_int(ctx, priv->height);
+	return 1;
+#line 121 "image_data.c"
 }
 
 static duk_ret_t dukky_image_data_data_getter(duk_context *ctx)
@@ -116,7 +132,13 @@ static duk_ret_t dukky_image_data_data_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 39 "ImageData.bnd"
+
+	duk_push_this(ctx);
+	duk_get_prop_string(ctx, -1, MAGIC(DATA));
+	duk_push_buffer_object(ctx, -1, 0, priv->width * priv->height * 4, DUK_BUFOBJ_UINT8CLAMPEDARRAY);
+	return 1;
+#line 142 "image_data.c"
 }
 
 duk_ret_t dukky_image_data___proto(duk_context *ctx, void *udata)
@@ -156,7 +178,7 @@ duk_ret_t dukky_image_data___proto(duk_context *ctx, void *udata)
 
 	/* Set the constructor */
 	duk_dup(ctx, 0);
-	duk_push_c_function(ctx, dukky_image_data___constructor, 1);
+	duk_push_c_function(ctx, dukky_image_data___constructor, 3);
 	duk_put_prop_string(ctx, -2, "\xFF\xFFNETSURF_DUKTAPE_INIT");
 	duk_pop(ctx);
 

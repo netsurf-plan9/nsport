@@ -39,21 +39,23 @@ struct dom_html_br_element;
 #include "prototype.h"
 
 #include "javascript/duktape/dukky.h"
+#line 12 "Document.bnd"
 
 #include "utils/corestrings.h"
 #include "utils/libdom.h"
 #include "utils/utils.h"
 #include "content/hlcache.h"
-#include "html/html_internal.h"
+#include "html/private.h"
 #include "content/urldb.h"
 
 #define HANDLER_MAGIC MAGIC(HANDLER_MAP)
+#line 53 "document.c"
 
 void dukky_document___init(duk_context *ctx, document_private_t *priv, struct dom_document *document)
 {
 	dukky_node___init(ctx, &priv->parent, (struct dom_node *)document);
 #line 25 "Document.bnd"
-#line 57 "document.c"
+#line 59 "document.c"
 }
 
 void dukky_document___fini(duk_context *ctx, document_private_t *priv)
@@ -146,7 +148,7 @@ static duk_ret_t dukky_document_getElementsByTagName(duk_context *ctx)
 	}
 
 	return 1; /* The Proxy(NodeList) wrapper */
-#line 150 "document.c"
+#line 152 "document.c"
 }
 
 static duk_ret_t dukky_document_getElementsByTagNameNS(duk_context *ctx)
@@ -271,7 +273,7 @@ static duk_ret_t dukky_document_createElement(duk_context *ctx)
 	dom_node_unref(newnode);
 
 	return 1;
-#line 275 "document.c"
+#line 277 "document.c"
 }
 
 static duk_ret_t dukky_document_createElementNS(duk_context *ctx)
@@ -345,7 +347,7 @@ static duk_ret_t dukky_document_createElementNS(duk_context *ctx)
 	dom_node_unref(newnode);
 
 	return 1;
-#line 349 "document.c"
+#line 351 "document.c"
 }
 
 static duk_ret_t dukky_document_createDocumentFragment(duk_context *ctx)
@@ -382,7 +384,7 @@ static duk_ret_t dukky_document_createDocumentFragment(duk_context *ctx)
 	dom_node_unref(frag); /* The pushed node holds the reference now */
 
 	return 1;
-#line 386 "document.c"
+#line 388 "document.c"
 }
 
 static duk_ret_t dukky_document_createTextNode(duk_context *ctx)
@@ -439,7 +441,7 @@ static duk_ret_t dukky_document_createTextNode(duk_context *ctx)
 	dom_node_unref(newnode);
 
 	return 1;
-#line 443 "document.c"
+#line 445 "document.c"
 }
 
 static duk_ret_t dukky_document_createComment(duk_context *ctx)
@@ -685,7 +687,7 @@ static duk_ret_t dukky_document_createEvent(duk_context *ctx)
 
 	dom_event_unref(evt);
 	return 1;
-#line 689 "document.c"
+#line 691 "document.c"
 }
 
 static duk_ret_t dukky_document_createRange(duk_context *ctx)
@@ -816,31 +818,6 @@ static duk_ret_t dukky_document_getElementsByName(duk_context *ctx)
 
 static duk_ret_t dukky_document_open(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc == 0) {
-		/* 2 optional arguments need adding */
-		duk_push_string(ctx, "text/html");
-		duk_push_string(ctx, "");
-	} else if (dukky_argc == 1) {
-		/* 1 optional arguments need adding */
-		duk_push_string(ctx, "");
-	} else if (dukky_argc > 2) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 2);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_string(ctx, 0)) {
-			duk_to_string(ctx, 0);
-		}
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_string(ctx, 1)) {
-			duk_to_string(ctx, 1);
-		}
-	}
 	/* Get private data for method */
 	document_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -920,7 +897,7 @@ static duk_ret_t dukky_document_write(duk_context *ctx)
 			(uint8_t *)text, text_len);
 
 	return 0;
-#line 924 "document.c"
+#line 901 "document.c"
 }
 
 static duk_ret_t dukky_document_writeln(duk_context *ctx)
@@ -967,7 +944,7 @@ static duk_ret_t dukky_document_writeln(duk_context *ctx)
 	dom_hubbub_parser_insert_chunk(htmlc->parser, (uint8_t *)nl, SLEN(nl));
 
 	return 0;
-#line 971 "document.c"
+#line 948 "document.c"
 }
 
 static duk_ret_t dukky_document_hasFocus(duk_context *ctx)
@@ -1351,7 +1328,7 @@ static duk_ret_t dukky_document_getElementById(duk_context *ctx)
 	}
 
 	return 0;
-#line 1355 "document.c"
+#line 1332 "document.c"
 }
 
 static duk_ret_t dukky_document_prepend(duk_context *ctx)
@@ -1539,7 +1516,7 @@ static duk_ret_t dukky_document_implementation_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, -3, MAGIC(DOMImplementation));
 	}
 	return 1;
-#line 1543 "document.c"
+#line 1520 "document.c"
 }
 
 static duk_ret_t dukky_document_URL_getter(duk_context *ctx)
@@ -1694,7 +1671,7 @@ static duk_ret_t dukky_document_documentElement_getter(duk_context *ctx)
 
 	return 1;
 
-#line 1698 "document.c"
+#line 1675 "document.c"
 }
 
 static duk_ret_t dukky_document_location_getter(duk_context *ctx)
@@ -1719,7 +1696,7 @@ static duk_ret_t dukky_document_location_getter(duk_context *ctx)
 		return 0;
 	}
 	return 1;
-#line 1723 "document.c"
+#line 1700 "document.c"
 }
 
 static duk_ret_t dukky_document_location_setter(duk_context *ctx)
@@ -1833,7 +1810,7 @@ static duk_ret_t dukky_document_cookie_getter(duk_context *ctx)
 		      priv->parent.node, htmlc);
 	}
 	return 0;
-#line 1837 "document.c"
+#line 1814 "document.c"
 }
 
 static duk_ret_t dukky_document_cookie_setter(duk_context *ctx)
@@ -1876,7 +1853,7 @@ static duk_ret_t dukky_document_cookie_setter(duk_context *ctx)
 		      priv->parent.node, htmlc);
 	}
 	return 0;
-#line 1880 "document.c"
+#line 1857 "document.c"
 }
 
 static duk_ret_t dukky_document_lastModified_getter(duk_context *ctx)
@@ -2011,7 +1988,7 @@ static duk_ret_t dukky_document_body_getter(duk_context *ctx)
 	}
 
 	return 0; /* coerced to undefined */
-#line 2015 "document.c"
+#line 1992 "document.c"
 }
 
 static duk_ret_t dukky_document_body_setter(duk_context *ctx)
@@ -2067,7 +2044,7 @@ static duk_ret_t dukky_document_head_getter(duk_context *ctx)
 	dom_node_unref(retnode);
 
 	return 1;
-#line 2071 "document.c"
+#line 2048 "document.c"
 }
 
 static duk_ret_t dukky_document_images_getter(duk_context *ctx)
@@ -2278,7 +2255,7 @@ static duk_ret_t dukky_document_onreadystatechange_getter(duk_context *ctx)
 	}
 
 #line 550 "Document.bnd"
-#line 2282 "document.c"
+#line 2259 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -2312,7 +2289,7 @@ static duk_ret_t dukky_document_onreadystatechange_setter(duk_context *ctx)
 	}
 
 #line 551 "Document.bnd"
-#line 2316 "document.c"
+#line 2293 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2688,7 +2665,7 @@ static duk_ret_t dukky_document_onabort_getter(duk_context *ctx)
 	}
 
 #line 458 "Document.bnd"
-#line 2692 "document.c"
+#line 2669 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -2722,7 +2699,7 @@ static duk_ret_t dukky_document_onabort_setter(duk_context *ctx)
 	}
 
 #line 459 "Document.bnd"
-#line 2726 "document.c"
+#line 2703 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2753,7 +2730,7 @@ static duk_ret_t dukky_document_onautocomplete_getter(duk_context *ctx)
 	}
 
 #line 462 "Document.bnd"
-#line 2757 "document.c"
+#line 2734 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -2787,7 +2764,7 @@ static duk_ret_t dukky_document_onautocomplete_setter(duk_context *ctx)
 	}
 
 #line 463 "Document.bnd"
-#line 2791 "document.c"
+#line 2768 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2818,7 +2795,7 @@ static duk_ret_t dukky_document_onautocompleteerror_getter(duk_context *ctx)
 	}
 
 #line 460 "Document.bnd"
-#line 2822 "document.c"
+#line 2799 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -2852,7 +2829,7 @@ static duk_ret_t dukky_document_onautocompleteerror_setter(duk_context *ctx)
 	}
 
 #line 461 "Document.bnd"
-#line 2856 "document.c"
+#line 2833 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2883,7 +2860,7 @@ static duk_ret_t dukky_document_onblur_getter(duk_context *ctx)
 	}
 
 #line 464 "Document.bnd"
-#line 2887 "document.c"
+#line 2864 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -2917,7 +2894,7 @@ static duk_ret_t dukky_document_onblur_setter(duk_context *ctx)
 	}
 
 #line 465 "Document.bnd"
-#line 2921 "document.c"
+#line 2898 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2948,7 +2925,7 @@ static duk_ret_t dukky_document_oncancel_getter(duk_context *ctx)
 	}
 
 #line 466 "Document.bnd"
-#line 2952 "document.c"
+#line 2929 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -2982,7 +2959,7 @@ static duk_ret_t dukky_document_oncancel_setter(duk_context *ctx)
 	}
 
 #line 467 "Document.bnd"
-#line 2986 "document.c"
+#line 2963 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3013,7 +2990,7 @@ static duk_ret_t dukky_document_oncanplay_getter(duk_context *ctx)
 	}
 
 #line 470 "Document.bnd"
-#line 3017 "document.c"
+#line 2994 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3047,7 +3024,7 @@ static duk_ret_t dukky_document_oncanplay_setter(duk_context *ctx)
 	}
 
 #line 471 "Document.bnd"
-#line 3051 "document.c"
+#line 3028 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3078,7 +3055,7 @@ static duk_ret_t dukky_document_oncanplaythrough_getter(duk_context *ctx)
 	}
 
 #line 468 "Document.bnd"
-#line 3082 "document.c"
+#line 3059 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3112,7 +3089,7 @@ static duk_ret_t dukky_document_oncanplaythrough_setter(duk_context *ctx)
 	}
 
 #line 469 "Document.bnd"
-#line 3116 "document.c"
+#line 3093 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3143,7 +3120,7 @@ static duk_ret_t dukky_document_onchange_getter(duk_context *ctx)
 	}
 
 #line 472 "Document.bnd"
-#line 3147 "document.c"
+#line 3124 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3177,7 +3154,7 @@ static duk_ret_t dukky_document_onchange_setter(duk_context *ctx)
 	}
 
 #line 473 "Document.bnd"
-#line 3181 "document.c"
+#line 3158 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3208,7 +3185,7 @@ static duk_ret_t dukky_document_onclick_getter(duk_context *ctx)
 	}
 
 #line 474 "Document.bnd"
-#line 3212 "document.c"
+#line 3189 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3242,7 +3219,7 @@ static duk_ret_t dukky_document_onclick_setter(duk_context *ctx)
 	}
 
 #line 475 "Document.bnd"
-#line 3246 "document.c"
+#line 3223 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3273,7 +3250,7 @@ static duk_ret_t dukky_document_onclose_getter(duk_context *ctx)
 	}
 
 #line 476 "Document.bnd"
-#line 3277 "document.c"
+#line 3254 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3307,7 +3284,7 @@ static duk_ret_t dukky_document_onclose_setter(duk_context *ctx)
 	}
 
 #line 477 "Document.bnd"
-#line 3311 "document.c"
+#line 3288 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3338,7 +3315,7 @@ static duk_ret_t dukky_document_oncontextmenu_getter(duk_context *ctx)
 	}
 
 #line 478 "Document.bnd"
-#line 3342 "document.c"
+#line 3319 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3372,7 +3349,7 @@ static duk_ret_t dukky_document_oncontextmenu_setter(duk_context *ctx)
 	}
 
 #line 479 "Document.bnd"
-#line 3376 "document.c"
+#line 3353 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3403,7 +3380,7 @@ static duk_ret_t dukky_document_oncuechange_getter(duk_context *ctx)
 	}
 
 #line 480 "Document.bnd"
-#line 3407 "document.c"
+#line 3384 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3437,7 +3414,7 @@ static duk_ret_t dukky_document_oncuechange_setter(duk_context *ctx)
 	}
 
 #line 481 "Document.bnd"
-#line 3441 "document.c"
+#line 3418 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3468,7 +3445,7 @@ static duk_ret_t dukky_document_ondblclick_getter(duk_context *ctx)
 	}
 
 #line 482 "Document.bnd"
-#line 3472 "document.c"
+#line 3449 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3502,7 +3479,7 @@ static duk_ret_t dukky_document_ondblclick_setter(duk_context *ctx)
 	}
 
 #line 483 "Document.bnd"
-#line 3506 "document.c"
+#line 3483 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3533,7 +3510,7 @@ static duk_ret_t dukky_document_ondrag_getter(duk_context *ctx)
 	}
 
 #line 496 "Document.bnd"
-#line 3537 "document.c"
+#line 3514 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3567,7 +3544,7 @@ static duk_ret_t dukky_document_ondrag_setter(duk_context *ctx)
 	}
 
 #line 497 "Document.bnd"
-#line 3571 "document.c"
+#line 3548 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3598,7 +3575,7 @@ static duk_ret_t dukky_document_ondragend_getter(duk_context *ctx)
 	}
 
 #line 484 "Document.bnd"
-#line 3602 "document.c"
+#line 3579 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3632,7 +3609,7 @@ static duk_ret_t dukky_document_ondragend_setter(duk_context *ctx)
 	}
 
 #line 485 "Document.bnd"
-#line 3636 "document.c"
+#line 3613 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3663,7 +3640,7 @@ static duk_ret_t dukky_document_ondragenter_getter(duk_context *ctx)
 	}
 
 #line 486 "Document.bnd"
-#line 3667 "document.c"
+#line 3644 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3697,7 +3674,7 @@ static duk_ret_t dukky_document_ondragenter_setter(duk_context *ctx)
 	}
 
 #line 487 "Document.bnd"
-#line 3701 "document.c"
+#line 3678 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3728,7 +3705,7 @@ static duk_ret_t dukky_document_ondragexit_getter(duk_context *ctx)
 	}
 
 #line 488 "Document.bnd"
-#line 3732 "document.c"
+#line 3709 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3762,7 +3739,7 @@ static duk_ret_t dukky_document_ondragexit_setter(duk_context *ctx)
 	}
 
 #line 489 "Document.bnd"
-#line 3766 "document.c"
+#line 3743 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3793,7 +3770,7 @@ static duk_ret_t dukky_document_ondragleave_getter(duk_context *ctx)
 	}
 
 #line 490 "Document.bnd"
-#line 3797 "document.c"
+#line 3774 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3827,7 +3804,7 @@ static duk_ret_t dukky_document_ondragleave_setter(duk_context *ctx)
 	}
 
 #line 491 "Document.bnd"
-#line 3831 "document.c"
+#line 3808 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3858,7 +3835,7 @@ static duk_ret_t dukky_document_ondragover_getter(duk_context *ctx)
 	}
 
 #line 492 "Document.bnd"
-#line 3862 "document.c"
+#line 3839 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3892,7 +3869,7 @@ static duk_ret_t dukky_document_ondragover_setter(duk_context *ctx)
 	}
 
 #line 493 "Document.bnd"
-#line 3896 "document.c"
+#line 3873 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3923,7 +3900,7 @@ static duk_ret_t dukky_document_ondragstart_getter(duk_context *ctx)
 	}
 
 #line 494 "Document.bnd"
-#line 3927 "document.c"
+#line 3904 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -3957,7 +3934,7 @@ static duk_ret_t dukky_document_ondragstart_setter(duk_context *ctx)
 	}
 
 #line 495 "Document.bnd"
-#line 3961 "document.c"
+#line 3938 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3988,7 +3965,7 @@ static duk_ret_t dukky_document_ondrop_getter(duk_context *ctx)
 	}
 
 #line 498 "Document.bnd"
-#line 3992 "document.c"
+#line 3969 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4022,7 +3999,7 @@ static duk_ret_t dukky_document_ondrop_setter(duk_context *ctx)
 	}
 
 #line 499 "Document.bnd"
-#line 4026 "document.c"
+#line 4003 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4053,7 +4030,7 @@ static duk_ret_t dukky_document_ondurationchange_getter(duk_context *ctx)
 	}
 
 #line 500 "Document.bnd"
-#line 4057 "document.c"
+#line 4034 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4087,7 +4064,7 @@ static duk_ret_t dukky_document_ondurationchange_setter(duk_context *ctx)
 	}
 
 #line 501 "Document.bnd"
-#line 4091 "document.c"
+#line 4068 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4118,7 +4095,7 @@ static duk_ret_t dukky_document_onemptied_getter(duk_context *ctx)
 	}
 
 #line 502 "Document.bnd"
-#line 4122 "document.c"
+#line 4099 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4152,7 +4129,7 @@ static duk_ret_t dukky_document_onemptied_setter(duk_context *ctx)
 	}
 
 #line 503 "Document.bnd"
-#line 4156 "document.c"
+#line 4133 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4183,7 +4160,7 @@ static duk_ret_t dukky_document_onended_getter(duk_context *ctx)
 	}
 
 #line 504 "Document.bnd"
-#line 4187 "document.c"
+#line 4164 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4217,7 +4194,7 @@ static duk_ret_t dukky_document_onended_setter(duk_context *ctx)
 	}
 
 #line 505 "Document.bnd"
-#line 4221 "document.c"
+#line 4198 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4278,7 +4255,7 @@ static duk_ret_t dukky_document_onfocus_getter(duk_context *ctx)
 	}
 
 #line 506 "Document.bnd"
-#line 4282 "document.c"
+#line 4259 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4312,7 +4289,7 @@ static duk_ret_t dukky_document_onfocus_setter(duk_context *ctx)
 	}
 
 #line 507 "Document.bnd"
-#line 4316 "document.c"
+#line 4293 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4343,7 +4320,7 @@ static duk_ret_t dukky_document_oninput_getter(duk_context *ctx)
 	}
 
 #line 508 "Document.bnd"
-#line 4347 "document.c"
+#line 4324 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4377,7 +4354,7 @@ static duk_ret_t dukky_document_oninput_setter(duk_context *ctx)
 	}
 
 #line 509 "Document.bnd"
-#line 4381 "document.c"
+#line 4358 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4408,7 +4385,7 @@ static duk_ret_t dukky_document_oninvalid_getter(duk_context *ctx)
 	}
 
 #line 510 "Document.bnd"
-#line 4412 "document.c"
+#line 4389 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4442,7 +4419,7 @@ static duk_ret_t dukky_document_oninvalid_setter(duk_context *ctx)
 	}
 
 #line 511 "Document.bnd"
-#line 4446 "document.c"
+#line 4423 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4473,7 +4450,7 @@ static duk_ret_t dukky_document_onkeydown_getter(duk_context *ctx)
 	}
 
 #line 512 "Document.bnd"
-#line 4477 "document.c"
+#line 4454 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4507,7 +4484,7 @@ static duk_ret_t dukky_document_onkeydown_setter(duk_context *ctx)
 	}
 
 #line 513 "Document.bnd"
-#line 4511 "document.c"
+#line 4488 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4538,7 +4515,7 @@ static duk_ret_t dukky_document_onkeypress_getter(duk_context *ctx)
 	}
 
 #line 514 "Document.bnd"
-#line 4542 "document.c"
+#line 4519 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4572,7 +4549,7 @@ static duk_ret_t dukky_document_onkeypress_setter(duk_context *ctx)
 	}
 
 #line 515 "Document.bnd"
-#line 4576 "document.c"
+#line 4553 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4603,7 +4580,7 @@ static duk_ret_t dukky_document_onkeyup_getter(duk_context *ctx)
 	}
 
 #line 516 "Document.bnd"
-#line 4607 "document.c"
+#line 4584 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4637,7 +4614,7 @@ static duk_ret_t dukky_document_onkeyup_setter(duk_context *ctx)
 	}
 
 #line 517 "Document.bnd"
-#line 4641 "document.c"
+#line 4618 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4668,7 +4645,7 @@ static duk_ret_t dukky_document_onload_getter(duk_context *ctx)
 	}
 
 #line 524 "Document.bnd"
-#line 4672 "document.c"
+#line 4649 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4702,7 +4679,7 @@ static duk_ret_t dukky_document_onload_setter(duk_context *ctx)
 	}
 
 #line 525 "Document.bnd"
-#line 4706 "document.c"
+#line 4683 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4733,7 +4710,7 @@ static duk_ret_t dukky_document_onloadeddata_getter(duk_context *ctx)
 	}
 
 #line 518 "Document.bnd"
-#line 4737 "document.c"
+#line 4714 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4767,7 +4744,7 @@ static duk_ret_t dukky_document_onloadeddata_setter(duk_context *ctx)
 	}
 
 #line 519 "Document.bnd"
-#line 4771 "document.c"
+#line 4748 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4798,7 +4775,7 @@ static duk_ret_t dukky_document_onloadedmetadata_getter(duk_context *ctx)
 	}
 
 #line 520 "Document.bnd"
-#line 4802 "document.c"
+#line 4779 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4832,7 +4809,7 @@ static duk_ret_t dukky_document_onloadedmetadata_setter(duk_context *ctx)
 	}
 
 #line 521 "Document.bnd"
-#line 4836 "document.c"
+#line 4813 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4863,7 +4840,7 @@ static duk_ret_t dukky_document_onloadstart_getter(duk_context *ctx)
 	}
 
 #line 522 "Document.bnd"
-#line 4867 "document.c"
+#line 4844 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4897,7 +4874,7 @@ static duk_ret_t dukky_document_onloadstart_setter(duk_context *ctx)
 	}
 
 #line 523 "Document.bnd"
-#line 4901 "document.c"
+#line 4878 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4928,7 +4905,7 @@ static duk_ret_t dukky_document_onmousedown_getter(duk_context *ctx)
 	}
 
 #line 526 "Document.bnd"
-#line 4932 "document.c"
+#line 4909 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -4962,7 +4939,7 @@ static duk_ret_t dukky_document_onmousedown_setter(duk_context *ctx)
 	}
 
 #line 527 "Document.bnd"
-#line 4966 "document.c"
+#line 4943 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4993,7 +4970,7 @@ static duk_ret_t dukky_document_onmouseenter_getter(duk_context *ctx)
 	}
 
 #line 528 "Document.bnd"
-#line 4997 "document.c"
+#line 4974 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5027,7 +5004,7 @@ static duk_ret_t dukky_document_onmouseenter_setter(duk_context *ctx)
 	}
 
 #line 529 "Document.bnd"
-#line 5031 "document.c"
+#line 5008 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5058,7 +5035,7 @@ static duk_ret_t dukky_document_onmouseleave_getter(duk_context *ctx)
 	}
 
 #line 530 "Document.bnd"
-#line 5062 "document.c"
+#line 5039 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5092,7 +5069,7 @@ static duk_ret_t dukky_document_onmouseleave_setter(duk_context *ctx)
 	}
 
 #line 531 "Document.bnd"
-#line 5096 "document.c"
+#line 5073 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5123,7 +5100,7 @@ static duk_ret_t dukky_document_onmousemove_getter(duk_context *ctx)
 	}
 
 #line 532 "Document.bnd"
-#line 5127 "document.c"
+#line 5104 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5157,7 +5134,7 @@ static duk_ret_t dukky_document_onmousemove_setter(duk_context *ctx)
 	}
 
 #line 533 "Document.bnd"
-#line 5161 "document.c"
+#line 5138 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5188,7 +5165,7 @@ static duk_ret_t dukky_document_onmouseout_getter(duk_context *ctx)
 	}
 
 #line 534 "Document.bnd"
-#line 5192 "document.c"
+#line 5169 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5222,7 +5199,7 @@ static duk_ret_t dukky_document_onmouseout_setter(duk_context *ctx)
 	}
 
 #line 535 "Document.bnd"
-#line 5226 "document.c"
+#line 5203 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5253,7 +5230,7 @@ static duk_ret_t dukky_document_onmouseover_getter(duk_context *ctx)
 	}
 
 #line 536 "Document.bnd"
-#line 5257 "document.c"
+#line 5234 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5287,7 +5264,7 @@ static duk_ret_t dukky_document_onmouseover_setter(duk_context *ctx)
 	}
 
 #line 537 "Document.bnd"
-#line 5291 "document.c"
+#line 5268 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5318,7 +5295,7 @@ static duk_ret_t dukky_document_onmouseup_getter(duk_context *ctx)
 	}
 
 #line 538 "Document.bnd"
-#line 5322 "document.c"
+#line 5299 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5352,7 +5329,7 @@ static duk_ret_t dukky_document_onmouseup_setter(duk_context *ctx)
 	}
 
 #line 539 "Document.bnd"
-#line 5356 "document.c"
+#line 5333 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5383,7 +5360,7 @@ static duk_ret_t dukky_document_onwheel_getter(duk_context *ctx)
 	}
 
 #line 582 "Document.bnd"
-#line 5387 "document.c"
+#line 5364 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5417,7 +5394,7 @@ static duk_ret_t dukky_document_onwheel_setter(duk_context *ctx)
 	}
 
 #line 583 "Document.bnd"
-#line 5421 "document.c"
+#line 5398 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5448,7 +5425,7 @@ static duk_ret_t dukky_document_onpause_getter(duk_context *ctx)
 	}
 
 #line 540 "Document.bnd"
-#line 5452 "document.c"
+#line 5429 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5482,7 +5459,7 @@ static duk_ret_t dukky_document_onpause_setter(duk_context *ctx)
 	}
 
 #line 541 "Document.bnd"
-#line 5486 "document.c"
+#line 5463 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5513,7 +5490,7 @@ static duk_ret_t dukky_document_onplay_getter(duk_context *ctx)
 	}
 
 #line 544 "Document.bnd"
-#line 5517 "document.c"
+#line 5494 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5547,7 +5524,7 @@ static duk_ret_t dukky_document_onplay_setter(duk_context *ctx)
 	}
 
 #line 545 "Document.bnd"
-#line 5551 "document.c"
+#line 5528 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5578,7 +5555,7 @@ static duk_ret_t dukky_document_onplaying_getter(duk_context *ctx)
 	}
 
 #line 542 "Document.bnd"
-#line 5582 "document.c"
+#line 5559 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5612,7 +5589,7 @@ static duk_ret_t dukky_document_onplaying_setter(duk_context *ctx)
 	}
 
 #line 543 "Document.bnd"
-#line 5616 "document.c"
+#line 5593 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5643,7 +5620,7 @@ static duk_ret_t dukky_document_onprogress_getter(duk_context *ctx)
 	}
 
 #line 546 "Document.bnd"
-#line 5647 "document.c"
+#line 5624 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5677,7 +5654,7 @@ static duk_ret_t dukky_document_onprogress_setter(duk_context *ctx)
 	}
 
 #line 547 "Document.bnd"
-#line 5681 "document.c"
+#line 5658 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5708,7 +5685,7 @@ static duk_ret_t dukky_document_onratechange_getter(duk_context *ctx)
 	}
 
 #line 548 "Document.bnd"
-#line 5712 "document.c"
+#line 5689 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5742,7 +5719,7 @@ static duk_ret_t dukky_document_onratechange_setter(duk_context *ctx)
 	}
 
 #line 549 "Document.bnd"
-#line 5746 "document.c"
+#line 5723 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5773,7 +5750,7 @@ static duk_ret_t dukky_document_onreset_getter(duk_context *ctx)
 	}
 
 #line 552 "Document.bnd"
-#line 5777 "document.c"
+#line 5754 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5807,7 +5784,7 @@ static duk_ret_t dukky_document_onreset_setter(duk_context *ctx)
 	}
 
 #line 553 "Document.bnd"
-#line 5811 "document.c"
+#line 5788 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5838,7 +5815,7 @@ static duk_ret_t dukky_document_onresize_getter(duk_context *ctx)
 	}
 
 #line 554 "Document.bnd"
-#line 5842 "document.c"
+#line 5819 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5872,7 +5849,7 @@ static duk_ret_t dukky_document_onresize_setter(duk_context *ctx)
 	}
 
 #line 555 "Document.bnd"
-#line 5876 "document.c"
+#line 5853 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5903,7 +5880,7 @@ static duk_ret_t dukky_document_onscroll_getter(duk_context *ctx)
 	}
 
 #line 556 "Document.bnd"
-#line 5907 "document.c"
+#line 5884 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -5937,7 +5914,7 @@ static duk_ret_t dukky_document_onscroll_setter(duk_context *ctx)
 	}
 
 #line 557 "Document.bnd"
-#line 5941 "document.c"
+#line 5918 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5968,7 +5945,7 @@ static duk_ret_t dukky_document_onseeked_getter(duk_context *ctx)
 	}
 
 #line 558 "Document.bnd"
-#line 5972 "document.c"
+#line 5949 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6002,7 +5979,7 @@ static duk_ret_t dukky_document_onseeked_setter(duk_context *ctx)
 	}
 
 #line 559 "Document.bnd"
-#line 6006 "document.c"
+#line 5983 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6033,7 +6010,7 @@ static duk_ret_t dukky_document_onseeking_getter(duk_context *ctx)
 	}
 
 #line 560 "Document.bnd"
-#line 6037 "document.c"
+#line 6014 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6067,7 +6044,7 @@ static duk_ret_t dukky_document_onseeking_setter(duk_context *ctx)
 	}
 
 #line 561 "Document.bnd"
-#line 6071 "document.c"
+#line 6048 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6098,7 +6075,7 @@ static duk_ret_t dukky_document_onselect_getter(duk_context *ctx)
 	}
 
 #line 562 "Document.bnd"
-#line 6102 "document.c"
+#line 6079 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6132,7 +6109,7 @@ static duk_ret_t dukky_document_onselect_setter(duk_context *ctx)
 	}
 
 #line 563 "Document.bnd"
-#line 6136 "document.c"
+#line 6113 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6163,7 +6140,7 @@ static duk_ret_t dukky_document_onshow_getter(duk_context *ctx)
 	}
 
 #line 564 "Document.bnd"
-#line 6167 "document.c"
+#line 6144 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6197,7 +6174,7 @@ static duk_ret_t dukky_document_onshow_setter(duk_context *ctx)
 	}
 
 #line 565 "Document.bnd"
-#line 6201 "document.c"
+#line 6178 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6228,7 +6205,7 @@ static duk_ret_t dukky_document_onsort_getter(duk_context *ctx)
 	}
 
 #line 566 "Document.bnd"
-#line 6232 "document.c"
+#line 6209 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6262,7 +6239,7 @@ static duk_ret_t dukky_document_onsort_setter(duk_context *ctx)
 	}
 
 #line 567 "Document.bnd"
-#line 6266 "document.c"
+#line 6243 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6293,7 +6270,7 @@ static duk_ret_t dukky_document_onstalled_getter(duk_context *ctx)
 	}
 
 #line 568 "Document.bnd"
-#line 6297 "document.c"
+#line 6274 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6327,7 +6304,7 @@ static duk_ret_t dukky_document_onstalled_setter(duk_context *ctx)
 	}
 
 #line 569 "Document.bnd"
-#line 6331 "document.c"
+#line 6308 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6358,7 +6335,7 @@ static duk_ret_t dukky_document_onsubmit_getter(duk_context *ctx)
 	}
 
 #line 570 "Document.bnd"
-#line 6362 "document.c"
+#line 6339 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6392,7 +6369,7 @@ static duk_ret_t dukky_document_onsubmit_setter(duk_context *ctx)
 	}
 
 #line 571 "Document.bnd"
-#line 6396 "document.c"
+#line 6373 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6423,7 +6400,7 @@ static duk_ret_t dukky_document_onsuspend_getter(duk_context *ctx)
 	}
 
 #line 572 "Document.bnd"
-#line 6427 "document.c"
+#line 6404 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6457,7 +6434,7 @@ static duk_ret_t dukky_document_onsuspend_setter(duk_context *ctx)
 	}
 
 #line 573 "Document.bnd"
-#line 6461 "document.c"
+#line 6438 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6488,7 +6465,7 @@ static duk_ret_t dukky_document_ontimeupdate_getter(duk_context *ctx)
 	}
 
 #line 574 "Document.bnd"
-#line 6492 "document.c"
+#line 6469 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6522,7 +6499,7 @@ static duk_ret_t dukky_document_ontimeupdate_setter(duk_context *ctx)
 	}
 
 #line 575 "Document.bnd"
-#line 6526 "document.c"
+#line 6503 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6553,7 +6530,7 @@ static duk_ret_t dukky_document_ontoggle_getter(duk_context *ctx)
 	}
 
 #line 576 "Document.bnd"
-#line 6557 "document.c"
+#line 6534 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6587,7 +6564,7 @@ static duk_ret_t dukky_document_ontoggle_setter(duk_context *ctx)
 	}
 
 #line 577 "Document.bnd"
-#line 6591 "document.c"
+#line 6568 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6618,7 +6595,7 @@ static duk_ret_t dukky_document_onvolumechange_getter(duk_context *ctx)
 	}
 
 #line 578 "Document.bnd"
-#line 6622 "document.c"
+#line 6599 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6652,7 +6629,7 @@ static duk_ret_t dukky_document_onvolumechange_setter(duk_context *ctx)
 	}
 
 #line 579 "Document.bnd"
-#line 6656 "document.c"
+#line 6633 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6683,7 +6660,7 @@ static duk_ret_t dukky_document_onwaiting_getter(duk_context *ctx)
 	}
 
 #line 580 "Document.bnd"
-#line 6687 "document.c"
+#line 6664 "document.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -6717,7 +6694,7 @@ static duk_ret_t dukky_document_onwaiting_setter(duk_context *ctx)
 	}
 
 #line 581 "Document.bnd"
-#line 6721 "document.c"
+#line 6698 "document.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);

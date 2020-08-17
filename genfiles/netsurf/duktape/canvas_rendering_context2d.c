@@ -34,18 +34,396 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
-static void dukky_canvas_rendering_context2d___init(duk_context *ctx, canvas_rendering_context2d_private_t *priv)
+/* prologue */
+#include "desktop/gui_internal.h"
+#include "desktop/gui_table.h"
+#include "netsurf/bitmap.h"
+#include "utils/corestrings.h"
+/* It's a smidge naughty of us to read
+ * this particular header, but we're needing
+ * to redraw the node we represent
+ */
+#include "content/handlers/html/private.h"
+
+static void redraw_node(dom_node *node)
 {
+	struct box *box = NULL;
+	html_content *htmlc = NULL;
+	dom_exception exc;
+	dom_document *doc;
+
+	exc = dom_node_get_user_data(node,
+				     corestring_dom___ns_key_box_node_data,
+				     &box);
+	if (exc != DOM_NO_ERR || box == NULL) {
+		return;
+	}
+
+	exc = dom_node_get_owner_document(node, &doc);
+	if (exc != DOM_NO_ERR || doc == NULL) {
+		return;
+	}
+
+	exc = dom_node_get_user_data(doc,
+				     corestring_dom___ns_key_html_content_data,
+				     &htmlc);
+	if (exc != DOM_NO_ERR || htmlc == NULL) {
+		dom_node_unref(doc);
+		return;
+	}
+
+	html__redraw_a_box(htmlc, box);
+
+	dom_node_unref(doc);
+}
+
+/**
+ * deal with events from the DOM for canvas node user data
+ *
+ * \param operation The DOM operation happening
+ * \param key The user data key
+ * \param data The user data (our bitmap)
+ * \param src The DOM node emitting the event (our <canvas>)
+ * \param dst The target DOM node if applicable
+ */
+static void
+canvas2d_user_data_handler(dom_node_operation operation,
+			   dom_string *key,
+			   void *data,
+			   struct dom_node *src,
+			   struct dom_node *dst)
+{
+	struct bitmap *newbitmap, *bitmap = (struct bitmap*)data, *oldbitmap = NULL;
+	int width, height;
+	size_t stride;
+
+	if (dom_string_isequal(key,corestring_dom___ns_key_canvas_node_data) == false || data == NULL) {
+		/* Not for us */
+		return;
+	}
+
+	switch (operation) {
+	case DOM_NODE_CLONED:
+		width = guit->bitmap->get_width(bitmap);
+		height = guit->bitmap->get_height(bitmap);
+		stride = guit->bitmap->get_rowstride(bitmap);
+		newbitmap = guit->bitmap->create(width, height,
+						 BITMAP_NEW);
+		if (newbitmap != NULL) {
+			if (guit->bitmap->get_rowstride(newbitmap) == stride) {
+				// Compatible bitmap, bung the data over
+				memcpy(guit->bitmap->get_buffer(newbitmap),
+				       guit->bitmap->get_buffer(bitmap),
+				       stride * height);
+				guit->bitmap->modified(newbitmap);
+			}
+		}
+		if (dom_node_set_user_data(dst,
+					   corestring_dom___ns_key_canvas_node_data,
+					   newbitmap, canvas2d_user_data_handler,
+					   &oldbitmap) == DOM_NO_ERR) {
+			if (oldbitmap != NULL)
+				guit->bitmap->destroy(oldbitmap);
+		}
+		break;
+
+	case DOM_NODE_RENAMED:
+	case DOM_NODE_IMPORTED:
+	case DOM_NODE_ADOPTED:
+		break;
+
+	case DOM_NODE_DELETED:
+		guit->bitmap->destroy(bitmap);
+		break;
+	default:
+		NSLOG(netsurf, INFO, "User data operation not handled.");
+		assert(0);
+	}
+}
+
+/**
+ * Give the canvas element an appropriately sized bitmap
+ *
+ * \param node The DOM node being inserted
+ * \param[out] bitmap_out The bitmap created
+ * \return NSERROR_OK on success else appropriate error code
+ */
+static nserror canvas2d_create_bitmap(dom_node *node, struct bitmap **bitmap_out)
+{
+	dom_exception exc;
+	dom_string *width_s = NULL, *height_s = NULL;
+	unsigned long width = 300, height = 150;
+	struct bitmap *bitmap, *oldbitmap = NULL;
+
+	exc = dom_element_get_attribute(node,
+					corestring_dom_width,
+					&width_s);
+	if (exc == DOM_NO_ERR && width_s != NULL) {
+		const char *ptr = (const char *)dom_string_data(width_s);
+		const char *endptr = ptr + dom_string_length(width_s);
+		char * ended;
+		unsigned long width_n = strtoul(ptr, &ended, 10);
+
+		if (ended == endptr || strcasecmp(ended, "px") == 0) {
+			/* parsed it all */
+			width = width_n;
+		}
+
+		dom_string_unref(width_s);
+	}
+
+	exc = dom_element_get_attribute(node,
+					corestring_dom_height,
+					&height_s);
+	if (exc == DOM_NO_ERR && height_s != NULL) {
+		const char *ptr = (const char *)dom_string_data(height_s);
+		const char *endptr = ptr + dom_string_length(height_s);
+		char * ended;
+		unsigned long height_n = strtoul(ptr, &ended, 10);
+
+		if (ended == endptr || strcasecmp(ended, "px") == 0) {
+			/* parsed it all */
+			height = height_n;
+		}
+
+		dom_string_unref(height_s);
+	}
+
+	bitmap = guit->bitmap->create(
+		(int)width, (int)height,
+		BITMAP_NEW);
+
+	if (bitmap == NULL) {
+		return NSERROR_NOMEM;
+	}
+
+	memset(guit->bitmap->get_buffer(bitmap),
+	       0, /* Transparent black */
+	       height * guit->bitmap->get_rowstride(bitmap));
+	guit->bitmap->modified(bitmap);
+
+	exc = dom_node_set_user_data(node,
+				     corestring_dom___ns_key_canvas_node_data,
+				     bitmap,
+				     canvas2d_user_data_handler,
+				     &oldbitmap);
+
+	if (exc != DOM_NO_ERR) {
+		guit->bitmap->destroy(bitmap);
+		return NSERROR_DOM;
+	}
+
+	assert(oldbitmap == NULL);
+
+	if (bitmap_out != NULL)
+		*bitmap_out = bitmap;
+
+	return NSERROR_OK;
+}
+
+/**
+ * Handle subtree modified events for our canvas node
+ *
+ * If width or height has changed relative to our priv, then
+ * we need to recreate the bitmap and reset our cached width
+ * and height values in order to be safe.  Plus redraw ourselves.
+ *
+ * \param evt The event which occurred
+ * \param pw The private pointer for our canvas object
+ */
+static void
+canvas2d__handle_dom_event(dom_event *evt, void *pw)
+{
+	canvas_rendering_context2d_private_t *priv = pw;
+	dom_ulong width;
+	dom_ulong height;
+	dom_exception exc;
+	struct bitmap *newbitmap, *oldbitmap = NULL;
+	size_t stride;
+	dom_event_flow_phase phase;
+	
+	exc = dom_event_get_event_phase(evt, &phase);
+	assert(exc == DOM_NO_ERR);
+	/* If we're not being hit right now, we're not up for it */
+	if (phase != DOM_AT_TARGET) return;
+	
+	/* Rather than being complex about things, let's just work out
+	 * what the width and height are and hope nothing else matters
+	 */
+	
+	exc = dom_html_canvas_element_get_width(priv->canvas, &width);
+	if (exc != DOM_NO_ERR) return;
+	exc = dom_html_canvas_element_get_height(priv->canvas, &height);
+	if (exc != DOM_NO_ERR) return;
+	
+	if ((int)height == priv->height && (int)width == priv->width) return;
+	
+	/* Okay, we need to reallocate our bitmap and re-cache values */
+	
+	newbitmap = guit->bitmap->create(width, height, BITMAP_NEW);
+	stride = guit->bitmap->get_rowstride(newbitmap);
+
+	if (newbitmap != NULL) {
+		memset(guit->bitmap->get_buffer(newbitmap),
+		       0,
+		       stride * height);
+		guit->bitmap->modified(newbitmap);
+	}
+
+	if (dom_node_set_user_data(priv->canvas,
+				   corestring_dom___ns_key_canvas_node_data,
+				   newbitmap, canvas2d_user_data_handler,
+				   &oldbitmap) == DOM_NO_ERR) {
+		if (oldbitmap != NULL)
+			guit->bitmap->destroy(oldbitmap);
+	} else {
+		guit->bitmap->destroy(newbitmap);
+		/* We'll stick with the old, odd though that might be */
+		return;
+	}
+
+	/* Cache the new values */
+	priv->width = (int)width;
+	priv->height = (int)height;
+	priv->stride = stride;
+	priv->bitmap = newbitmap;
+}
+
+typedef struct {
+	uint8_t *ptr;
+	size_t stride;
+	ssize_t width;
+	ssize_t height;
+} raw_bitmap;
+
+typedef struct {
+	raw_bitmap src;
+	raw_bitmap dst;
+	/* These are relative to the destination top/left */
+	ssize_t dst_x;
+	ssize_t dst_y;
+	/* These are relative to the source top/left */
+	ssize_t x1;
+	ssize_t y1;
+	/* And these are +1, so a 1x1 copy will have x2==x1+1 etc */
+	ssize_t x2;
+	ssize_t y2;
+} copy_operation;
+
+/**
+ * Copy from src to dst
+ *
+ * Note, this is destructive to its copy_operation input
+ *
+ * \param op The copy operation to perform
+ * \return Whether the destination bitmap was altered
+ */
+static bool
+canvas2d__copy_bitmap_to_bitmap(copy_operation *op)
+{
+	/* Constrain src rectangle to src bitmap size */
+	if (op->x1 < 0) op->x1 = 0;
+	if (op->y1 < 0) op->y1 = 0;
+	if (op->x2 > op->src.width) op->x2 = op->src.width;
+	if (op->y2 > op->src.height) op->y2 = op->src.height;
+	/* Offset the rectangle into dst coordinates */
+	op->x1 += op->dst_x;
+	op->x2 += op->dst_x;
+	op->y1 += op->dst_y;
+	op->y2 += op->dst_y;
+	/* Constrain dst rectangle to dst bitmap */
+	if (op->x1 < 0) op->x1 = 0;
+	if (op->y1 < 0) op->y1 = 0;
+	if (op->x2 > op->dst.width) op->x2 = op->dst.width;
+	if (op->y2 > op->dst.height) op->y2 = op->dst.height;
+	/* If we have nothing to copy, stop now */
+	if ((op->x2 - op->x1) < 1 ||
+	    (op->y2 - op->y1) < 1)
+		return false;
+	/* Okay, stuff to copy, so let's begin */
+	op->src.ptr +=
+		(op->src.stride * (op->y1 - op->dst_y)) + /* move down y1 rows */
+		(op->x1 - op->dst_x) * 4; /* and across x1 pixels */
+	op->dst.ptr +=
+		(op->dst.stride * op->y1) + /* down down y1 rows */
+		(op->x1 * 4); /* and across x1 pixels */
+	for (ssize_t rowctr = op->y2 - op->y1; rowctr > 0; --rowctr) {
+		memcpy(op->dst.ptr, op->src.ptr, (op->x2 - op->x1) * 4);
+		op->src.ptr += op->src.stride;
+		op->dst.ptr += op->dst.stride;
+	}
+	return true;
+}
+
+/* prologue ends */
+
+static void dukky_canvas_rendering_context2d___init(duk_context *ctx, canvas_rendering_context2d_private_t *priv, struct dom_html_canvas_element *canvas)
+{
+#line 345 "CanvasRenderingContext2D.bnd"
+
+	struct bitmap *bitmap;
+	dom_exception exc;
+
+	assert(canvas != NULL);
+	
+	priv->canvas = canvas;
+	dom_node_ref(canvas);
+	
+	exc = dom_event_listener_create(canvas2d__handle_dom_event,
+					priv,
+					&priv->listener);
+	assert(exc == DOM_NO_ERR);
+	
+	exc = dom_event_target_add_event_listener(
+		canvas,
+		corestring_dom_DOMSubtreeModified,
+		priv->listener,
+		false);
+	assert(exc == DOM_NO_ERR);
+	
+	exc = dom_node_get_user_data(canvas,
+				     corestring_dom___ns_key_canvas_node_data,
+				     &bitmap);
+	assert(exc == DOM_NO_ERR);
+	
+	if (bitmap == NULL) {
+		if (canvas2d_create_bitmap((dom_node *)canvas,
+					   &bitmap) != NSERROR_OK) {
+			priv->bitmap = NULL;
+			priv->width = -1;
+			priv->height = -1;
+			priv->stride = 0;
+			return;
+		}
+	}
+
+	assert(bitmap != NULL);
+	
+	priv->bitmap = bitmap;
+	priv->width = guit->bitmap->get_width(bitmap);
+	priv->height = guit->bitmap->get_height(bitmap);
+	priv->stride = guit->bitmap->get_rowstride(bitmap);
+#line 413 "canvas_rendering_context2d.c"
 }
 
 static void dukky_canvas_rendering_context2d___fini(duk_context *ctx, canvas_rendering_context2d_private_t *priv)
 {
+
+	dom_exception exc;
+	exc = dom_event_target_remove_event_listener(
+		priv->canvas,
+		corestring_dom_DOMSubtreeModified,
+		priv->listener,
+		false);
+	assert(exc == DOM_NO_ERR);
+	dom_event_listener_unref(priv->listener);
+	dom_node_unref(priv->canvas);
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d___constructor(duk_context *ctx)
@@ -56,7 +434,7 @@ static duk_ret_t dukky_canvas_rendering_context2d___constructor(duk_context *ctx
 	duk_push_pointer(ctx, priv);
 	duk_put_prop_string(ctx, 0, dukky_magic_string_private);
 
-	dukky_canvas_rendering_context2d___init(ctx, priv);
+	dukky_canvas_rendering_context2d___init(ctx, priv, duk_get_pointer(ctx, 1));
 	duk_set_top(ctx, 1);
 	return 1;
 }
@@ -680,20 +1058,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_beginPath(duk_context *ctx)
 
 static duk_ret_t dukky_canvas_rendering_context2d_fill(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc == 0) {
-		/* 1 optional arguments need adding */
-		duk_push_string(ctx, "nonzero");
-	} else if (dukky_argc > 1) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 1);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		/* unhandled type check */
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -709,14 +1073,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_fill(duk_context *ctx)
 
 static duk_ret_t dukky_canvas_rendering_context2d_stroke(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc > 0) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 0);
-	}
-
-	/* check types of passed arguments are correct */
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -732,20 +1088,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_stroke(duk_context *ctx)
 
 static duk_ret_t dukky_canvas_rendering_context2d_drawFocusIfNeeded(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 1) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 1, dukky_argc);
-	} else if (dukky_argc > 1) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 1);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		/* unhandled type check */
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -761,14 +1103,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_drawFocusIfNeeded(duk_context 
 
 static duk_ret_t dukky_canvas_rendering_context2d_scrollPathIntoView(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc > 0) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 0);
-	}
-
-	/* check types of passed arguments are correct */
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -784,20 +1118,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_scrollPathIntoView(duk_context
 
 static duk_ret_t dukky_canvas_rendering_context2d_clip(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc == 0) {
-		/* 1 optional arguments need adding */
-		duk_push_string(ctx, "nonzero");
-	} else if (dukky_argc > 1) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 1);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		/* unhandled type check */
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -836,33 +1156,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_resetClip(duk_context *ctx)
 
 static duk_ret_t dukky_canvas_rendering_context2d_isPointInPath(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 2) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 2, dukky_argc);
-	} else if (dukky_argc == 2) {
-		/* 1 optional arguments need adding */
-		duk_push_string(ctx, "nonzero");
-	} else if (dukky_argc > 3) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 3);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_number(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 0, "x");
-		}
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_number(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 1, "y");
-		}
-	}
-	if (dukky_argc > 2) {
-		/* unhandled type check */
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -878,27 +1171,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_isPointInPath(duk_context *ctx
 
 static duk_ret_t dukky_canvas_rendering_context2d_isPointInStroke(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 2) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 2, dukky_argc);
-	} else if (dukky_argc > 2) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 2);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_number(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 0, "x");
-		}
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_number(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 1, "y");
-		}
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -1043,30 +1315,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_measureText(duk_context *ctx)
 
 static duk_ret_t dukky_canvas_rendering_context2d_drawImage(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 3) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 3, dukky_argc);
-	} else if (dukky_argc > 3) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 3);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		/* unhandled type check */
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_number(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 1, "dx");
-		}
-	}
-	if (dukky_argc > 2) {
-		if (!duk_is_number(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 2, "dy");
-		}
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -1165,27 +1413,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_clearHitRegions(duk_context *c
 
 static duk_ret_t dukky_canvas_rendering_context2d_createImageData(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 2) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 2, dukky_argc);
-	} else if (dukky_argc > 2) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 2);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_number(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 0, "sw");
-		}
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_number(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 1, "sh");
-		}
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -1196,7 +1423,39 @@ static duk_ret_t dukky_canvas_rendering_context2d_createImageData(duk_context *c
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 456 "CanvasRenderingContext2D.bnd"
+
+	/* Can be called either with width and height, or with a reference
+	 * imagedata object
+	 */
+	image_data_private_t *idpriv;
+	int width, height;
+
+	if (duk_get_top(ctx) == 2) {
+		width = duk_to_int(ctx, 0);
+		height = duk_to_int(ctx, 1);
+	} else if (dukky_instanceof(ctx, 0, PROTO_NAME(IMAGEDATA))) {
+		duk_get_prop_string(ctx, 0, dukky_magic_string_private);
+		idpriv = duk_get_pointer(ctx, -1);
+		width = idpriv->width;
+		height = idpriv->height;
+		duk_pop(ctx);
+	} else {
+		duk_push_null(ctx);
+		return 1;
+	}
+
+	duk_push_int(ctx, width);
+	duk_push_int(ctx, height);
+	if (dukky_create_object(ctx,
+				PROTO_NAME(IMAGEDATA),
+				2) != DUK_EXEC_SUCCESS) {
+		return duk_error(ctx,
+				 DUK_ERR_ERROR,
+				 "Unable to create ImageData");
+	}
+	return 1;
+#line 1459 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_getImageData(duk_context *ctx)
@@ -1242,35 +1501,67 @@ static duk_ret_t dukky_canvas_rendering_context2d_getImageData(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 490 "CanvasRenderingContext2D.bnd"
+
+	/* called with x, y, width, height */
+	int x = duk_get_int(ctx, 0);
+	int y = duk_get_int(ctx, 1);
+	int width = duk_get_int(ctx, 2);
+	int height = duk_get_int(ctx, 3);
+	image_data_private_t *idpriv;
+	copy_operation copyop;
+
+	if (priv->bitmap == NULL)
+		return duk_generic_error(ctx, "Canvas in bad state, sorry");
+
+	duk_push_int(ctx, width);
+	duk_push_int(ctx, height);
+	if (dukky_create_object(ctx,
+				PROTO_NAME(IMAGEDATA),
+				2) != DUK_EXEC_SUCCESS) {
+		return duk_error(ctx,
+				 DUK_ERR_ERROR,
+				 "Unable to create ImageData");
+	}
+
+	/* ... imgdata */
+	duk_get_prop_string(ctx, -1, dukky_magic_string_private);
+	idpriv = duk_get_pointer(ctx, -1);
+	duk_pop(ctx);
+
+	/* We now have access to the imagedata private, so we need to copy
+	 * the pixel range out of ourselves
+	 */
+	copyop.src.ptr = guit->bitmap->get_buffer(priv->bitmap);
+	copyop.src.stride = priv->stride;
+	copyop.src.width = priv->width;
+	copyop.src.height = priv->height;
+
+	copyop.dst.ptr = idpriv->data;
+	copyop.dst.stride = idpriv->width * 4;
+	copyop.dst.width = idpriv->width;
+	copyop.dst.height = idpriv->height;
+
+	/* Copying to top/left of our new bitmap */
+	copyop.dst_x = 0;
+	copyop.dst_y = 0;
+
+	/* Copying from x,y for width,height */
+	copyop.x1 = x;
+	copyop.x2 = x + width;
+	copyop.y1 = y;
+	copyop.y2 = y + height;
+
+	/* We don't care if the copy operation wrote or not because
+	 * we don't need to invalidate ImageData objects
+	 */
+	(void)canvas2d__copy_bitmap_to_bitmap(&copyop);
+	return 1;
+#line 1561 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_putImageData(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 3) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 3, dukky_argc);
-	} else if (dukky_argc > 3) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 3);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		/* unhandled type check */
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_number(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 1, "dx");
-		}
-	}
-	if (dukky_argc > 2) {
-		if (!duk_is_number(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 2, "dy");
-		}
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -1281,7 +1572,63 @@ static duk_ret_t dukky_canvas_rendering_context2d_putImageData(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
+#line 548 "CanvasRenderingContext2D.bnd"
+
+	/* imgdata, x, y[, clipx, clipy, clipw, cliph] */
+	/* If provided, the clip coordinates are within the input image data */
+	/* We pretend the image is placed at x,y within ourselves, and then we
+	 * copy the clip rectangle (defaults to whole image)
+	 */
+	image_data_private_t *idpriv;
+	copy_operation copyop;
+
+	if (!dukky_instanceof(ctx, 0, PROTO_NAME(IMAGEDATA))) {
+		return duk_generic_error(ctx, "Expected ImageData as first argument");
+	}
+
+	if (priv->bitmap == NULL)
+		return duk_generic_error(ctx, "Canvas in bad state, sorry");
+
+	duk_get_prop_string(ctx, 0, dukky_magic_string_private);
+	idpriv = duk_get_pointer(ctx, -1);
+	duk_pop(ctx);
+
+	/* Copying from the input ImageData object */
+	copyop.src.ptr = idpriv->data;
+	copyop.src.stride = idpriv->width * 4;
+	copyop.src.width = idpriv->width;
+	copyop.src.height = idpriv->height;
+
+	/* Copying to ourselves */
+	copyop.dst.ptr = guit->bitmap->get_buffer(priv->bitmap);
+	copyop.dst.stride = priv->stride;
+	copyop.dst.width = priv->width;
+	copyop.dst.height = priv->height;
+
+	/* X Y target coordinates */
+	copyop.dst_x = duk_to_int(ctx, 1);
+	copyop.dst_y = duk_to_int(ctx, 2);
+
+	if (duk_get_top(ctx) < 7) {
+		/* Clipping data not provided */
+		copyop.x1 = 0;
+		copyop.y1 = 0;
+		copyop.x2 = idpriv->width;
+		copyop.y2 = idpriv->height;
+	} else {
+		copyop.x1 = duk_to_int(ctx, 3);
+		copyop.y1 = duk_to_int(ctx, 4);
+		copyop.x2 = copyop.x1 + duk_to_int(ctx, 5);
+		copyop.y2 = copyop.y1 + duk_to_int(ctx, 6);
+	}
+
+	if (canvas2d__copy_bitmap_to_bitmap(&copyop)) {
+		guit->bitmap->modified(priv->bitmap);
+		redraw_node((dom_node *)(priv->canvas));
+	}
+
 	return 0;
+#line 1632 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_setLineDash(duk_context *ctx)
@@ -1535,42 +1882,6 @@ static duk_ret_t dukky_canvas_rendering_context2d_bezierCurveTo(duk_context *ctx
 
 static duk_ret_t dukky_canvas_rendering_context2d_arcTo(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 5) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 5, dukky_argc);
-	} else if (dukky_argc > 5) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 5);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_number(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 0, "x1");
-		}
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_number(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 1, "y1");
-		}
-	}
-	if (dukky_argc > 2) {
-		if (!duk_is_number(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 2, "x2");
-		}
-	}
-	if (dukky_argc > 3) {
-		if (!duk_is_number(ctx, 3)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 3, "y2");
-		}
-	}
-	if (dukky_argc > 4) {
-		if (!duk_is_number(ctx, 4)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 4, "radius");
-		}
-	}
 	/* Get private data for method */
 	canvas_rendering_context2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -1770,7 +2081,11 @@ static duk_ret_t dukky_canvas_rendering_context2d_canvas_getter(duk_context *ctx
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 404 "CanvasRenderingContext2D.bnd"
+
+	dukky_push_node(ctx, (dom_node *)priv->canvas);
+	return 1;
+#line 2089 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_width_getter(duk_context *ctx)
@@ -1785,7 +2100,17 @@ static duk_ret_t dukky_canvas_rendering_context2d_width_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 410 "CanvasRenderingContext2D.bnd"
+
+	dom_exception exc;
+	dom_ulong width;
+	
+	exc = dom_html_canvas_element_get_width(priv->canvas, &width);
+	if (exc != DOM_NO_ERR) return 0;
+	
+	duk_push_number(ctx, (duk_double_t)width);
+	return 1;
+#line 2114 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_width_setter(duk_context *ctx)
@@ -1800,7 +2125,16 @@ static duk_ret_t dukky_canvas_rendering_context2d_width_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 422 "CanvasRenderingContext2D.bnd"
+
+	dom_exception exc;
+	dom_ulong width = duk_get_uint(ctx, 0);
+
+	exc = dom_html_canvas_element_set_width(priv->canvas, width);
+	if (exc != DOM_NO_ERR) return 0;
+
+	return 1;
+#line 2138 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_height_getter(duk_context *ctx)
@@ -1815,7 +2149,17 @@ static duk_ret_t dukky_canvas_rendering_context2d_height_getter(duk_context *ctx
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 433 "CanvasRenderingContext2D.bnd"
+
+	dom_exception exc;
+	dom_ulong height;
+	
+	exc = dom_html_canvas_element_get_height(priv->canvas, &height);
+	if (exc != DOM_NO_ERR) return 0;
+	
+	duk_push_number(ctx, (duk_double_t)height);
+	return 1;
+#line 2163 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_height_setter(duk_context *ctx)
@@ -1830,7 +2174,16 @@ static duk_ret_t dukky_canvas_rendering_context2d_height_setter(duk_context *ctx
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 445 "CanvasRenderingContext2D.bnd"
+
+	dom_exception exc;
+	dom_ulong height = duk_get_uint(ctx, 0);
+
+	exc = dom_html_canvas_element_set_height(priv->canvas, height);
+	if (exc != DOM_NO_ERR) return 0;
+
+	return 1;
+#line 2187 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_currentTransform_getter(duk_context *ctx)
@@ -3234,7 +3587,7 @@ duk_ret_t dukky_canvas_rendering_context2d___proto(duk_context *ctx, void *udata
 
 	/* Set the constructor */
 	duk_dup(ctx, 0);
-	duk_push_c_function(ctx, dukky_canvas_rendering_context2d___constructor, 1);
+	duk_push_c_function(ctx, dukky_canvas_rendering_context2d___constructor, 2);
 	duk_put_prop_string(ctx, -2, "\xFF\xFFNETSURF_DUKTAPE_INIT");
 	duk_pop(ctx);
 

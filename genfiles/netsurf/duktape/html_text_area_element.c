@@ -34,9 +34,9 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
@@ -180,22 +180,6 @@ static duk_ret_t dukky_html_text_area_element_select(duk_context *ctx)
 
 static duk_ret_t dukky_html_text_area_element_setRangeText(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 1) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 1, dukky_argc);
-	} else if (dukky_argc > 1) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 1);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_string(ctx, 0)) {
-			duk_to_string(ctx, 0);
-		}
-	}
 	/* Get private data for method */
 	html_text_area_element_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -386,7 +370,7 @@ static duk_ret_t dukky_html_text_area_element_disabled_getter(duk_context *ctx)
 	}
 
 #line 17 "HTMLTextAreaElement.bnd"
-#line 390 "html_text_area_element.c"
+#line 374 "html_text_area_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -413,7 +397,7 @@ static duk_ret_t dukky_html_text_area_element_disabled_setter(duk_context *ctx)
 	}
 
 #line 18 "HTMLTextAreaElement.bnd"
-#line 417 "html_text_area_element.c"
+#line 401 "html_text_area_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -545,7 +529,7 @@ static duk_ret_t dukky_html_text_area_element_name_getter(duk_context *ctx)
 	}
 
 #line 20 "HTMLTextAreaElement.bnd"
-#line 549 "html_text_area_element.c"
+#line 533 "html_text_area_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -579,7 +563,7 @@ static duk_ret_t dukky_html_text_area_element_name_setter(duk_context *ctx)
 	}
 
 #line 21 "HTMLTextAreaElement.bnd"
-#line 583 "html_text_area_element.c"
+#line 567 "html_text_area_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -643,7 +627,7 @@ static duk_ret_t dukky_html_text_area_element_readOnly_getter(duk_context *ctx)
 	}
 
 #line 23 "HTMLTextAreaElement.bnd"
-#line 647 "html_text_area_element.c"
+#line 631 "html_text_area_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -670,7 +654,7 @@ static duk_ret_t dukky_html_text_area_element_readOnly_setter(duk_context *ctx)
 	}
 
 #line 24 "HTMLTextAreaElement.bnd"
-#line 674 "html_text_area_element.c"
+#line 658 "html_text_area_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -787,7 +771,7 @@ static duk_ret_t dukky_html_text_area_element_type_getter(duk_context *ctx)
 	}
 
 #line 26 "HTMLTextAreaElement.bnd"
-#line 791 "html_text_area_element.c"
+#line 775 "html_text_area_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -821,7 +805,7 @@ static duk_ret_t dukky_html_text_area_element_defaultValue_getter(duk_context *c
 	}
 
 #line 14 "HTMLTextAreaElement.bnd"
-#line 825 "html_text_area_element.c"
+#line 809 "html_text_area_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -855,7 +839,7 @@ static duk_ret_t dukky_html_text_area_element_defaultValue_setter(duk_context *c
 	}
 
 #line 15 "HTMLTextAreaElement.bnd"
-#line 859 "html_text_area_element.c"
+#line 843 "html_text_area_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -889,7 +873,7 @@ static duk_ret_t dukky_html_text_area_element_value_getter(duk_context *ctx)
 	}
 
 #line 28 "HTMLTextAreaElement.bnd"
-#line 893 "html_text_area_element.c"
+#line 877 "html_text_area_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -923,7 +907,7 @@ static duk_ret_t dukky_html_text_area_element_value_setter(duk_context *ctx)
 	}
 
 #line 29 "HTMLTextAreaElement.bnd"
-#line 927 "html_text_area_element.c"
+#line 911 "html_text_area_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;

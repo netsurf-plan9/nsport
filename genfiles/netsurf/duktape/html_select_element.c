@@ -34,9 +34,9 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
@@ -177,14 +177,6 @@ static duk_ret_t dukky_html_select_element_add(duk_context *ctx)
 
 static duk_ret_t dukky_html_select_element_remove(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc > 0) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 0);
-	}
-
-	/* check types of passed arguments are correct */
 	/* Get private data for method */
 	html_select_element_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -340,7 +332,7 @@ static duk_ret_t dukky_html_select_element_disabled_getter(duk_context *ctx)
 	}
 
 #line 14 "HTMLSelectElement.bnd"
-#line 344 "html_select_element.c"
+#line 336 "html_select_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -367,7 +359,7 @@ static duk_ret_t dukky_html_select_element_disabled_setter(duk_context *ctx)
 	}
 
 #line 15 "HTMLSelectElement.bnd"
-#line 371 "html_select_element.c"
+#line 363 "html_select_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -409,7 +401,7 @@ static duk_ret_t dukky_html_select_element_multiple_getter(duk_context *ctx)
 	}
 
 #line 17 "HTMLSelectElement.bnd"
-#line 413 "html_select_element.c"
+#line 405 "html_select_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -436,7 +428,7 @@ static duk_ret_t dukky_html_select_element_multiple_setter(duk_context *ctx)
 	}
 
 #line 18 "HTMLSelectElement.bnd"
-#line 440 "html_select_element.c"
+#line 432 "html_select_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -463,7 +455,7 @@ static duk_ret_t dukky_html_select_element_name_getter(duk_context *ctx)
 	}
 
 #line 20 "HTMLSelectElement.bnd"
-#line 467 "html_select_element.c"
+#line 459 "html_select_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -497,7 +489,7 @@ static duk_ret_t dukky_html_select_element_name_setter(duk_context *ctx)
 	}
 
 #line 21 "HTMLSelectElement.bnd"
-#line 501 "html_select_element.c"
+#line 493 "html_select_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -591,7 +583,7 @@ static duk_ret_t dukky_html_select_element_type_getter(duk_context *ctx)
 	}
 
 #line 23 "HTMLSelectElement.bnd"
-#line 595 "html_select_element.c"
+#line 587 "html_select_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -715,7 +707,7 @@ static duk_ret_t dukky_html_select_element_value_getter(duk_context *ctx)
 	}
 
 #line 25 "HTMLSelectElement.bnd"
-#line 719 "html_select_element.c"
+#line 711 "html_select_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -749,7 +741,7 @@ static duk_ret_t dukky_html_select_element_value_setter(duk_context *ctx)
 	}
 
 #line 26 "HTMLSelectElement.bnd"
-#line 753 "html_select_element.c"
+#line 745 "html_select_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;

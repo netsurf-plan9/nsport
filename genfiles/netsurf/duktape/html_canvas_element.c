@@ -34,16 +34,16 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
 static void dukky_html_canvas_element___init(duk_context *ctx, html_canvas_element_private_t *priv, struct dom_html_element *html_canvas_element)
 {
 	dukky_html_element___init(ctx, &priv->parent, html_canvas_element);
-#line 153 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 13 "HTMLCanvasElement.bnd"
 #line 48 "html_canvas_element.c"
 }
 
@@ -90,7 +90,33 @@ static duk_ret_t dukky_html_canvas_element_getContext(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 21 "HTMLCanvasElement.bnd"
+
+	/* modetype[, {options}] */
+	const char *modetype = duk_to_string(ctx, 0);
+	if (strcmp(modetype, "2d") != 0) {
+		duk_push_null(ctx);
+		return 1;
+	}
+
+	duk_push_this(ctx);
+	duk_get_prop_string(ctx, -1, MAGIC(Context2D));
+	if (duk_is_undefined(ctx, -1)) {
+		duk_pop(ctx);
+
+		duk_push_pointer(ctx, ((node_private_t*)priv)->node);
+		if (dukky_create_object(ctx,
+					PROTO_NAME(CANVASRENDERINGCONTEXT2D),
+					1) != DUK_EXEC_SUCCESS) {
+			return duk_error(ctx,
+				  DUK_ERR_ERROR,
+				  "Unable to create CanvasRenderingContext2D");
+		}
+		duk_dup(ctx, -1);
+		duk_put_prop_string(ctx, -3, MAGIC(Context2D));
+	}
+	return 1;
+#line 120 "html_canvas_element.c"
 }
 
 static duk_ret_t dukky_html_canvas_element_probablySupportsContext(duk_context *ctx)
@@ -202,7 +228,19 @@ static duk_ret_t dukky_html_canvas_element_width_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 15 "HTMLCanvasElement.bnd"
+#line 233 "html_canvas_element.c"
+	dom_ulong l;
+	dom_exception exc;
+
+	exc = dom_html_canvas_element_get_width((struct dom_html_canvas_element *)((node_private_t*)priv)->node, &l);
+	if (exc != DOM_NO_ERR) {
+		return 0;
+	}
+
+	duk_push_number(ctx, (duk_double_t)l);
+
+	return 1;
 }
 
 static duk_ret_t dukky_html_canvas_element_width_setter(duk_context *ctx)
@@ -215,6 +253,18 @@ static duk_ret_t dukky_html_canvas_element_width_setter(duk_context *ctx)
 	duk_pop_2(ctx);
 	if (priv == NULL) {
 		return 0; /* can do? No can do. */
+	}
+
+#line 16 "HTMLCanvasElement.bnd"
+#line 260 "html_canvas_element.c"
+	dom_exception exc;
+	dom_ulong l;
+
+	l = duk_get_uint(ctx, 0);
+
+	exc = dom_html_canvas_element_set_width((struct dom_html_canvas_element *)((node_private_t*)priv)->node, l);
+	if (exc != DOM_NO_ERR) {
+		return 0;
 	}
 
 	return 0;
@@ -232,7 +282,19 @@ static duk_ret_t dukky_html_canvas_element_height_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 18 "HTMLCanvasElement.bnd"
+#line 287 "html_canvas_element.c"
+	dom_ulong l;
+	dom_exception exc;
+
+	exc = dom_html_canvas_element_get_height((struct dom_html_canvas_element *)((node_private_t*)priv)->node, &l);
+	if (exc != DOM_NO_ERR) {
+		return 0;
+	}
+
+	duk_push_number(ctx, (duk_double_t)l);
+
+	return 1;
 }
 
 static duk_ret_t dukky_html_canvas_element_height_setter(duk_context *ctx)
@@ -245,6 +307,18 @@ static duk_ret_t dukky_html_canvas_element_height_setter(duk_context *ctx)
 	duk_pop_2(ctx);
 	if (priv == NULL) {
 		return 0; /* can do? No can do. */
+	}
+
+#line 19 "HTMLCanvasElement.bnd"
+#line 314 "html_canvas_element.c"
+	dom_exception exc;
+	dom_ulong l;
+
+	l = duk_get_uint(ctx, 0);
+
+	exc = dom_html_canvas_element_set_height((struct dom_html_canvas_element *)((node_private_t*)priv)->node, l);
+	if (exc != DOM_NO_ERR) {
+		return 0;
 	}
 
 	return 0;

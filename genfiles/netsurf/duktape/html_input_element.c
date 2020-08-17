@@ -34,9 +34,9 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
@@ -242,22 +242,6 @@ static duk_ret_t dukky_html_input_element_select(duk_context *ctx)
 
 static duk_ret_t dukky_html_input_element_setRangeText(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 1) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 1, dukky_argc);
-	} else if (dukky_argc > 1) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 1);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_string(ctx, 0)) {
-			duk_to_string(ctx, 0);
-		}
-	}
 	/* Get private data for method */
 	html_input_element_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -328,7 +312,7 @@ static duk_ret_t dukky_html_input_element_accept_getter(duk_context *ctx)
 	}
 
 #line 14 "HTMLInputElement.bnd"
-#line 332 "html_input_element.c"
+#line 316 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -362,7 +346,7 @@ static duk_ret_t dukky_html_input_element_accept_setter(duk_context *ctx)
 	}
 
 #line 15 "HTMLInputElement.bnd"
-#line 366 "html_input_element.c"
+#line 350 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -396,7 +380,7 @@ static duk_ret_t dukky_html_input_element_alt_getter(duk_context *ctx)
 	}
 
 #line 20 "HTMLInputElement.bnd"
-#line 400 "html_input_element.c"
+#line 384 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -430,7 +414,7 @@ static duk_ret_t dukky_html_input_element_alt_setter(duk_context *ctx)
 	}
 
 #line 21 "HTMLInputElement.bnd"
-#line 434 "html_input_element.c"
+#line 418 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -524,7 +508,7 @@ static duk_ret_t dukky_html_input_element_defaultChecked_getter(duk_context *ctx
 	}
 
 #line 26 "HTMLInputElement.bnd"
-#line 528 "html_input_element.c"
+#line 512 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -551,7 +535,7 @@ static duk_ret_t dukky_html_input_element_defaultChecked_setter(duk_context *ctx
 	}
 
 #line 27 "HTMLInputElement.bnd"
-#line 555 "html_input_element.c"
+#line 539 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -578,7 +562,7 @@ static duk_ret_t dukky_html_input_element_checked_getter(duk_context *ctx)
 	}
 
 #line 23 "HTMLInputElement.bnd"
-#line 582 "html_input_element.c"
+#line 566 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -605,7 +589,7 @@ static duk_ret_t dukky_html_input_element_checked_setter(duk_context *ctx)
 	}
 
 #line 24 "HTMLInputElement.bnd"
-#line 609 "html_input_element.c"
+#line 593 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -662,7 +646,7 @@ static duk_ret_t dukky_html_input_element_disabled_getter(duk_context *ctx)
 	}
 
 #line 32 "HTMLInputElement.bnd"
-#line 666 "html_input_element.c"
+#line 650 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -689,7 +673,7 @@ static duk_ret_t dukky_html_input_element_disabled_setter(duk_context *ctx)
 	}
 
 #line 33 "HTMLInputElement.bnd"
-#line 693 "html_input_element.c"
+#line 677 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -1031,7 +1015,7 @@ static duk_ret_t dukky_html_input_element_maxLength_getter(duk_context *ctx)
 	}
 
 #line 59 "HTMLInputElement.bnd"
-#line 1035 "html_input_element.c"
+#line 1019 "html_input_element.c"
 	dom_long l;
 	dom_exception exc;
 
@@ -1058,7 +1042,7 @@ static duk_ret_t dukky_html_input_element_maxLength_setter(duk_context *ctx)
 	}
 
 #line 60 "HTMLInputElement.bnd"
-#line 1062 "html_input_element.c"
+#line 1046 "html_input_element.c"
 	dom_exception exc;
 	dom_long l;
 
@@ -1175,7 +1159,7 @@ static duk_ret_t dukky_html_input_element_name_getter(duk_context *ctx)
 	}
 
 #line 35 "HTMLInputElement.bnd"
-#line 1179 "html_input_element.c"
+#line 1163 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -1209,7 +1193,7 @@ static duk_ret_t dukky_html_input_element_name_setter(duk_context *ctx)
 	}
 
 #line 36 "HTMLInputElement.bnd"
-#line 1213 "html_input_element.c"
+#line 1197 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -1303,7 +1287,7 @@ static duk_ret_t dukky_html_input_element_readOnly_getter(duk_context *ctx)
 	}
 
 #line 38 "HTMLInputElement.bnd"
-#line 1307 "html_input_element.c"
+#line 1291 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -1330,7 +1314,7 @@ static duk_ret_t dukky_html_input_element_readOnly_setter(duk_context *ctx)
 	}
 
 #line 39 "HTMLInputElement.bnd"
-#line 1334 "html_input_element.c"
+#line 1318 "html_input_element.c"
 	dom_exception exc;
 	bool b;
 
@@ -1387,7 +1371,7 @@ static duk_ret_t dukky_html_input_element_size_getter(duk_context *ctx)
 	}
 
 #line 62 "HTMLInputElement.bnd"
-#line 1391 "html_input_element.c"
+#line 1375 "html_input_element.c"
 	dom_ulong l;
 	dom_exception exc;
 
@@ -1414,7 +1398,7 @@ static duk_ret_t dukky_html_input_element_size_setter(duk_context *ctx)
 	}
 
 #line 63 "HTMLInputElement.bnd"
-#line 1418 "html_input_element.c"
+#line 1402 "html_input_element.c"
 	dom_exception exc;
 	dom_ulong l;
 
@@ -1441,7 +1425,7 @@ static duk_ret_t dukky_html_input_element_src_getter(duk_context *ctx)
 	}
 
 #line 41 "HTMLInputElement.bnd"
-#line 1445 "html_input_element.c"
+#line 1429 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -1475,7 +1459,7 @@ static duk_ret_t dukky_html_input_element_src_setter(duk_context *ctx)
 	}
 
 #line 42 "HTMLInputElement.bnd"
-#line 1479 "html_input_element.c"
+#line 1463 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -1539,7 +1523,7 @@ static duk_ret_t dukky_html_input_element_type_getter(duk_context *ctx)
 	}
 
 #line 65 "HTMLInputElement.bnd"
-#line 1543 "html_input_element.c"
+#line 1527 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -1588,7 +1572,7 @@ static duk_ret_t dukky_html_input_element_defaultValue_getter(duk_context *ctx)
 	}
 
 #line 29 "HTMLInputElement.bnd"
-#line 1592 "html_input_element.c"
+#line 1576 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -1622,7 +1606,7 @@ static duk_ret_t dukky_html_input_element_defaultValue_setter(duk_context *ctx)
 	}
 
 #line 30 "HTMLInputElement.bnd"
-#line 1626 "html_input_element.c"
+#line 1610 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -1656,7 +1640,7 @@ static duk_ret_t dukky_html_input_element_value_getter(duk_context *ctx)
 	}
 
 #line 56 "HTMLInputElement.bnd"
-#line 1660 "html_input_element.c"
+#line 1644 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -1690,7 +1674,7 @@ static duk_ret_t dukky_html_input_element_value_setter(duk_context *ctx)
 	}
 
 #line 57 "HTMLInputElement.bnd"
-#line 1694 "html_input_element.c"
+#line 1678 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -1759,7 +1743,7 @@ static duk_ret_t dukky_html_input_element_valueAsNumber_getter(duk_context *ctx)
 	}
 
 #line 47 "HTMLInputElement.bnd"
-#line 1763 "html_input_element.c"
+#line 1747 "html_input_element.c"
 	return 0;
 }
 
@@ -1776,7 +1760,7 @@ static duk_ret_t dukky_html_input_element_valueAsNumber_setter(duk_context *ctx)
 	}
 
 #line 48 "HTMLInputElement.bnd"
-#line 1780 "html_input_element.c"
+#line 1764 "html_input_element.c"
 	return 0;
 }
 
@@ -1793,7 +1777,7 @@ static duk_ret_t dukky_html_input_element_valueLow_getter(duk_context *ctx)
 	}
 
 #line 53 "HTMLInputElement.bnd"
-#line 1797 "html_input_element.c"
+#line 1781 "html_input_element.c"
 	return 0;
 }
 
@@ -1810,7 +1794,7 @@ static duk_ret_t dukky_html_input_element_valueLow_setter(duk_context *ctx)
 	}
 
 #line 54 "HTMLInputElement.bnd"
-#line 1814 "html_input_element.c"
+#line 1798 "html_input_element.c"
 	return 0;
 }
 
@@ -1827,7 +1811,7 @@ static duk_ret_t dukky_html_input_element_valueHigh_getter(duk_context *ctx)
 	}
 
 #line 50 "HTMLInputElement.bnd"
-#line 1831 "html_input_element.c"
+#line 1815 "html_input_element.c"
 	return 0;
 }
 
@@ -1844,7 +1828,7 @@ static duk_ret_t dukky_html_input_element_valueHigh_setter(duk_context *ctx)
 	}
 
 #line 51 "HTMLInputElement.bnd"
-#line 1848 "html_input_element.c"
+#line 1832 "html_input_element.c"
 	return 0;
 }
 
@@ -2041,7 +2025,7 @@ static duk_ret_t dukky_html_input_element_align_getter(duk_context *ctx)
 	}
 
 #line 17 "HTMLInputElement.bnd"
-#line 2045 "html_input_element.c"
+#line 2029 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -2075,7 +2059,7 @@ static duk_ret_t dukky_html_input_element_align_setter(duk_context *ctx)
 	}
 
 #line 18 "HTMLInputElement.bnd"
-#line 2079 "html_input_element.c"
+#line 2063 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -2109,7 +2093,7 @@ static duk_ret_t dukky_html_input_element_useMap_getter(duk_context *ctx)
 	}
 
 #line 44 "HTMLInputElement.bnd"
-#line 2113 "html_input_element.c"
+#line 2097 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -2143,7 +2127,7 @@ static duk_ret_t dukky_html_input_element_useMap_setter(duk_context *ctx)
 	}
 
 #line 45 "HTMLInputElement.bnd"
-#line 2147 "html_input_element.c"
+#line 2131 "html_input_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;

@@ -34,13 +34,15 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
+#line 17 "Location.bnd"
 
 #include "netsurf/browser_window.h"
+#line 46 "location.c"
 
 static void dukky_location___init(duk_context *ctx, location_private_t *priv, nsurl *url)
 {
@@ -48,7 +50,7 @@ static void dukky_location___init(duk_context *ctx, location_private_t *priv, ns
 
 	priv->url = url;
 	nsurl_ref(url);
-#line 52 "location.c"
+#line 54 "location.c"
 }
 
 static void dukky_location___fini(duk_context *ctx, location_private_t *priv)
@@ -138,7 +140,7 @@ static duk_ret_t dukky_location_assign(duk_context *ctx)
 				NULL);
 	nsurl_unref(joined);
 	return 0;
-#line 142 "location.c"
+#line 144 "location.c"
 }
 
 static duk_ret_t dukky_location_replace(duk_context *ctx)
@@ -196,7 +198,7 @@ static duk_ret_t dukky_location_replace(duk_context *ctx)
 				NULL);
 	nsurl_unref(joined);
 	return 0;
-#line 200 "location.c"
+#line 202 "location.c"
 }
 
 static duk_ret_t dukky_location_reload(duk_context *ctx)
@@ -233,7 +235,7 @@ static duk_ret_t dukky_location_reload(duk_context *ctx)
 		NSLOG(netsurf, INFO, "failed to get browser context");
 	}
 	return 0;
-#line 237 "location.c"
+#line 239 "location.c"
 }
 
 static duk_ret_t dukky_location_ancestorOrigins_getter(duk_context *ctx)
@@ -280,7 +282,7 @@ static duk_ret_t dukky_location_href_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 284 "location.c"
+#line 286 "location.c"
 }
 
 static duk_ret_t dukky_location_href_setter(duk_context *ctx)
@@ -322,7 +324,7 @@ static duk_ret_t dukky_location_href_setter(duk_context *ctx)
 				NULL);
 	nsurl_unref(joined);
 	return 0;
-#line 326 "location.c"
+#line 328 "location.c"
 }
 
 static duk_ret_t dukky_location_origin_getter(duk_context *ctx)
@@ -354,7 +356,7 @@ static duk_ret_t dukky_location_origin_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 358 "location.c"
+#line 360 "location.c"
 }
 
 static duk_ret_t dukky_location_protocol_getter(duk_context *ctx)
@@ -386,7 +388,7 @@ static duk_ret_t dukky_location_protocol_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 390 "location.c"
+#line 392 "location.c"
 }
 
 static duk_ret_t dukky_location_protocol_setter(duk_context *ctx)
@@ -433,7 +435,7 @@ static duk_ret_t dukky_location_username_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 437 "location.c"
+#line 439 "location.c"
 }
 
 static duk_ret_t dukky_location_username_setter(duk_context *ctx)
@@ -480,7 +482,7 @@ static duk_ret_t dukky_location_password_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 484 "location.c"
+#line 486 "location.c"
 }
 
 static duk_ret_t dukky_location_password_setter(duk_context *ctx)
@@ -527,7 +529,7 @@ static duk_ret_t dukky_location_host_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 531 "location.c"
+#line 533 "location.c"
 }
 
 static duk_ret_t dukky_location_host_setter(duk_context *ctx)
@@ -574,7 +576,7 @@ static duk_ret_t dukky_location_hostname_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 578 "location.c"
+#line 580 "location.c"
 }
 
 static duk_ret_t dukky_location_hostname_setter(duk_context *ctx)
@@ -621,7 +623,7 @@ static duk_ret_t dukky_location_port_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 625 "location.c"
+#line 627 "location.c"
 }
 
 static duk_ret_t dukky_location_port_setter(duk_context *ctx)
@@ -668,7 +670,7 @@ static duk_ret_t dukky_location_pathname_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 672 "location.c"
+#line 674 "location.c"
 }
 
 static duk_ret_t dukky_location_pathname_setter(duk_context *ctx)
@@ -715,7 +717,7 @@ static duk_ret_t dukky_location_search_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 719 "location.c"
+#line 721 "location.c"
 }
 
 static duk_ret_t dukky_location_search_setter(duk_context *ctx)
@@ -762,7 +764,7 @@ static duk_ret_t dukky_location_hash_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 766 "location.c"
+#line 768 "location.c"
 }
 
 static duk_ret_t dukky_location_hash_setter(duk_context *ctx)

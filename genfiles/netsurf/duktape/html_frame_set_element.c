@@ -34,21 +34,23 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
+#line 12 "HTMLFrameSetElement.bnd"
 
 #include "utils/corestrings.h"
 
 #define HANDLER_MAGIC MAGIC(HANDLER_MAP)
+#line 48 "html_frame_set_element.c"
 
 static void dukky_html_frame_set_element___init(duk_context *ctx, html_frame_set_element_private_t *priv, struct dom_html_element *html_frame_set_element)
 {
 	dukky_html_element___init(ctx, &priv->parent, html_frame_set_element);
 #line 19 "HTMLFrameSetElement.bnd"
-#line 52 "html_frame_set_element.c"
+#line 54 "html_frame_set_element.c"
 }
 
 static void dukky_html_frame_set_element___fini(duk_context *ctx, html_frame_set_element_private_t *priv)
@@ -95,7 +97,7 @@ static duk_ret_t dukky_html_frame_set_element_cols_getter(duk_context *ctx)
 	}
 
 #line 21 "HTMLFrameSetElement.bnd"
-#line 99 "html_frame_set_element.c"
+#line 101 "html_frame_set_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -129,7 +131,7 @@ static duk_ret_t dukky_html_frame_set_element_cols_setter(duk_context *ctx)
 	}
 
 #line 22 "HTMLFrameSetElement.bnd"
-#line 133 "html_frame_set_element.c"
+#line 135 "html_frame_set_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -163,7 +165,7 @@ static duk_ret_t dukky_html_frame_set_element_rows_getter(duk_context *ctx)
 	}
 
 #line 24 "HTMLFrameSetElement.bnd"
-#line 167 "html_frame_set_element.c"
+#line 169 "html_frame_set_element.c"
 	dom_exception exc;
 	dom_string *str;
 
@@ -197,7 +199,7 @@ static duk_ret_t dukky_html_frame_set_element_rows_setter(duk_context *ctx)
 	}
 
 #line 25 "HTMLFrameSetElement.bnd"
-#line 201 "html_frame_set_element.c"
+#line 203 "html_frame_set_element.c"
 	dom_exception exc;
 	dom_string *str;
 	duk_size_t slen;
@@ -231,7 +233,7 @@ static duk_ret_t dukky_html_frame_set_element_onafterprint_getter(duk_context *c
 	}
 
 #line 27 "HTMLFrameSetElement.bnd"
-#line 235 "html_frame_set_element.c"
+#line 237 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -265,7 +267,7 @@ static duk_ret_t dukky_html_frame_set_element_onafterprint_setter(duk_context *c
 	}
 
 #line 28 "HTMLFrameSetElement.bnd"
-#line 269 "html_frame_set_element.c"
+#line 271 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -296,7 +298,7 @@ static duk_ret_t dukky_html_frame_set_element_onbeforeprint_getter(duk_context *
 	}
 
 #line 29 "HTMLFrameSetElement.bnd"
-#line 300 "html_frame_set_element.c"
+#line 302 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -330,7 +332,7 @@ static duk_ret_t dukky_html_frame_set_element_onbeforeprint_setter(duk_context *
 	}
 
 #line 30 "HTMLFrameSetElement.bnd"
-#line 334 "html_frame_set_element.c"
+#line 336 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -361,7 +363,7 @@ static duk_ret_t dukky_html_frame_set_element_onbeforeunload_getter(duk_context 
 	}
 
 #line 31 "HTMLFrameSetElement.bnd"
-#line 365 "html_frame_set_element.c"
+#line 367 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -395,7 +397,7 @@ static duk_ret_t dukky_html_frame_set_element_onbeforeunload_setter(duk_context 
 	}
 
 #line 32 "HTMLFrameSetElement.bnd"
-#line 399 "html_frame_set_element.c"
+#line 401 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -426,7 +428,7 @@ static duk_ret_t dukky_html_frame_set_element_onhashchange_getter(duk_context *c
 	}
 
 #line 33 "HTMLFrameSetElement.bnd"
-#line 430 "html_frame_set_element.c"
+#line 432 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -460,7 +462,7 @@ static duk_ret_t dukky_html_frame_set_element_onhashchange_setter(duk_context *c
 	}
 
 #line 34 "HTMLFrameSetElement.bnd"
-#line 464 "html_frame_set_element.c"
+#line 466 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -491,7 +493,7 @@ static duk_ret_t dukky_html_frame_set_element_onlanguagechange_getter(duk_contex
 	}
 
 #line 35 "HTMLFrameSetElement.bnd"
-#line 495 "html_frame_set_element.c"
+#line 497 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -525,7 +527,7 @@ static duk_ret_t dukky_html_frame_set_element_onlanguagechange_setter(duk_contex
 	}
 
 #line 36 "HTMLFrameSetElement.bnd"
-#line 529 "html_frame_set_element.c"
+#line 531 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -556,7 +558,7 @@ static duk_ret_t dukky_html_frame_set_element_onmessage_getter(duk_context *ctx)
 	}
 
 #line 37 "HTMLFrameSetElement.bnd"
-#line 560 "html_frame_set_element.c"
+#line 562 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -590,7 +592,7 @@ static duk_ret_t dukky_html_frame_set_element_onmessage_setter(duk_context *ctx)
 	}
 
 #line 38 "HTMLFrameSetElement.bnd"
-#line 594 "html_frame_set_element.c"
+#line 596 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -621,7 +623,7 @@ static duk_ret_t dukky_html_frame_set_element_onoffline_getter(duk_context *ctx)
 	}
 
 #line 39 "HTMLFrameSetElement.bnd"
-#line 625 "html_frame_set_element.c"
+#line 627 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -655,7 +657,7 @@ static duk_ret_t dukky_html_frame_set_element_onoffline_setter(duk_context *ctx)
 	}
 
 #line 40 "HTMLFrameSetElement.bnd"
-#line 659 "html_frame_set_element.c"
+#line 661 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -686,7 +688,7 @@ static duk_ret_t dukky_html_frame_set_element_ononline_getter(duk_context *ctx)
 	}
 
 #line 41 "HTMLFrameSetElement.bnd"
-#line 690 "html_frame_set_element.c"
+#line 692 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -720,7 +722,7 @@ static duk_ret_t dukky_html_frame_set_element_ononline_setter(duk_context *ctx)
 	}
 
 #line 42 "HTMLFrameSetElement.bnd"
-#line 724 "html_frame_set_element.c"
+#line 726 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -751,7 +753,7 @@ static duk_ret_t dukky_html_frame_set_element_onpagehide_getter(duk_context *ctx
 	}
 
 #line 43 "HTMLFrameSetElement.bnd"
-#line 755 "html_frame_set_element.c"
+#line 757 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -785,7 +787,7 @@ static duk_ret_t dukky_html_frame_set_element_onpagehide_setter(duk_context *ctx
 	}
 
 #line 44 "HTMLFrameSetElement.bnd"
-#line 789 "html_frame_set_element.c"
+#line 791 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -816,7 +818,7 @@ static duk_ret_t dukky_html_frame_set_element_onpageshow_getter(duk_context *ctx
 	}
 
 #line 45 "HTMLFrameSetElement.bnd"
-#line 820 "html_frame_set_element.c"
+#line 822 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -850,7 +852,7 @@ static duk_ret_t dukky_html_frame_set_element_onpageshow_setter(duk_context *ctx
 	}
 
 #line 46 "HTMLFrameSetElement.bnd"
-#line 854 "html_frame_set_element.c"
+#line 856 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -881,7 +883,7 @@ static duk_ret_t dukky_html_frame_set_element_onpopstate_getter(duk_context *ctx
 	}
 
 #line 47 "HTMLFrameSetElement.bnd"
-#line 885 "html_frame_set_element.c"
+#line 887 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -915,7 +917,7 @@ static duk_ret_t dukky_html_frame_set_element_onpopstate_setter(duk_context *ctx
 	}
 
 #line 48 "HTMLFrameSetElement.bnd"
-#line 919 "html_frame_set_element.c"
+#line 921 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -946,7 +948,7 @@ static duk_ret_t dukky_html_frame_set_element_onstorage_getter(duk_context *ctx)
 	}
 
 #line 49 "HTMLFrameSetElement.bnd"
-#line 950 "html_frame_set_element.c"
+#line 952 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -980,7 +982,7 @@ static duk_ret_t dukky_html_frame_set_element_onstorage_setter(duk_context *ctx)
 	}
 
 #line 50 "HTMLFrameSetElement.bnd"
-#line 984 "html_frame_set_element.c"
+#line 986 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1011,7 +1013,7 @@ static duk_ret_t dukky_html_frame_set_element_onunload_getter(duk_context *ctx)
 	}
 
 #line 51 "HTMLFrameSetElement.bnd"
-#line 1015 "html_frame_set_element.c"
+#line 1017 "html_frame_set_element.c"
 	dom_event_target *et = (dom_event_target *)(((node_private_t *)priv)->node);
 	dom_string *name;
 	dom_exception exc;
@@ -1045,7 +1047,7 @@ static duk_ret_t dukky_html_frame_set_element_onunload_setter(duk_context *ctx)
 	}
 
 #line 52 "HTMLFrameSetElement.bnd"
-#line 1049 "html_frame_set_element.c"
+#line 1051 "html_frame_set_element.c"
 	dom_element *et = (dom_element *)(((node_private_t *)priv)->node);
 	/* handlerfn */
 	duk_push_this(ctx);

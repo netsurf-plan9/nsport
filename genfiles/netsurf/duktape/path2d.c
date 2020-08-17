@@ -34,9 +34,9 @@ struct dom_html_collection;
 struct dom_html_br_element;
 
 
-#include "binding.h"
-#include "private.h"
-#include "prototype.h"
+#include "javascript/duktape/duktape/binding.h"
+#include "javascript/duktape/duktape/private.h"
+#include "javascript/duktape/duktape/prototype.h"
 
 #include "javascript/duktape/dukky.h"
 
@@ -149,46 +149,6 @@ static duk_ret_t dukky_path2d_addPathByStrokingPath(duk_context *ctx)
 
 static duk_ret_t dukky_path2d_addText(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 5) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 5, dukky_argc);
-	} else if (dukky_argc == 5) {
-		/* 1 optional arguments need adding */
-		duk_push_undefined(ctx);
-	} else if (dukky_argc > 6) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 6);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_string(ctx, 0)) {
-			duk_to_string(ctx, 0);
-		}
-	}
-	if (dukky_argc > 1) {
-		/* unhandled type check */
-	}
-	if (dukky_argc > 2) {
-		/* unhandled type check */
-	}
-	if (dukky_argc > 3) {
-		if (!duk_is_number(ctx, 3)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 3, "x");
-		}
-	}
-	if (dukky_argc > 4) {
-		if (!duk_is_number(ctx, 4)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 4, "y");
-		}
-	}
-	if (dukky_argc > 5) {
-		if (!duk_is_number(ctx, 5)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 5, "maxWidth");
-		}
-	}
 	/* Get private data for method */
 	path2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -204,46 +164,6 @@ static duk_ret_t dukky_path2d_addText(duk_context *ctx)
 
 static duk_ret_t dukky_path2d_addPathByStrokingText(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 5) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 5, dukky_argc);
-	} else if (dukky_argc == 5) {
-		/* 1 optional arguments need adding */
-		duk_push_undefined(ctx);
-	} else if (dukky_argc > 6) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 6);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_string(ctx, 0)) {
-			duk_to_string(ctx, 0);
-		}
-	}
-	if (dukky_argc > 1) {
-		/* unhandled type check */
-	}
-	if (dukky_argc > 2) {
-		/* unhandled type check */
-	}
-	if (dukky_argc > 3) {
-		if (!duk_is_number(ctx, 3)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 3, "x");
-		}
-	}
-	if (dukky_argc > 4) {
-		if (!duk_is_number(ctx, 4)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 4, "y");
-		}
-	}
-	if (dukky_argc > 5) {
-		if (!duk_is_number(ctx, 5)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 5, "maxWidth");
-		}
-	}
 	/* Get private data for method */
 	path2d_private_t *priv = NULL;
 	duk_push_this(ctx);
@@ -456,42 +376,6 @@ static duk_ret_t dukky_path2d_bezierCurveTo(duk_context *ctx)
 
 static duk_ret_t dukky_path2d_arcTo(duk_context *ctx)
 {
-	/* ensure the parameters are present */
-	duk_idx_t dukky_argc = duk_get_top(ctx);
-	if (dukky_argc < 5) {
-		/* not enough arguments */
-		return duk_error(ctx, DUK_RET_TYPE_ERROR, dukky_error_fmt_argument, 5, dukky_argc);
-	} else if (dukky_argc > 5) {
-		/* remove extraneous parameters */
-		duk_set_top(ctx, 5);
-	}
-
-	/* check types of passed arguments are correct */
-	if (dukky_argc > 0) {
-		if (!duk_is_number(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 0, "x1");
-		}
-	}
-	if (dukky_argc > 1) {
-		if (!duk_is_number(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 1, "y1");
-		}
-	}
-	if (dukky_argc > 2) {
-		if (!duk_is_number(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 2, "x2");
-		}
-	}
-	if (dukky_argc > 3) {
-		if (!duk_is_number(ctx, 3)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 3, "y2");
-		}
-	}
-	if (dukky_argc > 4) {
-		if (!duk_is_number(ctx, 4)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_number_type, 4, "radius");
-		}
-	}
 	/* Get private data for method */
 	path2d_private_t *priv = NULL;
 	duk_push_this(ctx);
