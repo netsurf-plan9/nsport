@@ -17,26 +17,22 @@ ssh key on Github, you can use the following line to clone instead:
 
 Build with:
 
-% cd nsport
+% cd nsport		# builds all support libraries
 % mk
 % cd netsurf
-% mk 9res
 
-(The last step creates a resource directory that can either be
-insttalled in /sys by 'mk install' (se below), or bound in
-the namespace with 'prepns')
-
-To try it out, without installing:
-
-% prepns	# binds '9res' over /sys/lib/netsurf 
-% webfs
-% *.nsfb >/dev/null >[2=1]
-
-Then maybe install on your system, and run:
+Install the browser on your system, and run it:
 
 % mk install
 % webfs
 % nsfb
+
+To try it out, without installing:
+
+% mk 9res	# this is normally done by 'mk install' (only once)
+% prepns	# binds '9res' over /sys/lib/netsurf 
+% webfs
+% *.nsfb >/dev/null >[2=1]
 
 Compiling the native frontend
 
