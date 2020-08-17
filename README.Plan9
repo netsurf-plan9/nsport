@@ -20,6 +20,11 @@ Build with:
 % cd nsport
 % mk
 % cd netsurf
+% mk 9res
+
+(The last step creates a resource directory that can either be
+insttalled in /sys by 'mk install' (se below), or bound in
+the namespace with 'prepns')
 
 To try it out, without installing:
 
@@ -32,6 +37,16 @@ Then maybe install on your system, and run:
 % mk install
 % webfs
 % nsfb
+
+Compiling the native frontend
+
+The steps above compiles the framebuffer frontend. To compile
+the native frontend, start with the steps above, then in the
+'netsurf' folder type:
+
+% mk -f mkfile.native
+% mk -f mkfile.native install	# if you want to install
+% netsurf
 
 --------------
 
