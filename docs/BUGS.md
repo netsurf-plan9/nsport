@@ -1,5 +1,8 @@
 # Open Bugs
 
+- [ ] Incomplete Messages file
+	The Messages file (see netsurf/9res/) used for messages translation is currently incomplete. This can be seen on the error page where title is 'FetchErrorTitle' which is the Messages file key and not the proper messages (same for buttons).
+
 - [ ] Native frontend crashes when opening an inexistant URL (e.g. http://badaddress7.com)
 
 - [ ] Some PNG images make netsurf crash on 386  
