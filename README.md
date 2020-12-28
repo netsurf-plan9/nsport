@@ -48,7 +48,6 @@ To build Netsurf, go to the directory nsport and run `mk`:
 % cd nsport
 % mk
 ```
-To build the native frontend and after building the framebuffer:
 
 # Installing
 
@@ -73,7 +72,8 @@ If you did not install NetSurf system-wide you can run it from within the `netsu
 
 # Credits
 
+- phil9 (@telephil9)
 - Jonas Amoson (@jamoson)
 - Ori Bernstein (@oridb)
+- Sigrid (@ftrvxmtrx)
 - Kyle Nusbaum (@knusbaum)
-- Philippe (@telephil9)
