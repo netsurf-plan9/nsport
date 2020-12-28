@@ -43,40 +43,32 @@ To update your copy of the sources:
 
 # Building
 
-There are two variants of NetSurf available on 9front, the framebuffer and the native frontend.  
-Start by building the framebuffer frontend:
+To build Netsurf, go to the directory nsport and run `mk`:
 ```sh
 % cd nsport
 % mk
 ```
 To build the native frontend and after building the framebuffer:
-```sh
-% cd netsurf
-% mk -f mkfile.native
-```
 
 # Installing
 
 To install NetSurf system-wide:
 ```sh
 % cd netsurf
-% mk install                    # framebuffer
-% mk -f mkfile.native install   # native
+% mk install
 ```
 
 # Running
 
-First, make sure `webfs` is running then run your frontend of choice
+First, make sure `webfs` is running then execute the netsurf binary:
 ```sh
-% nsfb      # framebuffer
-% netsurf   # native
+% netsurf
 ```
 If you did not install NetSurf system-wide you can run it from within the `netsurf` directory:
 ```sh
 % mk 9res     # only required the first time
 % prepns      # binds '9res' over /sys/lib/netsurf
-% *.nsfb      # framebuffer
-% *.netsurf   # native
+% *.netsurf   # runs the binary you compiled (e.g. for your architecture [568])
 ```
 
 # Credits
