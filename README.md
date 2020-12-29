@@ -63,11 +63,11 @@ First, make sure `webfs` is running then execute the netsurf binary:
 ```sh
 % netsurf
 ```
-If you did not install NetSurf system-wide you can run it from within the `netsurf` directory:
+If you did not install NetSurf system-wide (you should), you can run it from within the `netsurf` directory:
 ```sh
-% mk 9res     # only required the first time
-% prepns      # binds '9res' over /sys/lib/netsurf
-% *.netsurf   # runs the binary you compiled (e.g. for your architecture [568])
+% mk resources/Messages	# create Messages file
+% prepns      		# binds 'resources' directory over /sys/lib/netsurf
+% *.netsurf   		# runs the binary you compiled (e.g. for your architecture [568])
 ```
 
 # Credits
