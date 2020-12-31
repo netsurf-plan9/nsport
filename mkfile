@@ -1,6 +1,7 @@
 </$objtype/mkfile
 
 DIRS=\
+	expat/lib \
 	posix/src \
 	libwapcaplet/src \
 	libparserutils/src \
