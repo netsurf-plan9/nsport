@@ -2,6 +2,9 @@
 
 DIRS=\
 	expat/lib \
+	zlib \
+	libjpeg \
+	libpng \
 	posix/src \
 	libwapcaplet/src \
 	libparserutils/src \
@@ -29,7 +32,7 @@ all:V:
 
 clean:V:
 	for(i in $DIRS) @{
-		echo '***** Cleaing: ' $i '*****'
+		echo '***** Cleaning: ' $i '*****'
 		cd $i
 		mk clean
 	}

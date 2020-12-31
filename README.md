@@ -5,23 +5,9 @@ to the Plan 9 ([9front](http://9front.org)) operating system.
 
 This is work in progress, help is welcome.
 
-# Dependencies
+### Important
 
-NetSurf depends on the following external libraries:
-- zlib
-- libpng
-- libjpeg
-
-These libraries can be found in 9front port system.
-To install these dependencies:
-```
-% hg clone http://code.9front.org/hg/ports /sys/ports
-% cd /sys/ports/ape-libs/zlib
-% mk
-```
-Repeat step 2 and 3 with libpng and libjpeg.
-
-In addition, ensure that your system is up to date (see [FQA#5](http://fqa.9front.org/fqa5.html#5.2)) as patches to the system are sometimes required to help with porting NetSurf.
+Ensure that your system is up to date (see [FQA#5](http://fqa.9front.org/fqa5.html#5.2)) as patches to the system are sometimes required to help with porting NetSurf.
 
 # Getting the sources
 

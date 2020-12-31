@@ -3,6 +3,9 @@
 upstream=git://git.netsurf-browser.org
 modules=( \
 	expat \
+	zlib \
+	libjpeg \
+	libpng \
 	libcss \
 	libdom \
 	libhubbub \
