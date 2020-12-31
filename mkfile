@@ -11,10 +11,10 @@ DIRS=\
 	libhubbub/src \
 	libnsbmp/src \
 	libnsgif/src \
-	libsvgtiny/src \
 	libnspsl/src \
 	libcss/src \
 	libdom/src \
+	libsvgtiny/src \
 	libnsutils/src \
 	libnslog/src \
 	libnsfb/src \
