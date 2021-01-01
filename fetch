@@ -10,12 +10,8 @@ modules=( \
 	libdom \
 	libhubbub \
 	libnsbmp \
-	libnsfb \
 	libnsgif \
 	libparserutils \
-	libpencil \
-	librosprite \
-	librufl \
 	libsvgtiny \
 	libwapcaplet \
 	libnsutils \
