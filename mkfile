@@ -17,8 +17,6 @@ DIRS=\
 	libsvgtiny/src \
 	libnsutils/src \
 	libnslog/src \
-	libnsfb/src \
-	libnsfb/test \
 	libutf8proc/src\
 	netsurf
 
