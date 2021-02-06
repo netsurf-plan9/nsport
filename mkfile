@@ -34,3 +34,7 @@ clean:V:
 		cd $i
 		mk clean
 	}
+
+install:V:
+	cd netsurf
+	mk install

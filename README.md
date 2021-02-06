@@ -39,7 +39,6 @@ To build Netsurf, go to the directory nsport and run `mk`:
 
 To install NetSurf system-wide:
 ```sh
-% cd netsurf
 % mk install
 ```
 
