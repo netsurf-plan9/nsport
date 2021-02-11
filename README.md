@@ -27,18 +27,12 @@ To update your copy of the sources:
 
 *Note*: if you have a Github account and have registered your public SSH key on Github, you can clone the repositories using the git+ssh protocol (git+ssh://git@github.com/netsurf-plan9/nsport).
 
-# Building
+# Building / Installing
 
 To build Netsurf, go to the directory nsport and run `mk`:
 ```sh
 % cd nsport
 % mk
-```
-
-# Installing
-
-To install NetSurf system-wide:
-```sh
 % mk install
 ```
 
@@ -57,8 +51,15 @@ If you did not install NetSurf system-wide (you should), you can run it from wit
 
 # Credits
 
-- phil9 (@telephil9)
-- Jonas Amoson (@jamoson)
+The netsurf port is developed and maintained by:
+- phil9 (@telephil9).
+
+## Contributors
 - Ori Bernstein (@oridb)
 - Sigrid (@ftrvxmtrx)
-- Kyle Nusbaum (@knusbaum)
+- Michael Forney (@michaelforney)
+
+## Historical contributors
+- Jonas Amoson (@jamoson): initial import of netsurf 3.9 sources with framebuffer frontend
+- Kyle Nusbaum (@knusbaum): initial version of webfs fetcher and framebuffer frontend
+- Ori Bernstein (@oridb): setup of build infrastructure and many 9front fixes to have netsurf work
