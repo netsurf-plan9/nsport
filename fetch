@@ -40,10 +40,8 @@ switch($1){
 			portcode=git+ssh://git@github.com/netsurf-plan9
 		case http
 			portcode=https://github.com/netsurf-plan9
-		case git
-			portcode=git://github.com/netsurf-plan9
 		case *
-			>[1=2] echo fetch clone '[git|http|ssh]'
+			>[1=2] echo fetch clone '[http|ssh]'
 			exit noproto
 		}
 		for(m in $modules)@{

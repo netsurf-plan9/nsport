@@ -15,9 +15,9 @@ All sources can be retrieved using the [git9](https://git.sr.ht/~ori/git9) clien
 
 To retrieve all the sources, you will have to clone the `nsport` repository and then use the `fetch` script to clone the remaining repositories:
 ```sh
-% git/clone git://github.com/netsurf-plan9/nsport
+% git/clone https://github.com/netsurf-plan9/nsport
 % cd nsport
-% fetch clone git
+% fetch clone http
 ```
 To update your copy of the sources:
 ```sh
