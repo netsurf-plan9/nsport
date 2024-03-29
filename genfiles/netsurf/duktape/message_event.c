@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_message_event___init(duk_context *ctx, message_event_private_t *priv, struct dom_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, evt);
-#line 90 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 92 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "message_event.c"
 }
 
@@ -98,12 +98,20 @@ static duk_ret_t dukky_message_event_initMessageEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 1) {
 		if (!duk_is_boolean(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubbles");
+			if (duk_is_number(ctx, 1)) {
+				duk_to_boolean(ctx, 1);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubbles");
+			}
 		}
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelable");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelable");
+			}
 		}
 	}
 	if (dukky_argc > 4) {

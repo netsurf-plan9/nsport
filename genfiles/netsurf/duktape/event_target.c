@@ -222,7 +222,11 @@ static duk_ret_t dukky_event_target_addEventListener(duk_context *ctx)
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "capture");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "capture");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -286,7 +290,7 @@ static duk_ret_t dukky_event_target_addEventListener(duk_context *ctx)
 	event_target_register_listener(ctx, flags);
 	/* type */
 	return 0;
-#line 290 "event_target.c"
+#line 294 "event_target.c"
 }
 
 static duk_ret_t dukky_event_target_removeEventListener(duk_context *ctx)
@@ -315,7 +319,11 @@ static duk_ret_t dukky_event_target_removeEventListener(duk_context *ctx)
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "capture");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "capture");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -365,7 +373,7 @@ static duk_ret_t dukky_event_target_removeEventListener(duk_context *ctx)
 	event_target_unregister_listener(ctx, flags);
 	/* type */
 	return 0;
-#line 369 "event_target.c"
+#line 377 "event_target.c"
 }
 
 static duk_ret_t dukky_event_target_dispatchEvent(duk_context *ctx)
@@ -437,7 +445,7 @@ static duk_ret_t dukky_event_target_dispatchEvent(duk_context *ctx)
 
 	duk_push_boolean(ctx, success);
 	return 1;
-#line 441 "event_target.c"
+#line 449 "event_target.c"
 }
 
 duk_ret_t dukky_event_target___proto(duk_context *ctx, void *udata)

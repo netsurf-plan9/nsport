@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * border_collapse:CSS_PROP_BORDER_COLLAPSE IDENT:( INHERIT: COLLAPSE:0,BORDER_COLLAPSE_COLLAPSE SEPARATE:0,BORDER_COLLAPSE_SEPARATE IDENT:)
+ * border_collapse:CSS_PROP_BORDER_COLLAPSE IDENT:( INHERIT: INITIAL: REVERT: UNSET: COLLAPSE:0,BORDER_COLLAPSE_COLLAPSE SEPARATE:0,BORDER_COLLAPSE_SEPARATE IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_border_collapse(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,12 +47,44 @@ css_error css__parse_border_collapse(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_BORDER_COLLAPSE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[COLLAPSE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BORDER_COLLAPSE, 0,BORDER_COLLAPSE_COLLAPSE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[SEPARATE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BORDER_COLLAPSE, 0,BORDER_COLLAPSE_SEPARATE);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_BORDER_COLLAPSE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_BORDER_COLLAPSE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_BORDER_COLLAPSE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_BORDER_COLLAPSE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[COLLAPSE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BORDER_COLLAPSE,
+				0,BORDER_COLLAPSE_COLLAPSE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[SEPARATE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BORDER_COLLAPSE,
+				0,BORDER_COLLAPSE_SEPARATE);
+
 	} else {
 		error = CSS_INVALID;
 	}

@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * border_side_color:op GENERIC: IDENT:( INHERIT: IDENT:) COLOR:BORDER_COLOR_SET
+ * border_side_color:op GENERIC: IDENT:( INHERIT: INITIAL: REVERT: UNSET: IDENT:) COLOR:BORDER_COLOR_SET
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -34,10 +34,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_border_side_color(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result, enum css_properties_e op)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -48,8 +48,34 @@ css_error css__parse_border_side_color(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, op);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				op);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				op);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				op);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				op);
+
 	} else {
 		uint16_t value = 0;
 		uint32_t color = 0;

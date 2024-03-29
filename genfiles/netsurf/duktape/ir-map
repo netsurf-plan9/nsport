@@ -236,12 +236,12 @@
 		detail
 			optional:1
 24 Console
-	class:0x77b3e0
+	class:0xbc83e0
 	12 operations
 		debug
-			method:0x77c290
+			method:0xbc92b0
 			overload:0
-				return type:0x88f230
+				return type:0xcdf620
 				arguments:2
 				optionals:0
 				elipsis:1
@@ -249,17 +249,17 @@
 					subst
 						elipsis:1
 		dir
-			method:0x77c960
+			method:0xbc9980
 			overload:0
-				return type:0x892ca0
+				return type:0xce3090
 				arguments:1
 				optionals:0
 				elipsis:0
 					object
 		error
-			method:0x77c450
+			method:0xbc9470
 			overload:0
-				return type:0x892e40
+				return type:0xce3230
 				arguments:2
 				optionals:0
 				elipsis:1
@@ -267,30 +267,30 @@
 					subst
 						elipsis:1
 		group
-			method:0x77b6d0
+			method:0xbc86d0
 			overload:0
-				return type:0x89cf40
+				return type:0xced330
 				arguments:0
 				optionals:0
 				elipsis:0
 		groupCollapsed
-			method:0x77b860
+			method:0xbc8860
 			overload:0
-				return type:0x89d000
+				return type:0xced3f0
 				arguments:0
 				optionals:0
 				elipsis:0
 		groupEnd
-			method:0x77ba00
+			method:0xbc8a00
 			overload:0
-				return type:0x89d0c0
+				return type:0xced4b0
 				arguments:0
 				optionals:0
 				elipsis:0
 		info
-			method:0x77bbb0
+			method:0xbc8bb0
 			overload:0
-				return type:0x89d180
+				return type:0xced570
 				arguments:2
 				optionals:0
 				elipsis:1
@@ -298,9 +298,9 @@
 					subst
 						elipsis:1
 		log
-			method:0x77c600
+			method:0xbc9620
 			overload:0
-				return type:0x89d3e0
+				return type:0xced7d0
 				arguments:2
 				optionals:0
 				elipsis:1
@@ -308,32 +308,32 @@
 					subst
 						elipsis:1
 		time
-			method:0x77cc60
+			method:0xbc9c80
 			overload:0
-				return type:0x89d640
+				return type:0xceda30
 				arguments:1
 				optionals:0
 				elipsis:0
 					timerName
 		timeEnd
-			method:0x77ce20
+			method:0xbc9e40
 			overload:0
-				return type:0x89d7a0
+				return type:0xcedb90
 				arguments:1
 				optionals:0
 				elipsis:0
 					timerName
 		trace
-			method:0x77cd40
+			method:0xbc9d60
 			overload:0
-				return type:0x89d900
+				return type:0xcedcf0
 				arguments:0
 				optionals:0
 				elipsis:0
 		warn
-			method:0x77c7b0
+			method:0xbc97d0
 			overload:0
-				return type:0x89d9c0
+				return type:0xceddb0
 				arguments:2
 				optionals:0
 				elipsis:1
@@ -345,7 +345,7 @@
 		append
 			method:(nil)
 			overload:0
-				return type:0x891a10
+				return type:0xce1e00
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -354,7 +354,7 @@
 		delete
 			method:(nil)
 			overload:0
-				return type:0x891c90
+				return type:0xce2080
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -362,7 +362,7 @@
 		get
 			method:(nil)
 			overload:0
-				return type:0x891eb0
+				return type:0xce22a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -370,7 +370,7 @@
 		getAll
 			method:(nil)
 			overload:0
-				return type:0x8920d0
+				return type:0xce24c0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -378,7 +378,7 @@
 		has
 			method:(nil)
 			overload:0
-				return type:0x892270
+				return type:0xce2660
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -386,7 +386,7 @@
 		set
 			method:(nil)
 			overload:0
-				return type:0x8923f0
+				return type:0xce27e0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -424,7 +424,7 @@
 		domainToASCII
 			method:(nil)
 			overload:0
-				return type:0x88f690
+				return type:0xcdfa80
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -432,7 +432,7 @@
 		domainToUnicode
 			method:(nil)
 			overload:0
-				return type:0x88f890
+				return type:0xcdfc80
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -451,33 +451,33 @@
 		hash (nil) (nil)
 		searchParams (nil) (nil)
 30 Event
-	class:0x7aff20
+	class:0xbff9b0
 	4 operations
 		stopPropagation
-			method:0x7b0e50
+			method:0xc008e0
 			overload:0
-				return type:0x7ff190
+				return type:0xc4f580
 				arguments:0
 				optionals:0
 				elipsis:0
 		stopImmediatePropagation
-			method:0x7b1050
+			method:0xc00ae0
 			overload:0
-				return type:0x7ff250
+				return type:0xc4f640
 				arguments:0
 				optionals:0
 				elipsis:0
 		preventDefault
-			method:0x7b1650
+			method:0xc010e0
 			overload:0
-				return type:0x7ff4a0
+				return type:0xc4f890
 				arguments:0
 				optionals:0
 				elipsis:0
 		initEvent
-			method:0x7b2040
+			method:0xc01ad0
 			overload:0
-				return type:0x7ff840
+				return type:0xc4fc30
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -485,14 +485,14 @@
 					bubbles
 					cancelable
 	9 attributes
-		type 0x7b0580
-		target 0x7b07e0
-		currentTarget 0x7b0a50
-		eventPhase 0x7b0c70
-		bubbles 0x7b1260
-		cancelable 0x7b1470
-		defaultPrevented 0x7b1860
-		isTrusted 0x7b1a70
+		type 0xc00010
+		target 0xc00270
+		currentTarget 0xc004e0
+		eventPhase 0xc00700
+		bubbles 0xc00cf0
+		cancelable 0xc00f00
+		defaultPrevented 0xc012f0
+		isTrusted 0xc01500
 		timeStamp (nil)
 	4 constants
 		NONE
@@ -501,12 +501,12 @@
 		BUBBLING_PHASE
 31 MutationEvent
 	inherit:Event
-	class:0x7b3e40
+	class:0xc038d0
 	1 operations
 		initMutationEvent
 			method:(nil)
 			overload:0
-				return type:0x898790
+				return type:0xce8b80
 				arguments:8
 				optionals:0
 				elipsis:0
@@ -530,12 +530,12 @@
 		REMOVAL
 32 UIEvent
 	inherit:Event
-	class:0x7b4100
+	class:0xc03b90
 	1 operations
 		initUIEvent
 			method:(nil)
 			overload:0
-				return type:0x894d30
+				return type:0xce5120
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -549,12 +549,12 @@
 		detail (nil)
 33 CompositionEvent
 	inherit:UIEvent
-	class:0x7b56e0
+	class:0xc05170
 	1 operations
 		initCompositionEvent
 			method:(nil)
 			overload:0
-				return type:0x897550
+				return type:0xce7940
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -568,12 +568,12 @@
 		data (nil)
 34 KeyboardEvent
 	inherit:UIEvent
-	class:0x7b22e0
+	class:0xc01d70
 	2 operations
 		getModifierState
-			method:0x7b3b80
+			method:0xc03610
 			overload:0
-				return type:0x893cc0
+				return type:0xce40b0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -581,7 +581,7 @@
 		initKeyboardEvent
 			method:(nil)
 			overload:0
-				return type:0x896e30
+				return type:0xce7220
 				arguments:9
 				optionals:0
 				elipsis:0
@@ -595,13 +595,13 @@
 					repeat
 					locale
 	12 attributes
-		key 0x7b2550
-		code 0x7b27c0
-		location 0x7b7c20
-		ctrlKey 0x7b7e70
-		shiftKey 0x7b80c0
-		altKey 0x7b8300
-		metaKey 0x7b8550
+		key 0xc01fe0
+		code 0xc02250
+		location 0xc076b0
+		ctrlKey 0xc07900
+		shiftKey 0xc07b50
+		altKey 0xc07d90
+		metaKey 0xc07fe0
 		repeat (nil)
 		isComposing (nil)
 		charCode (nil)
@@ -614,12 +614,12 @@
 		DOM_KEY_LOCATION_NUMPAD
 35 MouseEvent
 	inherit:UIEvent
-	class:0x7b4ea0
+	class:0xc04930
 	2 operations
 		getModifierState
 			method:(nil)
 			overload:0
-				return type:0x889100
+				return type:0xcd94f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -627,7 +627,7 @@
 		initMouseEvent
 			method:(nil)
 			overload:0
-				return type:0x895730
+				return type:0xce5b20
 				arguments:15
 				optionals:0
 				elipsis:0
@@ -661,12 +661,12 @@
 		buttons (nil)
 36 WheelEvent
 	inherit:MouseEvent
-	class:0x7b59a0
+	class:0xc05430
 	1 operations
 		initWheelEvent
 			method:(nil)
 			overload:0
-				return type:0x896250
+				return type:0xce6640
 				arguments:16
 				optionals:0
 				elipsis:0
@@ -697,12 +697,12 @@
 		DOM_DELTA_PAGE
 37 FocusEvent
 	inherit:UIEvent
-	class:0x7b5c60
+	class:0xc056f0
 	1 operations
 		initFocusEvent
 			method:(nil)
 			overload:0
-				return type:0x8951b0
+				return type:0xce55a0
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -719,7 +719,7 @@
 		escape
 			method:(nil)
 			overload:0
-				return type:0x88ee00
+				return type:0xcdf1f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -747,7 +747,7 @@
 		item
 			method:(nil)
 			overload:0
-				return type:0x88c7e0
+				return type:0xcdcbd0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -755,7 +755,7 @@
 		getPropertyValue
 			method:(nil)
 			overload:0
-				return type:0x88c960
+				return type:0xcdcd50
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -763,7 +763,7 @@
 		getPropertyPriority
 			method:(nil)
 			overload:0
-				return type:0x88cac0
+				return type:0xcdceb0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -771,7 +771,7 @@
 		setProperty
 			method:(nil)
 			overload:0
-				return type:0x88cc00
+				return type:0xcdcff0
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -782,7 +782,7 @@
 		setPropertyValue
 			method:(nil)
 			overload:0
-				return type:0x88d0c0
+				return type:0xcdd4b0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -791,7 +791,7 @@
 		setPropertyPriority
 			method:(nil)
 			overload:0
-				return type:0x88d3a0
+				return type:0xcdd790
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -800,7 +800,7 @@
 		removeProperty
 			method:(nil)
 			overload:0
-				return type:0x88d6a0
+				return type:0xcdda90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -812,6 +812,7 @@
 		cssFloat (nil) (nil)
 		dashed_attribute (nil) (nil)
 44 CSSRule
+	class:0xc4e200
 	4 attributes
 		type (nil)
 		cssText (nil) (nil)
@@ -842,7 +843,7 @@
 		insertRule
 			method:(nil)
 			overload:0
-				return type:0x88b560
+				return type:0xcdb950
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -851,7 +852,7 @@
 		deleteRule
 			method:(nil)
 			overload:0
-				return type:0x88b760
+				return type:0xcdbb50
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -883,7 +884,7 @@
 		item
 			method:(nil)
 			overload:0
-				return type:0x821580
+				return type:0xc71970
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -898,7 +899,7 @@
 		item
 			method:(nil)
 			overload:0
-				return type:0x8208e0
+				return type:0xc70cd0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -916,11 +917,12 @@
 		disabled (nil) (nil)
 56 CSSStyleSheet
 	inherit:StyleSheet
+	class:0xc4e6b0
 	2 operations
 		insertRule
 			method:(nil)
 			overload:0
-				return type:0x8203c0
+				return type:0xc707b0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -929,7 +931,7 @@
 		deleteRule
 			method:(nil)
 			overload:0
-				return type:0x8205c0
+				return type:0xc709b0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -942,7 +944,7 @@
 		item
 			method:(nil)
 			overload:0
-				return type:0x81f3a0
+				return type:0xc6f790
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -950,7 +952,7 @@
 		appendMedium
 			method:(nil)
 			overload:0
-				return type:0x81f500
+				return type:0xc6f8f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -958,7 +960,7 @@
 		deleteMedium
 			method:(nil)
 			overload:0
-				return type:0x81f660
+				return type:0xc6fa50
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -967,12 +969,12 @@
 		mediaText (nil) (nil)
 		length (nil)
 58 EventTarget
-	class:0x77f130
+	class:0xbcc130
 	3 operations
 		addEventListener
-			method:0x7807e0
+			method:0xbcd7e0
 			overload:0
-				return type:0x800940
+				return type:0xc50d30
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -981,9 +983,9 @@
 					capture
 						optional:1
 		removeEventListener
-			method:0x780d90
+			method:0xbcdd90
 			overload:0
-				return type:0x800c80
+				return type:0xc51070
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -992,136 +994,136 @@
 					capture
 						optional:1
 		dispatchEvent
-			method:0x77b210
+			method:0xbc8210
 			overload:0
-				return type:0x800fe0
+				return type:0xc561b0
 				arguments:1
 				optionals:0
 				elipsis:0
 					event
 59 Node
 	inherit:EventTarget
-	class:0x794e90
+	class:0xbe1eb0
 	13 operations
 		hasChildNodes
-			method:0x796300
+			method:0xbe3320
 			overload:0
-				return type:0x80c220
+				return type:0xc5c610
 				arguments:0
 				optionals:0
 				elipsis:0
 		normalize
-			method:0x797d10
+			method:0xbe4d30
 			overload:0
-				return type:0x80ca20
+				return type:0xc5ce10
 				arguments:0
 				optionals:0
 				elipsis:0
 		cloneNode
-			method:0x797f80
+			method:0xbe4fa0
 			overload:0
-				return type:0x80cba0
+				return type:0xc5cf90
 				arguments:1
 				optionals:1
 				elipsis:0
 					deep
 						optional:1
 		isEqualNode
-			method:0x798250
+			method:0xbe5270
 			overload:0
-				return type:0x80cd40
+				return type:0xc5d130
 				arguments:1
 				optionals:0
 				elipsis:0
 					otherNode
 		compareDocumentPosition
-			method:0x798530
+			method:0xbe5550
 			overload:0
-				return type:0x80d4d0
+				return type:0xc5d8c0
 				arguments:1
 				optionals:0
 				elipsis:0
 					other
 		contains
-			method:0x7988c0
+			method:0xbe58e0
 			overload:0
-				return type:0x80d670
+				return type:0xc5da60
 				arguments:1
 				optionals:0
 				elipsis:0
 					other
 		lookupPrefix
-			method:0x798a20
+			method:0xbe5a40
 			overload:0
-				return type:0x80d850
+				return type:0xc5dc40
 				arguments:1
 				optionals:0
 				elipsis:0
 					namespace
 		lookupNamespaceURI
-			method:0x7a7050
+			method:0xbf4070
 			overload:0
-				return type:0x80d9f0
+				return type:0xc5dde0
 				arguments:1
 				optionals:0
 				elipsis:0
 					prefix
 		isDefaultNamespace
-			method:0x7a7330
+			method:0xbf4350
 			overload:0
-				return type:0x80db70
+				return type:0xc5df60
 				arguments:1
 				optionals:0
 				elipsis:0
 					namespace
 		insertBefore
-			method:0x7a7730
+			method:0xbf4750
 			overload:0
-				return type:0x80dd30
+				return type:0xc5e120
 				arguments:2
 				optionals:0
 				elipsis:0
 					node
 					child
 		appendChild
-			method:0x7a79a0
+			method:0xbf49c0
 			overload:0
-				return type:0x80e010
+				return type:0xc5e400
 				arguments:1
 				optionals:0
 				elipsis:0
 					node
 		replaceChild
-			method:0x7a78d0
+			method:0xbf48f0
 			overload:0
-				return type:0x80e1f0
+				return type:0xc5e5e0
 				arguments:2
 				optionals:0
 				elipsis:0
 					node
 					child
 		removeChild
-			method:0x7a2f00
+			method:0xbeff20
 			overload:0
-				return type:0x80e4b0
+				return type:0xc5e8a0
 				arguments:1
 				optionals:0
 				elipsis:0
 					child
 	13 attributes
-		nodeType 0x7954a0
-		nodeName 0x795700
-		baseURI 0x795970
-		ownerDocument 0x795bb0
-		parentNode 0x795de0
-		parentElement 0x7960f0
-		childNodes 0x796750
-		firstChild 0x7969a0
-		lastChild 0x796bf0
-		previousSibling 0x796e40
-		nextSibling 0x797090
-		nodeValue 0x797330 0x7975f0
-		textContent 0x797890 0x797b30
+		nodeType 0xbe24c0
+		nodeName 0xbe2720
+		baseURI 0xbe2990
+		ownerDocument 0xbe2bd0
+		parentNode 0xbe2e00
+		parentElement 0xbe3110
+		childNodes 0xbe3770
+		firstChild 0xbe39c0
+		lastChild 0xbe3c10
+		previousSibling 0xbe3e60
+		nextSibling 0xbe40b0
+		nodeValue 0xbe4350 0xbe4610
+		textContent 0xbe48b0 0xbe4b50
 	18 constants
 		ELEMENT_NODE
 		ATTRIBUTE_NODE
@@ -1143,19 +1145,19 @@
 		DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC
 60 Element
 	inherit:Node
-	class:0x7a4c30
+	class:0xbf5450
 	31 operations
 		hasAttributes
 			method:(nil)
 			overload:0
-				return type:0x813460
+				return type:0xc63850
 				arguments:0
 				optionals:0
 				elipsis:0
 		getAttribute
-			method:0x7ac890
+			method:0xbf7f50
 			overload:0
-				return type:0x8136a0
+				return type:0xc63a90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1163,16 +1165,16 @@
 		getAttributeNS
 			method:(nil)
 			overload:0
-				return type:0x813820
+				return type:0xc63c10
 				arguments:2
 				optionals:0
 				elipsis:0
 					namespace
 					localName
 		setAttribute
-			method:0x7acc80
+			method:0xbf8340
 			overload:0
-				return type:0x813a20
+				return type:0xc63e10
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -1181,7 +1183,7 @@
 		setAttributeNS
 			method:(nil)
 			overload:0
-				return type:0x813c20
+				return type:0xc64010
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -1189,9 +1191,9 @@
 					name
 					value
 		removeAttribute
-			method:0x7ac4b0
+			method:0xbf7b70
 			overload:0
-				return type:0x813ee0
+				return type:0xc642d0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1199,16 +1201,16 @@
 		removeAttributeNS
 			method:(nil)
 			overload:0
-				return type:0x814040
+				return type:0xc64430
 				arguments:2
 				optionals:0
 				elipsis:0
 					namespace
 					localName
 		hasAttribute
-			method:0x7acfb0
+			method:0xbf8670
 			overload:0
-				return type:0x814280
+				return type:0xc64670
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1216,7 +1218,7 @@
 		hasAttributeNS
 			method:(nil)
 			overload:0
-				return type:0x8143e0
+				return type:0xc647d0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -1225,7 +1227,7 @@
 		getAttributeNode
 			method:(nil)
 			overload:0
-				return type:0x814660
+				return type:0xc64a50
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1233,7 +1235,7 @@
 		getAttributeNodeNS
 			method:(nil)
 			overload:0
-				return type:0x814820
+				return type:0xc64c10
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -1242,7 +1244,7 @@
 		setAttributeNode
 			method:(nil)
 			overload:0
-				return type:0x814aa0
+				return type:0xc64e90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1250,7 +1252,7 @@
 		setAttributeNodeNS
 			method:(nil)
 			overload:0
-				return type:0x814ca0
+				return type:0xc65090
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1258,7 +1260,7 @@
 		removeAttributeNode
 			method:(nil)
 			overload:0
-				return type:0x814e80
+				return type:0xc65270
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1266,7 +1268,7 @@
 		closest
 			method:(nil)
 			overload:0
-				return type:0x815080
+				return type:0xc65470
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1274,15 +1276,15 @@
 		matches
 			method:(nil)
 			overload:0
-				return type:0x8151e0
+				return type:0xc655d0
 				arguments:1
 				optionals:0
 				elipsis:0
 					selectors
 		getElementsByTagName
-			method:0x7a6ad0
+			method:0xbf72f0
 			overload:0
-				return type:0x815380
+				return type:0xc65770
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1290,7 +1292,7 @@
 		getElementsByTagNameNS
 			method:(nil)
 			overload:0
-				return type:0x815520
+				return type:0xc65910
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -1299,7 +1301,7 @@
 		getElementsByClassName
 			method:(nil)
 			overload:0
-				return type:0x815780
+				return type:0xc65b70
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1307,7 +1309,7 @@
 		insertAdjacentHTML
 			method:(nil)
 			overload:0
-				return type:0x7772f0
+				return type:0xbc42f0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -1316,7 +1318,7 @@
 		pseudo
 			method:(nil)
 			overload:0
-				return type:0x88eb20
+				return type:0xcdef10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1324,7 +1326,7 @@
 		prepend
 			method:(nil)
 			overload:0
-				return type:0x806cc0
+				return type:0xc570b0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -1333,7 +1335,7 @@
 		append
 			method:(nil)
 			overload:0
-				return type:0x806f20
+				return type:0xc57310
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -1342,7 +1344,7 @@
 		query
 			method:(nil)
 			overload:0
-				return type:0x807200
+				return type:0xc575f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1350,7 +1352,7 @@
 		queryAll
 			method:(nil)
 			overload:0
-				return type:0x807460
+				return type:0xc57850
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1358,7 +1360,7 @@
 		querySelector
 			method:(nil)
 			overload:0
-				return type:0x807620
+				return type:0xc57a10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1366,7 +1368,7 @@
 		querySelectorAll
 			method:(nil)
 			overload:0
-				return type:0x807820
+				return type:0xc57c10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1374,7 +1376,7 @@
 		before
 			method:(nil)
 			overload:0
-				return type:0x808210
+				return type:0xc58600
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -1383,7 +1385,7 @@
 		after
 			method:(nil)
 			overload:0
-				return type:0x808470
+				return type:0xc58860
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -1392,7 +1394,7 @@
 		replaceWith
 			method:(nil)
 			overload:0
-				return type:0x8086d0
+				return type:0xc58ac0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -1401,7 +1403,7 @@
 		remove
 			method:(nil)
 			overload:0
-				return type:0x808930
+				return type:0xc58d20
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -1410,59 +1412,59 @@
 		prefix (nil)
 		localName (nil)
 		tagName (nil)
-		id 0x7a6470 0x7a6210
-		className 0x7ad2a0 0x7ad590
-		classList (nil)
-		attributes 0x7a8370
-		innerHTML 0x7ad730 0x7ae520
+		id 0xbf75c0 0xbf78a0
+		className 0xbf8960 0xbf8c50
+		classList 0xbf6a30
+		attributes 0xbf9590
+		innerHTML 0xbf6c00 0xbfdfb0
 		outerHTML (nil) (nil)
 		children (nil)
-		firstElementChild 0x7a52b0
-		lastElementChild 0x7a56d0
-		childElementCount 0x7a60b0
-		previousElementSibling 0x7a5b00
-		nextElementSibling 0x7a5f20
+		firstElementChild 0xbf5ad0
+		lastElementChild 0xbf5ef0
+		childElementCount 0xbf68d0
+		previousElementSibling 0xbf6320
+		nextElementSibling 0xbf6740
 		cascadedStyle (nil)
 		defaultStyle (nil)
 		rawComputedStyle (nil)
 		usedStyle (nil)
 61 HTMLElement
 	inherit:Element
-	class:0x7bced0
+	class:0xc0c960
 	4 operations
 		click
 			method:(nil)
 			overload:0
-				return type:0x826590
+				return type:0xc76980
 				arguments:0
 				optionals:0
 				elipsis:0
 		focus
 			method:(nil)
 			overload:0
-				return type:0x8266f0
+				return type:0xc76ae0
 				arguments:0
 				optionals:0
 				elipsis:0
 		blur
 			method:(nil)
 			overload:0
-				return type:0x8267b0
+				return type:0xc76ba0
 				arguments:0
 				optionals:0
 				elipsis:0
 		forceSpellCheck
 			method:(nil)
 			overload:0
-				return type:0x826df0
+				return type:0xc771e0
 				arguments:0
 				optionals:0
 				elipsis:0
 	85 attributes
-		title 0x7bd770 0x7bd8b0
-		lang 0x7bd4f0 0x7bd630
+		title 0xc0d200 0xc0d340
+		lang 0xc0cf80 0xc0d0c0
 		translate (nil) (nil)
-		dir 0x7bd270 0x7bd3b0
+		dir 0xc0cd00 0xc0ce40
 		dataset (nil)
 		hidden (nil) (nil)
 		tabIndex (nil) (nil)
@@ -1478,132 +1480,132 @@
 		commandHidden (nil)
 		commandDisabled (nil)
 		commandChecked (nil)
-		onabort 0x7bdef0 0x7be030
-		onautocomplete 0x7be3f0 0x7be530
-		onautocompleteerror 0x7be170 0x7be2b0
-		onblur 0x7be670 0x7be7b0
-		oncancel 0x7be8f0 0x7bea30
-		oncanplay 0x7bedf0 0x7bef30
-		oncanplaythrough 0x7beb70 0x7becb0
-		onchange 0x7bd9f0 0x7bdb30
-		onclick 0x7bddb0 0x7bdc70
-		onclose 0x7bf070 0x7bf1b0
-		oncontextmenu 0x7bf2f0 0x7bf430
-		oncuechange 0x7bf570 0x7bf6b0
-		ondblclick 0x7bf7f0 0x7bf930
-		ondrag 0x7c0970 0x7c0ab0
-		ondragend 0x7bfa70 0x7bfbb0
-		ondragenter 0x7bfcf0 0x7bfe30
-		ondragexit 0x7bff70 0x7c00b0
-		ondragleave 0x7c01f0 0x7c0330
-		ondragover 0x7c0470 0x7c05b0
-		ondragstart 0x7c06f0 0x7c0830
-		ondrop 0x7c0bf0 0x7c0d30
-		ondurationchange 0x7c0e70 0x7c0fb0
-		onemptied 0x7c10f0 0x7c1230
-		onended 0x7c1370 0x7c14b0
+		onabort 0xc0d980 0xc0dac0
+		onautocomplete 0xc0de80 0xc0dfc0
+		onautocompleteerror 0xc0dc00 0xc0dd40
+		onblur 0xc0e100 0xc0e240
+		oncancel 0xc0e380 0xc0e4c0
+		oncanplay 0xc0e880 0xc0e9c0
+		oncanplaythrough 0xc0e600 0xc0e740
+		onchange 0xc0d480 0xc0d5c0
+		onclick 0xc0d840 0xc0d700
+		onclose 0xc0eb00 0xc0ec40
+		oncontextmenu 0xc0ed80 0xc0eec0
+		oncuechange 0xc0f000 0xc0f140
+		ondblclick 0xc0f280 0xc0f3c0
+		ondrag 0xc10400 0xc10540
+		ondragend 0xc0f500 0xc0f640
+		ondragenter 0xc0f780 0xc0f8c0
+		ondragexit 0xc0fa00 0xc0fb40
+		ondragleave 0xc0fc80 0xc0fdc0
+		ondragover 0xc0ff00 0xc10040
+		ondragstart 0xc10180 0xc102c0
+		ondrop 0xc10680 0xc107c0
+		ondurationchange 0xc10900 0xc10a40
+		onemptied 0xc10b80 0xc10cc0
+		onended 0xc10e00 0xc10f40
 		onerror (nil) (nil)
-		onfocus 0x7c15f0 0x7c1730
-		oninput 0x7c1870 0x7c19b0
-		oninvalid 0x7c1af0 0x7c1c30
-		onkeydown 0x7c1d70 0x7c1eb0
-		onkeypress 0x7c1ff0 0x7c2130
-		onkeyup 0x7c2270 0x7c23b0
-		onload 0x7c2c70 0x7c2db0
-		onloadeddata 0x7c24f0 0x7c2630
-		onloadedmetadata 0x7c2770 0x7c28b0
-		onloadstart 0x7c29f0 0x7c2b30
-		onmousedown 0x7c2ef0 0x7c3030
-		onmouseenter 0x7c3170 0x7c32b0
-		onmouseleave 0x7c33f0 0x7c3530
-		onmousemove 0x7c3670 0x7c37b0
-		onmouseout 0x7c38f0 0x7c3a30
-		onmouseover 0x7c3b70 0x7c3cb0
-		onmouseup 0x7c3df0 0x7c3f30
-		onwheel 0x7c7270 0x7c73b0
-		onpause 0x7c4070 0x7c41b0
-		onplay 0x7c4570 0x7c46b0
-		onplaying 0x7c42f0 0x7c4430
-		onprogress 0x7c47f0 0x7c4930
-		onratechange 0x7c4a70 0x7c4bb0
-		onreset 0x7c4cf0 0x7c4e30
-		onresize 0x7c4f70 0x7c50b0
-		onscroll 0x7c51f0 0x7c5330
-		onseeked 0x7c5470 0x7c55b0
-		onseeking 0x7c56f0 0x7c5830
-		onselect 0x7c5970 0x7c5ab0
-		onshow 0x7c5bf0 0x7c5d30
-		onsort 0x7c5e70 0x7c5fb0
-		onstalled 0x7c60f0 0x7c6230
-		onsubmit 0x7c6370 0x7c64b0
-		onsuspend 0x7c65f0 0x7c6730
-		ontimeupdate 0x7c6870 0x7c69b0
-		ontoggle 0x7c6af0 0x7c6c30
-		onvolumechange 0x7c6d70 0x7c6eb0
-		onwaiting 0x7c6ff0 0x7c7130
+		onfocus 0xc11080 0xc111c0
+		oninput 0xc11300 0xc11440
+		oninvalid 0xc11580 0xc116c0
+		onkeydown 0xc11800 0xc11940
+		onkeypress 0xc11a80 0xc11bc0
+		onkeyup 0xc11d00 0xc11e40
+		onload 0xc12700 0xc12840
+		onloadeddata 0xc11f80 0xc120c0
+		onloadedmetadata 0xc12200 0xc12340
+		onloadstart 0xc12480 0xc125c0
+		onmousedown 0xc12980 0xc12ac0
+		onmouseenter 0xc12c00 0xc12d40
+		onmouseleave 0xc12e80 0xc12fc0
+		onmousemove 0xc13100 0xc13240
+		onmouseout 0xc13380 0xc134c0
+		onmouseover 0xc13600 0xc13740
+		onmouseup 0xc13880 0xc139c0
+		onwheel 0xc16d00 0xc16e40
+		onpause 0xc13b00 0xc13c40
+		onplay 0xc14000 0xc14140
+		onplaying 0xc13d80 0xc13ec0
+		onprogress 0xc14280 0xc143c0
+		onratechange 0xc14500 0xc14640
+		onreset 0xc14780 0xc148c0
+		onresize 0xc14a00 0xc14b40
+		onscroll 0xc14c80 0xc14dc0
+		onseeked 0xc14f00 0xc15040
+		onseeking 0xc15180 0xc152c0
+		onselect 0xc15400 0xc15540
+		onshow 0xc15680 0xc157c0
+		onsort 0xc15900 0xc15a40
+		onstalled 0xc15b80 0xc15cc0
+		onsubmit 0xc15e00 0xc15f40
+		onsuspend 0xc16080 0xc161c0
+		ontimeupdate 0xc16300 0xc16440
+		ontoggle 0xc16580 0xc166c0
+		onvolumechange 0xc16800 0xc16940
+		onwaiting 0xc16a80 0xc16bc0
 		contentEditable (nil) (nil)
 		isContentEditable (nil)
-		style 0x7b9060
+		style 0xc08ab0
 62 HTMLFontElement
 	inherit:HTMLElement
-	class:0x7ce030
+	class:0xc1dac0
 	3 attributes
-		color 0x7ce170 0x7ce2b0
-		face 0x7ce3f0 0x7ce530
-		size 0x7ce670 0x7ce7b0
+		color 0xc1dc00 0xc1dd40
+		face 0xc1de80 0xc1dfc0
+		size 0xc1e100 0xc1e240
 63 HTMLDirectoryElement
 	inherit:HTMLElement
-	class:0x7f65d0
+	class:0xc46060
 	1 attributes
 		compact (nil) (nil)
 64 HTMLFrameElement
 	inherit:HTMLElement
-	class:0x7cfe30
+	class:0xc1f8c0
 	10 attributes
-		name 0x7d53b0 0x7d54f0
-		scrolling 0x7d58b0 0x7d59f0
-		src 0x7d5b30 0x7d5c70
-		frameBorder 0x7d49b0 0x7d4af0
-		longDesc 0x7d4c30 0x7d4d70
-		noResize 0x7d5630 0x7d5770
+		name 0xc24e40 0xc24f80
+		scrolling 0xc25340 0xc25480
+		src 0xc255c0 0xc25700
+		frameBorder 0xc24440 0xc24580
+		longDesc 0xc246c0 0xc24800
+		noResize 0xc250c0 0xc25200
 		contentDocument (nil)
 		contentWindow (nil)
-		marginHeight 0x7d4eb0 0x7d4ff0
-		marginWidth 0x7d5130 0x7d5270
+		marginHeight 0xc24940 0xc24a80
+		marginWidth 0xc24bc0 0xc24d00
 65 HTMLFrameSetElement
 	inherit:HTMLElement
-	class:0x7d0ca0
+	class:0xc20730
 	15 attributes
-		cols 0x7d1040 0x7d1180
-		rows 0x7d12c0 0x7d1400
-		onafterprint 0x7d1540 0x7d1680
-		onbeforeprint 0x7d17c0 0x7d1900
-		onbeforeunload 0x7d1a40 0x7d1b80
-		onhashchange 0x7d1cc0 0x7d1e00
-		onlanguagechange 0x7d1f40 0x7d2080
-		onmessage 0x7d21c0 0x7d2300
-		onoffline 0x7d2440 0x7d2580
-		ononline 0x7d26c0 0x7d2800
-		onpagehide 0x7d2940 0x7d2a80
-		onpageshow 0x7d2bc0 0x7d2d00
-		onpopstate 0x7d2e40 0x7d2f80
-		onstorage 0x7d30c0 0x7d3200
-		onunload 0x7d3340 0x7d3480
+		cols 0xc20ad0 0xc20c10
+		rows 0xc20d50 0xc20e90
+		onafterprint 0xc20fd0 0xc21110
+		onbeforeprint 0xc21250 0xc21390
+		onbeforeunload 0xc214d0 0xc21610
+		onhashchange 0xc21750 0xc21890
+		onlanguagechange 0xc219d0 0xc21b10
+		onmessage 0xc21c50 0xc21d90
+		onoffline 0xc21ed0 0xc22010
+		ononline 0xc22150 0xc22290
+		onpagehide 0xc223d0 0xc22510
+		onpageshow 0xc22650 0xc22790
+		onpopstate 0xc228d0 0xc22a10
+		onstorage 0xc22b50 0xc22c90
+		onunload 0xc22dd0 0xc22f10
 66 HTMLMarqueeElement
 	inherit:HTMLElement
-	class:0x7e0f50
+	class:0xc309e0
 	2 operations
 		start
 			method:(nil)
 			overload:0
-				return type:0x880100
+				return type:0xcd04f0
 				arguments:0
 				optionals:0
 				elipsis:0
 		stop
 			method:(nil)
 			overload:0
-				return type:0x8801c0
+				return type:0xcd05b0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -1624,22 +1626,22 @@
 		onstart (nil) (nil)
 67 HTMLAppletElement
 	inherit:HTMLElement
-	class:0x7bac00
+	class:0xc0a650
 	11 attributes
-		align 0x7bad40 0x7bae80
-		alt 0x7bafc0 0x7bb100
-		archive 0x7bb240 0x7bb380
-		code 0x7bb740 0x7bb880
-		codeBase 0x7bb4c0 0x7bb600
-		height 0x7bb9c0 0x7bbb00
+		align 0xc0a790 0xc0a8d0
+		alt 0xc0aa10 0xc0ab50
+		archive 0xc0ac90 0xc0add0
+		code 0xc0b190 0xc0b2d0
+		codeBase 0xc0af10 0xc0b050
+		height 0xc0b410 0xc0b550
 		hspace (nil) (nil)
-		name 0x7bbc40 0x7bbd80
-		object 0x7bbec0 0x7bc000
+		name 0xc0b690 0xc0b7d0
+		object 0xc0b910 0xc0ba50
 		vspace (nil) (nil)
-		width 0x7bc140 0x7bc280
+		width 0xc0bb90 0xc0bcd0
 68 StorageEvent
 	inherit:Event
-	class:0x7b5f20
+	class:0xc059b0
 	5 attributes
 		key (nil)
 		oldValue (nil)
@@ -1657,7 +1659,7 @@
 		key
 			method:(nil)
 			overload:0
-				return type:0x87d5e0
+				return type:0xccd9d0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1665,7 +1667,7 @@
 		getItem
 			method:(nil)
 			overload:0
-				return type:0x87d7a0
+				return type:0xccdb90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1673,7 +1675,7 @@
 		setItem
 			method:(nil)
 			overload:0
-				return type:0x87d900
+				return type:0xccdcf0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -1682,7 +1684,7 @@
 		removeItem
 			method:(nil)
 			overload:0
-				return type:0x87db20
+				return type:0xccdf10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1690,7 +1692,7 @@
 		clear
 			method:(nil)
 			overload:0
-				return type:0x87dc80
+				return type:0xcce070
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -1712,7 +1714,7 @@
 		taintEnabled
 			method:(nil)
 			overload:0
-				return type:0x86fdd0
+				return type:0xcc01c0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -1740,14 +1742,14 @@
 		terminate
 			method:(nil)
 			overload:0
-				return type:0x87bcc0
+				return type:0xccc0b0
 				arguments:0
 				optionals:0
 				elipsis:0
 		postMessage
 			method:(nil)
 			overload:0
-				return type:0x87bd80
+				return type:0xccc170
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -1766,7 +1768,7 @@
 		importScripts
 			method:(nil)
 			overload:0
-				return type:0x87a410
+				return type:0xcca800
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -1775,14 +1777,14 @@
 		close
 			method:(nil)
 			overload:0
-				return type:0x87a590
+				return type:0xcca980
 				arguments:0
 				optionals:0
 				elipsis:0
 		btoa
 			method:(nil)
 			overload:0
-				return type:0x86d350
+				return type:0xcbd740
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1790,7 +1792,7 @@
 		atob
 			method:(nil)
 			overload:0
-				return type:0x86d4b0
+				return type:0xcbd8a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1798,7 +1800,7 @@
 		setTimeout
 			method:(nil)
 			overload:0
-				return type:0x86d970
+				return type:0xcbdd60
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -1808,7 +1810,7 @@
 					arguments
 						elipsis:1
 			overload:1
-				return type:0x86dcb0
+				return type:0xcbe0a0
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -1820,7 +1822,7 @@
 		clearTimeout
 			method:(nil)
 			overload:0
-				return type:0x86df90
+				return type:0xcbe380
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -1829,7 +1831,7 @@
 		setInterval
 			method:(nil)
 			overload:0
-				return type:0x86e150
+				return type:0xcbe540
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -1839,7 +1841,7 @@
 					arguments
 						elipsis:1
 			overload:1
-				return type:0x86e490
+				return type:0xcbe880
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -1851,7 +1853,7 @@
 		clearInterval
 			method:(nil)
 			overload:0
-				return type:0x86e770
+				return type:0xcbeb60
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -1860,13 +1862,13 @@
 		createImageBitmap
 			method:(nil)
 			overload:0
-				return type:0x873c90
+				return type:0xcc4080
 				arguments:1
 				optionals:0
 				elipsis:0
 					image
 			overload:1
-				return type:0x873e90
+				return type:0xcc4280
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -1895,7 +1897,7 @@
 		postMessage
 			method:(nil)
 			overload:0
-				return type:0x87acc0
+				return type:0xccb0b0
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -1910,7 +1912,7 @@
 		postMessage
 			method:(nil)
 			overload:0
-				return type:0x879c70
+				return type:0xcca060
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -1918,7 +1920,7 @@
 		close
 			method:(nil)
 			overload:0
-				return type:0x879dd0
+				return type:0xcca1c0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -1931,7 +1933,7 @@
 		postMessage
 			method:(nil)
 			overload:0
-				return type:0x879330
+				return type:0xcc9720
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -1941,14 +1943,14 @@
 		start
 			method:(nil)
 			overload:0
-				return type:0x8795d0
+				return type:0xcc99c0
 				arguments:0
 				optionals:0
 				elipsis:0
 		close
 			method:(nil)
 			overload:0
-				return type:0x879690
+				return type:0xcc9a80
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -1960,7 +1962,7 @@
 		port2 (nil)
 83 CloseEvent
 	inherit:Event
-	class:0x7b61e0
+	class:0xc05c70
 	3 attributes
 		wasClean (nil)
 		code (nil)
@@ -1971,7 +1973,7 @@
 		close
 			method:(nil)
 			overload:0
-				return type:0x877750
+				return type:0xcc7b40
 				arguments:2
 				optionals:2
 				elipsis:0
@@ -1982,25 +1984,25 @@
 		send
 			method:(nil)
 			overload:0
-				return type:0x877c10
+				return type:0xcc8000
 				arguments:1
 				optionals:0
 				elipsis:0
 					data
 			overload:1
-				return type:0x877db0
+				return type:0xcc81a0
 				arguments:1
 				optionals:0
 				elipsis:0
 					data
 			overload:2
-				return type:0x877f50
+				return type:0xcc8340
 				arguments:1
 				optionals:0
 				elipsis:0
 					data
 			overload:3
-				return type:0x8780f0
+				return type:0xcc84e0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2027,7 +2029,7 @@
 		close
 			method:(nil)
 			overload:0
-				return type:0x8765f0
+				return type:0xcc69e0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -2044,12 +2046,12 @@
 		CLOSED
 86 MessageEvent
 	inherit:Event
-	class:0x7b64a0
+	class:0xc05f30
 	1 operations
 		initMessageEvent
 			method:(nil)
 			overload:0
-				return type:0x874cd0
+				return type:0xcc50c0
 				arguments:8
 				optionals:0
 				elipsis:0
@@ -2072,13 +2074,13 @@
 		createImageBitmap
 			method:(nil)
 			overload:0
-				return type:0x873c90
+				return type:0xcc4080
 				arguments:1
 				optionals:0
 				elipsis:0
 					image
 			overload:1
-				return type:0x873e90
+				return type:0xcc4280
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -2096,7 +2098,7 @@
 		AddSearchProvider
 			method:(nil)
 			overload:0
-				return type:0x872f50
+				return type:0xcc3340
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2104,7 +2106,7 @@
 		IsSearchProviderInstalled
 			method:(nil)
 			overload:0
-				return type:0x873100
+				return type:0xcc34f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2120,7 +2122,7 @@
 		item
 			method:(nil)
 			overload:0
-				return type:0x8727d0
+				return type:0xcc2bc0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2128,7 +2130,7 @@
 		namedItem
 			method:(nil)
 			overload:0
-				return type:0x8729d0
+				return type:0xcc2dc0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2143,7 +2145,7 @@
 		item
 			method:(nil)
 			overload:0
-				return type:0x872050
+				return type:0xcc2440
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2151,7 +2153,7 @@
 		namedItem
 			method:(nil)
 			overload:0
-				return type:0x872250
+				return type:0xcc2640
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2163,7 +2165,7 @@
 		refresh
 			method:(nil)
 			overload:0
-				return type:0x8717f0
+				return type:0xcc1be0
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -2172,7 +2174,7 @@
 		item
 			method:(nil)
 			overload:0
-				return type:0x871b10
+				return type:0xcc1f00
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2180,7 +2182,7 @@
 		namedItem
 			method:(nil)
 			overload:0
-				return type:0x871d10
+				return type:0xcc2100
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2197,7 +2199,7 @@
 		yieldForStorageUpdates
 			method:(nil)
 			overload:0
-				return type:0x871250
+				return type:0xcc1640
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -2208,7 +2210,7 @@
 		registerProtocolHandler
 			method:(nil)
 			overload:0
-				return type:0x870330
+				return type:0xcc0720
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -2218,7 +2220,7 @@
 		registerContentHandler
 			method:(nil)
 			overload:0
-				return type:0x8705d0
+				return type:0xcc09c0
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -2228,7 +2230,7 @@
 		isProtocolHandlerRegistered
 			method:(nil)
 			overload:0
-				return type:0x8708a0
+				return type:0xcc0c90
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2237,7 +2239,7 @@
 		isContentHandlerRegistered
 			method:(nil)
 			overload:0
-				return type:0x870ab0
+				return type:0xcc0ea0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2246,7 +2248,7 @@
 		unregisterProtocolHandler
 			method:(nil)
 			overload:0
-				return type:0x870c90
+				return type:0xcc1080
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2255,7 +2257,7 @@
 		unregisterContentHandler
 			method:(nil)
 			overload:0
-				return type:0x870ea0
+				return type:0xcc1290
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2270,7 +2272,7 @@
 		taintEnabled
 			method:(nil)
 			overload:0
-				return type:0x86fdd0
+				return type:0xcc01c0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -2285,19 +2287,19 @@
 		vendor (nil)
 		vendorSub (nil)
 99 Navigator
-	class:0x7abf80
+	class:0xbfd1a0
 	8 operations
 		taintEnabled
-			method:0x7b2990
+			method:0xc02420
 			overload:0
-				return type:0x86fdd0
+				return type:0xcc01c0
 				arguments:0
 				optionals:0
 				elipsis:0
 		registerProtocolHandler
 			method:(nil)
 			overload:0
-				return type:0x870330
+				return type:0xcc0720
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -2307,7 +2309,7 @@
 		registerContentHandler
 			method:(nil)
 			overload:0
-				return type:0x8705d0
+				return type:0xcc09c0
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -2317,7 +2319,7 @@
 		isProtocolHandlerRegistered
 			method:(nil)
 			overload:0
-				return type:0x8708a0
+				return type:0xcc0c90
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2326,7 +2328,7 @@
 		isContentHandlerRegistered
 			method:(nil)
 			overload:0
-				return type:0x870ab0
+				return type:0xcc0ea0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2335,7 +2337,7 @@
 		unregisterProtocolHandler
 			method:(nil)
 			overload:0
-				return type:0x870c90
+				return type:0xcc1080
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2344,7 +2346,7 @@
 		unregisterContentHandler
 			method:(nil)
 			overload:0
-				return type:0x870ea0
+				return type:0xcc1290
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -2353,27 +2355,27 @@
 		yieldForStorageUpdates
 			method:(nil)
 			overload:0
-				return type:0x871250
+				return type:0xcc1640
 				arguments:0
 				optionals:0
 				elipsis:0
 	16 attributes
-		appCodeName 0x7b2b30
-		appName 0x7b2cd0
-		appVersion 0x7b2e70
-		platform 0x7b3010
-		product 0x7b31b0
-		productSub 0x7b3350
-		userAgent 0x7aebe0
-		vendor 0x7b34f0
-		vendorSub 0x7b3690
+		appCodeName 0xc025c0
+		appName 0xc02760
+		appVersion 0xc02900
+		platform 0xc02aa0
+		product 0xc02c40
+		productSub 0xc02de0
+		userAgent 0xbfe670
+		vendor 0xc02f80
+		vendorSub 0xc03120
 		language (nil)
 		languages (nil)
 		onLine (nil)
-		cookieEnabled 0x7b3830
+		cookieEnabled 0xc032c0
 		plugins (nil)
 		mimeTypes (nil)
-		javaEnabled 0x7b39d0
+		javaEnabled 0xc03460
 100 WindowModal
 	2 attributes
 		dialogArguments (nil)
@@ -2383,7 +2385,7 @@
 		setTimeout
 			method:(nil)
 			overload:0
-				return type:0x86d970
+				return type:0xcbdd60
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2393,7 +2395,7 @@
 					arguments
 						elipsis:1
 			overload:1
-				return type:0x86dcb0
+				return type:0xcbe0a0
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2405,7 +2407,7 @@
 		clearTimeout
 			method:(nil)
 			overload:0
-				return type:0x86df90
+				return type:0xcbe380
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -2414,7 +2416,7 @@
 		setInterval
 			method:(nil)
 			overload:0
-				return type:0x86e150
+				return type:0xcbe540
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2424,7 +2426,7 @@
 					arguments
 						elipsis:1
 			overload:1
-				return type:0x86e490
+				return type:0xcbe880
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2436,7 +2438,7 @@
 		clearInterval
 			method:(nil)
 			overload:0
-				return type:0x86e770
+				return type:0xcbeb60
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -2447,7 +2449,7 @@
 		btoa
 			method:(nil)
 			overload:0
-				return type:0x86d350
+				return type:0xcbd740
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2455,7 +2457,7 @@
 		atob
 			method:(nil)
 			overload:0
-				return type:0x86d4b0
+				return type:0xcbd8a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2542,7 +2544,7 @@
 		onwaiting (nil) (nil)
 105 ErrorEvent
 	inherit:Event
-	class:0x7b6760
+	class:0xc061f0
 	5 attributes
 		message (nil)
 		filename (nil)
@@ -2558,21 +2560,21 @@
 		update
 			method:(nil)
 			overload:0
-				return type:0x8666f0
+				return type:0xcb6ae0
 				arguments:0
 				optionals:0
 				elipsis:0
 		abort
 			method:(nil)
 			overload:0
-				return type:0x8667b0
+				return type:0xcb6ba0
 				arguments:0
 				optionals:0
 				elipsis:0
 		swapCache
 			method:(nil)
 			overload:0
-				return type:0x866870
+				return type:0xcb6c60
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -2595,70 +2597,70 @@
 		OBSOLETE
 108 BeforeUnloadEvent
 	inherit:Event
-	class:0x7b6a20
+	class:0xc064b0
 	1 attributes
 		returnValue (nil) (nil)
 109 PageTransitionEvent
 	inherit:Event
-	class:0x7b6ce0
+	class:0xc06770
 	1 attributes
 		persisted (nil)
 110 HashChangeEvent
 	inherit:Event
-	class:0x7b6fa0
+	class:0xc06a30
 	2 attributes
 		oldURL (nil)
 		newURL (nil)
 111 PopStateEvent
 	inherit:Event
-	class:0x7b7260
+	class:0xc06cf0
 	1 attributes
 		state (nil)
 112 Location
-	class:0x7a8c70
+	class:0xbf9e90
 	3 operations
 		assign
-			method:0x7a97f0
+			method:0xbfaa10
 			overload:0
-				return type:0x864270
+				return type:0xcb4660
 				arguments:1
 				optionals:0
 				elipsis:0
 					url
 		replace
-			method:0x7a9bc0
+			method:0xbfade0
 			overload:0
-				return type:0x8643d0
+				return type:0xcb47c0
 				arguments:1
 				optionals:0
 				elipsis:0
 					url
 		reload
-			method:0x7a9420
+			method:0xbfa640
 			overload:0
-				return type:0x864530
+				return type:0xcb4920
 				arguments:0
 				optionals:0
 				elipsis:0
 	12 attributes
 		ancestorOrigins (nil)
-		href 0x7a9e10 0x7aa1e0
-		origin 0x7aa480
-		protocol 0x7aa710 (nil)
-		username 0x7aa9a0 (nil)
-		password 0x7aac30 (nil)
-		host 0x7aaec0 (nil)
-		hostname 0x7ab150 (nil)
-		port 0x7ab3e0 (nil)
-		pathname 0x7ab670 (nil)
-		search 0x7ab900 (nil)
-		hash 0x7abdf0 (nil)
+		href 0xbfb030 0xbfb400
+		origin 0xbfb6a0
+		protocol 0xbfb930 (nil)
+		username 0xbfbbc0 (nil)
+		password 0xbfbe50 (nil)
+		host 0xbfc0e0 (nil)
+		hostname 0xbfc370 (nil)
+		port 0xbfc600 (nil)
+		pathname 0xbfc890 (nil)
+		search 0xbfcb20 (nil)
+		hash 0xbfd010 (nil)
 113 History
 	5 operations
 		go
 			method:(nil)
 			overload:0
-				return type:0x863870
+				return type:0xcb3c60
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -2667,21 +2669,21 @@
 		back
 			method:(nil)
 			overload:0
-				return type:0x863a10
+				return type:0xcb3e00
 				arguments:0
 				optionals:0
 				elipsis:0
 		forward
 			method:(nil)
 			overload:0
-				return type:0x863ad0
+				return type:0xcb3ec0
 				arguments:0
 				optionals:0
 				elipsis:0
 		pushState
 			method:(nil)
 			overload:0
-				return type:0x863b90
+				return type:0xcb3f80
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -2692,7 +2694,7 @@
 		replaceState
 			method:(nil)
 			overload:0
-				return type:0x863e90
+				return type:0xcb4280
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -2708,40 +2710,40 @@
 		visible (nil)
 115 Window
 	inherit:EventTarget
-	class:0x77dac0
+	class:0xbcaae0
 	23 operations
 		close
 			method:(nil)
 			overload:0
-				return type:0x860b50
+				return type:0xcb0f40
 				arguments:0
 				optionals:0
 				elipsis:0
 		stop
 			method:(nil)
 			overload:0
-				return type:0x860cd0
+				return type:0xcb10c0
 				arguments:0
 				optionals:0
 				elipsis:0
 		focus
 			method:(nil)
 			overload:0
-				return type:0x860d90
+				return type:0xcb1180
 				arguments:0
 				optionals:0
 				elipsis:0
 		blur
 			method:(nil)
 			overload:0
-				return type:0x860e50
+				return type:0xcb1240
 				arguments:0
 				optionals:0
 				elipsis:0
 		open
 			method:(nil)
 			overload:0
-				return type:0x861690
+				return type:0xcb1a80
 				arguments:4
 				optionals:4
 				elipsis:0
@@ -2754,26 +2756,26 @@
 					replace
 						optional:1
 		alert
-			method:0x7864a0
+			method:0xbd34c0
 			overload:0
-				return type:0x861c50
+				return type:0xcb2040
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x861df0
+				return type:0xcb21e0
 				arguments:1
 				optionals:0
 				elipsis:0
 					name
 			overload:2
-				return type:0x8622d0
+				return type:0xcb26c0
 				arguments:0
 				optionals:0
 				elipsis:0
 			overload:3
-				return type:0x862390
+				return type:0xcb2780
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2781,7 +2783,7 @@
 		confirm
 			method:(nil)
 			overload:0
-				return type:0x862510
+				return type:0xcb2900
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -2790,7 +2792,7 @@
 		prompt
 			method:(nil)
 			overload:0
-				return type:0x8626f0
+				return type:0xcb2ae0
 				arguments:2
 				optionals:2
 				elipsis:0
@@ -2801,14 +2803,14 @@
 		print
 			method:(nil)
 			overload:0
-				return type:0x862990
+				return type:0xcb2d80
 				arguments:0
 				optionals:0
 				elipsis:0
 		showModalDialog
 			method:(nil)
 			overload:0
-				return type:0x862a70
+				return type:0xcb2e60
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -2818,7 +2820,7 @@
 		requestAnimationFrame
 			method:(nil)
 			overload:0
-				return type:0x862cb0
+				return type:0xcb30a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2826,7 +2828,7 @@
 		cancelAnimationFrame
 			method:(nil)
 			overload:0
-				return type:0x862e30
+				return type:0xcb3220
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2834,7 +2836,7 @@
 		postMessage
 			method:(nil)
 			overload:0
-				return type:0x862fb0
+				return type:0xcb33a0
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -2845,21 +2847,21 @@
 		captureEvents
 			method:(nil)
 			overload:0
-				return type:0x8873d0
+				return type:0xcd77c0
 				arguments:0
 				optionals:0
 				elipsis:0
 		releaseEvents
 			method:(nil)
 			overload:0
-				return type:0x887490
+				return type:0xcd7880
 				arguments:0
 				optionals:0
 				elipsis:0
 		getComputedStyle
 			method:(nil)
 			overload:0
-				return type:0x88e1a0
+				return type:0xcde590
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -2869,7 +2871,7 @@
 		btoa
 			method:(nil)
 			overload:0
-				return type:0x86d350
+				return type:0xcbd740
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -2877,15 +2879,15 @@
 		atob
 			method:(nil)
 			overload:0
-				return type:0x86d4b0
+				return type:0xcbd8a0
 				arguments:1
 				optionals:0
 				elipsis:0
 					atob
 		setTimeout
-			method:0x786a50
+			method:0xbd3a70
 			overload:0
-				return type:0x86d970
+				return type:0xcbdd60
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2895,7 +2897,7 @@
 					arguments
 						elipsis:1
 			overload:1
-				return type:0x86dcb0
+				return type:0xcbe0a0
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2905,18 +2907,18 @@
 					arguments
 						elipsis:1
 		clearTimeout
-			method:0x788ad0
+			method:0xbd5af0
 			overload:0
-				return type:0x86df90
+				return type:0xcbe380
 				arguments:1
 				optionals:1
 				elipsis:0
 					handle
 						optional:1
 		setInterval
-			method:0x786580
+			method:0xbd35c0
 			overload:0
-				return type:0x86e150
+				return type:0xcbe540
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2926,7 +2928,7 @@
 					arguments
 						elipsis:1
 			overload:1
-				return type:0x86e490
+				return type:0xcbe880
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -2936,9 +2938,9 @@
 					arguments
 						elipsis:1
 		clearInterval
-			method:0x788cb0
+			method:0xbd5cd0
 			overload:0
-				return type:0x86e770
+				return type:0xcbeb60
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -2947,13 +2949,13 @@
 		createImageBitmap
 			method:(nil)
 			overload:0
-				return type:0x873c90
+				return type:0xcc4080
 				arguments:1
 				optionals:0
 				elipsis:0
 					image
 			overload:1
-				return type:0x873e90
+				return type:0xcc4280
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -2963,11 +2965,11 @@
 					sw
 					sh
 	102 attributes
-		window 0x7856c0
+		window 0xbd26e0
 		self (nil)
-		document 0x785560
-		name 0x786180 0x786360
-		location 0x785d30
+		document 0xbd2580
+		name 0xbd31a0 0xbd3380
+		location 0xbd2d50
 		history (nil)
 		locationbar (nil)
 		menubar (nil)
@@ -2983,91 +2985,91 @@
 		opener (nil) (nil)
 		parent (nil)
 		frameElement (nil)
-		navigator 0x786020
+		navigator 0xbd3040
 		external (nil)
 		applicationCache (nil)
-		console 0x785990
-		onabort 0x788df0 0x788f30
-		onautocomplete 0x789570 0x7896b0
-		onautocompleteerror 0x7892f0 0x789430
-		onblur 0x789cf0 0x789e30
-		oncancel 0x789f70 0x78a0b0
-		oncanplay 0x78a470 0x78a5b0
-		oncanplaythrough 0x78a1f0 0x78a330
-		onchange 0x78a6f0 0x78a830
-		onclick 0x78a970 0x78aab0
-		onclose 0x78abf0 0x78ad30
-		oncontextmenu 0x78ae70 0x78afb0
-		oncuechange 0x78b0f0 0x78b230
-		ondblclick 0x78b370 0x78b4b0
-		ondrag 0x78c4f0 0x78c630
-		ondragend 0x78b5f0 0x78b730
-		ondragenter 0x78b870 0x78b9b0
-		ondragexit 0x78baf0 0x78bc30
-		ondragleave 0x78bd70 0x78beb0
-		ondragover 0x78bff0 0x78c130
-		ondragstart 0x78c270 0x78c3b0
-		ondrop 0x78c770 0x78c8b0
-		ondurationchange 0x78c9f0 0x78cb30
-		onemptied 0x78cc70 0x78cdb0
-		onended 0x78cef0 0x78d030
-		onerror 0x78d170 0x78d2b0
-		onfocus 0x78d3f0 0x78d530
-		oninput 0x78d8f0 0x78da30
-		oninvalid 0x78db70 0x78dcb0
-		onkeydown 0x78ddf0 0x78df30
-		onkeypress 0x78e070 0x78e1b0
-		onkeyup 0x78e2f0 0x78e430
-		onload 0x78ef70 0x78f0b0
-		onloadeddata 0x78e7f0 0x78e930
-		onloadedmetadata 0x78ea70 0x78ebb0
-		onloadstart 0x78ecf0 0x78ee30
-		onmousedown 0x78f470 0x78f5b0
-		onmouseenter 0x78f6f0 0x78f830
-		onmouseleave 0x78f970 0x78fab0
-		onmousemove 0x78fbf0 0x78fd30
-		onmouseout 0x78fe70 0x78ffb0
-		onmouseover 0x7900f0 0x790230
-		onmouseup 0x790370 0x7904b0
-		onwheel 0x794970 0x794ab0
-		onpause 0x790ff0 0x791130
-		onplay 0x7914f0 0x791630
-		onplaying 0x791270 0x7913b0
-		onprogress 0x7919f0 0x791b30
-		onratechange 0x791c70 0x791db0
-		onreset 0x791ef0 0x792030
-		onresize 0x792170 0x7922b0
-		onscroll 0x7923f0 0x792530
-		onseeked 0x792670 0x7927b0
-		onseeking 0x7928f0 0x792a30
-		onselect 0x792b70 0x792cb0
-		onshow 0x792df0 0x792f30
-		onsort 0x793070 0x7931b0
-		onstalled 0x7932f0 0x793430
-		onsubmit 0x7937f0 0x793930
-		onsuspend 0x793a70 0x793bb0
-		ontimeupdate 0x793cf0 0x793e30
-		ontoggle 0x793f70 0x7940b0
-		onvolumechange 0x794470 0x7945b0
-		onwaiting 0x7946f0 0x794830
-		onafterprint 0x789070 0x7891b0
-		onbeforeprint 0x7897f0 0x789930
-		onbeforeunload 0x789a70 0x789bb0
-		onhashchange 0x78d670 0x78d7b0
-		onlanguagechange 0x78e570 0x78e6b0
-		onmessage 0x78f1f0 0x78f330
-		onoffline 0x7905f0 0x790730
-		ononline 0x790870 0x7909b0
-		onpagehide 0x790af0 0x790c30
-		onpageshow 0x790d70 0x790eb0
-		onpopstate 0x791770 0x7918b0
-		onstorage 0x793570 0x7936b0
-		onunload 0x7941f0 0x794330
+		console 0xbd29b0
+		onabort 0xbd5e10 0xbd5f50
+		onautocomplete 0xbd6590 0xbd66d0
+		onautocompleteerror 0xbd6310 0xbd6450
+		onblur 0xbd6d10 0xbd6e50
+		oncancel 0xbd6f90 0xbd70d0
+		oncanplay 0xbd7490 0xbd75d0
+		oncanplaythrough 0xbd7210 0xbd7350
+		onchange 0xbd7710 0xbd7850
+		onclick 0xbd7990 0xbd7ad0
+		onclose 0xbd7c10 0xbd7d50
+		oncontextmenu 0xbd7e90 0xbd7fd0
+		oncuechange 0xbd8110 0xbd8250
+		ondblclick 0xbd8390 0xbd84d0
+		ondrag 0xbd9510 0xbd9650
+		ondragend 0xbd8610 0xbd8750
+		ondragenter 0xbd8890 0xbd89d0
+		ondragexit 0xbd8b10 0xbd8c50
+		ondragleave 0xbd8d90 0xbd8ed0
+		ondragover 0xbd9010 0xbd9150
+		ondragstart 0xbd9290 0xbd93d0
+		ondrop 0xbd9790 0xbd98d0
+		ondurationchange 0xbd9a10 0xbd9b50
+		onemptied 0xbd9c90 0xbd9dd0
+		onended 0xbd9f10 0xbda050
+		onerror 0xbda190 0xbda2d0
+		onfocus 0xbda410 0xbda550
+		oninput 0xbda910 0xbdaa50
+		oninvalid 0xbdab90 0xbdacd0
+		onkeydown 0xbdae10 0xbdaf50
+		onkeypress 0xbdb090 0xbdb1d0
+		onkeyup 0xbdb310 0xbdb450
+		onload 0xbdbf90 0xbdc0d0
+		onloadeddata 0xbdb810 0xbdb950
+		onloadedmetadata 0xbdba90 0xbdbbd0
+		onloadstart 0xbdbd10 0xbdbe50
+		onmousedown 0xbdc490 0xbdc5d0
+		onmouseenter 0xbdc710 0xbdc850
+		onmouseleave 0xbdc990 0xbdcad0
+		onmousemove 0xbdcc10 0xbdcd50
+		onmouseout 0xbdce90 0xbdcfd0
+		onmouseover 0xbdd110 0xbdd250
+		onmouseup 0xbdd390 0xbdd4d0
+		onwheel 0xbe1990 0xbe1ad0
+		onpause 0xbde010 0xbde150
+		onplay 0xbde510 0xbde650
+		onplaying 0xbde290 0xbde3d0
+		onprogress 0xbdea10 0xbdeb50
+		onratechange 0xbdec90 0xbdedd0
+		onreset 0xbdef10 0xbdf050
+		onresize 0xbdf190 0xbdf2d0
+		onscroll 0xbdf410 0xbdf550
+		onseeked 0xbdf690 0xbdf7d0
+		onseeking 0xbdf910 0xbdfa50
+		onselect 0xbdfb90 0xbdfcd0
+		onshow 0xbdfe10 0xbdff50
+		onsort 0xbe0090 0xbe01d0
+		onstalled 0xbe0310 0xbe0450
+		onsubmit 0xbe0810 0xbe0950
+		onsuspend 0xbe0a90 0xbe0bd0
+		ontimeupdate 0xbe0d10 0xbe0e50
+		ontoggle 0xbe0f90 0xbe10d0
+		onvolumechange 0xbe1490 0xbe15d0
+		onwaiting 0xbe1710 0xbe1850
+		onafterprint 0xbd6090 0xbd61d0
+		onbeforeprint 0xbd6810 0xbd6950
+		onbeforeunload 0xbd6a90 0xbd6bd0
+		onhashchange 0xbda690 0xbda7d0
+		onlanguagechange 0xbdb590 0xbdb6d0
+		onmessage 0xbdc210 0xbdc350
+		onoffline 0xbdd610 0xbdd750
+		ononline 0xbdd890 0xbdd9d0
+		onpagehide 0xbddb10 0xbddc50
+		onpageshow 0xbddd90 0xbdded0
+		onpopstate 0xbde790 0xbde8d0
+		onstorage 0xbe0590 0xbe06d0
+		onunload 0xbe1210 0xbe1350
 		sessionStorage (nil)
 		localStorage (nil)
 116 DragEvent
 	inherit:MouseEvent
-	class:0x7b7520
+	class:0xc06fb0
 	1 attributes
 		dataTransfer (nil)
 117 DataTransferItem
@@ -3075,7 +3077,7 @@
 		getAsString
 			method:(nil)
 			overload:0
-				return type:0x85ef70
+				return type:0xcaf360
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3083,7 +3085,7 @@
 		getAsFile
 			method:(nil)
 			overload:0
-				return type:0x85f1b0
+				return type:0xcaf5a0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -3095,20 +3097,20 @@
 		add
 			method:(nil)
 			overload:0
-				return type:0x85e590
+				return type:0xcae980
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x85e750
+				return type:0xcaeb40
 				arguments:2
 				optionals:0
 				elipsis:0
 					data
 					type
 			overload:2
-				return type:0x85e9b0
+				return type:0xcaeda0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3116,7 +3118,7 @@
 		remove
 			method:(nil)
 			overload:0
-				return type:0x85eb30
+				return type:0xcaef20
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3124,7 +3126,7 @@
 		clear
 			method:(nil)
 			overload:0
-				return type:0x85ecb0
+				return type:0xcaf0a0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -3135,7 +3137,7 @@
 		setDragImage
 			method:(nil)
 			overload:0
-				return type:0x85d970
+				return type:0xcadd60
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -3145,7 +3147,7 @@
 		getData
 			method:(nil)
 			overload:0
-				return type:0x85ddb0
+				return type:0xcae1a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3153,7 +3155,7 @@
 		setData
 			method:(nil)
 			overload:0
-				return type:0x85def0
+				return type:0xcae2e0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3162,7 +3164,7 @@
 		clearData
 			method:(nil)
 			overload:0
-				return type:0x85e0f0
+				return type:0xcae4e0
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -3186,7 +3188,7 @@
 		addPath
 			method:(nil)
 			overload:0
-				return type:0x85b3b0
+				return type:0xcab7a0
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -3196,7 +3198,7 @@
 		addPathByStrokingPath
 			method:(nil)
 			overload:0
-				return type:0x85b690
+				return type:0xcaba80
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -3207,7 +3209,7 @@
 		addText
 			method:(nil)
 			overload:0
-				return type:0x85ba50
+				return type:0xcabe40
 				arguments:6
 				optionals:1
 				elipsis:0
@@ -3219,7 +3221,7 @@
 					maxWidth
 						optional:1
 			overload:1
-				return type:0x85c590
+				return type:0xcac980
 				arguments:5
 				optionals:1
 				elipsis:0
@@ -3232,7 +3234,7 @@
 		addPathByStrokingText
 			method:(nil)
 			overload:0
-				return type:0x85bff0
+				return type:0xcac3e0
 				arguments:6
 				optionals:1
 				elipsis:0
@@ -3244,7 +3246,7 @@
 					maxWidth
 						optional:1
 			overload:1
-				return type:0x85ca90
+				return type:0xcace80
 				arguments:5
 				optionals:1
 				elipsis:0
@@ -3257,14 +3259,14 @@
 		closePath
 			method:(nil)
 			overload:0
-				return type:0x8558e0
+				return type:0xca5cd0
 				arguments:0
 				optionals:0
 				elipsis:0
 		moveTo
 			method:(nil)
 			overload:0
-				return type:0x8559a0
+				return type:0xca5d90
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3273,7 +3275,7 @@
 		lineTo
 			method:(nil)
 			overload:0
-				return type:0x855be0
+				return type:0xca5fd0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3282,7 +3284,7 @@
 		quadraticCurveTo
 			method:(nil)
 			overload:0
-				return type:0x855e20
+				return type:0xca6210
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3293,7 +3295,7 @@
 		bezierCurveTo
 			method:(nil)
 			overload:0
-				return type:0x8561e0
+				return type:0xca65d0
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -3306,7 +3308,7 @@
 		arcTo
 			method:(nil)
 			overload:0
-				return type:0x856720
+				return type:0xca6b10
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -3316,7 +3318,7 @@
 					y2
 					radius
 			overload:1
-				return type:0x856ba0
+				return type:0xca6f90
 				arguments:7
 				optionals:0
 				elipsis:0
@@ -3330,7 +3332,7 @@
 		rect
 			method:(nil)
 			overload:0
-				return type:0x8571a0
+				return type:0xca7590
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3341,7 +3343,7 @@
 		arc
 			method:(nil)
 			overload:0
-				return type:0x857560
+				return type:0xca7950
 				arguments:6
 				optionals:1
 				elipsis:0
@@ -3355,7 +3357,7 @@
 		ellipse
 			method:(nil)
 			overload:0
-				return type:0x857ac0
+				return type:0xca7eb0
 				arguments:8
 				optionals:1
 				elipsis:0
@@ -3373,7 +3375,7 @@
 		setLineDash
 			method:(nil)
 			overload:0
-				return type:0x855060
+				return type:0xca5450
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3381,7 +3383,7 @@
 		getLineDash
 			method:(nil)
 			overload:0
-				return type:0x8552a0
+				return type:0xca5690
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -3396,11 +3398,11 @@
 		textBaseline (nil) (nil)
 		direction (nil) (nil)
 124 ImageData
-	class:0x7fdb90
+	class:0xc4d620
 	3 attributes
-		width 0x7fe050
-		height 0x7fe1f0
-		data 0x7fe410
+		width 0xc4dae0
+		height 0xc4dc80
+		data 0xc4e100
 125 TextMetrics
 	12 attributes
 		width (nil)
@@ -3420,7 +3422,7 @@
 		setTransform
 			method:(nil)
 			overload:0
-				return type:0x8587a0
+				return type:0xca8b90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3430,7 +3432,7 @@
 		addColorStop
 			method:(nil)
 			overload:0
-				return type:0x8583a0
+				return type:0xca8790
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3441,14 +3443,14 @@
 		closePath
 			method:(nil)
 			overload:0
-				return type:0x8558e0
+				return type:0xca5cd0
 				arguments:0
 				optionals:0
 				elipsis:0
 		moveTo
 			method:(nil)
 			overload:0
-				return type:0x8559a0
+				return type:0xca5d90
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3457,7 +3459,7 @@
 		lineTo
 			method:(nil)
 			overload:0
-				return type:0x855be0
+				return type:0xca5fd0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3466,7 +3468,7 @@
 		quadraticCurveTo
 			method:(nil)
 			overload:0
-				return type:0x855e20
+				return type:0xca6210
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3477,7 +3479,7 @@
 		bezierCurveTo
 			method:(nil)
 			overload:0
-				return type:0x8561e0
+				return type:0xca65d0
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -3490,7 +3492,7 @@
 		arcTo
 			method:(nil)
 			overload:0
-				return type:0x856720
+				return type:0xca6b10
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -3500,7 +3502,7 @@
 					y2
 					radius
 			overload:1
-				return type:0x856ba0
+				return type:0xca6f90
 				arguments:7
 				optionals:0
 				elipsis:0
@@ -3514,7 +3516,7 @@
 		rect
 			method:(nil)
 			overload:0
-				return type:0x8571a0
+				return type:0xca7590
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3525,7 +3527,7 @@
 		arc
 			method:(nil)
 			overload:0
-				return type:0x857560
+				return type:0xca7950
 				arguments:6
 				optionals:1
 				elipsis:0
@@ -3539,7 +3541,7 @@
 		ellipse
 			method:(nil)
 			overload:0
-				return type:0x857ac0
+				return type:0xca7eb0
 				arguments:8
 				optionals:1
 				elipsis:0
@@ -3557,7 +3559,7 @@
 		setLineDash
 			method:(nil)
 			overload:0
-				return type:0x855060
+				return type:0xca5450
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3565,7 +3567,7 @@
 		getLineDash
 			method:(nil)
 			overload:0
-				return type:0x8552a0
+				return type:0xca5690
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -3580,33 +3582,33 @@
 		textBaseline (nil) (nil)
 		direction (nil) (nil)
 130 CanvasRenderingContext2D
-	class:0x803d70
+	class:0xc53800
 	45 operations
 		commit
 			method:(nil)
 			overload:0
-				return type:0x84c870
+				return type:0xc9cc60
 				arguments:0
 				optionals:0
 				elipsis:0
 		save
 			method:(nil)
 			overload:0
-				return type:0x84c930
+				return type:0xc9cd20
 				arguments:0
 				optionals:0
 				elipsis:0
 		restore
 			method:(nil)
 			overload:0
-				return type:0x84c9f0
+				return type:0xc9cde0
 				arguments:0
 				optionals:0
 				elipsis:0
 		scale
 			method:(nil)
 			overload:0
-				return type:0x84cb90
+				return type:0xc9cf80
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3615,7 +3617,7 @@
 		rotate
 			method:(nil)
 			overload:0
-				return type:0x84cdd0
+				return type:0xc9d1c0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3623,7 +3625,7 @@
 		translate
 			method:(nil)
 			overload:0
-				return type:0x84cf50
+				return type:0xc9d340
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3632,7 +3634,7 @@
 		transform
 			method:(nil)
 			overload:0
-				return type:0x84d190
+				return type:0xc9d580
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -3645,7 +3647,7 @@
 		setTransform
 			method:(nil)
 			overload:0
-				return type:0x84d6d0
+				return type:0xc9dac0
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -3658,14 +3660,14 @@
 		resetTransform
 			method:(nil)
 			overload:0
-				return type:0x84dc10
+				return type:0xc9e000
 				arguments:0
 				optionals:0
 				elipsis:0
 		createLinearGradient
 			method:(nil)
 			overload:0
-				return type:0x84e360
+				return type:0xc9e750
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3676,7 +3678,7 @@
 		createRadialGradient
 			method:(nil)
 			overload:0
-				return type:0x84e6e0
+				return type:0xc9ead0
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -3689,7 +3691,7 @@
 		createPattern
 			method:(nil)
 			overload:0
-				return type:0x84eba0
+				return type:0xc9ef90
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3698,7 +3700,7 @@
 		clearRect
 			method:(nil)
 			overload:0
-				return type:0x84f180
+				return type:0xc9f570
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3709,7 +3711,7 @@
 		fillRect
 			method:(nil)
 			overload:0
-				return type:0x84f540
+				return type:0xc9f930
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3720,7 +3722,7 @@
 		strokeRect
 			method:(nil)
 			overload:0
-				return type:0x84f900
+				return type:0xc9fcf0
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3731,21 +3733,21 @@
 		beginPath
 			method:(nil)
 			overload:0
-				return type:0x84fcc0
+				return type:0xca00b0
 				arguments:0
 				optionals:0
 				elipsis:0
 		fill
 			method:(nil)
 			overload:0
-				return type:0x84fd80
+				return type:0xca0170
 				arguments:1
 				optionals:1
 				elipsis:0
 					fillRule
 						optional:1
 			overload:1
-				return type:0x84ff80
+				return type:0xca0370
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -3755,12 +3757,12 @@
 		stroke
 			method:(nil)
 			overload:0
-				return type:0x850260
+				return type:0xca0650
 				arguments:0
 				optionals:0
 				elipsis:0
 			overload:1
-				return type:0x850320
+				return type:0xca0710
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3768,13 +3770,13 @@
 		drawFocusIfNeeded
 			method:(nil)
 			overload:0
-				return type:0x8504c0
+				return type:0xca08b0
 				arguments:1
 				optionals:0
 				elipsis:0
 					element
 			overload:1
-				return type:0x850660
+				return type:0xca0a50
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -3783,12 +3785,12 @@
 		scrollPathIntoView
 			method:(nil)
 			overload:0
-				return type:0x8508e0
+				return type:0xca0cd0
 				arguments:0
 				optionals:0
 				elipsis:0
 			overload:1
-				return type:0x8509a0
+				return type:0xca0d90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3796,14 +3798,14 @@
 		clip
 			method:(nil)
 			overload:0
-				return type:0x850b40
+				return type:0xca0f30
 				arguments:1
 				optionals:1
 				elipsis:0
 					fillRule
 						optional:1
 			overload:1
-				return type:0x850d40
+				return type:0xca1130
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -3813,14 +3815,14 @@
 		resetClip
 			method:(nil)
 			overload:0
-				return type:0x851020
+				return type:0xca1410
 				arguments:0
 				optionals:0
 				elipsis:0
 		isPointInPath
 			method:(nil)
 			overload:0
-				return type:0x851100
+				return type:0xca14f0
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -3829,7 +3831,7 @@
 					fillRule
 						optional:1
 			overload:1
-				return type:0x851480
+				return type:0xca1870
 				arguments:4
 				optionals:1
 				elipsis:0
@@ -3841,14 +3843,14 @@
 		isPointInStroke
 			method:(nil)
 			overload:0
-				return type:0x8518e0
+				return type:0xca1cd0
 				arguments:2
 				optionals:0
 				elipsis:0
 					x
 					y
 			overload:1
-				return type:0x851b20
+				return type:0xca1f10
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -3858,7 +3860,7 @@
 		fillText
 			method:(nil)
 			overload:0
-				return type:0x851e20
+				return type:0xca2210
 				arguments:4
 				optionals:1
 				elipsis:0
@@ -3870,7 +3872,7 @@
 		strokeText
 			method:(nil)
 			overload:0
-				return type:0x8521e0
+				return type:0xca25d0
 				arguments:4
 				optionals:1
 				elipsis:0
@@ -3882,7 +3884,7 @@
 		measureText
 			method:(nil)
 			overload:0
-				return type:0x852600
+				return type:0xca29f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3890,7 +3892,7 @@
 		drawImage
 			method:(nil)
 			overload:0
-				return type:0x852740
+				return type:0xca2b30
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -3898,7 +3900,7 @@
 					dx
 					dy
 			overload:1
-				return type:0x852a60
+				return type:0xca2e50
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -3908,7 +3910,7 @@
 					dw
 					dh
 			overload:2
-				return type:0x852f00
+				return type:0xca32f0
 				arguments:9
 				optionals:0
 				elipsis:0
@@ -3924,7 +3926,7 @@
 		addHitRegion
 			method:(nil)
 			overload:0
-				return type:0x8536a0
+				return type:0xca3a90
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -3933,7 +3935,7 @@
 		removeHitRegion
 			method:(nil)
 			overload:0
-				return type:0x853860
+				return type:0xca3c50
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -3941,29 +3943,29 @@
 		clearHitRegions
 			method:(nil)
 			overload:0
-				return type:0x8539c0
+				return type:0xca3db0
 				arguments:0
 				optionals:0
 				elipsis:0
 		createImageData
-			method:0x805560
+			method:0xc54ff0
 			overload:0
-				return type:0x853ae0
+				return type:0xca3ed0
 				arguments:2
 				optionals:0
 				elipsis:0
 					sw
 					sh
 			overload:1
-				return type:0x853d20
+				return type:0xca4110
 				arguments:1
 				optionals:0
 				elipsis:0
 					imagedata
 		getImageData
-			method:0x805cb0
+			method:0xc55740
 			overload:0
-				return type:0x853f00
+				return type:0xca42f0
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -3972,9 +3974,9 @@
 					sw
 					sh
 		putImageData
-			method:0x7fd910
+			method:0xc4d3a0
 			overload:0
-				return type:0x854220
+				return type:0xca4610
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -3982,7 +3984,7 @@
 					dx
 					dy
 			overload:1
-				return type:0x854500
+				return type:0xca48f0
 				arguments:7
 				optionals:0
 				elipsis:0
@@ -3996,7 +3998,7 @@
 		setLineDash
 			method:(nil)
 			overload:0
-				return type:0x855060
+				return type:0xca5450
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4004,21 +4006,21 @@
 		getLineDash
 			method:(nil)
 			overload:0
-				return type:0x8552a0
+				return type:0xca5690
 				arguments:0
 				optionals:0
 				elipsis:0
 		closePath
 			method:(nil)
 			overload:0
-				return type:0x8558e0
+				return type:0xca5cd0
 				arguments:0
 				optionals:0
 				elipsis:0
 		moveTo
 			method:(nil)
 			overload:0
-				return type:0x8559a0
+				return type:0xca5d90
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -4027,7 +4029,7 @@
 		lineTo
 			method:(nil)
 			overload:0
-				return type:0x855be0
+				return type:0xca5fd0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -4036,7 +4038,7 @@
 		quadraticCurveTo
 			method:(nil)
 			overload:0
-				return type:0x855e20
+				return type:0xca6210
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -4047,7 +4049,7 @@
 		bezierCurveTo
 			method:(nil)
 			overload:0
-				return type:0x8561e0
+				return type:0xca65d0
 				arguments:6
 				optionals:0
 				elipsis:0
@@ -4060,7 +4062,7 @@
 		arcTo
 			method:(nil)
 			overload:0
-				return type:0x856720
+				return type:0xca6b10
 				arguments:5
 				optionals:0
 				elipsis:0
@@ -4070,7 +4072,7 @@
 					y2
 					radius
 			overload:1
-				return type:0x856ba0
+				return type:0xca6f90
 				arguments:7
 				optionals:0
 				elipsis:0
@@ -4084,7 +4086,7 @@
 		rect
 			method:(nil)
 			overload:0
-				return type:0x8571a0
+				return type:0xca7590
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -4095,7 +4097,7 @@
 		arc
 			method:(nil)
 			overload:0
-				return type:0x857560
+				return type:0xca7950
 				arguments:6
 				optionals:1
 				elipsis:0
@@ -4109,7 +4111,7 @@
 		ellipse
 			method:(nil)
 			overload:0
-				return type:0x857ac0
+				return type:0xca7eb0
 				arguments:8
 				optionals:1
 				elipsis:0
@@ -4123,9 +4125,9 @@
 					anticlockwise
 						optional:1
 	23 attributes
-		canvas 0x8047b0
-		width 0x804a00 0x804c40
-		height 0x804ea0 0x8050e0
+		canvas 0xc54240
+		width 0xc54490 0xc546d0
+		height 0xc54930 0xc54b70
 		currentTransform (nil) (nil)
 		globalAlpha (nil) (nil)
 		globalCompositeOperation (nil) (nil)
@@ -4151,19 +4153,19 @@
 		setContext
 			method:(nil)
 			overload:0
-				return type:0x84ba80
+				return type:0xc9be70
 				arguments:1
 				optionals:0
 				elipsis:0
 					context
 132 HTMLCanvasElement
 	inherit:HTMLElement
-	class:0x7ccad0
+	class:0xc1c560
 	6 operations
 		getContext
-			method:0x7cd610
+			method:0xc1d0a0
 			overload:0
-				return type:0x84ac20
+				return type:0xc9b010
 				arguments:2
 				optionals:0
 				elipsis:1
@@ -4173,7 +4175,7 @@
 		probablySupportsContext
 			method:(nil)
 			overload:0
-				return type:0x84ae40
+				return type:0xc9b230
 				arguments:2
 				optionals:0
 				elipsis:1
@@ -4183,7 +4185,7 @@
 		setContext
 			method:(nil)
 			overload:0
-				return type:0x84b040
+				return type:0xc9b430
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4191,14 +4193,14 @@
 		transferControlToProxy
 			method:(nil)
 			overload:0
-				return type:0x84b240
+				return type:0xc9b630
 				arguments:0
 				optionals:0
 				elipsis:0
 		toDataURL
 			method:(nil)
 			overload:0
-				return type:0x84b300
+				return type:0xc9b6f0
 				arguments:2
 				optionals:1
 				elipsis:1
@@ -4209,7 +4211,7 @@
 		toBlob
 			method:(nil)
 			overload:0
-				return type:0x84b520
+				return type:0xc9b910
 				arguments:3
 				optionals:1
 				elipsis:1
@@ -4219,35 +4221,35 @@
 					arguments
 						elipsis:1
 	2 attributes
-		width 0x7ccc10 0x7ccd50
-		height 0x7cce90 0x7ccfd0
+		width 0xc1c6a0 0xc1c7e0
+		height 0xc1c920 0xc1ca60
 133 HTMLTemplateElement
 	inherit:HTMLElement
-	class:0x7f6890
+	class:0xc46320
 	1 attributes
 		content (nil)
 134 HTMLScriptElement
 	inherit:HTMLElement
-	class:0x7e9a70
+	class:0xc39500
 	10 attributes
-		src 0x7ea5b0 0x7ea6f0
-		type 0x7eaab0 0x7eabf0
-		charset 0x7e9bb0 0x7e9cf0
+		src 0xc3a040 0xc3a180
+		type 0xc3a540 0xc3a680
+		charset 0xc39640 0xc39780
 		async (nil) (nil)
-		defer 0x7e9e30 0x7e9f70
+		defer 0xc398c0 0xc39a00
 		crossOrigin (nil) (nil)
-		text 0x7ea830 0x7ea970
+		text 0xc3a2c0 0xc3a400
 		nonce (nil) (nil)
-		event 0x7ea0b0 0x7ea1f0
-		htmlFor 0x7ea330 0x7ea470
+		event 0xc39b40 0xc39c80
+		htmlFor 0xc39dc0 0xc39f00
 135 HTMLDialogElement
 	inherit:HTMLElement
-	class:0x7f6b50
+	class:0xc465e0
 	3 operations
 		show
 			method:(nil)
 			overload:0
-				return type:0x849a90
+				return type:0xc99e80
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -4256,7 +4258,7 @@
 		showModal
 			method:(nil)
 			overload:0
-				return type:0x849cd0
+				return type:0xc9a0c0
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -4265,7 +4267,7 @@
 		close
 			method:(nil)
 			overload:0
-				return type:0x849f10
+				return type:0xc9a300
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -4276,12 +4278,12 @@
 		returnValue (nil) (nil)
 136 RelatedEvent
 	inherit:Event
-	class:0x7b77e0
+	class:0xc07270
 	1 attributes
 		relatedTarget (nil)
 137 HTMLMenuItemElement
 	inherit:HTMLElement
-	class:0x7f6e10
+	class:0xc468a0
 	8 attributes
 		type (nil) (nil)
 		label (nil) (nil)
@@ -4293,14 +4295,14 @@
 		command (nil)
 138 HTMLMenuElement
 	inherit:HTMLElement
-	class:0x7e1450
+	class:0xc30ee0
 	3 attributes
 		type (nil) (nil)
 		label (nil) (nil)
-		compact 0x7e1590 0x7e16d0
+		compact 0xc31020 0xc31160
 139 HTMLDetailsElement
 	inherit:HTMLElement
-	class:0x7f70d0
+	class:0xc46b60
 	1 attributes
 		open (nil) (nil)
 140 ValidityState
@@ -4318,37 +4320,37 @@
 		valid (nil)
 141 AutocompleteErrorEvent
 	inherit:Event
-	class:0x7b7aa0
+	class:0xc07530
 	1 attributes
 		reason (nil)
 142 HTMLLegendElement
 	inherit:HTMLElement
-	class:0x7ddc40
+	class:0xc2d6d0
 	2 attributes
 		form (nil)
-		align 0x7ddd80 0x7ddec0
+		align 0xc2d810 0xc2d950
 143 HTMLFieldSetElement
 	inherit:HTMLElement
-	class:0x7f7390
+	class:0xc46e20
 	3 operations
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x847470
+				return type:0xc97860
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x847530
+				return type:0xc97920
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x8475d0
+				return type:0xc979c0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4364,7 +4366,7 @@
 		validationMessage (nil)
 144 HTMLMeterElement
 	inherit:HTMLElement
-	class:0x7f7650
+	class:0xc470e0
 	7 attributes
 		value (nil) (nil)
 		min (nil) (nil)
@@ -4375,7 +4377,7 @@
 		labels (nil)
 145 HTMLProgressElement
 	inherit:HTMLElement
-	class:0x7f7a10
+	class:0xc474a0
 	4 attributes
 		value (nil) (nil)
 		max (nil) (nil)
@@ -4383,26 +4385,26 @@
 		labels (nil)
 146 HTMLOutputElement
 	inherit:HTMLElement
-	class:0x7f7cd0
+	class:0xc47760
 	3 operations
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x845f80
+				return type:0xc96370
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x846040
+				return type:0xc96430
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x8460e0
+				return type:0xc964d0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4420,26 +4422,26 @@
 		labels (nil)
 147 HTMLKeygenElement
 	inherit:HTMLElement
-	class:0x7f7f90
+	class:0xc47a20
 	3 operations
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x8452c0
+				return type:0xc956b0
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x845380
+				return type:0xc95770
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x845420
+				return type:0xc95810
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4458,26 +4460,26 @@
 		labels (nil)
 148 HTMLTextAreaElement
 	inherit:HTMLElement
-	class:0x7f4b10
+	class:0xc445a0
 	6 operations
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x843b40
+				return type:0xc93f30
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x843c00
+				return type:0xc93ff0
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x843ca0
+				return type:0xc94090
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4485,20 +4487,20 @@
 		select
 			method:(nil)
 			overload:0
-				return type:0x843f00
+				return type:0xc942f0
 				arguments:0
 				optionals:0
 				elipsis:0
 		setRangeText
 			method:(nil)
 			overload:0
-				return type:0x8441e0
+				return type:0xc945d0
 				arguments:1
 				optionals:0
 				elipsis:0
 					replacement
 			overload:1
-				return type:0x844340
+				return type:0xc94730
 				arguments:4
 				optionals:1
 				elipsis:0
@@ -4510,7 +4512,7 @@
 		setSelectionRange
 			method:(nil)
 			overload:0
-				return type:0x844760
+				return type:0xc94b50
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -4523,20 +4525,20 @@
 		autofocus (nil) (nil)
 		cols (nil) (nil)
 		dirName (nil) (nil)
-		disabled 0x7f4ed0 0x7f5010
+		disabled 0xc44960 0xc44aa0
 		form (nil)
 		inputMode (nil) (nil)
 		maxLength (nil) (nil)
 		minLength (nil) (nil)
-		name 0x7f5150 0x7f5290
+		name 0xc44be0 0xc44d20
 		placeholder (nil) (nil)
-		readOnly 0x7f53d0 0x7f5510
+		readOnly 0xc44e60 0xc44fa0
 		required (nil) (nil)
 		rows (nil) (nil)
 		wrap (nil) (nil)
-		type 0x7f5650
-		defaultValue 0x7f4c50 0x7f4d90
-		value 0x7f5790 0x7f58d0
+		type 0xc450e0
+		defaultValue 0xc446e0 0xc44820
+		value 0xc45220 0xc45360
 		textLength (nil)
 		willValidate (nil)
 		validity (nil)
@@ -4547,35 +4549,35 @@
 		selectionDirection (nil) (nil)
 149 HTMLOptionElement
 	inherit:HTMLElement
-	class:0x7e3660
+	class:0xc330f0
 	8 attributes
-		disabled 0x7e3a20 0x7e3b60
+		disabled 0xc334b0 0xc335f0
 		form (nil)
-		label 0x7e3ca0 0x7e3de0
-		defaultSelected 0x7e37a0 0x7e38e0
-		selected 0x7e3f20 0x7e4060
-		value 0x7e42e0 0x7e4420
-		text 0x7e41a0 (nil)
+		label 0xc33730 0xc33870
+		defaultSelected 0xc33230 0xc33370
+		selected 0xc339b0 0xc33af0
+		value 0xc33d70 0xc33eb0
+		text 0xc33c30 (nil)
 		index (nil)
 150 HTMLOptGroupElement
 	inherit:HTMLElement
-	class:0x7f8250
+	class:0xc47ce0
 	2 attributes
 		disabled (nil) (nil)
 		label (nil) (nil)
 151 HTMLDataListElement
 	inherit:HTMLElement
-	class:0x7f8510
+	class:0xc47fa0
 	1 attributes
 		options (nil)
 152 HTMLSelectElement
 	inherit:HTMLElement
-	class:0x7eb0f0
+	class:0xc3ab80
 	7 operations
 		item
 			method:(nil)
 			overload:0
-				return type:0x8407a0
+				return type:0xc90b90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4583,7 +4585,7 @@
 		namedItem
 			method:(nil)
 			overload:0
-				return type:0x840980
+				return type:0xc90d70
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4591,7 +4593,7 @@
 		add
 			method:(nil)
 			overload:0
-				return type:0x840ac0
+				return type:0xc90eb0
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -4601,12 +4603,12 @@
 		remove
 			method:(nil)
 			overload:0
-				return type:0x840e60
+				return type:0xc91250
 				arguments:0
 				optionals:0
 				elipsis:0
 			overload:1
-				return type:0x840f20
+				return type:0xc91310
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4614,28 +4616,28 @@
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x8410a0
+				return type:0xc91490
 				arguments:2
 				optionals:0
 				elipsis:0
 					index
 					option
 			overload:1
-				return type:0x8417c0
+				return type:0xc91bb0
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x841880
+				return type:0xc91c70
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x841920
+				return type:0xc91d10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4643,60 +4645,60 @@
 	18 attributes
 		autocomplete (nil) (nil)
 		autofocus (nil) (nil)
-		disabled 0x7eb230 0x7eb370
+		disabled 0xc3acc0 0xc3ae00
 		form (nil)
-		multiple 0x7eb4b0 0x7eb5f0
-		name 0x7eb730 0x7eb870
+		multiple 0xc3af40 0xc3b080
+		name 0xc3b1c0 0xc3b300
 		required (nil) (nil)
 		size (nil) (nil)
-		type 0x7eb9b0
+		type 0xc3b440
 		options (nil)
 		length (nil) (nil)
 		selectedOptions (nil)
 		selectedIndex (nil) (nil)
-		value 0x7ebaf0 0x7ebc30
+		value 0xc3b580 0xc3b6c0
 		willValidate (nil)
 		validity (nil)
 		validationMessage (nil)
 		labels (nil)
 153 HTMLButtonElement
 	inherit:HTMLElement
-	class:0x7d0100
+	class:0xc1fb90
 	3 operations
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x83fa60
+				return type:0xc8fe50
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x83fb20
+				return type:0xc8ff10
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x83fbc0
+				return type:0xc8ffb0
 				arguments:1
 				optionals:0
 				elipsis:0
 					error
 	16 attributes
 		autofocus (nil) (nil)
-		disabled 0x7d0240 0x7d0380
+		disabled 0xc1fcd0 0xc1fe10
 		form (nil)
 		formAction (nil) (nil)
 		formEnctype (nil) (nil)
 		formMethod (nil) (nil)
 		formNoValidate (nil) (nil)
 		formTarget (nil) (nil)
-		name 0x7d04c0 0x7d0600
+		name 0xc1ff50 0xc20090
 		type (nil) (nil)
-		value 0x7d0740 0x7d0880
+		value 0xc201d0 0xc20310
 		menu (nil) (nil)
 		willValidate (nil)
 		validity (nil)
@@ -4704,12 +4706,12 @@
 		labels (nil)
 154 HTMLInputElement
 	inherit:HTMLElement
-	class:0x7da400
+	class:0xc29e90
 	8 operations
 		stepUp
 			method:(nil)
 			overload:0
-				return type:0x83d9a0
+				return type:0xc8dd90
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -4718,7 +4720,7 @@
 		stepDown
 			method:(nil)
 			overload:0
-				return type:0x83db40
+				return type:0xc8df30
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -4727,21 +4729,21 @@
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x83df80
+				return type:0xc8e370
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x83e040
+				return type:0xc8e430
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x83e0e0
+				return type:0xc8e4d0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -4749,20 +4751,20 @@
 		select
 			method:(nil)
 			overload:0
-				return type:0x83e340
+				return type:0xc8e730
 				arguments:0
 				optionals:0
 				elipsis:0
 		setRangeText
 			method:(nil)
 			overload:0
-				return type:0x83e620
+				return type:0xc8ea10
 				arguments:1
 				optionals:0
 				elipsis:0
 					replacement
 			overload:1
-				return type:0x83e780
+				return type:0xc8eb70
 				arguments:4
 				optionals:1
 				elipsis:0
@@ -4774,7 +4776,7 @@
 		setSelectionRange
 			method:(nil)
 			overload:0
-				return type:0x83eba0
+				return type:0xc8ef90
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -4783,14 +4785,14 @@
 					direction
 						optional:1
 	49 attributes
-		accept 0x7da540 0x7da680
-		alt 0x7daa40 0x7dab80
+		accept 0xc29fd0 0xc2a110
+		alt 0xc2a4d0 0xc2a610
 		autocomplete (nil) (nil)
 		autofocus (nil) (nil)
-		defaultChecked 0x7daf40 0x7db080
-		checked 0x7dacc0 0x7dae00
+		defaultChecked 0xc2a9d0 0xc2ab10
+		checked 0xc2a750 0xc2a890
 		dirName (nil) (nil)
-		disabled 0x7db440 0x7db580
+		disabled 0xc2aed0 0xc2b010
 		form (nil)
 		files (nil)
 		formAction (nil) (nil)
@@ -4803,25 +4805,25 @@
 		inputMode (nil) (nil)
 		list (nil)
 		max (nil) (nil)
-		maxLength 0x7dcac0 0x7dcc00
+		maxLength 0xc2c550 0xc2c690
 		min (nil) (nil)
 		minLength (nil) (nil)
 		multiple (nil) (nil)
-		name 0x7db6c0 0x7db800
+		name 0xc2b150 0xc2b290
 		pattern (nil) (nil)
 		placeholder (nil) (nil)
-		readOnly 0x7db940 0x7dba80
+		readOnly 0xc2b3d0 0xc2b510
 		required (nil) (nil)
-		size 0x7dcd40 0x7dce80
-		src 0x7dbbc0 0x7dbd00
+		size 0xc2c7d0 0xc2c910
+		src 0xc2b650 0xc2b790
 		step (nil) (nil)
-		type 0x7dcfc0 (nil)
-		defaultValue 0x7db1c0 0x7db300
-		value 0x7dc840 0x7dc980
+		type 0xc2ca50 (nil)
+		defaultValue 0xc2ac50 0xc2ad90
+		value 0xc2c2d0 0xc2c410
 		valueAsDate (nil) (nil)
-		valueAsNumber 0x7dc0c0 0x7dc200
-		valueLow 0x7dc5c0 0x7dc700
-		valueHigh 0x7dc340 0x7dc480
+		valueAsNumber 0xc2bb50 0xc2bc90
+		valueLow 0xc2c050 0xc2c190
+		valueHigh 0xc2bdd0 0xc2bf10
 		width (nil) (nil)
 		willValidate (nil)
 		validity (nil)
@@ -4830,103 +4832,103 @@
 		selectionStart (nil) (nil)
 		selectionEnd (nil) (nil)
 		selectionDirection (nil) (nil)
-		align 0x7da7c0 0x7da900
-		useMap 0x7dbe40 0x7dbf80
+		align 0xc2a250 0xc2a390
+		useMap 0xc2b8d0 0xc2ba10
 155 HTMLLabelElement
 	inherit:HTMLElement
-	class:0x7dd4c0
+	class:0xc2cf50
 	3 attributes
 		form (nil)
-		htmlFor 0x7dd600 0x7dd740
+		htmlFor 0xc2d090 0xc2d1d0
 		control (nil)
 156 HTMLFormElement
 	inherit:HTMLElement
-	class:0x7cecb0
+	class:0xc1e740
 	5 operations
 		submit
 			method:(nil)
 			overload:0
-				return type:0x83b240
+				return type:0xc8b630
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x83b3e0
+				return type:0xc8b7d0
 				arguments:1
 				optionals:0
 				elipsis:0
 					name
 			overload:2
-				return type:0x83b580
+				return type:0xc8b970
 				arguments:0
 				optionals:0
 				elipsis:0
 		reset
 			method:(nil)
 			overload:0
-				return type:0x83b640
+				return type:0xc8ba30
 				arguments:0
 				optionals:0
 				elipsis:0
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x83b720
+				return type:0xc8bb10
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x83b7e0
+				return type:0xc8bbd0
 				arguments:0
 				optionals:0
 				elipsis:0
 		requestAutocomplete
 			method:(nil)
 			overload:0
-				return type:0x83b880
+				return type:0xc8bc70
 				arguments:0
 				optionals:0
 				elipsis:0
 	11 attributes
-		acceptCharset 0x7cedf0 0x7cef30
-		action 0x7cf070 0x7cf1b0
+		acceptCharset 0xc1e880 0xc1e9c0
+		action 0xc1eb00 0xc1ec40
 		autocomplete (nil) (nil)
-		enctype 0x7cf2f0 0x7cf430
+		enctype 0xc1ed80 0xc1eec0
 		encoding (nil) (nil)
-		method 0x7cf570 0x7cf6b0
+		method 0xc1f000 0xc1f140
 		name (nil) (nil)
 		noValidate (nil) (nil)
-		target 0x7cf7f0 0x7cf930
+		target 0xc1f280 0xc1f3c0
 		elements (nil)
 		length (nil)
 157 HTMLTableCellElement
 	inherit:HTMLElement
-	class:0x7ed320
+	class:0xc3cdb0
 	13 attributes
-		colSpan 0x7f3270 0x7f33c0
-		rowSpan 0x7f3510 0x7f3660
+		colSpan 0xc42d00 0xc42e50
+		rowSpan 0xc42fa0 0xc430f0
 		headers (nil)
-		cellIndex 0x7f3120
-		align 0x7ed470 0x7f1ad0
-		axis 0x7f1c20 0x7f1d70
-		height 0x7f26a0 0x7f27f0
-		width 0x7f2e80 0x7f2fd0
-		ch 0x7f2400 0x7f2550
-		chOff 0x7f2160 0x7f22b0
-		noWrap 0x7f2940 0x7f2a90
-		vAlign 0x7f2be0 0x7f2d30
-		bgColor 0x7f1ec0 0x7f2010
+		cellIndex 0xc42bb0
+		align 0xc3cf00 0xc41560
+		axis 0xc416b0 0xc41800
+		height 0xc42130 0xc42280
+		width 0xc42910 0xc42a60
+		ch 0xc41e90 0xc41fe0
+		chOff 0xc41bf0 0xc41d40
+		noWrap 0xc423d0 0xc42520
+		vAlign 0xc42670 0xc427c0
+		bgColor 0xc41950 0xc41aa0
 158 HTMLTableHeaderCellElement
 	inherit:HTMLTableCellElement
-	class:0x7fa8c0
+	class:0xc4a350
 	1 operations
 		sort
 			method:(nil)
 			overload:0
-				return type:0x83a3b0
+				return type:0xc8a7a0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -4936,17 +4938,17 @@
 		sorted (nil) (nil)
 159 HTMLTableDataCellElement
 	inherit:HTMLTableCellElement
-	class:0x7faba0
+	class:0xc4a630
 	1 attributes
 		abbr (nil) (nil)
 160 HTMLTableRowElement
 	inherit:HTMLElement
-	class:0x7f0c80
+	class:0xc40710
 	2 operations
 		insertCell
 			method:(nil)
 			overload:0
-				return type:0x839d50
+				return type:0xc8a140
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -4955,28 +4957,28 @@
 		deleteCell
 			method:(nil)
 			overload:0
-				return type:0x839ed0
+				return type:0xc8a2c0
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 	8 attributes
-		rowIndex 0x7f1a40
-		sectionRowIndex 0x7f7770
+		rowIndex 0xc414d0
+		sectionRowIndex 0xc47200
 		cells (nil)
-		align 0x7f0dc0 0x7f0f00
-		ch 0x7f1540 0x7f1680
-		chOff 0x7f12c0 0x7f1400
-		vAlign 0x7f17c0 0x7f1900
-		bgColor 0x7f1040 0x7f1180
+		align 0xc40850 0xc40990
+		ch 0xc40fd0 0xc41110
+		chOff 0xc40d50 0xc40e90
+		vAlign 0xc41250 0xc41390
+		bgColor 0xc40ad0 0xc40c10
 161 HTMLTableSectionElement
 	inherit:HTMLElement
-	class:0x7f3b90
+	class:0xc43620
 	2 operations
 		insertRow
 			method:(nil)
 			overload:0
-				return type:0x8396d0
+				return type:0xc89ac0
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -4985,89 +4987,89 @@
 		deleteRow
 			method:(nil)
 			overload:0
-				return type:0x839850
+				return type:0xc89c40
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 	5 attributes
 		rows (nil)
-		align 0x7f3ce0 0x7f3e30
-		ch 0x7f4220 0x7f4370
-		chOff 0x7f3f80 0x7f40d0
-		vAlign 0x7f44c0 0x7f4610
+		align 0xc43770 0xc438c0
+		ch 0xc43cb0 0xc43e00
+		chOff 0xc43a10 0xc43b60
+		vAlign 0xc43f50 0xc440a0
 162 HTMLTableColElement
 	inherit:HTMLElement
-	class:0x7edf80
+	class:0xc3da10
 	6 attributes
 		span (nil) (nil)
-		align 0x7ee0c0 0x7ee200
-		ch 0x7ee5c0 0x7ee700
-		chOff 0x7ee340 0x7ee480
-		vAlign 0x7ee840 0x7ee980
-		width 0x7eeac0 0x7eec00
+		align 0xc3db50 0xc3dc90
+		ch 0xc3e050 0xc3e190
+		chOff 0xc3ddd0 0xc3df10
+		vAlign 0xc3e2d0 0xc3e410
+		width 0xc3e550 0xc3e690
 163 HTMLTableCaptionElement
 	inherit:HTMLElement
-	class:0x7ecb60
+	class:0xc3c5f0
 	1 attributes
-		align 0x7eccb0 0x7ece00
+		align 0xc3c740 0xc3c890
 164 HTMLTableElement
 	inherit:HTMLElement
-	class:0x7ef100
+	class:0xc3eb90
 	10 operations
 		createCaption
 			method:(nil)
 			overload:0
-				return type:0x8383f0
+				return type:0xc887e0
 				arguments:0
 				optionals:0
 				elipsis:0
 		deleteCaption
 			method:(nil)
 			overload:0
-				return type:0x838490
+				return type:0xc88880
 				arguments:0
 				optionals:0
 				elipsis:0
 		createTHead
 			method:(nil)
 			overload:0
-				return type:0x8386b0
+				return type:0xc88aa0
 				arguments:0
 				optionals:0
 				elipsis:0
 		deleteTHead
 			method:(nil)
 			overload:0
-				return type:0x838750
+				return type:0xc88b40
 				arguments:0
 				optionals:0
 				elipsis:0
 		createTFoot
 			method:(nil)
 			overload:0
-				return type:0x838970
+				return type:0xc88d60
 				arguments:0
 				optionals:0
 				elipsis:0
 		deleteTFoot
 			method:(nil)
 			overload:0
-				return type:0x838a10
+				return type:0xc88e00
 				arguments:0
 				optionals:0
 				elipsis:0
 		createTBody
 			method:(nil)
 			overload:0
-				return type:0x838c30
+				return type:0xc89020
 				arguments:0
 				optionals:0
 				elipsis:0
 		insertRow
 			method:(nil)
 			overload:0
-				return type:0x838e30
+				return type:0xc89220
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -5076,7 +5078,7 @@
 		deleteRow
 			method:(nil)
 			overload:0
-				return type:0x838fb0
+				return type:0xc893a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5084,7 +5086,7 @@
 		stopSorting
 			method:(nil)
 			overload:0
-				return type:0x8391b0
+				return type:0xc895a0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -5095,30 +5097,30 @@
 		tBodies (nil)
 		rows (nil)
 		sortable (nil) (nil)
-		align 0x7ef240 0x7ef380
-		border 0x7ef740 0x7ef880
-		frame 0x7efec0 0x7f0000
-		rules 0x7f0140 0x7f0280
-		summary 0x7f03c0 0x7f0500
-		width 0x7f0640 0x7f0780
-		bgColor 0x7ef4c0 0x7ef600
-		cellPadding 0x7ef9c0 0x7efb00
-		cellSpacing 0x7efc40 0x7efd80
+		align 0xc3ecd0 0xc3ee10
+		border 0xc3f1d0 0xc3f310
+		frame 0xc3f950 0xc3fa90
+		rules 0xc3fbd0 0xc3fd10
+		summary 0xc3fe50 0xc3ff90
+		width 0xc400d0 0xc40210
+		bgColor 0xc3ef50 0xc3f090
+		cellPadding 0xc3f450 0xc3f590
+		cellSpacing 0xc3f6d0 0xc3f810
 165 HTMLAreaElement
 	inherit:HTMLElement
-	class:0x7bc780
+	class:0xc0c1d0
 	22 attributes
-		alt 0x7bc8c0 0x7bca00
-		coords 0x7bcb40 0x7bcc80
-		shape 0x7cb830 0x7cb970
-		target 0x7cbab0 0x7cbbf0
+		alt 0xc0c310 0xc0c450
+		coords 0xc0c590 0xc0c6d0
+		shape 0xc1b2c0 0xc1b400
+		target 0xc1b540 0xc1b680
 		download (nil) (nil)
 		ping (nil)
 		rel (nil) (nil)
 		relList (nil)
 		hreflang (nil) (nil)
 		type (nil) (nil)
-		noHref 0x7cb5b0 0x7cb6f0
+		noHref 0xc1b040 0xc1b180
 		href (nil) (nil)
 		origin (nil)
 		protocol (nil) (nil)
@@ -5132,13 +5134,13 @@
 		hash (nil) (nil)
 166 HTMLMapElement
 	inherit:HTMLElement
-	class:0x7e07d0
+	class:0xc30260
 	2 attributes
-		name 0x7e0910 0x7e0a50
+		name 0xc303a0 0xc304e0
 		areas (nil)
 167 TrackEvent
 	inherit:Event
-	class:0x7b8a70
+	class:0xc08500
 	1 attributes
 		track (nil)
 168 TimeRanges
@@ -5146,7 +5148,7 @@
 		start
 			method:(nil)
 			overload:0
-				return type:0x836bb0
+				return type:0xc86fa0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5154,7 +5156,7 @@
 		end
 			method:(nil)
 			overload:0
-				return type:0x836d30
+				return type:0xc87120
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5176,13 +5178,13 @@
 		getCueById
 			method:(nil)
 			overload:0
-				return type:0x836110
+				return type:0xc86500
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x8362d0
+				return type:0xc866c0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5195,7 +5197,7 @@
 		addCue
 			method:(nil)
 			overload:0
-				return type:0x835b10
+				return type:0xc85f00
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5203,7 +5205,7 @@
 		removeCue
 			method:(nil)
 			overload:0
-				return type:0x835cb0
+				return type:0xc860a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5224,13 +5226,13 @@
 		getTrackById
 			method:(nil)
 			overload:0
-				return type:0x834c40
+				return type:0xc85030
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x834e00
+				return type:0xc851f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5246,21 +5248,21 @@
 		pause
 			method:(nil)
 			overload:0
-				return type:0x833940
+				return type:0xc83d30
 				arguments:0
 				optionals:0
 				elipsis:0
 		unpause
 			method:(nil)
 			overload:0
-				return type:0x833a00
+				return type:0xc83df0
 				arguments:0
 				optionals:0
 				elipsis:0
 		play
 			method:(nil)
 			overload:0
-				return type:0x833ac0
+				return type:0xc83eb0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -5304,13 +5306,13 @@
 		getTrackById
 			method:(nil)
 			overload:0
-				return type:0x8325e0
+				return type:0xc829d0
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x8327a0
+				return type:0xc82b90
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5334,13 +5336,13 @@
 		getTrackById
 			method:(nil)
 			overload:0
-				return type:0x831a20
+				return type:0xc81e10
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x831be0
+				return type:0xc81fd0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5360,19 +5362,19 @@
 		MEDIA_ERR_SRC_NOT_SUPPORTED
 179 HTMLMediaElement
 	inherit:HTMLElement
-	class:0x7f87d0
+	class:0xc48260
 	7 operations
 		load
 			method:(nil)
 			overload:0
-				return type:0x82f390
+				return type:0xc7f780
 				arguments:0
 				optionals:0
 				elipsis:0
 		canPlayType
 			method:(nil)
 			overload:0
-				return type:0x82f4b0
+				return type:0xc7f8a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5380,7 +5382,7 @@
 		fastSeek
 			method:(nil)
 			overload:0
-				return type:0x82fc90
+				return type:0xc80080
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5388,28 +5390,28 @@
 		getStartDate
 			method:(nil)
 			overload:0
-				return type:0x82fef0
+				return type:0xc802e0
 				arguments:0
 				optionals:0
 				elipsis:0
 		play
 			method:(nil)
 			overload:0
-				return type:0x830590
+				return type:0xc80980
 				arguments:0
 				optionals:0
 				elipsis:0
 		pause
 			method:(nil)
 			overload:0
-				return type:0x830650
+				return type:0xc80a40
 				arguments:0
 				optionals:0
 				elipsis:0
 		addTextTrack
 			method:(nil)
 			overload:0
-				return type:0x830fb0
+				return type:0xc813a0
 				arguments:3
 				optionals:2
 				elipsis:0
@@ -5460,7 +5462,7 @@
 		HAVE_ENOUGH_DATA
 180 HTMLTrackElement
 	inherit:HTMLElement
-	class:0x7f8a90
+	class:0xc48520
 	7 attributes
 		kind (nil) (nil)
 		src (nil) (nil)
@@ -5476,10 +5478,10 @@
 		ERROR
 181 HTMLAudioElement
 	inherit:HTMLMediaElement
-	class:0x7fae60
+	class:0xc4a8f0
 182 HTMLVideoElement
 	inherit:HTMLMediaElement
-	class:0x7fb120
+	class:0xc4abb0
 	5 attributes
 		width (nil) (nil)
 		height (nil) (nil)
@@ -5488,77 +5490,77 @@
 		poster (nil) (nil)
 183 HTMLParamElement
 	inherit:HTMLElement
-	class:0x7e5d60
+	class:0xc357f0
 	4 attributes
-		name 0x7e5ea0 0x7e5fe0
-		value 0x7e63a0 0x7e64e0
-		type 0x7e6120 0x7e6260
-		valueType 0x7e6620 0x7e6760
+		name 0xc35930 0xc35a70
+		value 0xc35e30 0xc35f70
+		type 0xc35bb0 0xc35cf0
+		valueType 0xc360b0 0xc361f0
 184 HTMLObjectElement
 	inherit:HTMLElement
-	class:0x7e7270
+	class:0xc36d00
 	4 operations
 		getSVGDocument
 			method:(nil)
 			overload:0
-				return type:0x82cb10
+				return type:0xc7cf00
 				arguments:0
 				optionals:0
 				elipsis:0
 		checkValidity
 			method:(nil)
 			overload:0
-				return type:0x82ce50
+				return type:0xc7d240
 				arguments:0
 				optionals:0
 				elipsis:0
 		reportValidity
 			method:(nil)
 			overload:0
-				return type:0x82cf10
+				return type:0xc7d300
 				arguments:0
 				optionals:0
 				elipsis:0
 		setCustomValidity
 			method:(nil)
 			overload:0
-				return type:0x82cfb0
+				return type:0xc7d3a0
 				arguments:1
 				optionals:0
 				elipsis:0
 					error
 	23 attributes
-		data 0x7e82b0 0x7e83f0
-		type 0x7e8f30 0x7e9070
+		data 0xc37d40 0xc37e80
+		type 0xc389c0 0xc38b00
 		typeMustMatch (nil) (nil)
-		name 0x7e8a30 0x7e8b70
-		useMap 0x7e91b0 0x7e92f0
+		name 0xc384c0 0xc38600
+		useMap 0xc38c40 0xc38d80
 		form (nil)
-		width 0x7e9430 0x7e9570
-		height 0x7e87b0 0x7e88f0
+		width 0xc38ec0 0xc39000
+		height 0xc38240 0xc38380
 		contentDocument (nil)
 		contentWindow (nil)
 		willValidate (nil)
 		validity (nil)
 		validationMessage (nil)
-		align 0x7e73b0 0x7e74f0
-		archive 0x7e7630 0x7e7770
-		code 0x7e7db0 0x7e7ef0
-		declare 0x7e8530 0x7e8670
+		align 0xc36e40 0xc36f80
+		archive 0xc370c0 0xc37200
+		code 0xc37840 0xc37980
+		declare 0xc37fc0 0xc38100
 		hspace (nil) (nil)
-		standby 0x7e8cb0 0x7e8df0
+		standby 0xc38740 0xc38880
 		vspace (nil) (nil)
-		codeBase 0x7e7b30 0x7e7c70
-		codeType 0x7e8030 0x7e8170
-		border 0x7e78b0 0x7e79f0
+		codeBase 0xc375c0 0xc37700
+		codeType 0xc37ac0 0xc37c00
+		border 0xc37340 0xc37480
 185 HTMLEmbedElement
 	inherit:HTMLElement
-	class:0x7f8d50
+	class:0xc487e0
 	1 operations
 		getSVGDocument
 			method:(nil)
 			overload:0
-				return type:0x82c010
+				return type:0xc7c400
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -5571,59 +5573,59 @@
 		name (nil) (nil)
 186 HTMLIFrameElement
 	inherit:HTMLElement
-	class:0x7d68f0
+	class:0xc26380
 	1 operations
 		getSVGDocument
 			method:(nil)
 			overload:0
-				return type:0x82bbb0
+				return type:0xc7bfa0
 				arguments:0
 				optionals:0
 				elipsis:0
 	16 attributes
-		src 0x7d7e30 0x7d7f70
+		src 0xc278c0 0xc27a00
 		srcdoc (nil) (nil)
-		name 0x7d7930 0x7d7a70
+		name 0xc273c0 0xc27500
 		sandbox (nil)
 		seamless (nil) (nil)
 		allowFullscreen (nil) (nil)
-		width 0x7d80b0 0x7d81f0
-		height 0x7d6f30 0x7d7070
+		width 0xc27b40 0xc27c80
+		height 0xc269c0 0xc26b00
 		contentDocument (nil)
 		contentWindow (nil)
-		align 0x7d6a30 0x7d6b70
-		scrolling 0x7d7bb0 0x7d7cf0
-		frameBorder 0x7d6cb0 0x7d6df0
-		longDesc 0x7d71b0 0x7d72f0
-		marginHeight 0x7d7430 0x7d7570
-		marginWidth 0x7d76b0 0x7d77f0
+		align 0xc264c0 0xc26600
+		scrolling 0xc27640 0xc27780
+		frameBorder 0xc26740 0xc26880
+		longDesc 0xc26c40 0xc26d80
+		marginHeight 0xc26ec0 0xc27000
+		marginWidth 0xc27140 0xc27280
 187 HTMLImageElement
 	inherit:HTMLElement
-	class:0x7d86f0
+	class:0xc28180
 	20 attributes
-		alt 0x7d8ab0 0x7d8bf0
-		src 0x7d9730 0x7d9870
+		alt 0xc28540 0xc28680
+		src 0xc291c0 0xc29300
 		srcset (nil) (nil)
 		sizes (nil) (nil)
 		crossOrigin (nil) (nil)
-		useMap 0x7d99b0 0x7d9af0
-		isMap 0x7d8fb0 0x7d90f0
-		width 0x7de650 0x7de790
-		height 0x7d9c30 0x7de010
+		useMap 0xc29440 0xc29580
+		isMap 0xc28a40 0xc28b80
+		width 0xc2e0e0 0xc2e220
+		height 0xc296c0 0xc2daa0
 		naturalWidth (nil)
 		naturalHeight (nil)
 		complete (nil)
 		currentSrc (nil)
-		name 0x7d94b0 0x7d95f0
+		name 0xc28f40 0xc29080
 		lowsrc (nil) (nil)
-		align 0x7d8830 0x7d8970
-		hspace 0x7de150 0x7de290
-		vspace 0x7de3d0 0x7de510
-		longDesc 0x7d9230 0x7d9370
-		border 0x7d8d30 0x7d8e70
+		align 0xc282c0 0xc28400
+		hspace 0xc2dbe0 0xc2dd20
+		vspace 0xc2de60 0xc2dfa0
+		longDesc 0xc28cc0 0xc28e00
+		border 0xc287c0 0xc28900
 188 HTMLSourceElement
 	inherit:HTMLElement
-	class:0x7f9010
+	class:0xc48aa0
 	5 attributes
 		srcset (nil) (nil)
 		sizes (nil) (nil)
@@ -5632,48 +5634,48 @@
 		type (nil) (nil)
 189 HTMLPictureElement
 	inherit:HTMLElement
-	class:0x7f92d0
+	class:0xc48d60
 190 HTMLModElement
 	inherit:HTMLElement
-	class:0x7f9590
+	class:0xc49020
 	2 attributes
 		cite (nil) (nil)
 		dateTime (nil) (nil)
 191 HTMLBRElement
 	inherit:HTMLElement
-	class:0x7cc350
+	class:0xc1bde0
 	1 attributes
-		clear 0x7cc490 0x7cc5d0
+		clear 0xc1bf20 0xc1c060
 192 HTMLSpanElement
 	inherit:HTMLElement
-	class:0x7f9850
+	class:0xc492e0
 193 HTMLTimeElement
 	inherit:HTMLElement
-	class:0x7f9b10
+	class:0xc495a0
 	1 attributes
 		dateTime (nil) (nil)
 194 HTMLDataElement
 	inherit:HTMLElement
-	class:0x7f9dd0
+	class:0xc49860
 	1 attributes
 		value (nil) (nil)
 195 HTMLAnchorElement
 	inherit:HTMLElement
-	class:0x7b9300
+	class:0xc08d50
 	24 attributes
-		target 0x7ba5c0 0x7ba700
+		target 0xc0a010 0xc0a150
 		download (nil) (nil)
 		ping (nil)
-		rel 0x7b9e40 0x7b9f80
+		rel 0xc09890 0xc099d0
 		relList (nil)
-		hreflang 0x7b9940 0x7b9a80
+		hreflang 0xc09390 0xc094d0
 		type (nil) (nil)
 		text (nil) (nil)
-		coords 0x7b96c0 0x7b9800
-		charset 0x7b9440 0x7b9580
-		name 0x7b9bc0 0x7b9d00
-		rev 0x7ba0c0 0x7ba200
-		shape 0x7ba340 0x7ba480
+		coords 0xc09110 0xc09250
+		charset 0xc08e90 0xc08fd0
+		name 0xc09610 0xc09750
+		rev 0xc09b10 0xc09c50
+		shape 0xc09d90 0xc09ed0
 		href (nil) (nil)
 		origin (nil)
 		protocol (nil) (nil)
@@ -5687,150 +5689,150 @@
 		hash (nil) (nil)
 196 HTMLDivElement
 	inherit:HTMLElement
-	class:0x7cd8b0
+	class:0xc1d340
 	1 attributes
-		align 0x7cd9f0 0x7cdb30
+		align 0xc1d480 0xc1d5c0
 197 HTMLDListElement
 	inherit:HTMLElement
-	class:0x7fa090
+	class:0xc49b20
 	1 attributes
 		compact (nil) (nil)
 198 HTMLLIElement
 	inherit:HTMLElement
-	class:0x7e2c60
+	class:0xc326f0
 	2 attributes
-		value 0x7e3020 0x7e3160
-		type 0x7e2da0 0x7e2ee0
+		value 0xc32ab0 0xc32bf0
+		type 0xc32830 0xc32970
 199 HTMLUListElement
 	inherit:HTMLElement
-	class:0x7fa350
+	class:0xc49de0
 	2 attributes
 		compact (nil) (nil)
 		type (nil) (nil)
 200 HTMLOListElement
 	inherit:HTMLElement
-	class:0x7e4920
+	class:0xc343b0
 	4 attributes
 		reversed (nil) (nil)
-		start 0x7e4ce0 0x7e4e20
-		type 0x7e4f60 0x7e50a0
-		compact 0x7e4a60 0x7e4ba0
+		start 0xc34770 0xc348b0
+		type 0xc349f0 0xc34b30
+		compact 0xc344f0 0xc34630
 201 HTMLQuoteElement
 	inherit:HTMLElement
-	class:0x7ed800
+	class:0xc3d290
 	1 attributes
-		cite 0x7ed940 0x7eda80
+		cite 0xc3d3d0 0xc3d510
 202 HTMLPreElement
 	inherit:HTMLElement
-	class:0x7e6c60
+	class:0xc366f0
 	1 attributes
-		width 0x7e6da0 0x7e6ee0
+		width 0xc36830 0xc36970
 203 HTMLHRElement
 	inherit:HTMLElement
-	class:0x7d4100
+	class:0xc23b90
 	5 attributes
-		align 0x7d44c0 0x7d4600
+		align 0xc23f50 0xc24090
 		color (nil) (nil)
-		noShade 0x7d4240 0x7d4380
-		size 0x7d4740 0x7d4880
-		width 0x7d9dc0 0x7d9f00
+		noShade 0xc23cd0 0xc23e10
+		size 0xc241d0 0xc24310
+		width 0xc29850 0xc29990
 204 HTMLParagraphElement
 	inherit:HTMLElement
-	class:0x7e55c0
+	class:0xc35050
 	1 attributes
-		align 0x7e5710 0x7e5860
+		align 0xc351a0 0xc352f0
 205 HTMLHeadingElement
 	inherit:HTMLElement
-	class:0x7d3980
+	class:0xc23410
 	1 attributes
-		align 0x7d3ac0 0x7d3c00
+		align 0xc23550 0xc23690
 206 HTMLBodyElement
 	inherit:HTMLElement
-	class:0x7c8340
+	class:0xc17dd0
 	19 attributes
-		text 0x7c90e0 0x7c9220
-		link 0x7c8e60 0x7c8fa0
-		vLink 0x7c9360 0x7c94a0
-		aLink 0x7c86e0 0x7c8820
-		bgColor 0x7c8be0 0x7c8d20
-		background 0x7c8960 0x7c8aa0
-		onafterprint 0x7c95e0 0x7c9720
-		onbeforeprint 0x7c9860 0x7c99a0
-		onbeforeunload 0x7c9ae0 0x7c9c20
-		onhashchange 0x7c9d60 0x7c9ea0
-		onlanguagechange 0x7c9fe0 0x7ca120
-		onmessage 0x7ca260 0x7ca3a0
-		onoffline 0x7ca4e0 0x7ca620
-		ononline 0x7ca760 0x7ca8a0
-		onpagehide 0x7ca9e0 0x7cab20
-		onpageshow 0x7cac60 0x7cada0
-		onpopstate 0x7caee0 0x7cb020
-		onstorage 0x7cb160 0x7cb2a0
-		onunload 0x7cb3e0 0x7cb520
+		text 0xc18b70 0xc18cb0
+		link 0xc188f0 0xc18a30
+		vLink 0xc18df0 0xc18f30
+		aLink 0xc18170 0xc182b0
+		bgColor 0xc18670 0xc187b0
+		background 0xc183f0 0xc18530
+		onafterprint 0xc19070 0xc191b0
+		onbeforeprint 0xc192f0 0xc19430
+		onbeforeunload 0xc19570 0xc196b0
+		onhashchange 0xc197f0 0xc19930
+		onlanguagechange 0xc19a70 0xc19bb0
+		onmessage 0xc19cf0 0xc19e30
+		onoffline 0xc19f70 0xc1a0b0
+		ononline 0xc1a1f0 0xc1a330
+		onpagehide 0xc1a470 0xc1a5b0
+		onpageshow 0xc1a6f0 0xc1a830
+		onpopstate 0xc1a970 0xc1aab0
+		onstorage 0xc1abf0 0xc1ad30
+		onunload 0xc1ae70 0xc1afb0
 207 HTMLStyleElement
 	inherit:HTMLElement
-	class:0x7ec130
+	class:0xc3bbc0
 	5 attributes
-		media 0x7ec270 0x7ec3b0
+		media 0xc3bd00 0xc3be40
 		nonce (nil) (nil)
-		type 0x7ec4f0 0x7ec630
+		type 0xc3bf80 0xc3c0c0
 		scoped (nil) (nil)
 		sheet (nil)
 208 HTMLMetaElement
 	inherit:HTMLElement
-	class:0x7e1bd0
+	class:0xc31660
 	4 attributes
-		name 0x7e2210 0x7e2350
-		httpEquiv 0x7e1f90 0x7e20d0
-		content 0x7e1d10 0x7e1e50
-		scheme 0x7e2490 0x7e25d0
+		name 0xc31ca0 0xc31de0
+		httpEquiv 0xc31a20 0xc31b60
+		content 0xc317a0 0xc318e0
+		scheme 0xc31f20 0xc32060
 209 HTMLLinkElement
 	inherit:HTMLElement
-	class:0x7deed0
+	class:0xc2e960
 	12 attributes
-		href 0x7df510 0x7df650
+		href 0xc2efa0 0xc2f0e0
 		crossOrigin (nil) (nil)
-		rel 0x7dfa10 0x7dfb50
+		rel 0xc2f4a0 0xc2f5e0
 		relList (nil)
-		media 0x7df790 0x7df8d0
-		hreflang 0x7df290 0x7df3d0
-		type 0x7e0190 0x7e02d0
+		media 0xc2f220 0xc2f360
+		hreflang 0xc2ed20 0xc2ee60
+		type 0xc2fc20 0xc2fd60
 		sizes (nil)
-		charset 0x7df010 0x7df150
-		rev 0x7dfc90 0x7dfdd0
-		target 0x7dff10 0x7e0050
+		charset 0xc2eaa0 0xc2ebe0
+		rev 0xc2f720 0xc2f860
+		target 0xc2f9a0 0xc2fae0
 		sheet (nil)
 210 HTMLBaseElement
 	inherit:HTMLElement
-	class:0x7c7a20
+	class:0xc174b0
 	2 attributes
-		href 0x7c7b60 0x7c7ca0
-		target 0x7c7de0 0x7c7f20
+		href 0xc175f0 0xc17730
+		target 0xc17870 0xc179b0
 211 HTMLTitleElement
 	inherit:HTMLElement
-	class:0x7f5dd0
+	class:0xc45860
 	1 attributes
-		text 0x7f5f10 0x7f6050
+		text 0xc459a0 0xc45ae0
 212 HTMLHeadElement
 	inherit:HTMLElement
-	class:0x7fa610
+	class:0xc4a0a0
 213 HTMLHtmlElement
 	inherit:HTMLElement
-	class:0x7d6170
+	class:0xc25c00
 	1 attributes
-		version 0x7d62b0 0x7d63f0
+		version 0xc25d40 0xc25e80
 214 HTMLUnknownElement
 	inherit:HTMLElement
-	class:0x7f6310
+	class:0xc45da0
 215 DOMElementMap
 216 DOMStringMap
 217 HTMLCollection
-	class:0x7a84f0
+	class:0xbf9710
 	2 operations
 		item
 			method:(nil)
 			overload:0
-				return type:0x8092f0
+				return type:0xc596e0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5838,7 +5840,7 @@
 		namedItem
 			method:(nil)
 			overload:0
-				return type:0x8094f0
+				return type:0xc598e0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5847,19 +5849,19 @@
 		length (nil)
 218 HTMLOptionsCollection
 	inherit:HTMLCollection
-	class:0x7fd0b0
+	class:0xc4cb40
 	2 operations
 		add
 			method:(nil)
 			overload:0
-				return type:0x778c90
+				return type:0xbc5c90
 				arguments:2
 				optionals:0
 				elipsis:0
 					index
 					option
 			overload:1
-				return type:0x778ed0
+				return type:0xbc5ed0
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -5869,7 +5871,7 @@
 		remove
 			method:(nil)
 			overload:0
-				return type:0x779270
+				return type:0xbc6270
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5878,48 +5880,48 @@
 		length (nil) (nil)
 		selectedIndex (nil) (nil)
 219 NodeList
-	class:0x7a3080
+	class:0xbf00a0
 	1 operations
 		item
-			method:0x7a3b60
+			method:0xbf0b80
 			overload:0
-				return type:0x808d50
+				return type:0xc59140
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 	1 attributes
-		length 0x7a3690
+		length 0xbf06b0
 220 RadioNodeList
 	inherit:NodeList
-	class:0x7fc920
+	class:0xc4c3b0
 	1 attributes
 		value (nil) (nil)
 221 HTMLFormControlsCollection
 	inherit:HTMLCollection
-	class:0x7fce30
+	class:0xc4c8c0
 	1 operations
 		namedItem
 			method:(nil)
 			overload:0
-				return type:0x778790
+				return type:0xbc5790
 				arguments:1
 				optionals:0
 				elipsis:0
 					name
 222 HTMLAllCollection
-	class:0x7fcba0
+	class:0xc4c630
 	2 operations
 		item
 			method:(nil)
 			overload:0
-				return type:0x778060
+				return type:0xbc5060
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 			overload:1
-				return type:0x778200
+				return type:0xbc5200
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5927,7 +5929,7 @@
 		namedItem
 			method:(nil)
 			overload:0
-				return type:0x778480
+				return type:0xbc5480
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5939,7 +5941,7 @@
 		serializeToString
 			method:(nil)
 			overload:0
-				return type:0x776df0
+				return type:0xbc3df0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -5949,52 +5951,53 @@
 		parseFromString
 			method:(nil)
 			overload:0
-				return type:0x7fe870
+				return type:0xc4ec60
 				arguments:2
 				optionals:0
 				elipsis:0
 					str
 					type
 225 DOMTokenList
+	class:0xbf0d00
 	5 operations
 		item
-			method:(nil)
+			method:0xbf1600
 			overload:0
-				return type:0x81e440
+				return type:0xc6e830
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 		contains
-			method:(nil)
+			method:0xbf1f50
 			overload:0
-				return type:0x81e5c0
+				return type:0xc6e9b0
 				arguments:1
 				optionals:0
 				elipsis:0
 					token
 		add
-			method:(nil)
+			method:0xbf1920
 			overload:0
-				return type:0x81e700
+				return type:0xc6eaf0
 				arguments:1
 				optionals:0
 				elipsis:1
 					tokens
 						elipsis:1
 		remove
-			method:(nil)
+			method:0xbf1c40
 			overload:0
-				return type:0x81e880
+				return type:0xc6ec70
 				arguments:1
 				optionals:0
 				elipsis:1
 					tokens
 						elipsis:1
 		toggle
-			method:(nil)
+			method:0xbf2680
 			overload:0
-				return type:0x81ea20
+				return type:0xc6ee10
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -6002,17 +6005,18 @@
 					force
 						optional:1
 	1 attributes
-		length (nil)
+		length 0xbf1310
 226 DOMSettableTokenList
 	inherit:DOMTokenList
+	class:0xbf26e0
 	1 attributes
-		value (nil) (nil)
+		value 0xbf2be0 0xbf3110
 227 NodeFilter
 	1 operations
 		acceptNode
 			method:(nil)
 			overload:0
-				return type:0x81e100
+				return type:0xc6e4f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6039,49 +6043,49 @@
 		parentNode
 			method:(nil)
 			overload:0
-				return type:0x81c9f0
+				return type:0xc6cde0
 				arguments:0
 				optionals:0
 				elipsis:0
 		firstChild
 			method:(nil)
 			overload:0
-				return type:0x81cb10
+				return type:0xc6cf00
 				arguments:0
 				optionals:0
 				elipsis:0
 		lastChild
 			method:(nil)
 			overload:0
-				return type:0x81cc30
+				return type:0xc6d020
 				arguments:0
 				optionals:0
 				elipsis:0
 		previousSibling
 			method:(nil)
 			overload:0
-				return type:0x81cd50
+				return type:0xc6d140
 				arguments:0
 				optionals:0
 				elipsis:0
 		nextSibling
 			method:(nil)
 			overload:0
-				return type:0x81ce70
+				return type:0xc6d260
 				arguments:0
 				optionals:0
 				elipsis:0
 		previousNode
 			method:(nil)
 			overload:0
-				return type:0x81cf90
+				return type:0xc6d380
 				arguments:0
 				optionals:0
 				elipsis:0
 		nextNode
 			method:(nil)
 			overload:0
-				return type:0x81d0b0
+				return type:0xc6d4a0
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -6095,21 +6099,21 @@
 		nextNode
 			method:(nil)
 			overload:0
-				return type:0x81c150
+				return type:0xc6c540
 				arguments:0
 				optionals:0
 				elipsis:0
 		previousNode
 			method:(nil)
 			overload:0
-				return type:0x81c270
+				return type:0xc6c660
 				arguments:0
 				optionals:0
 				elipsis:0
 		detach
 			method:(nil)
 			overload:0
-				return type:0x81c310
+				return type:0xc6c700
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -6124,7 +6128,7 @@
 		setStart
 			method:(nil)
 			overload:0
-				return type:0x819500
+				return type:0xc698f0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6133,7 +6137,7 @@
 		setEnd
 			method:(nil)
 			overload:0
-				return type:0x819760
+				return type:0xc69b50
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6142,7 +6146,7 @@
 		setStartBefore
 			method:(nil)
 			overload:0
-				return type:0x8199c0
+				return type:0xc69db0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6150,7 +6154,7 @@
 		setStartAfter
 			method:(nil)
 			overload:0
-				return type:0x819b60
+				return type:0xc69f50
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6158,7 +6162,7 @@
 		setEndBefore
 			method:(nil)
 			overload:0
-				return type:0x819d00
+				return type:0xc6a0f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6166,7 +6170,7 @@
 		setEndAfter
 			method:(nil)
 			overload:0
-				return type:0x819ea0
+				return type:0xc6a290
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6174,7 +6178,7 @@
 		collapse
 			method:(nil)
 			overload:0
-				return type:0x81a040
+				return type:0xc6a430
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -6183,7 +6187,7 @@
 		selectNode
 			method:(nil)
 			overload:0
-				return type:0x81a1e0
+				return type:0xc6a5d0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6191,7 +6195,7 @@
 		selectNodeContents
 			method:(nil)
 			overload:0
-				return type:0x81a380
+				return type:0xc6a770
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6199,7 +6203,7 @@
 		compareBoundaryPoints
 			method:(nil)
 			overload:0
-				return type:0x81a8c0
+				return type:0xc6acb0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6208,28 +6212,28 @@
 		deleteContents
 			method:(nil)
 			overload:0
-				return type:0x81ab00
+				return type:0xc6aef0
 				arguments:0
 				optionals:0
 				elipsis:0
 		extractContents
 			method:(nil)
 			overload:0
-				return type:0x81ac80
+				return type:0xc6b070
 				arguments:0
 				optionals:0
 				elipsis:0
 		cloneContents
 			method:(nil)
 			overload:0
-				return type:0x81ade0
+				return type:0xc6b1d0
 				arguments:0
 				optionals:0
 				elipsis:0
 		insertNode
 			method:(nil)
 			overload:0
-				return type:0x81ae80
+				return type:0xc6b270
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6237,7 +6241,7 @@
 		surroundContents
 			method:(nil)
 			overload:0
-				return type:0x81b020
+				return type:0xc6b410
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6245,21 +6249,21 @@
 		cloneRange
 			method:(nil)
 			overload:0
-				return type:0x81b280
+				return type:0xc6b670
 				arguments:0
 				optionals:0
 				elipsis:0
 		detach
 			method:(nil)
 			overload:0
-				return type:0x81b320
+				return type:0xc6b710
 				arguments:0
 				optionals:0
 				elipsis:0
 		isPointInRange
 			method:(nil)
 			overload:0
-				return type:0x81b400
+				return type:0xc6b7f0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6268,7 +6272,7 @@
 		comparePoint
 			method:(nil)
 			overload:0
-				return type:0x81b660
+				return type:0xc6ba50
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6277,7 +6281,7 @@
 		intersectsNode
 			method:(nil)
 			overload:0
-				return type:0x81b8c0
+				return type:0xc6bcb0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6285,7 +6289,7 @@
 		createContextualFragment
 			method:(nil)
 			overload:0
-				return type:0x777600
+				return type:0xbc4600
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6304,12 +6308,12 @@
 		END_TO_START
 231 CharacterData
 	inherit:Node
-	class:0x7fbea0
+	class:0xc4b930
 	9 operations
 		substringData
 			method:(nil)
 			overload:0
-				return type:0x817760
+				return type:0xc67b50
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6318,7 +6322,7 @@
 		appendData
 			method:(nil)
 			overload:0
-				return type:0x817980
+				return type:0xc67d70
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6326,7 +6330,7 @@
 		insertData
 			method:(nil)
 			overload:0
-				return type:0x817ae0
+				return type:0xc67ed0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6335,7 +6339,7 @@
 		deleteData
 			method:(nil)
 			overload:0
-				return type:0x817d00
+				return type:0xc680f0
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6344,7 +6348,7 @@
 		replaceData
 			method:(nil)
 			overload:0
-				return type:0x817f40
+				return type:0xc68330
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -6354,7 +6358,7 @@
 		before
 			method:(nil)
 			overload:0
-				return type:0x808210
+				return type:0xc58600
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -6363,7 +6367,7 @@
 		after
 			method:(nil)
 			overload:0
-				return type:0x808470
+				return type:0xc58860
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -6372,7 +6376,7 @@
 		replaceWith
 			method:(nil)
 			overload:0
-				return type:0x8086d0
+				return type:0xc58ac0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -6381,7 +6385,7 @@
 		remove
 			method:(nil)
 			overload:0
-				return type:0x808930
+				return type:0xc58d20
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -6392,21 +6396,21 @@
 		nextElementSibling (nil)
 232 Comment
 	inherit:CharacterData
-	class:0x7fb6a0
+	class:0xc4b130
 233 ProcessingInstruction
 	inherit:CharacterData
-	class:0x7fb960
+	class:0xc4b3f0
 	2 attributes
 		target (nil)
 		sheet (nil)
 234 Text
 	inherit:CharacterData
-	class:0x7fb3e0
+	class:0xc4ae70
 	1 operations
 		splitText
 			method:(nil)
 			overload:0
-				return type:0x8185e0
+				return type:0xc689d0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6425,20 +6429,20 @@
 		ownerElement (nil)
 		specified (nil)
 236 NamedNodeMap
-	class:0x7a3ce0
+	class:0xbf3290
 	7 operations
 		item
-			method:0x7a4560
+			method:0xbf3b10
 			overload:0
-				return type:0x815b80
+				return type:0xc65f70
 				arguments:1
 				optionals:0
 				elipsis:0
 					index
 		getNamedItem
-			method:0x7a4b10
+			method:0xbf5330
 			overload:0
-				return type:0x815d80
+				return type:0xc66170
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6446,7 +6450,7 @@
 		getNamedItemNS
 			method:(nil)
 			overload:0
-				return type:0x815f40
+				return type:0xc66330
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6455,7 +6459,7 @@
 		setNamedItem
 			method:(nil)
 			overload:0
-				return type:0x8161c0
+				return type:0xc665b0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6463,7 +6467,7 @@
 		setNamedItemNS
 			method:(nil)
 			overload:0
-				return type:0x8163c0
+				return type:0xc667b0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6471,7 +6475,7 @@
 		removeNamedItem
 			method:(nil)
 			overload:0
-				return type:0x8165a0
+				return type:0xc66990
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6479,21 +6483,21 @@
 		removeNamedItemNS
 			method:(nil)
 			overload:0
-				return type:0x816740
+				return type:0xc66b30
 				arguments:2
 				optionals:0
 				elipsis:0
 					namespace
 					localName
 	1 attributes
-		length 0x7a42f0
+		length 0xbf38a0
 237 DOMImplementation
-	class:0x7aed70
+	class:0xbfe800
 	4 operations
 		createDocumentType
 			method:(nil)
 			overload:0
-				return type:0x811d40
+				return type:0xc62130
 				arguments:3
 				optionals:0
 				elipsis:0
@@ -6503,7 +6507,7 @@
 		createDocument
 			method:(nil)
 			overload:0
-				return type:0x812080
+				return type:0xc62470
 				arguments:3
 				optionals:1
 				elipsis:0
@@ -6512,9 +6516,9 @@
 					doctype
 						optional:1
 		createHTMLDocument
-			method:0x7afde0
+			method:0xbff870
 			overload:0
-				return type:0x812560
+				return type:0xc62950
 				arguments:1
 				optionals:1
 				elipsis:0
@@ -6523,18 +6527,18 @@
 		hasFeature
 			method:(nil)
 			overload:0
-				return type:0x8126e0
+				return type:0xc62ad0
 				arguments:0
 				optionals:0
 				elipsis:0
 238 Document
 	inherit:Node
-	class:0x781730
+	class:0xbce730
 	40 operations
 		getElementsByTagName
-			method:0x7847b0
+			method:0xbd17b0
 			overload:0
-				return type:0x80f170
+				return type:0xc5f560
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6542,7 +6546,7 @@
 		getElementsByTagNameNS
 			method:(nil)
 			overload:0
-				return type:0x80f310
+				return type:0xc5f700
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6551,39 +6555,39 @@
 		getElementsByClassName
 			method:(nil)
 			overload:0
-				return type:0x80f570
+				return type:0xc5f960
 				arguments:1
 				optionals:0
 				elipsis:0
 					classNames
 		createElement
-			method:0x782ca0
+			method:0xbcfca0
 			overload:0
-				return type:0x80f770
+				return type:0xc5fb60
 				arguments:1
 				optionals:0
 				elipsis:0
 					localName
 		createElementNS
-			method:0x7831a0
+			method:0xbd01a0
 			overload:0
-				return type:0x80f970
+				return type:0xc5fd60
 				arguments:2
 				optionals:0
 				elipsis:0
 					namespace
 					qualifiedName
 		createDocumentFragment
-			method:0x783300
+			method:0xbd0300
 			overload:0
-				return type:0x80fc30
+				return type:0xc60020
 				arguments:0
 				optionals:0
 				elipsis:0
 		createTextNode
-			method:0x782520
+			method:0xbcf520
 			overload:0
-				return type:0x80fd90
+				return type:0xc60180
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6591,7 +6595,7 @@
 		createComment
 			method:(nil)
 			overload:0
-				return type:0x80ff90
+				return type:0xc60380
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6599,7 +6603,7 @@
 		createProcessingInstruction
 			method:(nil)
 			overload:0
-				return type:0x8101a0
+				return type:0xc60590
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -6608,7 +6612,7 @@
 		importNode
 			method:(nil)
 			overload:0
-				return type:0x810440
+				return type:0xc60830
 				arguments:2
 				optionals:1
 				elipsis:0
@@ -6618,7 +6622,7 @@
 		adoptNode
 			method:(nil)
 			overload:0
-				return type:0x810700
+				return type:0xc60af0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6626,7 +6630,7 @@
 		createAttribute
 			method:(nil)
 			overload:0
-				return type:0x810940
+				return type:0xc60d30
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6634,16 +6638,16 @@
 		createAttributeNS
 			method:(nil)
 			overload:0
-				return type:0x810b40
+				return type:0xc60f30
 				arguments:2
 				optionals:0
 				elipsis:0
 					namespace
 					name
 		createEvent
-			method:0x784cd0
+			method:0xbd1cd0
 			overload:0
-				return type:0x810e00
+				return type:0xc611f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6651,14 +6655,14 @@
 		createRange
 			method:(nil)
 			overload:0
-				return type:0x811000
+				return type:0xc613f0
 				arguments:0
 				optionals:0
 				elipsis:0
 		createNodeIterator
 			method:(nil)
 			overload:0
-				return type:0x811160
+				return type:0xc61550
 				arguments:3
 				optionals:2
 				elipsis:0
@@ -6670,7 +6674,7 @@
 		createTreeWalker
 			method:(nil)
 			overload:0
-				return type:0x8115e0
+				return type:0xc619d0
 				arguments:3
 				optionals:2
 				elipsis:0
@@ -6682,13 +6686,13 @@
 		getElementsByName
 			method:(nil)
 			overload:0
-				return type:0x823350
+				return type:0xc73740
 				arguments:1
 				optionals:0
 				elipsis:0
 					name
 			overload:1
-				return type:0x824070
+				return type:0xc74460
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6696,7 +6700,7 @@
 		open
 			method:(nil)
 			overload:0
-				return type:0x824490
+				return type:0xc74880
 				arguments:2
 				optionals:2
 				elipsis:0
@@ -6705,7 +6709,7 @@
 					replace
 						optional:1
 			overload:1
-				return type:0x824790
+				return type:0xc74b80
 				arguments:4
 				optionals:1
 				elipsis:0
@@ -6717,23 +6721,23 @@
 		close
 			method:(nil)
 			overload:0
-				return type:0x824af0
+				return type:0xc74ee0
 				arguments:0
 				optionals:0
 				elipsis:0
 		write
-			method:0x781ad0
+			method:0xbcead0
 			overload:0
-				return type:0x824bb0
+				return type:0xc74fa0
 				arguments:1
 				optionals:0
 				elipsis:1
 					text
 						elipsis:1
 		writeln
-			method:0x781db0
+			method:0xbcedb0
 			overload:0
-				return type:0x824d30
+				return type:0xc75120
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -6742,14 +6746,14 @@
 		hasFocus
 			method:(nil)
 			overload:0
-				return type:0x825110
+				return type:0xc75500
 				arguments:0
 				optionals:0
 				elipsis:0
 		execCommand
 			method:(nil)
 			overload:0
-				return type:0x825270
+				return type:0xc75660
 				arguments:3
 				optionals:2
 				elipsis:0
@@ -6761,7 +6765,7 @@
 		queryCommandEnabled
 			method:(nil)
 			overload:0
-				return type:0x8255b0
+				return type:0xc759a0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6769,7 +6773,7 @@
 		queryCommandIndeterm
 			method:(nil)
 			overload:0
-				return type:0x825710
+				return type:0xc75b00
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6777,7 +6781,7 @@
 		queryCommandState
 			method:(nil)
 			overload:0
-				return type:0x825870
+				return type:0xc75c60
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6785,7 +6789,7 @@
 		queryCommandSupported
 			method:(nil)
 			overload:0
-				return type:0x8259d0
+				return type:0xc75dc0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6793,7 +6797,7 @@
 		queryCommandValue
 			method:(nil)
 			overload:0
-				return type:0x825b30
+				return type:0xc75f20
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6801,36 +6805,36 @@
 		clear
 			method:(nil)
 			overload:0
-				return type:0x887050
+				return type:0xcd7440
 				arguments:0
 				optionals:0
 				elipsis:0
 		captureEvents
 			method:(nil)
 			overload:0
-				return type:0x887110
+				return type:0xcd7500
 				arguments:0
 				optionals:0
 				elipsis:0
 		releaseEvents
 			method:(nil)
 			overload:0
-				return type:0x8871d0
+				return type:0xcd75c0
 				arguments:0
 				optionals:0
 				elipsis:0
 		enableStyleSheetsForSet
 			method:(nil)
 			overload:0
-				return type:0x821060
+				return type:0xc71450
 				arguments:1
 				optionals:0
 				elipsis:0
 					name
 		getElementById
-			method:0x784050
+			method:0xbd1050
 			overload:0
-				return type:0x8015c0
+				return type:0xc56790
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6838,7 +6842,7 @@
 		prepend
 			method:(nil)
 			overload:0
-				return type:0x806cc0
+				return type:0xc570b0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -6847,7 +6851,7 @@
 		append
 			method:(nil)
 			overload:0
-				return type:0x806f20
+				return type:0xc57310
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -6856,7 +6860,7 @@
 		query
 			method:(nil)
 			overload:0
-				return type:0x807200
+				return type:0xc575f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6864,7 +6868,7 @@
 		queryAll
 			method:(nil)
 			overload:0
-				return type:0x807460
+				return type:0xc57850
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6872,7 +6876,7 @@
 		querySelector
 			method:(nil)
 			overload:0
-				return type:0x807620
+				return type:0xc57a10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -6880,13 +6884,13 @@
 		querySelectorAll
 			method:(nil)
 			overload:0
-				return type:0x807820
+				return type:0xc57c10
 				arguments:1
 				optionals:0
 				elipsis:0
 					selectors
 	113 attributes
-		implementation 0x798ae0
+		implementation 0xbe5b00
 		URL (nil)
 		documentURI (nil)
 		origin (nil)
@@ -6895,17 +6899,17 @@
 		inputEncoding (nil)
 		contentType (nil)
 		doctype (nil)
-		documentElement 0x7842f0
-		location 0x783ca0
+		documentElement 0xbd12f0
+		location 0xbd0ca0
 		domain (nil) (nil)
 		referrer (nil)
-		cookie 0x784930 0x785230
+		cookie 0xbd1930 0xbd2230
 		lastModified (nil)
 		readyState (nil)
 		title (nil) (nil)
 		dir (nil) (nil)
-		body 0x783a50 (nil)
-		head 0x7836a0
+		body 0xbd0a50 (nil)
+		head 0xbd06a0
 		images (nil)
 		embeds (nil)
 		plugins (nil)
@@ -6918,7 +6922,7 @@
 		activeElement (nil)
 		designMode (nil) (nil)
 		commands (nil)
-		onreadystatechange 0x7a02a0 0x7a03e0
+		onreadystatechange 0xbed2c0 0xbed400
 		fgColor (nil) (nil)
 		linkColor (nil) (nil)
 		vlinkColor (nil) (nil)
@@ -6936,77 +6940,77 @@
 		firstElementChild (nil)
 		lastElementChild (nil)
 		childElementCount (nil)
-		onabort 0x798c20 0x798d60
-		onautocomplete 0x799120 0x7995e0
-		onautocompleteerror 0x798ea0 0x798fe0
-		onblur 0x799720 0x799860
-		oncancel 0x7999a0 0x799ae0
-		oncanplay 0x799ea0 0x799fe0
-		oncanplaythrough 0x799c20 0x799d60
-		onchange 0x79a120 0x79a260
-		onclick 0x79a3a0 0x79a4e0
-		onclose 0x79a620 0x79a760
-		oncontextmenu 0x79a8a0 0x79a9e0
-		oncuechange 0x79ab20 0x79ac60
-		ondblclick 0x79ada0 0x79aee0
-		ondrag 0x79bf20 0x79c060
-		ondragend 0x79b020 0x79b160
-		ondragenter 0x79b2a0 0x79b3e0
-		ondragexit 0x79b520 0x79b660
-		ondragleave 0x79b7a0 0x79b8e0
-		ondragover 0x79ba20 0x79bb60
-		ondragstart 0x79bca0 0x79bde0
-		ondrop 0x79c1a0 0x79c2e0
-		ondurationchange 0x79c420 0x79c560
-		onemptied 0x79c6a0 0x79c7e0
-		onended 0x79c920 0x79ca60
+		onabort 0xbe5c40 0xbe5d80
+		onautocomplete 0xbe6140 0xbe6600
+		onautocompleteerror 0xbe5ec0 0xbe6000
+		onblur 0xbe6740 0xbe6880
+		oncancel 0xbe69c0 0xbe6b00
+		oncanplay 0xbe6ec0 0xbe7000
+		oncanplaythrough 0xbe6c40 0xbe6d80
+		onchange 0xbe7140 0xbe7280
+		onclick 0xbe73c0 0xbe7500
+		onclose 0xbe7640 0xbe7780
+		oncontextmenu 0xbe78c0 0xbe7a00
+		oncuechange 0xbe7b40 0xbe7c80
+		ondblclick 0xbe7dc0 0xbe7f00
+		ondrag 0xbe8f40 0xbe9080
+		ondragend 0xbe8040 0xbe8180
+		ondragenter 0xbe82c0 0xbe8400
+		ondragexit 0xbe8540 0xbe8680
+		ondragleave 0xbe87c0 0xbe8900
+		ondragover 0xbe8a40 0xbe8b80
+		ondragstart 0xbe8cc0 0xbe8e00
+		ondrop 0xbe91c0 0xbe9300
+		ondurationchange 0xbe9440 0xbe9580
+		onemptied 0xbe96c0 0xbe9800
+		onended 0xbe9940 0xbe9a80
 		onerror (nil) (nil)
-		onfocus 0x79cba0 0x79cce0
-		oninput 0x79ce20 0x79cf60
-		oninvalid 0x79d0a0 0x79d1e0
-		onkeydown 0x79d320 0x79d460
-		onkeypress 0x79d5a0 0x79d6e0
-		onkeyup 0x79d820 0x79d960
-		onload 0x79e220 0x79e360
-		onloadeddata 0x79daa0 0x79dbe0
-		onloadedmetadata 0x79dd20 0x79de60
-		onloadstart 0x79dfa0 0x79e0e0
-		onmousedown 0x79e4a0 0x79e5e0
-		onmouseenter 0x79e720 0x79e860
-		onmouseleave 0x79e9a0 0x79eae0
-		onmousemove 0x79ec20 0x79ed60
-		onmouseout 0x79eea0 0x79efe0
-		onmouseover 0x79f120 0x79f260
-		onmouseup 0x79f3a0 0x79f4e0
-		onwheel 0x7a2aa0 0x7a2be0
-		onpause 0x79f620 0x79f760
-		onplay 0x79fb20 0x79fc60
-		onplaying 0x79f8a0 0x79f9e0
-		onprogress 0x79fda0 0x79fee0
-		onratechange 0x7a0020 0x7a0160
-		onreset 0x7a0520 0x7a0660
-		onresize 0x7a07a0 0x7a08e0
-		onscroll 0x7a0a20 0x7a0b60
-		onseeked 0x7a0ca0 0x7a0de0
-		onseeking 0x7a0f20 0x7a1060
-		onselect 0x7a11a0 0x7a12e0
-		onshow 0x7a1420 0x7a1560
-		onsort 0x7a16a0 0x7a17e0
-		onstalled 0x7a1920 0x7a1a60
-		onsubmit 0x7a1ba0 0x7a1ce0
-		onsuspend 0x7a1e20 0x7a1f60
-		ontimeupdate 0x7a20a0 0x7a21e0
-		ontoggle 0x7a2320 0x7a2460
-		onvolumechange 0x7a25a0 0x7a26e0
-		onwaiting 0x7a2820 0x7a2960
+		onfocus 0xbe9bc0 0xbe9d00
+		oninput 0xbe9e40 0xbe9f80
+		oninvalid 0xbea0c0 0xbea200
+		onkeydown 0xbea340 0xbea480
+		onkeypress 0xbea5c0 0xbea700
+		onkeyup 0xbea840 0xbea980
+		onload 0xbeb240 0xbeb380
+		onloadeddata 0xbeaac0 0xbeac00
+		onloadedmetadata 0xbead40 0xbeae80
+		onloadstart 0xbeafc0 0xbeb100
+		onmousedown 0xbeb4c0 0xbeb600
+		onmouseenter 0xbeb740 0xbeb880
+		onmouseleave 0xbeb9c0 0xbebb00
+		onmousemove 0xbebc40 0xbebd80
+		onmouseout 0xbebec0 0xbec000
+		onmouseover 0xbec140 0xbec280
+		onmouseup 0xbec3c0 0xbec500
+		onwheel 0xbefac0 0xbefc00
+		onpause 0xbec640 0xbec780
+		onplay 0xbecb40 0xbecc80
+		onplaying 0xbec8c0 0xbeca00
+		onprogress 0xbecdc0 0xbecf00
+		onratechange 0xbed040 0xbed180
+		onreset 0xbed540 0xbed680
+		onresize 0xbed7c0 0xbed900
+		onscroll 0xbeda40 0xbedb80
+		onseeked 0xbedcc0 0xbede00
+		onseeking 0xbedf40 0xbee080
+		onselect 0xbee1c0 0xbee300
+		onshow 0xbee440 0xbee580
+		onsort 0xbee6c0 0xbee800
+		onstalled 0xbee940 0xbeea80
+		onsubmit 0xbeebc0 0xbeed00
+		onsuspend 0xbeee40 0xbeef80
+		ontimeupdate 0xbef0c0 0xbef200
+		ontoggle 0xbef340 0xbef480
+		onvolumechange 0xbef5c0 0xbef700
+		onwaiting 0xbef840 0xbef980
 239 XMLDocument
 	inherit:Document
-	class:0x7fbbe0
+	class:0xc4b670
 	1 operations
 		load
 			method:(nil)
 			overload:0
-				return type:0x825f70
+				return type:0xc76360
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7027,7 +7031,7 @@
 		observe
 			method:(nil)
 			overload:0
-				return type:0x809830
+				return type:0xc59c20
 				arguments:2
 				optionals:0
 				elipsis:0
@@ -7036,25 +7040,25 @@
 		disconnect
 			method:(nil)
 			overload:0
-				return type:0x809ab0
+				return type:0xc59ea0
 				arguments:0
 				optionals:0
 				elipsis:0
 		takeRecords
 			method:(nil)
 			overload:0
-				return type:0x809c10
+				return type:0xc5a000
 				arguments:0
 				optionals:0
 				elipsis:0
 242 DocumentType
 	inherit:Node
-	class:0x7fc420
+	class:0xc4beb0
 	4 operations
 		before
 			method:(nil)
 			overload:0
-				return type:0x808210
+				return type:0xc58600
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7063,7 +7067,7 @@
 		after
 			method:(nil)
 			overload:0
-				return type:0x808470
+				return type:0xc58860
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7072,7 +7076,7 @@
 		replaceWith
 			method:(nil)
 			overload:0
-				return type:0x8086d0
+				return type:0xc58ac0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7081,7 +7085,7 @@
 		remove
 			method:(nil)
 			overload:0
-				return type:0x808930
+				return type:0xc58d20
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -7094,7 +7098,7 @@
 		before
 			method:(nil)
 			overload:0
-				return type:0x808210
+				return type:0xc58600
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7103,7 +7107,7 @@
 		after
 			method:(nil)
 			overload:0
-				return type:0x808470
+				return type:0xc58860
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7112,7 +7116,7 @@
 		replaceWith
 			method:(nil)
 			overload:0
-				return type:0x8086d0
+				return type:0xc58ac0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7121,7 +7125,7 @@
 		remove
 			method:(nil)
 			overload:0
-				return type:0x808930
+				return type:0xc58d20
 				arguments:0
 				optionals:0
 				elipsis:0
@@ -7134,7 +7138,7 @@
 		prepend
 			method:(nil)
 			overload:0
-				return type:0x806cc0
+				return type:0xc570b0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7143,7 +7147,7 @@
 		append
 			method:(nil)
 			overload:0
-				return type:0x806f20
+				return type:0xc57310
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7152,7 +7156,7 @@
 		query
 			method:(nil)
 			overload:0
-				return type:0x807200
+				return type:0xc575f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7160,7 +7164,7 @@
 		queryAll
 			method:(nil)
 			overload:0
-				return type:0x807460
+				return type:0xc57850
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7168,7 +7172,7 @@
 		querySelector
 			method:(nil)
 			overload:0
-				return type:0x807620
+				return type:0xc57a10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7176,7 +7180,7 @@
 		querySelectorAll
 			method:(nil)
 			overload:0
-				return type:0x807820
+				return type:0xc57c10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7188,12 +7192,12 @@
 		childElementCount (nil)
 246 DocumentFragment
 	inherit:Node
-	class:0x7fc160
+	class:0xc4bbf0
 	7 operations
 		getElementById
 			method:(nil)
 			overload:0
-				return type:0x8015c0
+				return type:0xc56790
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7201,7 +7205,7 @@
 		prepend
 			method:(nil)
 			overload:0
-				return type:0x806cc0
+				return type:0xc570b0
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7210,7 +7214,7 @@
 		append
 			method:(nil)
 			overload:0
-				return type:0x806f20
+				return type:0xc57310
 				arguments:1
 				optionals:0
 				elipsis:1
@@ -7219,7 +7223,7 @@
 		query
 			method:(nil)
 			overload:0
-				return type:0x807200
+				return type:0xc575f0
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7227,7 +7231,7 @@
 		queryAll
 			method:(nil)
 			overload:0
-				return type:0x807460
+				return type:0xc57850
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7235,7 +7239,7 @@
 		querySelector
 			method:(nil)
 			overload:0
-				return type:0x807620
+				return type:0xc57a10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7243,7 +7247,7 @@
 		querySelectorAll
 			method:(nil)
 			overload:0
-				return type:0x807820
+				return type:0xc57c10
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7258,7 +7262,7 @@
 		getElementById
 			method:(nil)
 			overload:0
-				return type:0x8015c0
+				return type:0xc56790
 				arguments:1
 				optionals:0
 				elipsis:0
@@ -7268,19 +7272,19 @@
 		handleEvent
 			method:(nil)
 			overload:0
-				return type:0x8011e0
+				return type:0xc563b0
 				arguments:1
 				optionals:0
 				elipsis:0
 					event
 249 CustomEvent
 	inherit:Event
-	class:0x7b5420
+	class:0xc04eb0
 	1 operations
 		initCustomEvent
 			method:(nil)
 			overload:0
-				return type:0x800240
+				return type:0xc50630
 				arguments:4
 				optionals:0
 				elipsis:0
@@ -7289,7 +7293,7 @@
 					cancelable
 					detail
 			overload:1
-				return type:0x8949b0
+				return type:0xce4da0
 				arguments:4
 				optionals:0
 				elipsis:0

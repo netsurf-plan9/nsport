@@ -43,6 +43,10 @@ struct dom_html_br_element;
 static void dukky_css_style_sheet___init(duk_context *ctx, css_style_sheet_private_t *priv)
 {
 	dukky_style_sheet___init(ctx, &priv->parent);
+#line 20 "CSSStyleSheet.bnd"
+
+    priv->unused = true;
+#line 50 "css_style_sheet.c"
 }
 
 static void dukky_css_style_sheet___fini(duk_context *ctx, css_style_sheet_private_t *priv)

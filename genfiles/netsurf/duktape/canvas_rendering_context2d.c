@@ -114,7 +114,7 @@ canvas2d_user_data_handler(dom_node_operation operation,
 		height = guit->bitmap->get_height(bitmap);
 		stride = guit->bitmap->get_rowstride(bitmap);
 		newbitmap = guit->bitmap->create(width, height,
-						 BITMAP_NEW);
+						 BITMAP_NONE);
 		if (newbitmap != NULL) {
 			if (guit->bitmap->get_rowstride(newbitmap) == stride) {
 				// Compatible bitmap, bung the data over
@@ -197,7 +197,7 @@ static nserror canvas2d_create_bitmap(dom_node *node, struct bitmap **bitmap_out
 
 	bitmap = guit->bitmap->create(
 		(int)width, (int)height,
-		BITMAP_NEW);
+		BITMAP_NONE);
 
 	if (bitmap == NULL) {
 		return NSERROR_NOMEM;
@@ -266,7 +266,7 @@ canvas2d__handle_dom_event(dom_event *evt, void *pw)
 	
 	/* Okay, we need to reallocate our bitmap and re-cache values */
 	
-	newbitmap = guit->bitmap->create(width, height, BITMAP_NEW);
+	newbitmap = guit->bitmap->create(width, height, BITMAP_NONE);
 	stride = guit->bitmap->get_rowstride(newbitmap);
 
 	if (newbitmap != NULL) {
@@ -1984,7 +1984,11 @@ static duk_ret_t dukky_canvas_rendering_context2d_arc(duk_context *ctx)
 	}
 	if (dukky_argc > 5) {
 		if (!duk_is_boolean(ctx, 5)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 5, "anticlockwise");
+			if (duk_is_number(ctx, 5)) {
+				duk_to_boolean(ctx, 5);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 5, "anticlockwise");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -2053,7 +2057,11 @@ static duk_ret_t dukky_canvas_rendering_context2d_ellipse(duk_context *ctx)
 	}
 	if (dukky_argc > 7) {
 		if (!duk_is_boolean(ctx, 7)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 7, "anticlockwise");
+			if (duk_is_number(ctx, 7)) {
+				duk_to_boolean(ctx, 7);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 7, "anticlockwise");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -2085,7 +2093,7 @@ static duk_ret_t dukky_canvas_rendering_context2d_canvas_getter(duk_context *ctx
 
 	dukky_push_node(ctx, (dom_node *)priv->canvas);
 	return 1;
-#line 2089 "canvas_rendering_context2d.c"
+#line 2097 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_width_getter(duk_context *ctx)
@@ -2110,7 +2118,7 @@ static duk_ret_t dukky_canvas_rendering_context2d_width_getter(duk_context *ctx)
 	
 	duk_push_number(ctx, (duk_double_t)width);
 	return 1;
-#line 2114 "canvas_rendering_context2d.c"
+#line 2122 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_width_setter(duk_context *ctx)
@@ -2134,7 +2142,7 @@ static duk_ret_t dukky_canvas_rendering_context2d_width_setter(duk_context *ctx)
 	if (exc != DOM_NO_ERR) return 0;
 
 	return 1;
-#line 2138 "canvas_rendering_context2d.c"
+#line 2146 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_height_getter(duk_context *ctx)
@@ -2159,7 +2167,7 @@ static duk_ret_t dukky_canvas_rendering_context2d_height_getter(duk_context *ctx
 	
 	duk_push_number(ctx, (duk_double_t)height);
 	return 1;
-#line 2163 "canvas_rendering_context2d.c"
+#line 2171 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_height_setter(duk_context *ctx)
@@ -2183,7 +2191,7 @@ static duk_ret_t dukky_canvas_rendering_context2d_height_setter(duk_context *ctx
 	if (exc != DOM_NO_ERR) return 0;
 
 	return 1;
-#line 2187 "canvas_rendering_context2d.c"
+#line 2195 "canvas_rendering_context2d.c"
 }
 
 static duk_ret_t dukky_canvas_rendering_context2d_currentTransform_getter(duk_context *ctx)

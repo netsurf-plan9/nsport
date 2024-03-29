@@ -40,9 +40,11 @@ struct dom_html_br_element;
 
 #include "javascript/duktape/dukky.h"
 
-static void dukky_dom_settable_token_list___init(duk_context *ctx, dom_settable_token_list_private_t *priv)
+static void dukky_dom_settable_token_list___init(duk_context *ctx, dom_settable_token_list_private_t *priv, struct dom_tokenlist *tokens)
 {
-	dukky_dom_token_list___init(ctx, &priv->parent);
+	dukky_dom_token_list___init(ctx, &priv->parent, tokens);
+#line 15 "DOMSettableTokenList.bnd"
+#line 48 "dom_settable_token_list.c"
 }
 
 static void dukky_dom_settable_token_list___fini(duk_context *ctx, dom_settable_token_list_private_t *priv)
@@ -58,7 +60,7 @@ static duk_ret_t dukky_dom_settable_token_list___constructor(duk_context *ctx)
 	duk_push_pointer(ctx, priv);
 	duk_put_prop_string(ctx, 0, dukky_magic_string_private);
 
-	dukky_dom_settable_token_list___init(ctx, priv);
+	dukky_dom_settable_token_list___init(ctx, priv, duk_get_pointer(ctx, 1));
 	duk_set_top(ctx, 1);
 	return 1;
 }
@@ -88,7 +90,19 @@ static duk_ret_t dukky_dom_settable_token_list_value_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 17 "DOMSettableTokenList.bnd"
+
+	dom_exception exc;
+	dom_string *value;
+
+	exc = dom_tokenlist_get_value(priv->parent.tokens, &value);
+	if (exc != DOM_NO_ERR) return 0; /* coerced to undefined */
+
+	duk_push_lstring(ctx, dom_string_data(value), dom_string_length(value));
+	dom_string_unref(value);
+
+	return 1;
+#line 106 "dom_settable_token_list.c"
 }
 
 static duk_ret_t dukky_dom_settable_token_list_value_setter(duk_context *ctx)
@@ -103,7 +117,21 @@ static duk_ret_t dukky_dom_settable_token_list_value_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 31 "DOMSettableTokenList.bnd"
+
+	dom_exception exc;
+	dom_string *value;
+    duk_size_t slen;
+    const char *s = duk_require_lstring(ctx, 0, &slen);
+
+    exc = dom_string_create_interned((const uint8_t *)s, slen, &value);
+    if (exc != DOM_NO_ERR) return 0;
+
+    exc = dom_tokenlist_set_value(priv->parent.tokens, value);
+    dom_string_unref(value);
+
+    return 0;
+#line 135 "dom_settable_token_list.c"
 }
 
 duk_ret_t dukky_dom_settable_token_list___proto(duk_context *ctx, void *udata)
@@ -134,7 +162,7 @@ duk_ret_t dukky_dom_settable_token_list___proto(duk_context *ctx, void *udata)
 
 	/* Set the constructor */
 	duk_dup(ctx, 0);
-	duk_push_c_function(ctx, dukky_dom_settable_token_list___constructor, 1);
+	duk_push_c_function(ctx, dukky_dom_settable_token_list___constructor, 2);
 	duk_put_prop_string(ctx, -2, "\xFF\xFFNETSURF_DUKTAPE_INIT");
 	duk_pop(ctx);
 

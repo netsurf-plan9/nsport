@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_page_transition_event___init(duk_context *ctx, page_transition_event_private_t *priv, struct dom_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, evt);
-#line 93 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 95 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "page_transition_event.c"
 }
 

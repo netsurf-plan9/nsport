@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_hash_change_event___init(duk_context *ctx, hash_change_event_private_t *priv, struct dom_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, evt);
-#line 94 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 96 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "hash_change_event.c"
 }
 

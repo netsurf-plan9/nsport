@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * text_transform:CSS_PROP_TEXT_TRANSFORM IDENT:( INHERIT: CAPITALIZE:0,TEXT_TRANSFORM_CAPITALIZE UPPERCASE:0,TEXT_TRANSFORM_UPPERCASE LOWERCASE:0,TEXT_TRANSFORM_LOWERCASE NONE:0,TEXT_TRANSFORM_NONE IDENT:)
+ * text_transform:CSS_PROP_TEXT_TRANSFORM IDENT:( INHERIT: INITIAL: REVERT: UNSET: CAPITALIZE:0,TEXT_TRANSFORM_CAPITALIZE UPPERCASE:0,TEXT_TRANSFORM_UPPERCASE LOWERCASE:0,TEXT_TRANSFORM_LOWERCASE NONE:0,TEXT_TRANSFORM_NONE IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_text_transform(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,16 +47,58 @@ css_error css__parse_text_transform(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_TEXT_TRANSFORM);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[CAPITALIZE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_TEXT_TRANSFORM, 0,TEXT_TRANSFORM_CAPITALIZE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[UPPERCASE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_TEXT_TRANSFORM, 0,TEXT_TRANSFORM_UPPERCASE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[LOWERCASE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_TEXT_TRANSFORM, 0,TEXT_TRANSFORM_LOWERCASE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[NONE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_TEXT_TRANSFORM, 0,TEXT_TRANSFORM_NONE);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_TEXT_TRANSFORM);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_TEXT_TRANSFORM);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_TEXT_TRANSFORM);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_TEXT_TRANSFORM);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[CAPITALIZE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_TEXT_TRANSFORM,
+				0,TEXT_TRANSFORM_CAPITALIZE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UPPERCASE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_TEXT_TRANSFORM,
+				0,TEXT_TRANSFORM_UPPERCASE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[LOWERCASE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_TEXT_TRANSFORM,
+				0,TEXT_TRANSFORM_LOWERCASE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[NONE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_TEXT_TRANSFORM,
+				0,TEXT_TRANSFORM_NONE);
+
 	} else {
 		error = CSS_INVALID;
 	}

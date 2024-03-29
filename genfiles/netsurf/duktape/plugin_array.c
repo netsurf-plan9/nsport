@@ -89,7 +89,11 @@ static duk_ret_t dukky_plugin_array_refresh(duk_context *ctx)
 	/* check types of passed arguments are correct */
 	if (dukky_argc > 0) {
 		if (!duk_is_boolean(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 0, "reload");
+			if (duk_is_number(ctx, 0)) {
+				duk_to_boolean(ctx, 0);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 0, "reload");
+			}
 		}
 	}
 	/* Get private data for method */

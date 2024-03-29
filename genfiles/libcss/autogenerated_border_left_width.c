@@ -33,7 +33,7 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_border_left_width(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
 	return css__parse_border_side_width(c, vector, ctx, result, CSS_PROP_BORDER_LEFT_WIDTH);

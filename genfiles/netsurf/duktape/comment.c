@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_comment___init(duk_context *ctx, comment_private_t *priv, struct dom_node_comment *comment)
 {
 	dukky_character_data___init(ctx, &priv->parent, (struct dom_node_character_data *)comment);
-#line 187 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 189 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "comment.c"
 }
 

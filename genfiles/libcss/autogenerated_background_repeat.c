@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * background_repeat:CSS_PROP_BACKGROUND_REPEAT IDENT:( INHERIT: NO_REPEAT:0,BACKGROUND_REPEAT_NO_REPEAT REPEAT_X:0,BACKGROUND_REPEAT_REPEAT_X REPEAT_Y:0,BACKGROUND_REPEAT_REPEAT_Y REPEAT:0,BACKGROUND_REPEAT_REPEAT IDENT:)
+ * background_repeat:CSS_PROP_BACKGROUND_REPEAT IDENT:( INHERIT: INITIAL: REVERT: UNSET: NO_REPEAT:0,BACKGROUND_REPEAT_NO_REPEAT REPEAT_X:0,BACKGROUND_REPEAT_REPEAT_X REPEAT_Y:0,BACKGROUND_REPEAT_REPEAT_Y REPEAT:0,BACKGROUND_REPEAT_REPEAT IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_background_repeat(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,16 +47,58 @@ css_error css__parse_background_repeat(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_BACKGROUND_REPEAT);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[NO_REPEAT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BACKGROUND_REPEAT, 0,BACKGROUND_REPEAT_NO_REPEAT);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[REPEAT_X], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BACKGROUND_REPEAT, 0,BACKGROUND_REPEAT_REPEAT_X);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[REPEAT_Y], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BACKGROUND_REPEAT, 0,BACKGROUND_REPEAT_REPEAT_Y);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[REPEAT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BACKGROUND_REPEAT, 0,BACKGROUND_REPEAT_REPEAT);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_BACKGROUND_REPEAT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_BACKGROUND_REPEAT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_BACKGROUND_REPEAT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_BACKGROUND_REPEAT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[NO_REPEAT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BACKGROUND_REPEAT,
+				0,BACKGROUND_REPEAT_NO_REPEAT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REPEAT_X],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BACKGROUND_REPEAT,
+				0,BACKGROUND_REPEAT_REPEAT_X);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REPEAT_Y],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BACKGROUND_REPEAT,
+				0,BACKGROUND_REPEAT_REPEAT_Y);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REPEAT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BACKGROUND_REPEAT,
+				0,BACKGROUND_REPEAT_REPEAT);
+
 	} else {
 		error = CSS_INVALID;
 	}

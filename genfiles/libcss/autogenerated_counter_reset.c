@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * counter_reset:CSS_PROP_COUNTER_RESET IDENT:( INHERIT: NONE:0,COUNTER_RESET_NONE IDENT:) IDENT_LIST:( STRING_OPTNUM:COUNTER_RESET_NAMED 0:COUNTER_RESET_NONE IDENT_LIST:)
+ * counter_reset:CSS_PROP_COUNTER_RESET IDENT:( INHERIT: INITIAL: REVERT: UNSET: NONE:0,COUNTER_RESET_NONE IDENT:) IDENT_LIST:( STRING_OPTNUM:COUNTER_RESET_NAMED 0:COUNTER_RESET_NONE IDENT_LIST:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_counter_reset(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,10 +47,37 @@ css_error css__parse_counter_reset(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_COUNTER_RESET);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[NONE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_COUNTER_RESET, 0,COUNTER_RESET_NONE);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_COUNTER_RESET);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_COUNTER_RESET);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_COUNTER_RESET);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_COUNTER_RESET);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[NONE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_COUNTER_RESET,
+				0,COUNTER_RESET_NONE);
+
 	} else {
 		error = css__stylesheet_style_appendOPV(result, CSS_PROP_COUNTER_RESET, 0, COUNTER_RESET_NAMED);
 		if (error != CSS_OK) {

@@ -161,7 +161,11 @@ static duk_ret_t dukky_node_cloneNode(duk_context *ctx)
 	/* check types of passed arguments are correct */
 	if (dukky_argc > 0) {
 		if (!duk_is_boolean(ctx, 0)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 0, "deep");
+			if (duk_is_number(ctx, 0)) {
+				duk_to_boolean(ctx, 0);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 0, "deep");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -188,7 +192,7 @@ static duk_ret_t dukky_node_cloneNode(duk_context *ctx)
 	dukky_push_node(ctx, clone);
 	dom_node_unref(clone);
 	return 1;
-#line 192 "node.c"
+#line 196 "node.c"
 }
 
 static duk_ret_t dukky_node_isEqualNode(duk_context *ctx)
@@ -232,7 +236,7 @@ static duk_ret_t dukky_node_isEqualNode(duk_context *ctx)
 	if (exc != DOM_NO_ERR) return 0;
 	duk_push_boolean(ctx, result);
 	return 1;
-#line 236 "node.c"
+#line 240 "node.c"
 }
 
 static duk_ret_t dukky_node_compareDocumentPosition(duk_context *ctx)
@@ -280,7 +284,7 @@ static duk_ret_t dukky_node_compareDocumentPosition(duk_context *ctx)
 	duk_push_uint(ctx, ret);
 
 	return 1;
-#line 284 "node.c"
+#line 288 "node.c"
 }
 
 static duk_ret_t dukky_node_contains(duk_context *ctx)
@@ -334,7 +338,7 @@ static duk_ret_t dukky_node_contains(duk_context *ctx)
 	duk_push_boolean(ctx, ret == DOM_DOCUMENT_POSITION_CONTAINED_BY);
 
 	return 1;
-#line 338 "node.c"
+#line 342 "node.c"
 }
 
 static duk_ret_t dukky_node_lookupPrefix(duk_context *ctx)
@@ -380,7 +384,7 @@ static duk_ret_t dukky_node_lookupPrefix(duk_context *ctx)
 	duk_push_lstring(ctx, dom_string_data(pfx), dom_string_length(pfx));
 	dom_string_unref(pfx);
 	return 0;
-#line 384 "node.c"
+#line 388 "node.c"
 }
 
 static duk_ret_t dukky_node_lookupNamespaceURI(duk_context *ctx)
@@ -426,7 +430,7 @@ static duk_ret_t dukky_node_lookupNamespaceURI(duk_context *ctx)
 	duk_push_lstring(ctx, dom_string_data(ns), dom_string_length(ns));
 	dom_string_unref(ns);
 	return 0;
-#line 430 "node.c"
+#line 434 "node.c"
 }
 
 static duk_ret_t dukky_node_isDefaultNamespace(duk_context *ctx)
@@ -471,7 +475,7 @@ static duk_ret_t dukky_node_isDefaultNamespace(duk_context *ctx)
 	if (exc != DOM_NO_ERR) return 0;
 	duk_push_boolean(ctx, ret);
 	return 1;
-#line 475 "node.c"
+#line 479 "node.c"
 }
 
 static duk_ret_t dukky_node_insertBefore(duk_context *ctx)
@@ -530,7 +534,7 @@ static duk_ret_t dukky_node_insertBefore(duk_context *ctx)
 	dom_node_unref(spare);
 
 	return 1;
-#line 534 "node.c"
+#line 538 "node.c"
 }
 
 static duk_ret_t dukky_node_appendChild(duk_context *ctx)
@@ -577,7 +581,7 @@ static duk_ret_t dukky_node_appendChild(duk_context *ctx)
 	dom_node_unref(spare);
 
 	return 1;
-#line 581 "node.c"
+#line 585 "node.c"
 }
 
 static duk_ret_t dukky_node_replaceChild(duk_context *ctx)
@@ -632,7 +636,7 @@ static duk_ret_t dukky_node_replaceChild(duk_context *ctx)
 	dom_node_unref(spare);
 
 	return 1;
-#line 636 "node.c"
+#line 640 "node.c"
 }
 
 static duk_ret_t dukky_node_removeChild(duk_context *ctx)
@@ -678,7 +682,7 @@ static duk_ret_t dukky_node_removeChild(duk_context *ctx)
 	dom_node_unref(spare);
 
 	return 1;
-#line 682 "node.c"
+#line 686 "node.c"
 }
 
 static duk_ret_t dukky_node_nodeType_getter(duk_context *ctx)
@@ -701,7 +705,7 @@ static duk_ret_t dukky_node_nodeType_getter(duk_context *ctx)
 	if (exc != DOM_NO_ERR) return 0;
 	duk_push_uint(ctx, (duk_uint_t)ntype);
 	return 1;
-#line 705 "node.c"
+#line 709 "node.c"
 }
 
 static duk_ret_t dukky_node_nodeName_getter(duk_context *ctx)
@@ -725,7 +729,7 @@ static duk_ret_t dukky_node_nodeName_getter(duk_context *ctx)
 	duk_push_lstring(ctx, dom_string_data(str), dom_string_length(str));
 	dom_string_unref(str);
 	return 1;
-#line 729 "node.c"
+#line 733 "node.c"
 }
 
 static duk_ret_t dukky_node_baseURI_getter(duk_context *ctx)
@@ -750,7 +754,7 @@ static duk_ret_t dukky_node_baseURI_getter(duk_context *ctx)
 	duk_push_lstring(ctx, dom_string_data(base), dom_string_length(base));
 	dom_string_unref(base);
 	return 1;
-#line 754 "node.c"
+#line 758 "node.c"
 }
 
 static duk_ret_t dukky_node_ownerDocument_getter(duk_context *ctx)
@@ -775,7 +779,7 @@ static duk_ret_t dukky_node_ownerDocument_getter(duk_context *ctx)
 	dukky_push_node(ctx, doc);
 	dom_node_unref(doc);
 	return 1;
-#line 779 "node.c"
+#line 783 "node.c"
 }
 
 static duk_ret_t dukky_node_parentNode_getter(duk_context *ctx)
@@ -799,7 +803,7 @@ static duk_ret_t dukky_node_parentNode_getter(duk_context *ctx)
 	dukky_push_node(ctx, pnode);
 	dom_node_unref(pnode);
 	return 1;
-#line 803 "node.c"
+#line 807 "node.c"
 }
 
 static duk_ret_t dukky_node_parentElement_getter(duk_context *ctx)
@@ -828,7 +832,7 @@ static duk_ret_t dukky_node_parentElement_getter(duk_context *ctx)
 	dukky_push_node(ctx, (ntype == DOM_ELEMENT_NODE) ? pnode : NULL);
 	dom_node_unref(pnode);
 	return 1;
-#line 832 "node.c"
+#line 836 "node.c"
 }
 
 static duk_ret_t dukky_node_childNodes_getter(duk_context *ctx)
@@ -869,7 +873,7 @@ static duk_ret_t dukky_node_childNodes_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, 0, MAGIC(childNodes));
 	}
 	return 1;
-#line 873 "node.c"
+#line 877 "node.c"
 }
 
 static duk_ret_t dukky_node_firstChild_getter(duk_context *ctx)
@@ -896,7 +900,7 @@ static duk_ret_t dukky_node_firstChild_getter(duk_context *ctx)
 	}
 	dom_node_unref(n);
 	return 1;
-#line 900 "node.c"
+#line 904 "node.c"
 }
 
 static duk_ret_t dukky_node_lastChild_getter(duk_context *ctx)
@@ -923,7 +927,7 @@ static duk_ret_t dukky_node_lastChild_getter(duk_context *ctx)
 	}
 	dom_node_unref(n);
 	return 1;
-#line 927 "node.c"
+#line 931 "node.c"
 }
 
 static duk_ret_t dukky_node_previousSibling_getter(duk_context *ctx)
@@ -950,7 +954,7 @@ static duk_ret_t dukky_node_previousSibling_getter(duk_context *ctx)
 	}
 	dom_node_unref(n);
 	return 1;
-#line 954 "node.c"
+#line 958 "node.c"
 }
 
 static duk_ret_t dukky_node_nextSibling_getter(duk_context *ctx)
@@ -977,7 +981,7 @@ static duk_ret_t dukky_node_nextSibling_getter(duk_context *ctx)
 	}
 	dom_node_unref(n);
 	return 1;
-#line 981 "node.c"
+#line 985 "node.c"
 }
 
 static duk_ret_t dukky_node_nodeValue_getter(duk_context *ctx)
@@ -1008,7 +1012,7 @@ static duk_ret_t dukky_node_nodeValue_getter(duk_context *ctx)
 		return 1;
 	}
 	return 0;
-#line 1012 "node.c"
+#line 1016 "node.c"
 }
 
 static duk_ret_t dukky_node_nodeValue_setter(duk_context *ctx)
@@ -1035,7 +1039,7 @@ static duk_ret_t dukky_node_nodeValue_setter(duk_context *ctx)
 	dom_string_unref(content);
 	if (exc != DOM_NO_ERR) return 0;
 	return 1;
-#line 1039 "node.c"
+#line 1043 "node.c"
 }
 
 static duk_ret_t dukky_node_textContent_getter(duk_context *ctx)
@@ -1066,7 +1070,7 @@ static duk_ret_t dukky_node_textContent_getter(duk_context *ctx)
 		return 1;
 	}
 	return 0;
-#line 1070 "node.c"
+#line 1074 "node.c"
 }
 
 static duk_ret_t dukky_node_textContent_setter(duk_context *ctx)
@@ -1092,7 +1096,7 @@ static duk_ret_t dukky_node_textContent_setter(duk_context *ctx)
 	exc = dom_node_set_text_content(priv->node, content);
 	dom_string_unref(content);
 	return 0;
-#line 1096 "node.c"
+#line 1100 "node.c"
 }
 
 duk_ret_t dukky_node___proto(duk_context *ctx, void *udata)

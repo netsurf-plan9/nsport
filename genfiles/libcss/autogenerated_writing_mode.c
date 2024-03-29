@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * writing_mode:CSS_PROP_WRITING_MODE IDENT:( INHERIT: HORIZONTAL_TB:0,WRITING_MODE_HORIZONTAL_TB VERTICAL_RL:0,WRITING_MODE_VERTICAL_RL VERTICAL_LR:0,WRITING_MODE_VERTICAL_LR IDENT:)
+ * writing_mode:CSS_PROP_WRITING_MODE IDENT:( INHERIT: INITIAL: REVERT: UNSET: HORIZONTAL_TB:0,WRITING_MODE_HORIZONTAL_TB VERTICAL_RL:0,WRITING_MODE_VERTICAL_RL VERTICAL_LR:0,WRITING_MODE_VERTICAL_LR IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_writing_mode(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,14 +47,51 @@ css_error css__parse_writing_mode(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_WRITING_MODE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[HORIZONTAL_TB], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WRITING_MODE, 0,WRITING_MODE_HORIZONTAL_TB);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[VERTICAL_RL], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WRITING_MODE, 0,WRITING_MODE_VERTICAL_RL);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[VERTICAL_LR], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WRITING_MODE, 0,WRITING_MODE_VERTICAL_LR);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_WRITING_MODE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_WRITING_MODE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_WRITING_MODE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_WRITING_MODE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[HORIZONTAL_TB],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WRITING_MODE,
+				0,WRITING_MODE_HORIZONTAL_TB);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[VERTICAL_RL],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WRITING_MODE,
+				0,WRITING_MODE_VERTICAL_RL);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[VERTICAL_LR],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WRITING_MODE,
+				0,WRITING_MODE_VERTICAL_LR);
+
 	} else {
 		error = CSS_INVALID;
 	}

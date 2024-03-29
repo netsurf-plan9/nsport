@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_html_time_element___init(duk_context *ctx, html_time_element_private_t *priv, struct dom_html_element *html_time_element)
 {
 	dukky_html_element___init(ctx, &priv->parent, html_time_element);
-#line 172 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 174 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_time_element.c"
 }
 

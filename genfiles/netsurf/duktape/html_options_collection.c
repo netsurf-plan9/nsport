@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_html_options_collection___init(duk_context *ctx, html_options_collection_private_t *priv, struct dom_html_collection *coll)
 {
 	dukky_html_collection___init(ctx, &priv->parent, coll);
-#line 201 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 203 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_options_collection.c"
 }
 

@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * white_space:CSS_PROP_WHITE_SPACE IDENT:( INHERIT: NORMAL:0,WHITE_SPACE_NORMAL PRE:0,WHITE_SPACE_PRE NOWRAP:0,WHITE_SPACE_NOWRAP PRE_WRAP:0,WHITE_SPACE_PRE_WRAP PRE_LINE:0,WHITE_SPACE_PRE_LINE  IDENT:)
+ * white_space:CSS_PROP_WHITE_SPACE IDENT:( INHERIT: INITIAL: REVERT: UNSET: NORMAL:0,WHITE_SPACE_NORMAL PRE:0,WHITE_SPACE_PRE NOWRAP:0,WHITE_SPACE_NOWRAP PRE_WRAP:0,WHITE_SPACE_PRE_WRAP PRE_LINE:0,WHITE_SPACE_PRE_LINE  IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_white_space(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,18 +47,65 @@ css_error css__parse_white_space(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_WHITE_SPACE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[NORMAL], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WHITE_SPACE, 0,WHITE_SPACE_NORMAL);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[PRE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WHITE_SPACE, 0,WHITE_SPACE_PRE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[NOWRAP], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WHITE_SPACE, 0,WHITE_SPACE_NOWRAP);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[PRE_WRAP], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WHITE_SPACE, 0,WHITE_SPACE_PRE_WRAP);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[PRE_LINE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_WHITE_SPACE, 0,WHITE_SPACE_PRE_LINE);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_WHITE_SPACE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_WHITE_SPACE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_WHITE_SPACE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_WHITE_SPACE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[NORMAL],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WHITE_SPACE,
+				0,WHITE_SPACE_NORMAL);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[PRE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WHITE_SPACE,
+				0,WHITE_SPACE_PRE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[NOWRAP],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WHITE_SPACE,
+				0,WHITE_SPACE_NOWRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[PRE_WRAP],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WHITE_SPACE,
+				0,WHITE_SPACE_PRE_WRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[PRE_LINE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_WHITE_SPACE,
+				0,WHITE_SPACE_PRE_LINE);
+
 	} else {
 		error = CSS_INVALID;
 	}

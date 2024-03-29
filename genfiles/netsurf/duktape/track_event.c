@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_track_event___init(duk_context *ctx, track_event_private_t *priv, struct dom_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, evt);
-#line 99 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 101 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "track_event.c"
 }
 

@@ -40,12 +40,19 @@ struct dom_html_br_element;
 
 #include "javascript/duktape/dukky.h"
 
-void dukky_dom_token_list___init(duk_context *ctx, dom_token_list_private_t *priv)
+void dukky_dom_token_list___init(duk_context *ctx, dom_token_list_private_t *priv, struct dom_tokenlist *tokens)
 {
+#line 16 "DOMTokenList.bnd"
+
+	priv->tokens = tokens;
+	dom_tokenlist_ref(tokens);
+#line 50 "dom_token_list.c"
 }
 
 void dukky_dom_token_list___fini(duk_context *ctx, dom_token_list_private_t *priv)
 {
+
+	dom_tokenlist_unref(priv->tokens);
 }
 
 static duk_ret_t dukky_dom_token_list___constructor(duk_context *ctx)
@@ -56,7 +63,7 @@ static duk_ret_t dukky_dom_token_list___constructor(duk_context *ctx)
 	duk_push_pointer(ctx, priv);
 	duk_put_prop_string(ctx, 0, dukky_magic_string_private);
 
-	dukky_dom_token_list___init(ctx, priv);
+	dukky_dom_token_list___init(ctx, priv, duk_get_pointer(ctx, 1));
 	duk_set_top(ctx, 1);
 	return 1;
 }
@@ -102,7 +109,26 @@ static duk_ret_t dukky_dom_token_list_item(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 41 "DOMTokenList.bnd"
+
+	unsigned long i = duk_to_uint(ctx, 0);
+	dom_exception err;
+	dom_string *value;
+
+	err = dom_tokenlist_item(priv->tokens, i, &value);
+
+	if (err != DOM_NO_ERR) return 0; /* coerced to undefined */
+
+    if (value == NULL) {
+        duk_push_null(ctx);
+        return 1;
+    }
+
+    duk_push_lstring(ctx, dom_string_data(value), dom_string_length(value));
+	dom_string_unref(value);
+
+	return 1;
+#line 132 "dom_token_list.c"
 }
 
 static duk_ret_t dukky_dom_token_list_contains(duk_context *ctx)
@@ -133,7 +159,25 @@ static duk_ret_t dukky_dom_token_list_contains(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 108 "DOMTokenList.bnd"
+
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char *s = duk_safe_to_lstring(ctx, 0, &slen);
+	bool present = false;
+
+	exc = dom_string_create_interned((const uint8_t *)s, slen, &value);
+	if (exc != DOM_NO_ERR) return 0;
+
+	exc = dom_tokenlist_contains(priv->tokens, value, &present);
+	dom_string_unref(value);
+	if (exc != DOM_NO_ERR) return 0;
+
+	duk_push_boolean(ctx, present);
+	
+	return 1;
+#line 181 "dom_token_list.c"
 }
 
 static duk_ret_t dukky_dom_token_list_add(duk_context *ctx)
@@ -148,7 +192,28 @@ static duk_ret_t dukky_dom_token_list_add(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
+#line 62 "DOMTokenList.bnd"
+
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char *s;
+	duk_idx_t spos;
+
+	for (spos = 0; spos < duk_get_top(ctx); ++spos) {
+		s = duk_safe_to_lstring(ctx, spos, &slen);
+
+		duk_safe_to_lstring(ctx, 0, &slen);
+
+		exc = dom_string_create_interned((const uint8_t *)s, slen, &value);
+		if (exc != DOM_NO_ERR) return 0;
+
+		exc = dom_tokenlist_add(priv->tokens, value);
+		dom_string_unref(value);
+	}
+	
 	return 0;
+#line 217 "dom_token_list.c"
 }
 
 static duk_ret_t dukky_dom_token_list_remove(duk_context *ctx)
@@ -163,7 +228,28 @@ static duk_ret_t dukky_dom_token_list_remove(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
+#line 85 "DOMTokenList.bnd"
+
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char *s;
+	duk_idx_t spos;
+
+	for (spos = 0; spos < duk_get_top(ctx); ++spos) {
+		s = duk_safe_to_lstring(ctx, spos, &slen);
+
+		duk_safe_to_lstring(ctx, 0, &slen);
+
+		exc = dom_string_create_interned((const uint8_t *)s, slen, &value);
+		if (exc != DOM_NO_ERR) return 0;
+
+		exc = dom_tokenlist_remove(priv->tokens, value);
+		dom_string_unref(value);
+	}
+	
 	return 0;
+#line 253 "dom_token_list.c"
 }
 
 static duk_ret_t dukky_dom_token_list_toggle(duk_context *ctx)
@@ -189,7 +275,11 @@ static duk_ret_t dukky_dom_token_list_toggle(duk_context *ctx)
 	}
 	if (dukky_argc > 1) {
 		if (!duk_is_boolean(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "force");
+			if (duk_is_number(ctx, 1)) {
+				duk_to_boolean(ctx, 1);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "force");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -202,7 +292,43 @@ static duk_ret_t dukky_dom_token_list_toggle(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
+#line 128 "DOMTokenList.bnd"
+
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char *s = duk_require_lstring(ctx, 0, &slen);
+	bool toggle_set = duk_get_top(ctx) > 1;
+	bool toggle = duk_opt_boolean(ctx, 1, 0);
+	bool present;
+
+	exc = dom_string_create_interned((const uint8_t *)s, slen, &value);
+	if (exc != DOM_NO_ERR) return 0;
+
+	exc = dom_tokenlist_contains(priv->tokens, value, &present);
+	if (exc != DOM_NO_ERR) {
+		dom_string_unref(value);
+		return 0;
+	}
+
+	/* Decision matrix is based on present, toggle_set, and toggle */
+	if (toggle_set) {
+		if (toggle) {
+			exc = dom_tokenlist_add(priv->tokens, value);
+		} else {
+			exc = dom_tokenlist_remove(priv->tokens, value);
+		}
+	} else {
+		if (present) {
+			exc = dom_tokenlist_add(priv->tokens, value);
+		} else {
+			exc = dom_tokenlist_remove(priv->tokens, value);
+		}
+	}
+	dom_string_unref(value);
+
 	return 0;
+#line 332 "dom_token_list.c"
 }
 
 static duk_ret_t dukky_dom_token_list_length_getter(duk_context *ctx)
@@ -217,7 +343,19 @@ static duk_ret_t dukky_dom_token_list_length_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 27 "DOMTokenList.bnd"
+
+	dom_exception err;
+	uint32_t len;
+
+	err = dom_tokenlist_get_length(priv->tokens, &len);
+
+	if (err != DOM_NO_ERR) return 0; /* coerced to undefined */
+
+	duk_push_uint(ctx, (duk_uint_t)len);
+
+	return 1;
+#line 359 "dom_token_list.c"
 }
 
 duk_ret_t dukky_dom_token_list___proto(duk_context *ctx, void *udata)
@@ -299,7 +437,7 @@ duk_ret_t dukky_dom_token_list___proto(duk_context *ctx, void *udata)
 
 	/* Set the constructor */
 	duk_dup(ctx, 0);
-	duk_push_c_function(ctx, dukky_dom_token_list___constructor, 1);
+	duk_push_c_function(ctx, dukky_dom_token_list___constructor, 2);
 	duk_put_prop_string(ctx, -2, "\xFF\xFFNETSURF_DUKTAPE_INIT");
 	duk_pop(ctx);
 

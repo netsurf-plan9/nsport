@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_html_dialog_element___init(duk_context *ctx, html_dialog_element_private_t *priv, struct dom_html_element *html_dialog_element)
 {
 	dukky_html_element___init(ctx, &priv->parent, html_dialog_element);
-#line 155 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 157 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_dialog_element.c"
 }
 

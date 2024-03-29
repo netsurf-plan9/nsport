@@ -495,7 +495,11 @@ static duk_ret_t dukky_window_open(duk_context *ctx)
 	}
 	if (dukky_argc > 3) {
 		if (!duk_is_boolean(ctx, 3)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 3, "replace");
+			if (duk_is_number(ctx, 3)) {
+				duk_to_boolean(ctx, 3);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 3, "replace");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -539,7 +543,7 @@ static duk_ret_t dukky_window_alert(duk_context *ctx)
 		NSLOG(netsurf, INFO, "JS ALERT: %*s", (int)msg_len, msg);
 	}
 	return 0;
-#line 543 "window.c"
+#line 547 "window.c"
 }
 
 static duk_ret_t dukky_window_confirm(duk_context *ctx)
@@ -942,7 +946,7 @@ static duk_ret_t dukky_window_setTimeout(duk_context *ctx)
 
 	duk_push_int(ctx, (duk_int_t)handle);
 	return 1;
-#line 946 "window.c"
+#line 950 "window.c"
 }
 
 static duk_ret_t dukky_window_clearTimeout(duk_context *ctx)
@@ -979,7 +983,7 @@ static duk_ret_t dukky_window_clearTimeout(duk_context *ctx)
 	window_remove_callback_by_handle(ctx, priv, (size_t) handle);
 
 	return 0;
-#line 983 "window.c"
+#line 987 "window.c"
 }
 
 static duk_ret_t dukky_window_setInterval(duk_context *ctx)
@@ -1012,7 +1016,7 @@ static duk_ret_t dukky_window_setInterval(duk_context *ctx)
 
 	duk_push_int(ctx, (duk_int_t)handle);
 	return 1;
-#line 1016 "window.c"
+#line 1020 "window.c"
 }
 
 static duk_ret_t dukky_window_clearInterval(duk_context *ctx)
@@ -1049,7 +1053,7 @@ static duk_ret_t dukky_window_clearInterval(duk_context *ctx)
 	window_remove_callback_by_handle(ctx, priv, (size_t) handle);
 
 	return 0;
-#line 1053 "window.c"
+#line 1057 "window.c"
 }
 
 static duk_ret_t dukky_window_createImageBitmap(duk_context *ctx)
@@ -1083,7 +1087,7 @@ static duk_ret_t dukky_window_window_getter(duk_context *ctx)
 
 	duk_push_this(ctx);
 	return 1;
-#line 1087 "window.c"
+#line 1091 "window.c"
 }
 
 static duk_ret_t dukky_window_self_getter(duk_context *ctx)
@@ -1119,7 +1123,7 @@ static duk_ret_t dukky_window_document_getter(duk_context *ctx)
 	dom_document *doc = priv->htmlc->document;
 	dukky_push_node(ctx, (struct dom_node *)doc);
 	return 1;
-#line 1123 "window.c"
+#line 1127 "window.c"
 }
 
 static duk_ret_t dukky_window_name_getter(duk_context *ctx)
@@ -1140,7 +1144,7 @@ static duk_ret_t dukky_window_name_getter(duk_context *ctx)
 	browser_window_get_name(priv->win, &name);
 	duk_push_string(ctx, name);
 	return 1;
-#line 1144 "window.c"
+#line 1148 "window.c"
 }
 
 static duk_ret_t dukky_window_name_setter(duk_context *ctx)
@@ -1161,7 +1165,7 @@ static duk_ret_t dukky_window_name_setter(duk_context *ctx)
 	name = duk_to_string(ctx, -1);
 	browser_window_set_name(priv->win, name);
 	return 0;
-#line 1165 "window.c"
+#line 1169 "window.c"
 }
 
 static duk_ret_t dukky_window_location_getter(duk_context *ctx)
@@ -1194,7 +1198,7 @@ static duk_ret_t dukky_window_location_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, -3, MAGIC(Location));
 	}
 	return 1;
-#line 1198 "window.c"
+#line 1202 "window.c"
 }
 
 static duk_ret_t dukky_window_location_setter(duk_context *ctx)
@@ -1512,7 +1516,7 @@ static duk_ret_t dukky_window_navigator_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, -3, MAGIC(Navigator));
 	}
 	return 1;
-#line 1516 "window.c"
+#line 1520 "window.c"
 }
 
 static duk_ret_t dukky_window_external_getter(duk_context *ctx)
@@ -1570,7 +1574,7 @@ static duk_ret_t dukky_window_console_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, -3, MAGIC(Console));
 	}
 	return 1;
-#line 1574 "window.c"
+#line 1578 "window.c"
 }
 
 static duk_ret_t dukky_window_onabort_getter(duk_context *ctx)
@@ -1586,7 +1590,7 @@ static duk_ret_t dukky_window_onabort_getter(duk_context *ctx)
 	}
 
 #line 573 "Window.bnd"
-#line 1590 "window.c"
+#line 1594 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1620,7 +1624,7 @@ static duk_ret_t dukky_window_onabort_setter(duk_context *ctx)
 	}
 
 #line 574 "Window.bnd"
-#line 1624 "window.c"
+#line 1628 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1651,7 +1655,7 @@ static duk_ret_t dukky_window_onautocomplete_getter(duk_context *ctx)
 	}
 
 #line 579 "Window.bnd"
-#line 1655 "window.c"
+#line 1659 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1685,7 +1689,7 @@ static duk_ret_t dukky_window_onautocomplete_setter(duk_context *ctx)
 	}
 
 #line 580 "Window.bnd"
-#line 1689 "window.c"
+#line 1693 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1716,7 +1720,7 @@ static duk_ret_t dukky_window_onautocompleteerror_getter(duk_context *ctx)
 	}
 
 #line 577 "Window.bnd"
-#line 1720 "window.c"
+#line 1724 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1750,7 +1754,7 @@ static duk_ret_t dukky_window_onautocompleteerror_setter(duk_context *ctx)
 	}
 
 #line 578 "Window.bnd"
-#line 1754 "window.c"
+#line 1758 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1781,7 +1785,7 @@ static duk_ret_t dukky_window_onblur_getter(duk_context *ctx)
 	}
 
 #line 585 "Window.bnd"
-#line 1785 "window.c"
+#line 1789 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1815,7 +1819,7 @@ static duk_ret_t dukky_window_onblur_setter(duk_context *ctx)
 	}
 
 #line 586 "Window.bnd"
-#line 1819 "window.c"
+#line 1823 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1846,7 +1850,7 @@ static duk_ret_t dukky_window_oncancel_getter(duk_context *ctx)
 	}
 
 #line 587 "Window.bnd"
-#line 1850 "window.c"
+#line 1854 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1880,7 +1884,7 @@ static duk_ret_t dukky_window_oncancel_setter(duk_context *ctx)
 	}
 
 #line 588 "Window.bnd"
-#line 1884 "window.c"
+#line 1888 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1911,7 +1915,7 @@ static duk_ret_t dukky_window_oncanplay_getter(duk_context *ctx)
 	}
 
 #line 591 "Window.bnd"
-#line 1915 "window.c"
+#line 1919 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -1945,7 +1949,7 @@ static duk_ret_t dukky_window_oncanplay_setter(duk_context *ctx)
 	}
 
 #line 592 "Window.bnd"
-#line 1949 "window.c"
+#line 1953 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -1976,7 +1980,7 @@ static duk_ret_t dukky_window_oncanplaythrough_getter(duk_context *ctx)
 	}
 
 #line 589 "Window.bnd"
-#line 1980 "window.c"
+#line 1984 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2010,7 +2014,7 @@ static duk_ret_t dukky_window_oncanplaythrough_setter(duk_context *ctx)
 	}
 
 #line 590 "Window.bnd"
-#line 2014 "window.c"
+#line 2018 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2041,7 +2045,7 @@ static duk_ret_t dukky_window_onchange_getter(duk_context *ctx)
 	}
 
 #line 593 "Window.bnd"
-#line 2045 "window.c"
+#line 2049 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2075,7 +2079,7 @@ static duk_ret_t dukky_window_onchange_setter(duk_context *ctx)
 	}
 
 #line 594 "Window.bnd"
-#line 2079 "window.c"
+#line 2083 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2106,7 +2110,7 @@ static duk_ret_t dukky_window_onclick_getter(duk_context *ctx)
 	}
 
 #line 595 "Window.bnd"
-#line 2110 "window.c"
+#line 2114 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2140,7 +2144,7 @@ static duk_ret_t dukky_window_onclick_setter(duk_context *ctx)
 	}
 
 #line 596 "Window.bnd"
-#line 2144 "window.c"
+#line 2148 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2171,7 +2175,7 @@ static duk_ret_t dukky_window_onclose_getter(duk_context *ctx)
 	}
 
 #line 597 "Window.bnd"
-#line 2175 "window.c"
+#line 2179 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2205,7 +2209,7 @@ static duk_ret_t dukky_window_onclose_setter(duk_context *ctx)
 	}
 
 #line 598 "Window.bnd"
-#line 2209 "window.c"
+#line 2213 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2236,7 +2240,7 @@ static duk_ret_t dukky_window_oncontextmenu_getter(duk_context *ctx)
 	}
 
 #line 599 "Window.bnd"
-#line 2240 "window.c"
+#line 2244 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2270,7 +2274,7 @@ static duk_ret_t dukky_window_oncontextmenu_setter(duk_context *ctx)
 	}
 
 #line 600 "Window.bnd"
-#line 2274 "window.c"
+#line 2278 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2301,7 +2305,7 @@ static duk_ret_t dukky_window_oncuechange_getter(duk_context *ctx)
 	}
 
 #line 601 "Window.bnd"
-#line 2305 "window.c"
+#line 2309 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2335,7 +2339,7 @@ static duk_ret_t dukky_window_oncuechange_setter(duk_context *ctx)
 	}
 
 #line 602 "Window.bnd"
-#line 2339 "window.c"
+#line 2343 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2366,7 +2370,7 @@ static duk_ret_t dukky_window_ondblclick_getter(duk_context *ctx)
 	}
 
 #line 603 "Window.bnd"
-#line 2370 "window.c"
+#line 2374 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2400,7 +2404,7 @@ static duk_ret_t dukky_window_ondblclick_setter(duk_context *ctx)
 	}
 
 #line 604 "Window.bnd"
-#line 2404 "window.c"
+#line 2408 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2431,7 +2435,7 @@ static duk_ret_t dukky_window_ondrag_getter(duk_context *ctx)
 	}
 
 #line 617 "Window.bnd"
-#line 2435 "window.c"
+#line 2439 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2465,7 +2469,7 @@ static duk_ret_t dukky_window_ondrag_setter(duk_context *ctx)
 	}
 
 #line 618 "Window.bnd"
-#line 2469 "window.c"
+#line 2473 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2496,7 +2500,7 @@ static duk_ret_t dukky_window_ondragend_getter(duk_context *ctx)
 	}
 
 #line 605 "Window.bnd"
-#line 2500 "window.c"
+#line 2504 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2530,7 +2534,7 @@ static duk_ret_t dukky_window_ondragend_setter(duk_context *ctx)
 	}
 
 #line 606 "Window.bnd"
-#line 2534 "window.c"
+#line 2538 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2561,7 +2565,7 @@ static duk_ret_t dukky_window_ondragenter_getter(duk_context *ctx)
 	}
 
 #line 607 "Window.bnd"
-#line 2565 "window.c"
+#line 2569 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2595,7 +2599,7 @@ static duk_ret_t dukky_window_ondragenter_setter(duk_context *ctx)
 	}
 
 #line 608 "Window.bnd"
-#line 2599 "window.c"
+#line 2603 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2626,7 +2630,7 @@ static duk_ret_t dukky_window_ondragexit_getter(duk_context *ctx)
 	}
 
 #line 609 "Window.bnd"
-#line 2630 "window.c"
+#line 2634 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2660,7 +2664,7 @@ static duk_ret_t dukky_window_ondragexit_setter(duk_context *ctx)
 	}
 
 #line 610 "Window.bnd"
-#line 2664 "window.c"
+#line 2668 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2691,7 +2695,7 @@ static duk_ret_t dukky_window_ondragleave_getter(duk_context *ctx)
 	}
 
 #line 611 "Window.bnd"
-#line 2695 "window.c"
+#line 2699 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2725,7 +2729,7 @@ static duk_ret_t dukky_window_ondragleave_setter(duk_context *ctx)
 	}
 
 #line 612 "Window.bnd"
-#line 2729 "window.c"
+#line 2733 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2756,7 +2760,7 @@ static duk_ret_t dukky_window_ondragover_getter(duk_context *ctx)
 	}
 
 #line 613 "Window.bnd"
-#line 2760 "window.c"
+#line 2764 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2790,7 +2794,7 @@ static duk_ret_t dukky_window_ondragover_setter(duk_context *ctx)
 	}
 
 #line 614 "Window.bnd"
-#line 2794 "window.c"
+#line 2798 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2821,7 +2825,7 @@ static duk_ret_t dukky_window_ondragstart_getter(duk_context *ctx)
 	}
 
 #line 615 "Window.bnd"
-#line 2825 "window.c"
+#line 2829 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2855,7 +2859,7 @@ static duk_ret_t dukky_window_ondragstart_setter(duk_context *ctx)
 	}
 
 #line 616 "Window.bnd"
-#line 2859 "window.c"
+#line 2863 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2886,7 +2890,7 @@ static duk_ret_t dukky_window_ondrop_getter(duk_context *ctx)
 	}
 
 #line 619 "Window.bnd"
-#line 2890 "window.c"
+#line 2894 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2920,7 +2924,7 @@ static duk_ret_t dukky_window_ondrop_setter(duk_context *ctx)
 	}
 
 #line 620 "Window.bnd"
-#line 2924 "window.c"
+#line 2928 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -2951,7 +2955,7 @@ static duk_ret_t dukky_window_ondurationchange_getter(duk_context *ctx)
 	}
 
 #line 621 "Window.bnd"
-#line 2955 "window.c"
+#line 2959 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -2985,7 +2989,7 @@ static duk_ret_t dukky_window_ondurationchange_setter(duk_context *ctx)
 	}
 
 #line 622 "Window.bnd"
-#line 2989 "window.c"
+#line 2993 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3016,7 +3020,7 @@ static duk_ret_t dukky_window_onemptied_getter(duk_context *ctx)
 	}
 
 #line 623 "Window.bnd"
-#line 3020 "window.c"
+#line 3024 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3050,7 +3054,7 @@ static duk_ret_t dukky_window_onemptied_setter(duk_context *ctx)
 	}
 
 #line 624 "Window.bnd"
-#line 3054 "window.c"
+#line 3058 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3081,7 +3085,7 @@ static duk_ret_t dukky_window_onended_getter(duk_context *ctx)
 	}
 
 #line 625 "Window.bnd"
-#line 3085 "window.c"
+#line 3089 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3115,7 +3119,7 @@ static duk_ret_t dukky_window_onended_setter(duk_context *ctx)
 	}
 
 #line 626 "Window.bnd"
-#line 3119 "window.c"
+#line 3123 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3146,7 +3150,7 @@ static duk_ret_t dukky_window_onerror_getter(duk_context *ctx)
 	}
 
 #line 627 "Window.bnd"
-#line 3150 "window.c"
+#line 3154 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3180,7 +3184,7 @@ static duk_ret_t dukky_window_onerror_setter(duk_context *ctx)
 	}
 
 #line 628 "Window.bnd"
-#line 3184 "window.c"
+#line 3188 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3211,7 +3215,7 @@ static duk_ret_t dukky_window_onfocus_getter(duk_context *ctx)
 	}
 
 #line 629 "Window.bnd"
-#line 3215 "window.c"
+#line 3219 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3245,7 +3249,7 @@ static duk_ret_t dukky_window_onfocus_setter(duk_context *ctx)
 	}
 
 #line 630 "Window.bnd"
-#line 3249 "window.c"
+#line 3253 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3276,7 +3280,7 @@ static duk_ret_t dukky_window_oninput_getter(duk_context *ctx)
 	}
 
 #line 633 "Window.bnd"
-#line 3280 "window.c"
+#line 3284 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3310,7 +3314,7 @@ static duk_ret_t dukky_window_oninput_setter(duk_context *ctx)
 	}
 
 #line 634 "Window.bnd"
-#line 3314 "window.c"
+#line 3318 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3341,7 +3345,7 @@ static duk_ret_t dukky_window_oninvalid_getter(duk_context *ctx)
 	}
 
 #line 635 "Window.bnd"
-#line 3345 "window.c"
+#line 3349 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3375,7 +3379,7 @@ static duk_ret_t dukky_window_oninvalid_setter(duk_context *ctx)
 	}
 
 #line 636 "Window.bnd"
-#line 3379 "window.c"
+#line 3383 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3406,7 +3410,7 @@ static duk_ret_t dukky_window_onkeydown_getter(duk_context *ctx)
 	}
 
 #line 637 "Window.bnd"
-#line 3410 "window.c"
+#line 3414 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3440,7 +3444,7 @@ static duk_ret_t dukky_window_onkeydown_setter(duk_context *ctx)
 	}
 
 #line 638 "Window.bnd"
-#line 3444 "window.c"
+#line 3448 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3471,7 +3475,7 @@ static duk_ret_t dukky_window_onkeypress_getter(duk_context *ctx)
 	}
 
 #line 639 "Window.bnd"
-#line 3475 "window.c"
+#line 3479 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3505,7 +3509,7 @@ static duk_ret_t dukky_window_onkeypress_setter(duk_context *ctx)
 	}
 
 #line 640 "Window.bnd"
-#line 3509 "window.c"
+#line 3513 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3536,7 +3540,7 @@ static duk_ret_t dukky_window_onkeyup_getter(duk_context *ctx)
 	}
 
 #line 641 "Window.bnd"
-#line 3540 "window.c"
+#line 3544 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3570,7 +3574,7 @@ static duk_ret_t dukky_window_onkeyup_setter(duk_context *ctx)
 	}
 
 #line 642 "Window.bnd"
-#line 3574 "window.c"
+#line 3578 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3601,7 +3605,7 @@ static duk_ret_t dukky_window_onload_getter(duk_context *ctx)
 	}
 
 #line 651 "Window.bnd"
-#line 3605 "window.c"
+#line 3609 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3635,7 +3639,7 @@ static duk_ret_t dukky_window_onload_setter(duk_context *ctx)
 	}
 
 #line 652 "Window.bnd"
-#line 3639 "window.c"
+#line 3643 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3666,7 +3670,7 @@ static duk_ret_t dukky_window_onloadeddata_getter(duk_context *ctx)
 	}
 
 #line 645 "Window.bnd"
-#line 3670 "window.c"
+#line 3674 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3700,7 +3704,7 @@ static duk_ret_t dukky_window_onloadeddata_setter(duk_context *ctx)
 	}
 
 #line 646 "Window.bnd"
-#line 3704 "window.c"
+#line 3708 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3731,7 +3735,7 @@ static duk_ret_t dukky_window_onloadedmetadata_getter(duk_context *ctx)
 	}
 
 #line 647 "Window.bnd"
-#line 3735 "window.c"
+#line 3739 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3765,7 +3769,7 @@ static duk_ret_t dukky_window_onloadedmetadata_setter(duk_context *ctx)
 	}
 
 #line 648 "Window.bnd"
-#line 3769 "window.c"
+#line 3773 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3796,7 +3800,7 @@ static duk_ret_t dukky_window_onloadstart_getter(duk_context *ctx)
 	}
 
 #line 649 "Window.bnd"
-#line 3800 "window.c"
+#line 3804 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3830,7 +3834,7 @@ static duk_ret_t dukky_window_onloadstart_setter(duk_context *ctx)
 	}
 
 #line 650 "Window.bnd"
-#line 3834 "window.c"
+#line 3838 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3861,7 +3865,7 @@ static duk_ret_t dukky_window_onmousedown_getter(duk_context *ctx)
 	}
 
 #line 655 "Window.bnd"
-#line 3865 "window.c"
+#line 3869 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3895,7 +3899,7 @@ static duk_ret_t dukky_window_onmousedown_setter(duk_context *ctx)
 	}
 
 #line 656 "Window.bnd"
-#line 3899 "window.c"
+#line 3903 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3926,7 +3930,7 @@ static duk_ret_t dukky_window_onmouseenter_getter(duk_context *ctx)
 	}
 
 #line 657 "Window.bnd"
-#line 3930 "window.c"
+#line 3934 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -3960,7 +3964,7 @@ static duk_ret_t dukky_window_onmouseenter_setter(duk_context *ctx)
 	}
 
 #line 658 "Window.bnd"
-#line 3964 "window.c"
+#line 3968 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -3991,7 +3995,7 @@ static duk_ret_t dukky_window_onmouseleave_getter(duk_context *ctx)
 	}
 
 #line 659 "Window.bnd"
-#line 3995 "window.c"
+#line 3999 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4025,7 +4029,7 @@ static duk_ret_t dukky_window_onmouseleave_setter(duk_context *ctx)
 	}
 
 #line 660 "Window.bnd"
-#line 4029 "window.c"
+#line 4033 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4056,7 +4060,7 @@ static duk_ret_t dukky_window_onmousemove_getter(duk_context *ctx)
 	}
 
 #line 661 "Window.bnd"
-#line 4060 "window.c"
+#line 4064 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4090,7 +4094,7 @@ static duk_ret_t dukky_window_onmousemove_setter(duk_context *ctx)
 	}
 
 #line 662 "Window.bnd"
-#line 4094 "window.c"
+#line 4098 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4121,7 +4125,7 @@ static duk_ret_t dukky_window_onmouseout_getter(duk_context *ctx)
 	}
 
 #line 663 "Window.bnd"
-#line 4125 "window.c"
+#line 4129 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4155,7 +4159,7 @@ static duk_ret_t dukky_window_onmouseout_setter(duk_context *ctx)
 	}
 
 #line 664 "Window.bnd"
-#line 4159 "window.c"
+#line 4163 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4186,7 +4190,7 @@ static duk_ret_t dukky_window_onmouseover_getter(duk_context *ctx)
 	}
 
 #line 665 "Window.bnd"
-#line 4190 "window.c"
+#line 4194 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4220,7 +4224,7 @@ static duk_ret_t dukky_window_onmouseover_setter(duk_context *ctx)
 	}
 
 #line 666 "Window.bnd"
-#line 4224 "window.c"
+#line 4228 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4251,7 +4255,7 @@ static duk_ret_t dukky_window_onmouseup_getter(duk_context *ctx)
 	}
 
 #line 667 "Window.bnd"
-#line 4255 "window.c"
+#line 4259 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4285,7 +4289,7 @@ static duk_ret_t dukky_window_onmouseup_setter(duk_context *ctx)
 	}
 
 #line 668 "Window.bnd"
-#line 4289 "window.c"
+#line 4293 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4316,7 +4320,7 @@ static duk_ret_t dukky_window_onwheel_getter(duk_context *ctx)
 	}
 
 #line 723 "Window.bnd"
-#line 4320 "window.c"
+#line 4324 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4350,7 +4354,7 @@ static duk_ret_t dukky_window_onwheel_setter(duk_context *ctx)
 	}
 
 #line 724 "Window.bnd"
-#line 4354 "window.c"
+#line 4358 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4381,7 +4385,7 @@ static duk_ret_t dukky_window_onpause_getter(duk_context *ctx)
 	}
 
 #line 677 "Window.bnd"
-#line 4385 "window.c"
+#line 4389 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4415,7 +4419,7 @@ static duk_ret_t dukky_window_onpause_setter(duk_context *ctx)
 	}
 
 #line 678 "Window.bnd"
-#line 4419 "window.c"
+#line 4423 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4446,7 +4450,7 @@ static duk_ret_t dukky_window_onplay_getter(duk_context *ctx)
 	}
 
 #line 681 "Window.bnd"
-#line 4450 "window.c"
+#line 4454 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4480,7 +4484,7 @@ static duk_ret_t dukky_window_onplay_setter(duk_context *ctx)
 	}
 
 #line 682 "Window.bnd"
-#line 4484 "window.c"
+#line 4488 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4511,7 +4515,7 @@ static duk_ret_t dukky_window_onplaying_getter(duk_context *ctx)
 	}
 
 #line 679 "Window.bnd"
-#line 4515 "window.c"
+#line 4519 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4545,7 +4549,7 @@ static duk_ret_t dukky_window_onplaying_setter(duk_context *ctx)
 	}
 
 #line 680 "Window.bnd"
-#line 4549 "window.c"
+#line 4553 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4576,7 +4580,7 @@ static duk_ret_t dukky_window_onprogress_getter(duk_context *ctx)
 	}
 
 #line 685 "Window.bnd"
-#line 4580 "window.c"
+#line 4584 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4610,7 +4614,7 @@ static duk_ret_t dukky_window_onprogress_setter(duk_context *ctx)
 	}
 
 #line 686 "Window.bnd"
-#line 4614 "window.c"
+#line 4618 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4641,7 +4645,7 @@ static duk_ret_t dukky_window_onratechange_getter(duk_context *ctx)
 	}
 
 #line 687 "Window.bnd"
-#line 4645 "window.c"
+#line 4649 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4675,7 +4679,7 @@ static duk_ret_t dukky_window_onratechange_setter(duk_context *ctx)
 	}
 
 #line 688 "Window.bnd"
-#line 4679 "window.c"
+#line 4683 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4706,7 +4710,7 @@ static duk_ret_t dukky_window_onreset_getter(duk_context *ctx)
 	}
 
 #line 689 "Window.bnd"
-#line 4710 "window.c"
+#line 4714 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4740,7 +4744,7 @@ static duk_ret_t dukky_window_onreset_setter(duk_context *ctx)
 	}
 
 #line 690 "Window.bnd"
-#line 4744 "window.c"
+#line 4748 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4771,7 +4775,7 @@ static duk_ret_t dukky_window_onresize_getter(duk_context *ctx)
 	}
 
 #line 691 "Window.bnd"
-#line 4775 "window.c"
+#line 4779 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4805,7 +4809,7 @@ static duk_ret_t dukky_window_onresize_setter(duk_context *ctx)
 	}
 
 #line 692 "Window.bnd"
-#line 4809 "window.c"
+#line 4813 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4836,7 +4840,7 @@ static duk_ret_t dukky_window_onscroll_getter(duk_context *ctx)
 	}
 
 #line 693 "Window.bnd"
-#line 4840 "window.c"
+#line 4844 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4870,7 +4874,7 @@ static duk_ret_t dukky_window_onscroll_setter(duk_context *ctx)
 	}
 
 #line 694 "Window.bnd"
-#line 4874 "window.c"
+#line 4878 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4901,7 +4905,7 @@ static duk_ret_t dukky_window_onseeked_getter(duk_context *ctx)
 	}
 
 #line 695 "Window.bnd"
-#line 4905 "window.c"
+#line 4909 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -4935,7 +4939,7 @@ static duk_ret_t dukky_window_onseeked_setter(duk_context *ctx)
 	}
 
 #line 696 "Window.bnd"
-#line 4939 "window.c"
+#line 4943 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -4966,7 +4970,7 @@ static duk_ret_t dukky_window_onseeking_getter(duk_context *ctx)
 	}
 
 #line 697 "Window.bnd"
-#line 4970 "window.c"
+#line 4974 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5000,7 +5004,7 @@ static duk_ret_t dukky_window_onseeking_setter(duk_context *ctx)
 	}
 
 #line 698 "Window.bnd"
-#line 5004 "window.c"
+#line 5008 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5031,7 +5035,7 @@ static duk_ret_t dukky_window_onselect_getter(duk_context *ctx)
 	}
 
 #line 699 "Window.bnd"
-#line 5035 "window.c"
+#line 5039 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5065,7 +5069,7 @@ static duk_ret_t dukky_window_onselect_setter(duk_context *ctx)
 	}
 
 #line 700 "Window.bnd"
-#line 5069 "window.c"
+#line 5073 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5096,7 +5100,7 @@ static duk_ret_t dukky_window_onshow_getter(duk_context *ctx)
 	}
 
 #line 701 "Window.bnd"
-#line 5100 "window.c"
+#line 5104 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5130,7 +5134,7 @@ static duk_ret_t dukky_window_onshow_setter(duk_context *ctx)
 	}
 
 #line 702 "Window.bnd"
-#line 5134 "window.c"
+#line 5138 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5161,7 +5165,7 @@ static duk_ret_t dukky_window_onsort_getter(duk_context *ctx)
 	}
 
 #line 703 "Window.bnd"
-#line 5165 "window.c"
+#line 5169 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5195,7 +5199,7 @@ static duk_ret_t dukky_window_onsort_setter(duk_context *ctx)
 	}
 
 #line 704 "Window.bnd"
-#line 5199 "window.c"
+#line 5203 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5226,7 +5230,7 @@ static duk_ret_t dukky_window_onstalled_getter(duk_context *ctx)
 	}
 
 #line 705 "Window.bnd"
-#line 5230 "window.c"
+#line 5234 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5260,7 +5264,7 @@ static duk_ret_t dukky_window_onstalled_setter(duk_context *ctx)
 	}
 
 #line 706 "Window.bnd"
-#line 5264 "window.c"
+#line 5268 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5291,7 +5295,7 @@ static duk_ret_t dukky_window_onsubmit_getter(duk_context *ctx)
 	}
 
 #line 709 "Window.bnd"
-#line 5295 "window.c"
+#line 5299 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5325,7 +5329,7 @@ static duk_ret_t dukky_window_onsubmit_setter(duk_context *ctx)
 	}
 
 #line 710 "Window.bnd"
-#line 5329 "window.c"
+#line 5333 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5356,7 +5360,7 @@ static duk_ret_t dukky_window_onsuspend_getter(duk_context *ctx)
 	}
 
 #line 711 "Window.bnd"
-#line 5360 "window.c"
+#line 5364 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5390,7 +5394,7 @@ static duk_ret_t dukky_window_onsuspend_setter(duk_context *ctx)
 	}
 
 #line 712 "Window.bnd"
-#line 5394 "window.c"
+#line 5398 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5421,7 +5425,7 @@ static duk_ret_t dukky_window_ontimeupdate_getter(duk_context *ctx)
 	}
 
 #line 713 "Window.bnd"
-#line 5425 "window.c"
+#line 5429 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5455,7 +5459,7 @@ static duk_ret_t dukky_window_ontimeupdate_setter(duk_context *ctx)
 	}
 
 #line 714 "Window.bnd"
-#line 5459 "window.c"
+#line 5463 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5486,7 +5490,7 @@ static duk_ret_t dukky_window_ontoggle_getter(duk_context *ctx)
 	}
 
 #line 715 "Window.bnd"
-#line 5490 "window.c"
+#line 5494 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5520,7 +5524,7 @@ static duk_ret_t dukky_window_ontoggle_setter(duk_context *ctx)
 	}
 
 #line 716 "Window.bnd"
-#line 5524 "window.c"
+#line 5528 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5551,7 +5555,7 @@ static duk_ret_t dukky_window_onvolumechange_getter(duk_context *ctx)
 	}
 
 #line 719 "Window.bnd"
-#line 5555 "window.c"
+#line 5559 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5585,7 +5589,7 @@ static duk_ret_t dukky_window_onvolumechange_setter(duk_context *ctx)
 	}
 
 #line 720 "Window.bnd"
-#line 5589 "window.c"
+#line 5593 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5616,7 +5620,7 @@ static duk_ret_t dukky_window_onwaiting_getter(duk_context *ctx)
 	}
 
 #line 721 "Window.bnd"
-#line 5620 "window.c"
+#line 5624 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5650,7 +5654,7 @@ static duk_ret_t dukky_window_onwaiting_setter(duk_context *ctx)
 	}
 
 #line 722 "Window.bnd"
-#line 5654 "window.c"
+#line 5658 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5681,7 +5685,7 @@ static duk_ret_t dukky_window_onafterprint_getter(duk_context *ctx)
 	}
 
 #line 575 "Window.bnd"
-#line 5685 "window.c"
+#line 5689 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5715,7 +5719,7 @@ static duk_ret_t dukky_window_onafterprint_setter(duk_context *ctx)
 	}
 
 #line 576 "Window.bnd"
-#line 5719 "window.c"
+#line 5723 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5746,7 +5750,7 @@ static duk_ret_t dukky_window_onbeforeprint_getter(duk_context *ctx)
 	}
 
 #line 581 "Window.bnd"
-#line 5750 "window.c"
+#line 5754 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5780,7 +5784,7 @@ static duk_ret_t dukky_window_onbeforeprint_setter(duk_context *ctx)
 	}
 
 #line 582 "Window.bnd"
-#line 5784 "window.c"
+#line 5788 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5811,7 +5815,7 @@ static duk_ret_t dukky_window_onbeforeunload_getter(duk_context *ctx)
 	}
 
 #line 583 "Window.bnd"
-#line 5815 "window.c"
+#line 5819 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5845,7 +5849,7 @@ static duk_ret_t dukky_window_onbeforeunload_setter(duk_context *ctx)
 	}
 
 #line 584 "Window.bnd"
-#line 5849 "window.c"
+#line 5853 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5876,7 +5880,7 @@ static duk_ret_t dukky_window_onhashchange_getter(duk_context *ctx)
 	}
 
 #line 631 "Window.bnd"
-#line 5880 "window.c"
+#line 5884 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5910,7 +5914,7 @@ static duk_ret_t dukky_window_onhashchange_setter(duk_context *ctx)
 	}
 
 #line 632 "Window.bnd"
-#line 5914 "window.c"
+#line 5918 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -5941,7 +5945,7 @@ static duk_ret_t dukky_window_onlanguagechange_getter(duk_context *ctx)
 	}
 
 #line 643 "Window.bnd"
-#line 5945 "window.c"
+#line 5949 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -5975,7 +5979,7 @@ static duk_ret_t dukky_window_onlanguagechange_setter(duk_context *ctx)
 	}
 
 #line 644 "Window.bnd"
-#line 5979 "window.c"
+#line 5983 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6006,7 +6010,7 @@ static duk_ret_t dukky_window_onmessage_getter(duk_context *ctx)
 	}
 
 #line 653 "Window.bnd"
-#line 6010 "window.c"
+#line 6014 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6040,7 +6044,7 @@ static duk_ret_t dukky_window_onmessage_setter(duk_context *ctx)
 	}
 
 #line 654 "Window.bnd"
-#line 6044 "window.c"
+#line 6048 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6071,7 +6075,7 @@ static duk_ret_t dukky_window_onoffline_getter(duk_context *ctx)
 	}
 
 #line 669 "Window.bnd"
-#line 6075 "window.c"
+#line 6079 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6105,7 +6109,7 @@ static duk_ret_t dukky_window_onoffline_setter(duk_context *ctx)
 	}
 
 #line 670 "Window.bnd"
-#line 6109 "window.c"
+#line 6113 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6136,7 +6140,7 @@ static duk_ret_t dukky_window_ononline_getter(duk_context *ctx)
 	}
 
 #line 671 "Window.bnd"
-#line 6140 "window.c"
+#line 6144 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6170,7 +6174,7 @@ static duk_ret_t dukky_window_ononline_setter(duk_context *ctx)
 	}
 
 #line 672 "Window.bnd"
-#line 6174 "window.c"
+#line 6178 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6201,7 +6205,7 @@ static duk_ret_t dukky_window_onpagehide_getter(duk_context *ctx)
 	}
 
 #line 673 "Window.bnd"
-#line 6205 "window.c"
+#line 6209 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6235,7 +6239,7 @@ static duk_ret_t dukky_window_onpagehide_setter(duk_context *ctx)
 	}
 
 #line 674 "Window.bnd"
-#line 6239 "window.c"
+#line 6243 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6266,7 +6270,7 @@ static duk_ret_t dukky_window_onpageshow_getter(duk_context *ctx)
 	}
 
 #line 675 "Window.bnd"
-#line 6270 "window.c"
+#line 6274 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6300,7 +6304,7 @@ static duk_ret_t dukky_window_onpageshow_setter(duk_context *ctx)
 	}
 
 #line 676 "Window.bnd"
-#line 6304 "window.c"
+#line 6308 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6331,7 +6335,7 @@ static duk_ret_t dukky_window_onpopstate_getter(duk_context *ctx)
 	}
 
 #line 683 "Window.bnd"
-#line 6335 "window.c"
+#line 6339 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6365,7 +6369,7 @@ static duk_ret_t dukky_window_onpopstate_setter(duk_context *ctx)
 	}
 
 #line 684 "Window.bnd"
-#line 6369 "window.c"
+#line 6373 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6396,7 +6400,7 @@ static duk_ret_t dukky_window_onstorage_getter(duk_context *ctx)
 	}
 
 #line 707 "Window.bnd"
-#line 6400 "window.c"
+#line 6404 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6430,7 +6434,7 @@ static duk_ret_t dukky_window_onstorage_setter(duk_context *ctx)
 	}
 
 #line 708 "Window.bnd"
-#line 6434 "window.c"
+#line 6438 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);
@@ -6461,7 +6465,7 @@ static duk_ret_t dukky_window_onunload_getter(duk_context *ctx)
 	}
 
 #line 717 "Window.bnd"
-#line 6465 "window.c"
+#line 6469 "window.c"
 	dom_event_target *et = NULL;
 	dom_string *name;
 	dom_exception exc;
@@ -6495,7 +6499,7 @@ static duk_ret_t dukky_window_onunload_setter(duk_context *ctx)
 	}
 
 #line 718 "Window.bnd"
-#line 6499 "window.c"
+#line 6503 "window.c"
 	dom_element *et = NULL;
 	/* handlerfn */
 	duk_push_this(ctx);

@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * line_height:CSS_PROP_LINE_HEIGHT IDENT:( INHERIT: NORMAL:0,LINE_HEIGHT_NORMAL IDENT:) NUMBER:( false:LINE_HEIGHT_NUMBER RANGE:num<0 NUMBER:) LENGTH_UNIT:( UNIT_PX:LINE_HEIGHT_DIMENSION DISALLOW:unit&UNIT_ANGLE||unit&UNIT_TIME||unit&UNIT_FREQ RANGE:<0 LENGTH_UNIT:)
+ * line_height:CSS_PROP_LINE_HEIGHT IDENT:( INHERIT: INITIAL: REVERT: UNSET: NORMAL:0,LINE_HEIGHT_NORMAL IDENT:) NUMBER:( false:LINE_HEIGHT_NUMBER RANGE:num<0 NUMBER:) LENGTH_UNIT:( UNIT_PX:LINE_HEIGHT_DIMENSION MASK:UNIT_MASK_LINE_HEIGHT RANGE:<0 LENGTH_UNIT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_line_height(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,10 +47,42 @@ css_error css__parse_line_height(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_LINE_HEIGHT);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[NORMAL], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_LINE_HEIGHT, 0,LINE_HEIGHT_NORMAL);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_LINE_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_LINE_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_LINE_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_LINE_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[NORMAL],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_LINE_HEIGHT,
+				0,LINE_HEIGHT_NORMAL);
+
 	} else if (token->type == CSS_TOKEN_NUMBER) {
 		css_fixed num = 0;
 		size_t consumed = 0;
@@ -84,7 +116,7 @@ css_error css__parse_line_height(css_language *c,
 			return error;
 		}
 
-		if (unit&UNIT_ANGLE||unit&UNIT_TIME||unit&UNIT_FREQ) {
+		if ((unit & UNIT_MASK_LINE_HEIGHT ) == 0) {
 			*ctx = orig_ctx;
 			return CSS_INVALID;
 		}

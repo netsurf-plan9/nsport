@@ -136,7 +136,7 @@ static duk_ret_t dukky_image_data_data_getter(duk_context *ctx)
 
 	duk_push_this(ctx);
 	duk_get_prop_string(ctx, -1, MAGIC(DATA));
-	duk_push_buffer_object(ctx, -1, 0, priv->width * priv->height * 4, DUK_BUFOBJ_UINT8CLAMPEDARRAY);
+	duk_push_buffer_object(ctx, -1, 0, priv->width * priv->height * 4llu, DUK_BUFOBJ_UINT8CLAMPEDARRAY);
 	return 1;
 #line 142 "image_data.c"
 }

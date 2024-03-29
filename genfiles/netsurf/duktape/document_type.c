@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_document_type___init(duk_context *ctx, document_type_private_t *priv, struct dom_document *document)
 {
 	dukky_node___init(ctx, &priv->parent, (struct dom_node *)document);
-#line 194 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 196 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "document_type.c"
 }
 

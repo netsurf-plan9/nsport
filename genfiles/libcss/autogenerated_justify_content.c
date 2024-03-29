@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * justify_content:CSS_PROP_JUSTIFY_CONTENT IDENT:( INHERIT: FLEX_START:0,JUSTIFY_CONTENT_FLEX_START FLEX_END:0,JUSTIFY_CONTENT_FLEX_END CENTER:0,JUSTIFY_CONTENT_CENTER SPACE_BETWEEN:0,JUSTIFY_CONTENT_SPACE_BETWEEN SPACE_AROUND:0,JUSTIFY_CONTENT_SPACE_AROUND SPACE_EVENLY:0,JUSTIFY_CONTENT_SPACE_EVENLY IDENT:)
+ * justify_content:CSS_PROP_JUSTIFY_CONTENT IDENT:( INHERIT: INITIAL: REVERT: UNSET: FLEX_START:0,JUSTIFY_CONTENT_FLEX_START FLEX_END:0,JUSTIFY_CONTENT_FLEX_END CENTER:0,JUSTIFY_CONTENT_CENTER SPACE_BETWEEN:0,JUSTIFY_CONTENT_SPACE_BETWEEN SPACE_AROUND:0,JUSTIFY_CONTENT_SPACE_AROUND SPACE_EVENLY:0,JUSTIFY_CONTENT_SPACE_EVENLY IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_justify_content(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,20 +47,72 @@ css_error css__parse_justify_content(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_JUSTIFY_CONTENT);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[FLEX_START], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_JUSTIFY_CONTENT, 0,JUSTIFY_CONTENT_FLEX_START);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[FLEX_END], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_JUSTIFY_CONTENT, 0,JUSTIFY_CONTENT_FLEX_END);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[CENTER], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_JUSTIFY_CONTENT, 0,JUSTIFY_CONTENT_CENTER);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[SPACE_BETWEEN], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_JUSTIFY_CONTENT, 0,JUSTIFY_CONTENT_SPACE_BETWEEN);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[SPACE_AROUND], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_JUSTIFY_CONTENT, 0,JUSTIFY_CONTENT_SPACE_AROUND);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[SPACE_EVENLY], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_JUSTIFY_CONTENT, 0,JUSTIFY_CONTENT_SPACE_EVENLY);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_JUSTIFY_CONTENT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_JUSTIFY_CONTENT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_JUSTIFY_CONTENT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_JUSTIFY_CONTENT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[FLEX_START],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_JUSTIFY_CONTENT,
+				0,JUSTIFY_CONTENT_FLEX_START);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[FLEX_END],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_JUSTIFY_CONTENT,
+				0,JUSTIFY_CONTENT_FLEX_END);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[CENTER],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_JUSTIFY_CONTENT,
+				0,JUSTIFY_CONTENT_CENTER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[SPACE_BETWEEN],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_JUSTIFY_CONTENT,
+				0,JUSTIFY_CONTENT_SPACE_BETWEEN);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[SPACE_AROUND],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_JUSTIFY_CONTENT,
+				0,JUSTIFY_CONTENT_SPACE_AROUND);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[SPACE_EVENLY],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_JUSTIFY_CONTENT,
+				0,JUSTIFY_CONTENT_SPACE_EVENLY);
+
 	} else {
 		error = CSS_INVALID;
 	}

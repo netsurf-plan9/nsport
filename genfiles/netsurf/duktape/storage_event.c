@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_storage_event___init(duk_context *ctx, storage_event_private_t *priv, struct dom_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, evt);
-#line 88 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 90 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "storage_event.c"
 }
 

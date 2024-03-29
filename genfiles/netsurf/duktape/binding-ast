@@ -2991,6 +2991,146 @@ Class
 Class
   Method
     Type: 2
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 127
+    CBlock: "
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char "
+    Class
+      Ident: "DOMTokenList"
+    Ident: "toggle"
+  Method
+    Type: 2
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 107
+    CBlock: "
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char "
+    Class
+      Ident: "DOMTokenList"
+    Ident: "contains"
+  Method
+    Type: 2
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 84
+    CBlock: "
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char "
+    Class
+      Ident: "DOMTokenList"
+    Ident: "remove"
+  Method
+    Type: 2
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 61
+    CBlock: "
+	dom_exception exc;
+	dom_string *value;
+	duk_size_t slen;
+	const char "
+    Class
+      Ident: "DOMTokenList"
+    Ident: "add"
+  Method
+    Type: 2
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 40
+    CBlock: "
+	unsigned long i = duk_to_uint(ctx, 0);
+	dom_exception err;
+	dom_strin"
+    Class
+      Ident: "DOMTokenList"
+    Ident: "item"
+  Method
+    Type: 3
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 26
+    CBlock: "
+	dom_exception err;
+	uint32_t len;
+
+	err = dom_tokenlist_get_length(pr"
+    Class
+      Ident: "DOMTokenList"
+    Ident: "length"
+  Method
+    Type: 1
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 21
+    CBlock: "
+	dom_tokenlist_unref(priv->tokens);
+"
+    Class
+      Ident: "DOMTokenList"
+  Method
+    Type: 0
+    Filename: "DOMTokenList.bnd"
+    Linenumber: 15
+    CBlock: "
+	priv->tokens = tokens;
+	dom_tokenlist_ref(tokens);
+"
+    Class
+      Ident: "DOMTokenList"
+    Parameter
+      Ident: "tokens"
+      TypeName: "*"
+      TypeName: "dom_tokenlist"
+      TypeName: "struct"
+  Ident: "DOMTokenList"
+  Private
+    Ident: "tokens"
+    TypeName: "*"
+    TypeName: "dom_tokenlist"
+    TypeName: "struct"
+Class
+  Method
+    Type: 4
+    Filename: "DOMSettableTokenList.bnd"
+    Linenumber: 30
+    CBlock: "
+	dom_exception exc;
+	dom_string *value;
+    duk_size_t slen;
+    const"
+    Class
+      Ident: "DOMSettableTokenList"
+    Ident: "value"
+  Method
+    Type: 3
+    Filename: "DOMSettableTokenList.bnd"
+    Linenumber: 16
+    CBlock: "
+	dom_exception exc;
+	dom_string *value;
+
+	exc = dom_tokenlist_get_valu"
+    Class
+      Ident: "DOMSettableTokenList"
+    Ident: "value"
+  Method
+    Type: 0
+    Filename: "DOMSettableTokenList.bnd"
+    Linenumber: 14
+    Class
+      Ident: "DOMSettableTokenList"
+    Parameter
+      Ident: "tokens"
+      Ident: "tokens"
+      TypeName: "*"
+      TypeName: "dom_tokenlist"
+      TypeName: "struct"
+  Ident: "DOMSettableTokenList"
+Class
+  Method
+    Type: 2
     Filename: "NamedNodeMap.bnd"
     Linenumber: 56
     CBlock: "
@@ -3056,7 +3196,7 @@ Class
   Method
     Type: 3
     Filename: "Element.bnd"
-    Linenumber: 518
+    Linenumber: 549
     CBlock: "
 	dom_exception exc;
 	dom_namednodemap *nmap = NULL;
@@ -3067,7 +3207,7 @@ Class
   Method
     Type: 4
     Filename: "Element.bnd"
-    Linenumber: 401
+    Linenumber: 432
     CBlock: "
 	duk_size_t size;
 	const char *s = duk_safe_to_lstring(ctx, 0, &size);"
@@ -3077,7 +3217,7 @@ Class
   Method
     Type: 3
     Filename: "Element.bnd"
-    Linenumber: 395
+    Linenumber: 426
     CBlock: "
 	duk_push_lstring(ctx, "", 0);
 	return 1;
@@ -3085,6 +3225,19 @@ Class
     Class
       Ident: "Element"
     Ident: "innerHTML"
+  Method
+    Type: 3
+    Filename: "Element.bnd"
+    Linenumber: 395
+    CBlock: "
+	dom_exception exc;
+	dom_tokenlist *tokens;
+
+	duk_set_top(ctx, 0);
+	du"
+    Class
+      Ident: "Element"
+    Ident: "classList"
   Method
     Type: 4
     Filename: "Element.bnd"
@@ -3972,7 +4125,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 75
+    Linenumber: 77
     Class
       Ident: "MutationEvent"
     Parameter
@@ -3986,7 +4139,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 76
+    Linenumber: 78
     Class
       Ident: "UIEvent"
     Parameter
@@ -4000,7 +4153,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 77
+    Linenumber: 79
     Class
       Ident: "TextEvent"
     Parameter
@@ -4014,7 +4167,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 78
+    Linenumber: 80
     Class
       Ident: "MutationNameEvent"
     Parameter
@@ -4028,7 +4181,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 79
+    Linenumber: 81
     Class
       Ident: "MouseWheelEvent"
     Parameter
@@ -4042,7 +4195,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 80
+    Linenumber: 82
     Class
       Ident: "MouseMultiWheelEvent"
     Parameter
@@ -4056,7 +4209,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 81
+    Linenumber: 83
     Class
       Ident: "MouseEvent"
     Parameter
@@ -4070,7 +4223,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 82
+    Linenumber: 84
     Class
       Ident: "DocumentEvent"
     Parameter
@@ -4084,7 +4237,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 83
+    Linenumber: 85
     Class
       Ident: "CustomEvent"
     Parameter
@@ -4098,7 +4251,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 84
+    Linenumber: 86
     Class
       Ident: "CompositionEvent"
     Parameter
@@ -4112,7 +4265,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 85
+    Linenumber: 87
     Class
       Ident: "WheelEvent"
     Parameter
@@ -4126,7 +4279,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 86
+    Linenumber: 88
     Class
       Ident: "FocusEvent"
     Parameter
@@ -4140,7 +4293,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 87
+    Linenumber: 89
     Class
       Ident: "StorageEvent"
     Parameter
@@ -4154,7 +4307,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 88
+    Linenumber: 90
     Class
       Ident: "CloseEvent"
     Parameter
@@ -4168,7 +4321,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 89
+    Linenumber: 91
     Class
       Ident: "MessageEvent"
     Parameter
@@ -4182,7 +4335,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 90
+    Linenumber: 92
     Class
       Ident: "ErrorEvent"
     Parameter
@@ -4196,7 +4349,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 91
+    Linenumber: 93
     Class
       Ident: "BeforeUnloadEvent"
     Parameter
@@ -4210,7 +4363,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 92
+    Linenumber: 94
     Class
       Ident: "PageTransitionEvent"
     Parameter
@@ -4224,7 +4377,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 93
+    Linenumber: 95
     Class
       Ident: "HashChangeEvent"
     Parameter
@@ -4238,7 +4391,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 94
+    Linenumber: 96
     Class
       Ident: "PopStateEvent"
     Parameter
@@ -4252,7 +4405,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 95
+    Linenumber: 97
     Class
       Ident: "DragEvent"
     Parameter
@@ -4266,7 +4419,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 96
+    Linenumber: 98
     Class
       Ident: "RelatedEvent"
     Parameter
@@ -4280,7 +4433,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 97
+    Linenumber: 99
     Class
       Ident: "AutocompleteErrorEvent"
     Parameter
@@ -4294,7 +4447,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 98
+    Linenumber: 100
     Class
       Ident: "TrackEvent"
     Parameter
@@ -9137,7 +9290,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 151
+    Linenumber: 153
     Class
       Ident: "HTMLUnknownElement"
     Parameter
@@ -9151,7 +9304,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 152
+    Linenumber: 154
     Class
       Ident: "HTMLDirectoryElement"
     Parameter
@@ -9165,7 +9318,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 153
+    Linenumber: 155
     Class
       Ident: "HTMLTemplateElement"
     Parameter
@@ -9179,7 +9332,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 154
+    Linenumber: 156
     Class
       Ident: "HTMLDialogElement"
     Parameter
@@ -9193,7 +9346,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 155
+    Linenumber: 157
     Class
       Ident: "HTMLMenuItemElement"
     Parameter
@@ -9207,7 +9360,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 156
+    Linenumber: 158
     Class
       Ident: "HTMLDetailsElement"
     Parameter
@@ -9221,7 +9374,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 157
+    Linenumber: 159
     Class
       Ident: "HTMLFieldSetElement"
     Parameter
@@ -9235,7 +9388,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 158
+    Linenumber: 160
     Class
       Ident: "HTMLMeterElement"
     Parameter
@@ -9249,7 +9402,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 159
+    Linenumber: 161
     Class
       Ident: "HTMLProgressElement"
     Parameter
@@ -9263,7 +9416,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 160
+    Linenumber: 162
     Class
       Ident: "HTMLOutputElement"
     Parameter
@@ -9277,7 +9430,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 161
+    Linenumber: 163
     Class
       Ident: "HTMLKeygenElement"
     Parameter
@@ -9291,7 +9444,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 162
+    Linenumber: 164
     Class
       Ident: "HTMLOptGroupElement"
     Parameter
@@ -9305,7 +9458,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 163
+    Linenumber: 165
     Class
       Ident: "HTMLDataListElement"
     Parameter
@@ -9319,7 +9472,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 164
+    Linenumber: 166
     Class
       Ident: "HTMLMediaElement"
     Parameter
@@ -9333,7 +9486,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 165
+    Linenumber: 167
     Class
       Ident: "HTMLTrackElement"
     Parameter
@@ -9347,7 +9500,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 166
+    Linenumber: 168
     Class
       Ident: "HTMLEmbedElement"
     Parameter
@@ -9361,7 +9514,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 167
+    Linenumber: 169
     Class
       Ident: "HTMLSourceElement"
     Parameter
@@ -9375,7 +9528,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 168
+    Linenumber: 170
     Class
       Ident: "HTMLPictureElement"
     Parameter
@@ -9389,7 +9542,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 169
+    Linenumber: 171
     Class
       Ident: "HTMLModElement"
     Parameter
@@ -9403,7 +9556,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 170
+    Linenumber: 172
     Class
       Ident: "HTMLSpanElement"
     Parameter
@@ -9417,7 +9570,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 171
+    Linenumber: 173
     Class
       Ident: "HTMLTimeElement"
     Parameter
@@ -9431,7 +9584,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 172
+    Linenumber: 174
     Class
       Ident: "HTMLDataElement"
     Parameter
@@ -9445,7 +9598,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 173
+    Linenumber: 175
     Class
       Ident: "HTMLDListElement"
     Parameter
@@ -9459,7 +9612,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 174
+    Linenumber: 176
     Class
       Ident: "HTMLUListElement"
     Parameter
@@ -9473,7 +9626,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 175
+    Linenumber: 177
     Class
       Ident: "HTMLHeadElement"
     Parameter
@@ -9487,7 +9640,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 178
+    Linenumber: 180
     Class
       Ident: "HTMLTableHeaderCellElement"
     Parameter
@@ -9501,7 +9654,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 179
+    Linenumber: 181
     Class
       Ident: "HTMLTableDataCellElement"
     Parameter
@@ -9515,7 +9668,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 182
+    Linenumber: 184
     Class
       Ident: "HTMLAudioElement"
     Parameter
@@ -9529,7 +9682,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 183
+    Linenumber: 185
     Class
       Ident: "HTMLVideoElement"
     Parameter
@@ -9543,7 +9696,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 185
+    Linenumber: 187
     Class
       Ident: "Text"
     Parameter
@@ -9557,7 +9710,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 186
+    Linenumber: 188
     Class
       Ident: "Comment"
     Parameter
@@ -9571,7 +9724,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 187
+    Linenumber: 189
     Class
       Ident: "ProcessingInstruction"
     Parameter
@@ -9585,7 +9738,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 189
+    Linenumber: 191
     Class
       Ident: "XMLDocument"
     Parameter
@@ -9598,7 +9751,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 191
+    Linenumber: 193
     Class
       Ident: "CharacterData"
     Parameter
@@ -9612,7 +9765,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 192
+    Linenumber: 194
     Class
       Ident: "DocumentFragment"
     Parameter
@@ -9626,7 +9779,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 193
+    Linenumber: 195
     Class
       Ident: "DocumentType"
     Parameter
@@ -9640,7 +9793,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 195
+    Linenumber: 197
     Class
       Ident: "PropertyNodeList"
     Parameter
@@ -9653,7 +9806,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 196
+    Linenumber: 198
     Class
       Ident: "RadioNodeList"
     Parameter
@@ -9666,7 +9819,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 198
+    Linenumber: 200
     Class
       Ident: "HTMLAllCollection"
     Parameter
@@ -9679,7 +9832,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 199
+    Linenumber: 201
     Class
       Ident: "HTMLFormControlsCollection"
     Parameter
@@ -9692,7 +9845,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 200
+    Linenumber: 202
     Class
       Ident: "HTMLOptionsCollection"
     Parameter
@@ -9705,7 +9858,7 @@ Class
   Method
     Type: 0
     Filename: "content/handlers/javascript/duktape/netsurf.bnd"
-    Linenumber: 201
+    Linenumber: 203
     Class
       Ident: "HTMLPropertiesCollection"
     Parameter
@@ -9922,3 +10075,31 @@ Class
     Ident: "data"
     TypeName: "*"
     TypeName: "uint8_t"
+Class
+  Method
+    Type: 0
+    Filename: "CSSRule.bnd"
+    Linenumber: 19
+    CBlock: "
+    priv->unused = true;
+"
+    Class
+      Ident: "CSSRule"
+  Ident: "CSSRule"
+  Private
+    Ident: "unused"
+    TypeName: "bool"
+Class
+  Method
+    Type: 0
+    Filename: "CSSStyleSheet.bnd"
+    Linenumber: 19
+    CBlock: "
+    priv->unused = true;
+"
+    Class
+      Ident: "CSSStyleSheet"
+  Ident: "CSSStyleSheet"
+  Private
+    Ident: "unused"
+    TypeName: "bool"

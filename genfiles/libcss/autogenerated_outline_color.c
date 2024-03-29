@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * outline_color:CSS_PROP_OUTLINE_COLOR IDENT:( INHERIT: INVERT:0,OUTLINE_COLOR_INVERT IDENT:) COLOR:OUTLINE_COLOR_SET
+ * outline_color:CSS_PROP_OUTLINE_COLOR IDENT:( INHERIT: INITIAL: REVERT: UNSET: INVERT:0,OUTLINE_COLOR_INVERT IDENT:) COLOR:OUTLINE_COLOR_SET
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_outline_color(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,10 +47,42 @@ css_error css__parse_outline_color(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_OUTLINE_COLOR);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INVERT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_OUTLINE_COLOR, 0,OUTLINE_COLOR_INVERT);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_OUTLINE_COLOR);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_OUTLINE_COLOR);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_OUTLINE_COLOR);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_OUTLINE_COLOR);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_OUTLINE_COLOR,
+				0,OUTLINE_COLOR_INVERT);
+
 	} else {
 		uint16_t value = 0;
 		uint32_t color = 0;

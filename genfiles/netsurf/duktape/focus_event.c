@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_focus_event___init(duk_context *ctx, focus_event_private_t *priv, struct dom_ui_event *evt)
 {
 	dukky_ui_event___init(ctx, &priv->parent, evt);
-#line 87 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 89 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "focus_event.c"
 }
 
@@ -98,12 +98,20 @@ static duk_ret_t dukky_focus_event_initFocusEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 1) {
 		if (!duk_is_boolean(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			if (duk_is_number(ctx, 1)) {
+				duk_to_boolean(ctx, 1);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			}
 		}
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			}
 		}
 	}
 	if (dukky_argc > 3) {

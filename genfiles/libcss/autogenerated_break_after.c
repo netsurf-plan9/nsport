@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * break_after:CSS_PROP_BREAK_AFTER IDENT:( INHERIT: AUTO:0,BREAK_AFTER_AUTO ALWAYS:0,BREAK_AFTER_ALWAYS AVOID:0,BREAK_AFTER_AVOID LEFT:0,BREAK_AFTER_LEFT RIGHT:0,BREAK_AFTER_RIGHT PAGE:0,BREAK_AFTER_PAGE COLUMN:0,BREAK_AFTER_COLUMN AVOID_PAGE:0,BREAK_AFTER_AVOID_PAGE AVOID_COLUMN:0,BREAK_AFTER_AVOID_COLUMN IDENT:)
+ * break_after:CSS_PROP_BREAK_AFTER IDENT:( INHERIT: INITIAL: REVERT: UNSET: AUTO:0,BREAK_AFTER_AUTO ALWAYS:0,BREAK_AFTER_ALWAYS AVOID:0,BREAK_AFTER_AVOID LEFT:0,BREAK_AFTER_LEFT RIGHT:0,BREAK_AFTER_RIGHT PAGE:0,BREAK_AFTER_PAGE COLUMN:0,BREAK_AFTER_COLUMN AVOID_PAGE:0,BREAK_AFTER_AVOID_PAGE AVOID_COLUMN:0,BREAK_AFTER_AVOID_COLUMN IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_break_after(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,26 +47,93 @@ css_error css__parse_break_after(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_BREAK_AFTER);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[AUTO], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_AUTO);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[ALWAYS], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_ALWAYS);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[AVOID], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_AVOID);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[LEFT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_LEFT);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[RIGHT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_RIGHT);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[PAGE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_PAGE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[COLUMN], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_COLUMN);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[AVOID_PAGE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_AVOID_PAGE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[AVOID_COLUMN], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_BREAK_AFTER, 0,BREAK_AFTER_AVOID_COLUMN);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_BREAK_AFTER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_BREAK_AFTER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_BREAK_AFTER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_BREAK_AFTER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[AUTO],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_AUTO);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[ALWAYS],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_ALWAYS);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[AVOID],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_AVOID);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[LEFT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_LEFT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[RIGHT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_RIGHT);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[PAGE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_PAGE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[COLUMN],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_COLUMN);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[AVOID_PAGE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_AVOID_PAGE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[AVOID_COLUMN],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_BREAK_AFTER,
+				0,BREAK_AFTER_AVOID_COLUMN);
+
 	} else {
 		error = CSS_INVALID;
 	}

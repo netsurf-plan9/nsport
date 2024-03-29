@@ -153,12 +153,20 @@ static duk_ret_t dukky_keyboard_event_initKeyboardEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 1) {
 		if (!duk_is_boolean(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			if (duk_is_number(ctx, 1)) {
+				duk_to_boolean(ctx, 1);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			}
 		}
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			}
 		}
 	}
 	if (dukky_argc > 3) {
@@ -181,7 +189,11 @@ static duk_ret_t dukky_keyboard_event_initKeyboardEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 7) {
 		if (!duk_is_boolean(ctx, 7)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 7, "repeat");
+			if (duk_is_number(ctx, 7)) {
+				duk_to_boolean(ctx, 7);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 7, "repeat");
+			}
 		}
 	}
 	if (dukky_argc > 8) {
@@ -227,7 +239,7 @@ static duk_ret_t dukky_keyboard_event_key_getter(duk_context *ctx)
 	duk_push_lstring(ctx, dom_string_data(key), dom_string_length(key));
 	dom_string_unref(key);
 	return 1;
-#line 231 "keyboard_event.c"
+#line 243 "keyboard_event.c"
 }
 
 static duk_ret_t dukky_keyboard_event_code_getter(duk_context *ctx)
@@ -255,7 +267,7 @@ static duk_ret_t dukky_keyboard_event_code_getter(duk_context *ctx)
 	duk_push_lstring(ctx, dom_string_data(code), dom_string_length(code));
 	dom_string_unref(code);
 	return 1;
-#line 259 "keyboard_event.c"
+#line 271 "keyboard_event.c"
 }
 
 static duk_ret_t dukky_keyboard_event_location_getter(duk_context *ctx)
@@ -283,7 +295,7 @@ static duk_ret_t dukky_keyboard_event_location_getter(duk_context *ctx)
 
 	duk_push_uint(ctx, (duk_uint_t) location);
 	return 1;
-#line 287 "keyboard_event.c"
+#line 299 "keyboard_event.c"
 }
 
 static duk_ret_t dukky_keyboard_event_ctrlKey_getter(duk_context *ctx)
@@ -311,7 +323,7 @@ static duk_ret_t dukky_keyboard_event_ctrlKey_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, (duk_bool_t) ctrl_key);
 	return 1;
-#line 315 "keyboard_event.c"
+#line 327 "keyboard_event.c"
 }
 
 static duk_ret_t dukky_keyboard_event_shiftKey_getter(duk_context *ctx)
@@ -339,7 +351,7 @@ static duk_ret_t dukky_keyboard_event_shiftKey_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, (duk_bool_t) shift_key);
 	return 1;
-#line 343 "keyboard_event.c"
+#line 355 "keyboard_event.c"
 }
 
 static duk_ret_t dukky_keyboard_event_altKey_getter(duk_context *ctx)
@@ -367,7 +379,7 @@ static duk_ret_t dukky_keyboard_event_altKey_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, (duk_bool_t) alt_key);
 	return 1;
-#line 371 "keyboard_event.c"
+#line 383 "keyboard_event.c"
 }
 
 static duk_ret_t dukky_keyboard_event_metaKey_getter(duk_context *ctx)
@@ -395,7 +407,7 @@ static duk_ret_t dukky_keyboard_event_metaKey_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, (duk_bool_t) meta_key);
 	return 1;
-#line 399 "keyboard_event.c"
+#line 411 "keyboard_event.c"
 }
 
 static duk_ret_t dukky_keyboard_event_repeat_getter(duk_context *ctx)

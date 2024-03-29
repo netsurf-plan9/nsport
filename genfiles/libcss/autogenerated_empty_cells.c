@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * empty_cells:CSS_PROP_EMPTY_CELLS IDENT:( INHERIT: SHOW:0,EMPTY_CELLS_SHOW HIDE:0,EMPTY_CELLS_HIDE IDENT:)
+ * empty_cells:CSS_PROP_EMPTY_CELLS IDENT:( INHERIT: INITIAL: REVERT: UNSET: SHOW:0,EMPTY_CELLS_SHOW HIDE:0,EMPTY_CELLS_HIDE IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_empty_cells(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,12 +47,44 @@ css_error css__parse_empty_cells(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_EMPTY_CELLS);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[SHOW], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_EMPTY_CELLS, 0,EMPTY_CELLS_SHOW);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[HIDE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_EMPTY_CELLS, 0,EMPTY_CELLS_HIDE);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_EMPTY_CELLS);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_EMPTY_CELLS);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_EMPTY_CELLS);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_EMPTY_CELLS);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[SHOW],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_EMPTY_CELLS,
+				0,EMPTY_CELLS_SHOW);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[HIDE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_EMPTY_CELLS,
+				0,EMPTY_CELLS_HIDE);
+
 	} else {
 		error = CSS_INVALID;
 	}

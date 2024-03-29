@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * pause_before:CSS_PROP_PAUSE_BEFORE IDENT:INHERIT LENGTH_UNIT:( UNIT_S:PAUSE_BEFORE_SET DISALLOW:(unit&UNIT_TIME)==false&&(unit&UNIT_PCT)==false RANGE:<0 LENGTH_UNIT:)
+ * pause_before:CSS_PROP_PAUSE_BEFORE IDENT:( INHERIT: INITIAL: REVERT: UNSET: IDENT:) LENGTH_UNIT:( UNIT_S:PAUSE_BEFORE_SET MASK:UNIT_MASK_PAUSE_BEFORE RANGE:<0 LENGTH_UNIT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_pause_before(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,8 +47,34 @@ css_error css__parse_pause_before(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_PAUSE_BEFORE);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_PAUSE_BEFORE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_PAUSE_BEFORE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_PAUSE_BEFORE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_PAUSE_BEFORE);
+
 	} else {
 		css_fixed length = 0;
 		uint32_t unit = 0;
@@ -60,7 +86,7 @@ css_error css__parse_pause_before(css_language *c,
 			return error;
 		}
 
-		if ((unit&UNIT_TIME)==false&&(unit&UNIT_PCT)==false) {
+		if ((unit & UNIT_MASK_PAUSE_BEFORE ) == 0) {
 			*ctx = orig_ctx;
 			return CSS_INVALID;
 		}

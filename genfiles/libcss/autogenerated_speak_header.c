@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * speak_header:CSS_PROP_SPEAK_HEADER IDENT:( INHERIT: ONCE:0,SPEAK_HEADER_ONCE ALWAYS:0,SPEAK_HEADER_ALWAYS IDENT:)
+ * speak_header:CSS_PROP_SPEAK_HEADER IDENT:( INHERIT: INITIAL: REVERT: UNSET: ONCE:0,SPEAK_HEADER_ONCE ALWAYS:0,SPEAK_HEADER_ALWAYS IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_speak_header(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,12 +47,44 @@ css_error css__parse_speak_header(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_SPEAK_HEADER);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[ONCE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEAK_HEADER, 0,SPEAK_HEADER_ONCE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[ALWAYS], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEAK_HEADER, 0,SPEAK_HEADER_ALWAYS);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_SPEAK_HEADER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_SPEAK_HEADER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_SPEAK_HEADER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_SPEAK_HEADER);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[ONCE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEAK_HEADER,
+				0,SPEAK_HEADER_ONCE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[ALWAYS],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEAK_HEADER,
+				0,SPEAK_HEADER_ALWAYS);
+
 	} else {
 		error = CSS_INVALID;
 	}

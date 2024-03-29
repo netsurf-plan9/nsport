@@ -43,7 +43,7 @@ struct dom_html_br_element;
 void dukky_mouse_event___init(duk_context *ctx, mouse_event_private_t *priv, struct dom_mouse_event *evt)
 {
 	dukky_ui_event___init(ctx, &priv->parent, (struct dom_ui_event *)evt);
-#line 82 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 84 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "mouse_event.c"
 }
 
@@ -129,12 +129,20 @@ static duk_ret_t dukky_mouse_event_initMouseEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 1) {
 		if (!duk_is_boolean(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			if (duk_is_number(ctx, 1)) {
+				duk_to_boolean(ctx, 1);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			}
 		}
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			}
 		}
 	}
 	if (dukky_argc > 3) {
@@ -167,22 +175,38 @@ static duk_ret_t dukky_mouse_event_initMouseEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 9) {
 		if (!duk_is_boolean(ctx, 9)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 9, "ctrlKeyArg");
+			if (duk_is_number(ctx, 9)) {
+				duk_to_boolean(ctx, 9);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 9, "ctrlKeyArg");
+			}
 		}
 	}
 	if (dukky_argc > 10) {
 		if (!duk_is_boolean(ctx, 10)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 10, "altKeyArg");
+			if (duk_is_number(ctx, 10)) {
+				duk_to_boolean(ctx, 10);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 10, "altKeyArg");
+			}
 		}
 	}
 	if (dukky_argc > 11) {
 		if (!duk_is_boolean(ctx, 11)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 11, "shiftKeyArg");
+			if (duk_is_number(ctx, 11)) {
+				duk_to_boolean(ctx, 11);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 11, "shiftKeyArg");
+			}
 		}
 	}
 	if (dukky_argc > 12) {
 		if (!duk_is_boolean(ctx, 12)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 12, "metaKeyArg");
+			if (duk_is_number(ctx, 12)) {
+				duk_to_boolean(ctx, 12);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 12, "metaKeyArg");
+			}
 		}
 	}
 	if (dukky_argc > 13) {

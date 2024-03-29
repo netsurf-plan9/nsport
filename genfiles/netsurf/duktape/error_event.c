@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_error_event___init(duk_context *ctx, error_event_private_t *priv, struct dom_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, evt);
-#line 91 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 93 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "error_event.c"
 }
 

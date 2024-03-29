@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * border_side_style:op GENERIC: IDENT:( INHERIT: NONE:0,BORDER_STYLE_NONE HIDDEN:0,BORDER_STYLE_HIDDEN DOTTED:0,BORDER_STYLE_DOTTED DASHED:0,BORDER_STYLE_DASHED SOLID:0,BORDER_STYLE_SOLID LIBCSS_DOUBLE:0,BORDER_STYLE_DOUBLE GROOVE:0,BORDER_STYLE_GROOVE RIDGE:0,BORDER_STYLE_RIDGE INSET:0,BORDER_STYLE_INSET OUTSET:0,BORDER_STYLE_OUTSET IDENT:)
+ * border_side_style:op GENERIC: IDENT:( INHERIT: INITIAL: REVERT: UNSET: NONE:0,BORDER_STYLE_NONE HIDDEN:0,BORDER_STYLE_HIDDEN DOTTED:0,BORDER_STYLE_DOTTED DASHED:0,BORDER_STYLE_DASHED SOLID:0,BORDER_STYLE_SOLID LIBCSS_DOUBLE:0,BORDER_STYLE_DOUBLE GROOVE:0,BORDER_STYLE_GROOVE RIDGE:0,BORDER_STYLE_RIDGE INSET:0,BORDER_STYLE_INSET OUTSET:0,BORDER_STYLE_OUTSET IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -34,10 +34,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_border_side_style(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result, enum css_properties_e op)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -48,28 +48,100 @@ css_error css__parse_border_side_style(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, op);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[NONE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_NONE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[HIDDEN], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_HIDDEN);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[DOTTED], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_DOTTED);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[DASHED], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_DASHED);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[SOLID], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_SOLID);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[LIBCSS_DOUBLE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_DOUBLE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[GROOVE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_GROOVE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[RIDGE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_RIDGE);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[INSET], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_INSET);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[OUTSET], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, op, 0,BORDER_STYLE_OUTSET);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				op);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				op);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				op);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				op);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[NONE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_NONE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[HIDDEN],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_HIDDEN);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[DOTTED],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_DOTTED);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[DASHED],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_DASHED);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[SOLID],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_SOLID);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[LIBCSS_DOUBLE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_DOUBLE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[GROOVE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_GROOVE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[RIDGE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_RIDGE);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INSET],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_INSET);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[OUTSET],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				op,
+				0,BORDER_STYLE_OUTSET);
+
 	} else {
 		error = CSS_INVALID;
 	}

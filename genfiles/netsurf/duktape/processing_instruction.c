@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_processing_instruction___init(duk_context *ctx, processing_instruction_private_t *priv, struct dom_node_text *text)
 {
 	dukky_character_data___init(ctx, &priv->parent, (struct dom_node_character_data *)text);
-#line 188 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 190 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "processing_instruction.c"
 }
 

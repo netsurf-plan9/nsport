@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_html_table_header_cell_element___init(duk_context *ctx, html_table_header_cell_element_private_t *priv, struct dom_html_element *html_table_header_cell_element)
 {
 	dukky_html_table_cell_element___init(ctx, &priv->parent, html_table_header_cell_element);
-#line 179 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 181 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_table_header_cell_element.c"
 }
 

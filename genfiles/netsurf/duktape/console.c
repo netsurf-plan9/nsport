@@ -79,7 +79,7 @@ write_log_entry(duk_context *ctx, unsigned int group, browser_window_console_fla
 	duk_size_t msglen;
 	const char *msg = duk_safe_to_lstring(ctx, 0, &msglen);
 
-	if (priv_win == NULL || priv_win->win == NULL ||
+	if (priv_win == NULL || priv_win->win == NULL || priv_win->closed_down == true ||
 	    browser_window_console_log(priv_win->win, BW_CS_SCRIPT_CONSOLE,
 				       msg, msglen,
 				       flags) != NSERROR_OK) {
@@ -434,7 +434,7 @@ static duk_ret_t dukky_console_timeEnd(duk_context *ctx)
 	duk_del_prop(ctx, 0);
 	duk_push_string(ctx, "Timer elapsed: ");
 	duk_insert(ctx, 0);
-	duk_push_sprintf(ctx, "%lu ms", (duk_uint_t)(time_ms - old_time_ms));
+	duk_push_sprintf(ctx, "%u ms", (duk_uint_t)(time_ms - old_time_ms));
 	write_log_entry(ctx, priv->group, BW_CS_FLAG_LEVEL_INFO);
 	return 0;
 #line 441 "console.c"

@@ -43,7 +43,7 @@ struct dom_html_br_element;
 void dukky_ui_event___init(duk_context *ctx, ui_event_private_t *priv, struct dom_ui_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, (struct dom_event *)evt);
-#line 77 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 79 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "ui_event.c"
 }
 
@@ -98,12 +98,20 @@ static duk_ret_t dukky_ui_event_initUIEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 1) {
 		if (!duk_is_boolean(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			if (duk_is_number(ctx, 1)) {
+				duk_to_boolean(ctx, 1);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubblesArg");
+			}
 		}
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelableArg");
+			}
 		}
 	}
 	if (dukky_argc > 3) {

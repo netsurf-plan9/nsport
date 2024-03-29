@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_drag_event___init(duk_context *ctx, drag_event_private_t *priv, struct dom_mouse_event *evt)
 {
 	dukky_mouse_event___init(ctx, &priv->parent, evt);
-#line 96 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 98 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "drag_event.c"
 }
 

@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * font_size:CSS_PROP_FONT_SIZE IDENT:( INHERIT: XX_SMALL:0,FONT_SIZE_XX_SMALL X_SMALL:0,FONT_SIZE_X_SMALL SMALL:0,FONT_SIZE_SMALL MEDIUM:0,FONT_SIZE_MEDIUM LARGE:0,FONT_SIZE_LARGE X_LARGE:0,FONT_SIZE_X_LARGE XX_LARGE:0,FONT_SIZE_XX_LARGE LARGER:0,FONT_SIZE_LARGER SMALLER:0,FONT_SIZE_SMALLER IDENT:) LENGTH_UNIT:( UNIT_PX:FONT_SIZE_DIMENSION DISALLOW:unit&UNIT_ANGLE||unit&UNIT_TIME||unit&UNIT_FREQ RANGE:<0 LENGTH_UNIT:)
+ * font_size:CSS_PROP_FONT_SIZE IDENT:( INHERIT: INITIAL: REVERT: UNSET: XX_SMALL:0,FONT_SIZE_XX_SMALL X_SMALL:0,FONT_SIZE_X_SMALL SMALL:0,FONT_SIZE_SMALL MEDIUM:0,FONT_SIZE_MEDIUM LARGE:0,FONT_SIZE_LARGE X_LARGE:0,FONT_SIZE_X_LARGE XX_LARGE:0,FONT_SIZE_XX_LARGE LARGER:0,FONT_SIZE_LARGER SMALLER:0,FONT_SIZE_SMALLER IDENT:) LENGTH_UNIT:( UNIT_PX:FONT_SIZE_DIMENSION MASK:UNIT_MASK_FONT_SIZE RANGE:<0 LENGTH_UNIT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_font_size(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,26 +47,106 @@ css_error css__parse_font_size(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_FONT_SIZE);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[XX_SMALL], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_XX_SMALL);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[X_SMALL], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_X_SMALL);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[SMALL], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_SMALL);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[MEDIUM], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_MEDIUM);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[LARGE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_LARGE);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[X_LARGE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_X_LARGE);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[XX_LARGE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_XX_LARGE);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[LARGER], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_LARGER);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[SMALLER], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FONT_SIZE, 0,FONT_SIZE_SMALLER);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_FONT_SIZE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_FONT_SIZE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_FONT_SIZE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_FONT_SIZE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[XX_SMALL],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_XX_SMALL);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[X_SMALL],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_X_SMALL);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[SMALL],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_SMALL);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[MEDIUM],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_MEDIUM);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[LARGE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_LARGE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[X_LARGE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_X_LARGE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[XX_LARGE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_XX_LARGE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[LARGER],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_LARGER);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[SMALLER],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FONT_SIZE,
+				0,FONT_SIZE_SMALLER);
+
 	} else {
 		css_fixed length = 0;
 		uint32_t unit = 0;
@@ -78,7 +158,7 @@ css_error css__parse_font_size(css_language *c,
 			return error;
 		}
 
-		if (unit&UNIT_ANGLE||unit&UNIT_TIME||unit&UNIT_FREQ) {
+		if ((unit & UNIT_MASK_FONT_SIZE ) == 0) {
 			*ctx = orig_ctx;
 			return CSS_INVALID;
 		}

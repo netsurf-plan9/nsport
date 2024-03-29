@@ -42,7 +42,7 @@ struct dom_html_br_element;
 
 static void dukky_html_all_collection___init(duk_context *ctx, html_all_collection_private_t *priv, struct dom_html_collection *coll)
 {
-#line 199 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 201 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 47 "html_all_collection.c"
 }
 

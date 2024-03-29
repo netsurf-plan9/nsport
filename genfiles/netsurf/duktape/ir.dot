@@ -44,7 +44,7 @@ node [shape=box]
 0041 [label="SVGElement"];
 0042 [label="ElementCSSInlineStyle"];
 0043 [label="CSSStyleDeclaration"];
-0044 [label="CSSRule"];
+0044 [label="CSSRule"fontcolor="blue"];
 0045 [label="CSSNamespaceRule"];
 0046 [label="CSSMarginRule"];
 0047 [label="CSSGroupingRule"];
@@ -56,7 +56,7 @@ node [shape=box]
 0053 [label="LinkStyle"];
 0054 [label="StyleSheetList"];
 0055 [label="StyleSheet"];
-0056 [label="CSSStyleSheet"];
+0056 [label="CSSStyleSheet"fontcolor="blue"];
 0057 [label="MediaList"];
 0058 [label="EventTarget"fontcolor="blue"];
 0059 [label="Node"fontcolor="blue"];
@@ -225,8 +225,8 @@ node [shape=box]
 0222 [label="HTMLAllCollection"fontcolor="blue"];
 0223 [label="XMLSerializer"];
 0224 [label="DOMParser"];
-0225 [label="DOMTokenList"];
-0226 [label="DOMSettableTokenList"];
+0225 [label="DOMTokenList"fontcolor="blue"];
+0226 [label="DOMSettableTokenList"fontcolor="blue"];
 0227 [label="NodeFilter"];
 0228 [label="TreeWalker"];
 0229 [label="NodeIterator"];

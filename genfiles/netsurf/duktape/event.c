@@ -194,12 +194,20 @@ static duk_ret_t dukky_event_initEvent(duk_context *ctx)
 	}
 	if (dukky_argc > 1) {
 		if (!duk_is_boolean(ctx, 1)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubbles");
+			if (duk_is_number(ctx, 1)) {
+				duk_to_boolean(ctx, 1);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 1, "bubbles");
+			}
 		}
 	}
 	if (dukky_argc > 2) {
 		if (!duk_is_boolean(ctx, 2)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelable");
+			if (duk_is_number(ctx, 2)) {
+				duk_to_boolean(ctx, 2);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 2, "cancelable");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -235,7 +243,7 @@ static duk_ret_t dukky_event_initEvent(duk_context *ctx)
 	}
 
 	return 0;
-#line 239 "event.c"
+#line 247 "event.c"
 }
 
 static duk_ret_t dukky_event_type_getter(duk_context *ctx)
@@ -266,7 +274,7 @@ static duk_ret_t dukky_event_type_getter(duk_context *ctx)
 	}
 
 	return 1;
-#line 270 "event.c"
+#line 278 "event.c"
 }
 
 static duk_ret_t dukky_event_target_getter(duk_context *ctx)
@@ -294,7 +302,7 @@ static duk_ret_t dukky_event_target_getter(duk_context *ctx)
 
 	dom_node_unref(et);
 	return 1;
-#line 298 "event.c"
+#line 306 "event.c"
 }
 
 static duk_ret_t dukky_event_currentTarget_getter(duk_context *ctx)
@@ -322,7 +330,7 @@ static duk_ret_t dukky_event_currentTarget_getter(duk_context *ctx)
 
 	dom_node_unref(et);
 	return 1;
-#line 326 "event.c"
+#line 334 "event.c"
 }
 
 static duk_ret_t dukky_event_eventPhase_getter(duk_context *ctx)
@@ -347,7 +355,7 @@ static duk_ret_t dukky_event_eventPhase_getter(duk_context *ctx)
 
 	duk_push_uint(ctx, phase);
 	return 1;
-#line 351 "event.c"
+#line 359 "event.c"
 }
 
 static duk_ret_t dukky_event_bubbles_getter(duk_context *ctx)
@@ -372,7 +380,7 @@ static duk_ret_t dukky_event_bubbles_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, ret);
 	return 1;
-#line 376 "event.c"
+#line 384 "event.c"
 }
 
 static duk_ret_t dukky_event_cancelable_getter(duk_context *ctx)
@@ -397,7 +405,7 @@ static duk_ret_t dukky_event_cancelable_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, ret);
 	return 1;
-#line 401 "event.c"
+#line 409 "event.c"
 }
 
 static duk_ret_t dukky_event_defaultPrevented_getter(duk_context *ctx)
@@ -422,7 +430,7 @@ static duk_ret_t dukky_event_defaultPrevented_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, ret);
 	return 1;
-#line 426 "event.c"
+#line 434 "event.c"
 }
 
 static duk_ret_t dukky_event_isTrusted_getter(duk_context *ctx)
@@ -447,7 +455,7 @@ static duk_ret_t dukky_event_isTrusted_getter(duk_context *ctx)
 
 	duk_push_boolean(ctx, ret);
 	return 1;
-#line 451 "event.c"
+#line 459 "event.c"
 }
 
 static duk_ret_t dukky_event_timeStamp_getter(duk_context *ctx)

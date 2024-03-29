@@ -508,7 +508,7 @@ duk_ret_t dukky_dom_parser___proto(duk_context *ctx, void *udata);
 
 duk_ret_t dukky_dom_token_list___proto(duk_context *ctx, void *udata);
 void dukky_dom_token_list___fini(duk_context *ctx, dom_token_list_private_t *priv);
-void dukky_dom_token_list___init(duk_context *ctx, dom_token_list_private_t *priv);
+void dukky_dom_token_list___init(duk_context *ctx, dom_token_list_private_t *priv, struct dom_tokenlist *tokens);
 
 duk_ret_t dukky_dom_settable_token_list___proto(duk_context *ctx, void *udata);
 

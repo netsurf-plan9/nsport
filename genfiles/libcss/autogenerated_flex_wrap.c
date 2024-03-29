@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * flex_wrap:CSS_PROP_FLEX_WRAP IDENT:( INHERIT: NOWRAP:0,FLEX_WRAP_NOWRAP WRAP_STRING:0,FLEX_WRAP_WRAP WRAP_REVERSE:0,FLEX_WRAP_WRAP_REVERSE IDENT:)
+ * flex_wrap:CSS_PROP_FLEX_WRAP IDENT:( INHERIT: INITIAL: REVERT: UNSET: NOWRAP:0,FLEX_WRAP_NOWRAP WRAP_STRING:0,FLEX_WRAP_WRAP WRAP_REVERSE:0,FLEX_WRAP_WRAP_REVERSE IDENT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_flex_wrap(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,14 +47,51 @@ css_error css__parse_flex_wrap(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_FLEX_WRAP);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[NOWRAP], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FLEX_WRAP, 0,FLEX_WRAP_NOWRAP);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[WRAP_STRING], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FLEX_WRAP, 0,FLEX_WRAP_WRAP);
-	} else if ((lwc_string_caseless_isequal(token->idata, c->strings[WRAP_REVERSE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_FLEX_WRAP, 0,FLEX_WRAP_WRAP_REVERSE);
+	if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_FLEX_WRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_FLEX_WRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_FLEX_WRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_FLEX_WRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[NOWRAP],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FLEX_WRAP,
+				0,FLEX_WRAP_NOWRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[WRAP_STRING],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FLEX_WRAP,
+				0,FLEX_WRAP_WRAP);
+
+	} else if ((lwc_string_caseless_isequal(
+			token->idata, c->strings[WRAP_REVERSE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_FLEX_WRAP,
+				0,FLEX_WRAP_WRAP_REVERSE);
+
 	} else {
 		error = CSS_INVALID;
 	}

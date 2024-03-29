@@ -234,7 +234,7 @@ typedef struct {
 
 /* Private data for CSSRule interface */
 typedef struct {
-	char __dummy;
+	bool unused;
 }  css_rule_private_t;
 
 /* Private data for CSSNamespaceRule interface */
@@ -290,6 +290,7 @@ typedef struct {
 /* Private data for CSSStyleSheet interface */
 typedef struct {
 	style_sheet_private_t parent;
+	bool unused;
 }  css_style_sheet_private_t;
 
 /* Private data for MediaList interface */
@@ -1058,7 +1059,7 @@ typedef struct {
 
 /* Private data for DOMTokenList interface */
 typedef struct {
-	char __dummy;
+	struct dom_tokenlist *tokens;
 }  dom_token_list_private_t;
 
 /* Private data for DOMSettableTokenList interface */

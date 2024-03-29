@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_html_unknown_element___init(duk_context *ctx, html_unknown_element_private_t *priv, struct dom_html_element *html_unknown_element)
 {
 	dukky_html_element___init(ctx, &priv->parent, html_unknown_element);
-#line 152 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 154 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_unknown_element.c"
 }
 

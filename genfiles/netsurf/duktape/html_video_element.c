@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_html_video_element___init(duk_context *ctx, html_video_element_private_t *priv, struct dom_html_element *html_video_element)
 {
 	dukky_html_media_element___init(ctx, &priv->parent, html_video_element);
-#line 184 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 186 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_video_element.c"
 }
 

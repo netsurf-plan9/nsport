@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * volume:CSS_PROP_VOLUME IDENT:( INHERIT: SILENT:0,VOLUME_SILENT X_SOFT:0,VOLUME_X_SOFT SOFT:0,VOLUME_SOFT MEDIUM:0,VOLUME_MEDIUM LOUD:0,VOLUME_LOUD X_LOUD:0,VOLUME_X_LOUD IDENT:) NUMBER:( false:VOLUME_NUMBER RANGE:num<0||num>F_100 NUMBER:) LENGTH_UNIT:( UNIT_PX:VOLUME_DIMENSION ALLOW:unit&UNIT_PCT RANGE:<0 LENGTH_UNIT:)
+ * volume:CSS_PROP_VOLUME IDENT:( INHERIT: INITIAL: REVERT: UNSET: SILENT:0,VOLUME_SILENT X_SOFT:0,VOLUME_X_SOFT SOFT:0,VOLUME_SOFT MEDIUM:0,VOLUME_MEDIUM LOUD:0,VOLUME_LOUD X_LOUD:0,VOLUME_X_LOUD IDENT:) NUMBER:( false:VOLUME_NUMBER RANGE:num<0||num>F_100 NUMBER:) LENGTH_UNIT:( UNIT_PX:VOLUME_DIMENSION MASK:UNIT_MASK_VOLUME RANGE:<0 LENGTH_UNIT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_volume(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,20 +47,82 @@ css_error css__parse_volume(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_VOLUME);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[SILENT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_VOLUME, 0,VOLUME_SILENT);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[X_SOFT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_VOLUME, 0,VOLUME_X_SOFT);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[SOFT], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_VOLUME, 0,VOLUME_SOFT);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[MEDIUM], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_VOLUME, 0,VOLUME_MEDIUM);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[LOUD], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_VOLUME, 0,VOLUME_LOUD);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[X_LOUD], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_VOLUME, 0,VOLUME_X_LOUD);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_VOLUME);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_VOLUME);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_VOLUME);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_VOLUME);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[SILENT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_VOLUME,
+				0,VOLUME_SILENT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[X_SOFT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_VOLUME,
+				0,VOLUME_X_SOFT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[SOFT],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_VOLUME,
+				0,VOLUME_SOFT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[MEDIUM],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_VOLUME,
+				0,VOLUME_MEDIUM);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[LOUD],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_VOLUME,
+				0,VOLUME_LOUD);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[X_LOUD],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_VOLUME,
+				0,VOLUME_X_LOUD);
+
 	} else if (token->type == CSS_TOKEN_NUMBER) {
 		css_fixed num = 0;
 		size_t consumed = 0;
@@ -94,7 +156,7 @@ css_error css__parse_volume(css_language *c,
 			return error;
 		}
 
-		if ((unit&UNIT_PCT) == false) {
+		if ((unit & UNIT_MASK_VOLUME ) == 0) {
 			*ctx = orig_ctx;
 			return CSS_INVALID;
 		}

@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * speech_rate:CSS_PROP_SPEECH_RATE IDENT:( INHERIT: X_SLOW:0,SPEECH_RATE_X_SLOW SLOW:0,SPEECH_RATE_SLOW MEDIUM:0,SPEECH_RATE_MEDIUM FAST:0,SPEECH_RATE_FAST X_FAST:0,SPEECH_RATE_X_FAST FASTER:0,SPEECH_RATE_FASTER SLOWER:0,SPEECH_RATE_SLOWER IDENT:) NUMBER:( false:SPEECH_RATE_SET RANGE:num<0 NUMBER:)
+ * speech_rate:CSS_PROP_SPEECH_RATE IDENT:( INHERIT: INITIAL: REVERT: UNSET: X_SLOW:0,SPEECH_RATE_X_SLOW SLOW:0,SPEECH_RATE_SLOW MEDIUM:0,SPEECH_RATE_MEDIUM FAST:0,SPEECH_RATE_FAST X_FAST:0,SPEECH_RATE_X_FAST FASTER:0,SPEECH_RATE_FASTER SLOWER:0,SPEECH_RATE_SLOWER IDENT:) NUMBER:( false:SPEECH_RATE_SET RANGE:num<0 NUMBER:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_speech_rate(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,22 +47,90 @@ css_error css__parse_speech_rate(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_SPEECH_RATE);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[X_SLOW], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEECH_RATE, 0,SPEECH_RATE_X_SLOW);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[SLOW], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEECH_RATE, 0,SPEECH_RATE_SLOW);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[MEDIUM], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEECH_RATE, 0,SPEECH_RATE_MEDIUM);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[FAST], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEECH_RATE, 0,SPEECH_RATE_FAST);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[X_FAST], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEECH_RATE, 0,SPEECH_RATE_X_FAST);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[FASTER], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEECH_RATE, 0,SPEECH_RATE_FASTER);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[SLOWER], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_SPEECH_RATE, 0,SPEECH_RATE_SLOWER);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_SPEECH_RATE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_SPEECH_RATE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_SPEECH_RATE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_SPEECH_RATE);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[X_SLOW],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEECH_RATE,
+				0,SPEECH_RATE_X_SLOW);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[SLOW],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEECH_RATE,
+				0,SPEECH_RATE_SLOW);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[MEDIUM],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEECH_RATE,
+				0,SPEECH_RATE_MEDIUM);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[FAST],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEECH_RATE,
+				0,SPEECH_RATE_FAST);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[X_FAST],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEECH_RATE,
+				0,SPEECH_RATE_X_FAST);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[FASTER],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEECH_RATE,
+				0,SPEECH_RATE_FASTER);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[SLOWER],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_SPEECH_RATE,
+				0,SPEECH_RATE_SLOWER);
+
 	} else if (token->type == CSS_TOKEN_NUMBER) {
 		css_fixed num = 0;
 		size_t consumed = 0;

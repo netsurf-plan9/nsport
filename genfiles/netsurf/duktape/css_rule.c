@@ -42,6 +42,10 @@ struct dom_html_br_element;
 
 void dukky_css_rule___init(duk_context *ctx, css_rule_private_t *priv)
 {
+#line 20 "CSSRule.bnd"
+
+    priv->unused = true;
+#line 49 "css_rule.c"
 }
 
 void dukky_css_rule___fini(duk_context *ctx, css_rule_private_t *priv)

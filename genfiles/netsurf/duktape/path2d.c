@@ -478,7 +478,11 @@ static duk_ret_t dukky_path2d_arc(duk_context *ctx)
 	}
 	if (dukky_argc > 5) {
 		if (!duk_is_boolean(ctx, 5)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 5, "anticlockwise");
+			if (duk_is_number(ctx, 5)) {
+				duk_to_boolean(ctx, 5);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 5, "anticlockwise");
+			}
 		}
 	}
 	/* Get private data for method */
@@ -547,7 +551,11 @@ static duk_ret_t dukky_path2d_ellipse(duk_context *ctx)
 	}
 	if (dukky_argc > 7) {
 		if (!duk_is_boolean(ctx, 7)) {
-			return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 7, "anticlockwise");
+			if (duk_is_number(ctx, 7)) {
+				duk_to_boolean(ctx, 7);
+			} else {
+				return duk_error(ctx, DUK_ERR_ERROR, dukky_error_fmt_bool_type, 7, "anticlockwise");
+			}
 		}
 	}
 	/* Get private data for method */

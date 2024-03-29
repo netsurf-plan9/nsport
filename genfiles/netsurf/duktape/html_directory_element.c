@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_html_directory_element___init(duk_context *ctx, html_directory_element_private_t *priv, struct dom_html_element *html_directory_element)
 {
 	dukky_html_element___init(ctx, &priv->parent, html_directory_element);
-#line 153 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 155 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "html_directory_element.c"
 }
 

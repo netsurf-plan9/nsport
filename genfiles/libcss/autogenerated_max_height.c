@@ -3,7 +3,7 @@
  * 
  * Generated from:
  *
- * max_height:CSS_PROP_MAX_HEIGHT IDENT:( INHERIT: NONE:0,MAX_HEIGHT_NONE IDENT:) LENGTH_UNIT:( UNIT_PX:MAX_HEIGHT_SET DISALLOW:unit&UNIT_ANGLE||unit&UNIT_TIME||unit&UNIT_FREQ RANGE:<0 LENGTH_UNIT:)
+ * max_height:CSS_PROP_MAX_HEIGHT IDENT:( INHERIT: INITIAL: REVERT: UNSET: NONE:0,MAX_HEIGHT_NONE IDENT:) LENGTH_UNIT:( UNIT_PX:MAX_HEIGHT_SET MASK:UNIT_MASK_MAX_HEIGHT RANGE:<0 LENGTH_UNIT:)
  * 
  * Licensed under the MIT License,
  *		  http://www.opensource.org/licenses/mit-license.php
@@ -33,10 +33,10 @@
  *		   If the input is invalid, then \a *ctx remains unchanged.
  */
 css_error css__parse_max_height(css_language *c,
-		const parserutils_vector *vector, int *ctx,
+		const parserutils_vector *vector, int32_t *ctx,
 		css_style *result)
 {
-	int orig_ctx = *ctx;
+	int32_t orig_ctx = *ctx;
 	css_error error;
 	const css_token *token;
 	bool match;
@@ -47,10 +47,42 @@ css_error css__parse_max_height(css_language *c,
 		return CSS_INVALID;
 	}
 
-	if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[INHERIT], &match) == lwc_error_ok && match)) {
-			error = css_stylesheet_style_inherit(result, CSS_PROP_MAX_HEIGHT);
-	} else if ((token->type == CSS_TOKEN_IDENT) && (lwc_string_caseless_isequal(token->idata, c->strings[NONE], &match) == lwc_error_ok && match)) {
-			error = css__stylesheet_style_appendOPV(result, CSS_PROP_MAX_HEIGHT, 0,MAX_HEIGHT_NONE);
+	if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INHERIT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_inherit(result,
+				CSS_PROP_MAX_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[INITIAL],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_initial(result,
+				CSS_PROP_MAX_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[REVERT],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_revert(result,
+				CSS_PROP_MAX_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[UNSET],
+			&match) == lwc_error_ok && match)) {
+		error = css_stylesheet_style_unset(result,
+				CSS_PROP_MAX_HEIGHT);
+
+	} else if ((token->type == CSS_TOKEN_IDENT) &&
+			(lwc_string_caseless_isequal(
+			token->idata, c->strings[NONE],
+			&match) == lwc_error_ok && match)) {
+		error = css__stylesheet_style_appendOPV(result,
+				CSS_PROP_MAX_HEIGHT,
+				0,MAX_HEIGHT_NONE);
+
 	} else {
 		css_fixed length = 0;
 		uint32_t unit = 0;
@@ -62,7 +94,7 @@ css_error css__parse_max_height(css_language *c,
 			return error;
 		}
 
-		if (unit&UNIT_ANGLE||unit&UNIT_TIME||unit&UNIT_FREQ) {
+		if ((unit & UNIT_MASK_MAX_HEIGHT ) == 0) {
 			*ctx = orig_ctx;
 			return CSS_INVALID;
 		}

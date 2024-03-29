@@ -1301,7 +1301,36 @@ static duk_ret_t dukky_element_classList_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-	return 0;
+#line 396 "Element.bnd"
+
+	dom_exception exc;
+	dom_tokenlist *tokens;
+
+	duk_set_top(ctx, 0);
+	duk_push_this(ctx);
+	duk_get_prop_string(ctx, 0, MAGIC(classList));
+
+	if (duk_is_undefined(ctx, -1)) {
+		duk_pop(ctx);
+		exc = dom_tokenlist_create((dom_element *)priv->parent.node, corestring_dom_class, &tokens);
+		if (exc != DOM_NO_ERR) return 0; /* Coerced to undefined */
+
+		/* Create a settable tokenlist - While the IDL says this isn't settable, all browsers
+		 * seem to make it settable, so we'll permit it too
+		 */
+		duk_push_pointer(ctx, tokens);
+		if (dukky_create_object(ctx, PROTO_NAME(DOMSETTABLETOKENLIST), 1) != DUK_EXEC_SUCCESS) {
+			dom_tokenlist_unref(tokens);
+			NSLOG(dukky, DEBUG, "Unable to create DOMSettableTokenList object");
+			return 0; /* Coerced to undefined */
+		}
+		dom_tokenlist_unref(tokens);
+		duk_dup(ctx, -1);
+		duk_put_prop_string(ctx, 0, MAGIC(classList));
+	}
+
+	return 1;
+#line 1334 "element.c"
 }
 
 static duk_ret_t dukky_element_attributes_getter(duk_context *ctx)
@@ -1316,7 +1345,7 @@ static duk_ret_t dukky_element_attributes_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 519 "Element.bnd"
+#line 550 "Element.bnd"
 
 	dom_exception exc;
 	dom_namednodemap *nmap = NULL;
@@ -1342,7 +1371,7 @@ static duk_ret_t dukky_element_attributes_getter(duk_context *ctx)
 		duk_put_prop_string(ctx, 0, MAGIC(attributes));
 	}
 	return 1;
-#line 1346 "element.c"
+#line 1375 "element.c"
 }
 
 static duk_ret_t dukky_element_innerHTML_getter(duk_context *ctx)
@@ -1357,11 +1386,11 @@ static duk_ret_t dukky_element_innerHTML_getter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 396 "Element.bnd"
+#line 427 "Element.bnd"
 
 	duk_push_lstring(ctx, "", 0);
 	return 1;
-#line 1365 "element.c"
+#line 1394 "element.c"
 }
 
 static duk_ret_t dukky_element_innerHTML_setter(duk_context *ctx)
@@ -1376,7 +1405,7 @@ static duk_ret_t dukky_element_innerHTML_setter(duk_context *ctx)
 		return 0; /* can do? No can do. */
 	}
 
-#line 402 "Element.bnd"
+#line 433 "Element.bnd"
 
 	duk_size_t size;
 	const char *s = duk_safe_to_lstring(ctx, 0, &size);
@@ -1491,7 +1520,7 @@ out:
 		dom_node_unref(body);
 	}
 	return 0;
-#line 1495 "element.c"
+#line 1524 "element.c"
 }
 
 static duk_ret_t dukky_element_outerHTML_getter(duk_context *ctx)
@@ -1584,7 +1613,7 @@ static duk_ret_t dukky_element_firstElementChild_getter(duk_context *ctx)
 	}
 	dom_node_unref(element);
 	return 1;
-#line 1588 "element.c"
+#line 1617 "element.c"
 }
 
 static duk_ret_t dukky_element_lastElementChild_getter(duk_context *ctx)
@@ -1632,7 +1661,7 @@ static duk_ret_t dukky_element_lastElementChild_getter(duk_context *ctx)
 	}
 	dom_node_unref(element);
 	return 1;
-#line 1636 "element.c"
+#line 1665 "element.c"
 }
 
 static duk_ret_t dukky_element_childElementCount_getter(duk_context *ctx)
@@ -1677,7 +1706,7 @@ static duk_ret_t dukky_element_childElementCount_getter(duk_context *ctx)
 	NSLOG(netsurf, INFO, "I found %u of them", jsret);
 	duk_push_uint(ctx, jsret);
 	return 1;
-#line 1681 "element.c"
+#line 1710 "element.c"
 }
 
 static duk_ret_t dukky_element_previousElementSibling_getter(duk_context *ctx)
@@ -1725,7 +1754,7 @@ static duk_ret_t dukky_element_previousElementSibling_getter(duk_context *ctx)
 	}
 	dom_node_unref(element);
 	return 1;
-#line 1729 "element.c"
+#line 1758 "element.c"
 }
 
 static duk_ret_t dukky_element_nextElementSibling_getter(duk_context *ctx)
@@ -1773,7 +1802,7 @@ static duk_ret_t dukky_element_nextElementSibling_getter(duk_context *ctx)
 	}
 	dom_node_unref(element);
 	return 1;
-#line 1777 "element.c"
+#line 1806 "element.c"
 }
 
 static duk_ret_t dukky_element_cascadedStyle_getter(duk_context *ctx)

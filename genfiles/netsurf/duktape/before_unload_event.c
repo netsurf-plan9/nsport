@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_before_unload_event___init(duk_context *ctx, before_unload_event_private_t *priv, struct dom_event *evt)
 {
 	dukky_event___init(ctx, &priv->parent, evt);
-#line 92 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 94 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "before_unload_event.c"
 }
 

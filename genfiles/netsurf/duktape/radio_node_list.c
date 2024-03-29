@@ -43,7 +43,7 @@ struct dom_html_br_element;
 static void dukky_radio_node_list___init(duk_context *ctx, radio_node_list_private_t *priv, struct dom_nodelist *nodes)
 {
 	dukky_node_list___init(ctx, &priv->parent, nodes);
-#line 197 "content/handlers/javascript/duktape/netsurf.bnd"
+#line 199 "content/handlers/javascript/duktape/netsurf.bnd"
 #line 48 "radio_node_list.c"
 }
 
